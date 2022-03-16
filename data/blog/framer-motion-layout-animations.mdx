@@ -1,0 +1,212 @@
+---
+title: 'Everything about Framer Motion layout animations'
+subtitle: TBD.
+date: '2022-02-26'
+updated: '2022-02-26'
+tags:
+  - framer
+  - motion
+  - animation
+cover: ''
+featured: true
+colorFeatured: 'linear-gradient(90deg, #ffa0ae 0%, #aacaef 75%)'
+fontFeatured: #000000
+---
+
+<Callout variant="info">
+
+Looking for an intro to Framer Motion?
+
+Don't worry I got your back! You can check out my [guide to creating animations that spark joy with Framer Motion](/blog/guide-animations-spark-joy-framer-motion/) to get started.
+
+</Callout>
+
+## Layout animations fundamentals
+
+Before we dive into the new featuresand complex wxamples of layout animations
+
+### A brief refresher on layout animations
+
+In Framer Motion, you can animate a `motion` component between distinct _layout_ by setting the `layout` prop to `true`.
+
+<Callout variant="info" label='What do we mean by "layout"?'>
+
+Whwn we'rw talking about animating the "layout" or a "layout properties" we mean updating any of the following properties:
+
+- Position-related, such as CSS `flex`, `position` or `grid`
+- Size-related, such as CSS `width` or `height`
+- The overall position of an element within a list fir example. This can useful if you want to have animate sorting.reordering a list.
+
+</Callout>
+
+<FramerMotionLayoutAnimationsBasic />
+
+<FramerMotionToastNotificationSandpack />
+
+<Callout variant="info" layout="Customizing layout animations">
+
+You can set a spesific transition of your layout animations by setting it up within a `layout` key in your transition object:
+
+```jsx
+<motion.div
+  layout
+  transition = {{
+    layout: {
+      duration: 1.5;
+    }
+  }}
+```
+
+</Callout>
+
+### Fixing distorsions
+
+When performing a layout animation that effects the size of a component.
+
+<FramerMotionDistorsions />
+
+<Callout variant="danger" label="CSS variables">
+
+If like me, you're using CSS variables in your codebase, just be warned that setting that setting a CSS variable for value of `borderRadius` or `boxShadow`
+You will _need_ to use a proper value to avoid any distorsions.
+
+</Callout>
+
+### More about the layout prop
+
+- `layout="position"`: we only smoothly transition the position-related properties.
+- `layout="size"`: we only smoothly transition the size-related properties.
+
+<Callout variant="info">
+
+<Image
+  src="blog/layoutpropcharts.png"
+  alt="Charts representing the evaluation of position and sizes properties"
+  layout="responsive"
+  width={600}
+  height={379}
+/>
+
+</Callout>
+
+<FramerMotionLayoutAnimationsLayoutProp />
+
+Below you'll find an example of such a use case:
+
+- Removing elements in this horizontal list will affect the size of the component.
+- Wrapping the content in a `motion component and setting `layout`to`position`.
+
+<FramerMotionLayoutAnimationsLayoutPosition />
+
+## Shared layout animations and LayoutGroup
+
+These two case concepts are perhaps what I struggled the most with recently as:
+
+- they appear to be closely related based on their names but have very distinct purposes
+- there has been a lot of API changes in this area.
+
+<Callout variant="info">
+
+The confusion is understanding. There used to be a feature called `AnimatedSharedLayout` that was necessary to achive shared layout animations that was deprecated around the same time as `LayoutGroup` was introduced.
+
+</Callout>
+
+### Shared layout animations
+
+// TODO Sandpack of items with arrow icon, click on item moves arrow icon next to the element
+
+<FramerMotionArrowListSandpack />
+
+We can see in this example that:
+
+- We're transitioning between multiple instances of the `Arrow` component
+- They all share a common `layoutId`.
+
+The "magic" behind it is actually quite simple:
+
+1. In our example above, when clicking on a new element, the `Arrow` component that was displayed on the screen fades away to reveal a new `Arrow` component
+2. That new `Arrow` component is the one that will be eventually positioned.
+3. That component then moves to its final position
+
+<FramerMotionLayoutAnimationsSharedLayoutAnimationDetails />
+
+<FramerMotionLayoutTabsSandpack />
+
+<FramerMotionLayoutAnimationsTabsLayoutGroup />
+
+This is where `LayoutGroup` comes into the picture 👀.
+
+### LayoutGroup: the namespacing use case
+
+```jsx title=Namespacing multiple instance of shared layout animations with LayoutGroup
+const ComponentWithSharedLayoutAnimation = () => {
+  // ...
+
+  return (
+    //...
+    <motion.div layoutId="shared-layout-animation" />
+    //...
+  );
+};
+
+const App = () => (
+  <>
+    <LayoutGroup id="1">
+      <ComponentWithSharedLayoutAnimation />
+    </LayoutGroup>
+    <LayoutGroup id="2">
+      <ComponentWithSharedLayoutAnimation />
+    </LayoutGroup>
+  </>
+);
+```
+
+<FramerMotionLayoutAnimationsTabsLayoutGroup layoutGroup />
+
+### LayoutGroup: the grouping use case
+
+> Group motion components that should perform layout animations together.
+
+<FramerMotionLayoutAnimationsListLayoutGroup />
+
+<Callout variant="info" label="To summarize">
+
+`LayoutGroup` has two use cases:
+
+- Namespacing `layoutId`
+- Grouping together subling components that perform distinct.
+
+</Callout>
+
+## Reorder
+
+Drag-to-reorder
+
+1. `Reorder.Group`
+2. `Reorder.Item`
+
+```jsx {5,9,13,17} title="Simple examples of drag-to-reorder list using Reorder
+const MyList = () => {
+  const [items, setItems] = React.useState(['Item 1', 'Item 2', 'Item 3']);
+
+  return (
+    <Reorder.Group
+      // Specify the direction of the list (x for horizontal, y for vertical)
+      axis="y"
+      // Specify the full set of items within your reorder group
+      values={items}
+      // Callback that passes the newly reordered list of item
+      // Note: simply passing a useState setter here is equivalent to
+      // doing `(reordereditems) => setItems(reordereditems)`
+      onReorder={setItems}
+    >
+      {items.map((item) => (
+        // /!\ don't forget the value prop!
+        <Reorder.Item key={item} value={item}>
+          {item}
+        </Reorder.Item>
+      ))}
+    </Reorder.Group>
+  );
+};
+```

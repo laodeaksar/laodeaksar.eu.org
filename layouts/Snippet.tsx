@@ -1,0 +1,77 @@
+import Box from '~/components/Box';
+import Flex from '~/components/Flex';
+import Grid from '~/components/Grid';
+import Hero from '~/components/Hero';
+import Pill from '~/components/Pill';
+import SEO from '~/components/Seo';
+import Text from '~/components/Typography';
+
+import Layout from '~/layout';
+
+import type { Snippet } from 'contentlayer/generated';
+
+const SnippetLayout = ({
+  children,
+  snippet
+}: {
+  children?: React.ReactNode;
+  snippet: Snippet;
+}) => {
+  const { date, title, description, language } = snippet;
+
+  const headerProps = {
+    title,
+    offsetHeight: 200
+  };
+
+  return (
+    <Layout header headerProps={headerProps}>
+      <SEO title={title} date={date} description={description} />
+      <article className="h-entry">
+        <Grid columns="medium" gapX={4} all>
+          <Hero>
+            <Hero.Title className="p-name">{title}</Hero.Title>
+            <Hero.Info>
+              <Flex justifyContent="space-between">
+                <Text
+                  as="p"
+                  size="1"
+                  variant="tertiary"
+                  weight="3"
+                  css={{ marginBottom: 0 }}
+                >
+                  Created{' '}
+                  {new Date(date).toLocaleDateString('en', {
+                    month: 'long',
+                    day: '2-digit',
+                    year: 'numeric'
+                  })}
+                </Text>
+                <Pill variant="info">{language.toUpperCase()}</Pill>
+              </Flex>
+            </Hero.Info>
+          </Hero>
+          <Box
+            css={{
+              padding: '20px 0px',
+              gridColumn: '2',
+              color: 'var(--laodeaksar-colors-typeface-secondary)',
+
+              h2: {
+                marginTop: '2em'
+              },
+
+              h3: {
+                marginTop: '2em'
+              }
+            }}
+          >
+            {children}
+          </Box>
+        </Grid>
+      </article>
+    </Layout>
+  );
+};
+
+export default SnippetLayout;

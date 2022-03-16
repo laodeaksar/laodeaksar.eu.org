@@ -1,0 +1,25 @@
+{
+  "title": "Aksar La'ode | full-stack engineer, writer, creative developer.",
+  "titleTemplate": "%s - Aksar La'ode",
+  "description": "Hi I'm Aksar, and this is my blog. Here, I share through my writing my experience as a frontend engineer.",
+  "openGraph": {
+    "title": "Aksar La'ode | full-stack engineer, writer, creative developer.",
+    "description": "Hi I'm Aksar, and this is my blog. Here, I share through my writing my experience as a frontend engineer.",
+    "type": "website",
+    "url": "https://laodeaksar.eu.org",
+    "site_name": "Aksar La'ode",
+    "images": [
+      {
+        "url": "/static/og/default-social-image.png",
+        "width": "1200",
+        "height": "630",
+        "alt": "Aksar La'ode"
+      }
+    ]
+  },
+  "twitter": {
+    "handle": "@ode_aksar",
+    "site": "@ode_aksar",
+    "cardType": "summary_large_image"
+  }
+}

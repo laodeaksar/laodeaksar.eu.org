@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="600" height="600">
+   <path d="m297.49998,89.75001l0,0c46.9,0 85,38.1 85,85l0,250.5c0,46.9 -38.1,85 -85,85l0,0c-46.9,0 -85,-38.1 -85,-85l0,-250.5c0,-47 38,-85 85,-85z" stroke-miterlimit="10" stroke-width="20" stroke="#000000" fill="none"></path>
+   <path d="m368.69998,198.15001l-149.3,262.2c-22.4,39.4 -74.9,58.2 -117.2,42c-42.3,-16.2 -58.4,-61.2 -36,-100.5l149.3,-262.2c22.4,-39.4 74.9,-58.2 117.2,-42s58.4,61.1 36,100.5z" stroke-miterlimit="10" stroke-width="30" stroke="#000000" fill="none"></path>
+   <path d="m267.29998,97.65001c42.3,-16.2 94.8,2.6 117.2,42l149.3,262.2c22.4,39.4 6.3,84.4 -36,100.5c-42.3,16.2 -94.8,-2.6 -117.2,-42l-149.4,-262.2c-22.4,-39.4 -6.3,-84.4 36.1,-100.5z" stroke-miterlimit="10" stroke-width="30" stroke="#000000" fill="none"></path>
+   
+   <style>
+      @media (prefers-color-scheme: light) { :root { filter: none; } }
+      @media (prefers-color-scheme: dark) { :root { filter: invert(100%); } }
+   </style>
+</svg>
