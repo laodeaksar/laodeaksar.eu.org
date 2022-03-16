@@ -84,8 +84,7 @@ const contentLayerConfig = makeSource({
   mdx: {
     remarkPlugins: [
 remarkSlug,
-      remarkSectionize,
-remarkFigure
+      remarkSectionize
     ]
   }
 });
