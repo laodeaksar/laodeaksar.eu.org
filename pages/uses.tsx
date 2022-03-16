@@ -196,14 +196,14 @@ const Uses = ({ gearByCategory }) => {
                   marginBottom: 'calc(1rem * calc(1 - 0))'
                 }}
               >
-                <Text as="p" size={1} variant="info" css={{ marginBottom: 0 }}>
+                <Text as="p" size={1} css={{ marginBottom: 0 }}>
                   If you click <Strong>Buy</Strong> or{' '}
                   <Strong>the image</Strong> you will get redirected to a page
                   where you can buy the product using an{' '}
                   <Strong>affilated link</Strong>.
                 </Text>
 
-                <Text as="p" size={1} variant="info">
+                <Text as="p" size={1}>
                   An affilate link will not increase your price, but it will get
                   me a small commission and helps me out :)
                 </Text>
