@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Anchor from '~/components/Anchor';
 import Blockquote from '~/components/Blockquote';
 import Button from '~/components/Button';
-import Code from '~/components/Code';
+import Code from '~/components/Code/Pre';
 import Callout from '~/components/Callout';
 import InlineCode from '~/components/InlineCode';
 import List from '~/components/List';
@@ -14,7 +14,7 @@ import VideoPlayer from '~/components/VideoPlayer';
 import Text, { EM, H2, H3, Strong } from '~/components/Typography';
 
 // MDX only components
-import Image,{MdxImage} from './Image';
+import Image, { MdxImage } from './Image';
 
 // Widgets (used in blog post for interactive experiences)
 const ClipboardAnimationDetails = dynamic(
@@ -127,7 +127,7 @@ const MDXComponents = {
   h2: H2,
   h3: H3,
   Image,
-image: MdxImage,
+  image: MdxImage,
   code: InlineCode,
   li: List.Item,
   ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
@@ -137,7 +137,7 @@ image: MdxImage,
     <Text as="p" {...props} />
   ),
   Pill,
-  pre: Code,
+  pre: Pre,
   strong: Strong,
   VideoPlayer,
   ...customComponents

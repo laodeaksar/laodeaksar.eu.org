@@ -8,9 +8,9 @@ import { remarkFigure } from './lib/remark-figure';
 import { remarkSectionize } from './lib/remark-sectionize-fork';
 
 import readingTime from 'reading-time';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import remarkSlug from 'remark-slug';
+import rehypePrism from 'rehype-prism-plus';
+import remarkAutolinkHeadings from 'remark-autolink-headings';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -81,7 +81,11 @@ const OtherPage = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Snippet, OtherPage]
+  documentTypes: [Blog, Snippet, OtherPage],
+  mdx: {
+    remarkPlugins: [remarkSectionize, remarkSlug, remarkAutolinkHeadings],
+    rehypePlugins: [rehypePrism]
+  }
 });
 
 export default contentLayerConfig;
