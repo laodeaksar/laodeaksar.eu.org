@@ -7,8 +7,6 @@ import Text from '~/components/Typography';
 import SpotifyLogo, { Glass } from './icons';
 import { styles } from './Styles';
 import type { Props } from './types';
-import { useNowPlaying } from './utils';
-import { Loading } from './Loading';
 
 import fetcher from '~/lib/fetcher';
 
