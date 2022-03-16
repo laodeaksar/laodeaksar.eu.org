@@ -1,8 +1,9 @@
 import { styled } from '~/lib/stitches.config';
 import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
 
-import { CopyToClipboardButton } from '~/components/Button';
 import Card from '~/components/Card';
+import { CopyToClipboardButton } from '~/components/Button';
+
 import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from '.';
 
@@ -28,11 +29,8 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
         <Pre className={className} style={style}>
           {tokens.map((line, index) => {
             const { className: lineClassName } = getLineProps({
-              className: highlightLine
-                ? highlightLine(index)
-                  ? 'highlight-line'
-                  : 'basic'
-                : '',
+              className:
+                highlightLine && highlightLine(index) ? 'highlight-line' : '',
               key: index,
               line
             });
@@ -112,6 +110,7 @@ const Pre = styled('pre', {
   padding: '8px 0px',
   overflow: 'auto',
   bbr: '$2',
+  bc: 'var(--code-snippet-background)',
   fontFamily: '$mono',
   fontSize: '$1',
   lineHeight: '26px'
