@@ -336,6 +336,18 @@ video {
   height: auto;
 }
 
+audio,
+canvas,
+embed,
+iframe,
+img,
+object,
+svg,
+video {
+  display: block;
+  vertical-align: middle;
+}
+
 /* END Patch gif wrapped in figure tag */
 
 [hidden],

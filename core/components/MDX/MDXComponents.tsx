@@ -127,7 +127,7 @@ const MDXComponents = {
   h2: H2,
   h3: H3,
   Image,
-  code: InlineCode,
+  // code: InlineCode,
   li: List.Item,
   ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
     <List variant="ordered" {...props} />
@@ -136,7 +136,7 @@ const MDXComponents = {
     <Text as="p" {...props} />
   ),
   Pill,
-  pre: Code,
+  // pre: Code,
   strong: Strong,
   VideoPlayer,
   ...customComponents

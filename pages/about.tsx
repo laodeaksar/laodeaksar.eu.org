@@ -7,8 +7,9 @@ import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
 import Grid from '~/components/Grid';
 import Newsletter from '~/components/Newsletter';
-import Text, { H1, Strong } from '~/components/Typography';
 import SEO from '~/components/Seo';
+import Spinner from '~/components/Spinner';
+import Text, { H1, Strong } from '~/components/Typography';
 
 import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
@@ -127,6 +128,12 @@ const About = ({ postsCount, initialAge }) => {
   const [age, setAge] = useState(initialAge);
   const ageInYears = useMemo(() => Math.floor(age / 31536000), [age]);
   const mounted = useRef<boolean>();
+  const spinnerRef = useRef<HTMLSpanElement>(null);
+  const handleImageLoad = () => {
+    if (spinnerRef.current) {
+      spinnerRef.current.style.display = 'none';
+    }
+  };
 
   useEffect(() => {
     mounted.current = true;
@@ -212,11 +219,26 @@ const About = ({ postsCount, initialAge }) => {
                       }
                     }}
                   >
+                    <Box
+                      as="span"
+                      ref={spinnerRef}
+                      css={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        size: '$full'
+                      }}
+                    >
+                      <Spinner />
+                    </Box>
                     <Image
                       priority
                       src={author}
                       alt="Me"
                       placeholder="blur"
+                      onLoadingComplete={() => {
+                        handleImageLoad();
+                      }}
                       className={styles.authorImage}
                     />
                     <figcaption

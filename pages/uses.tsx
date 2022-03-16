@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import type { SVGAttributes } from 'react';
 
 import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
@@ -8,6 +7,7 @@ import Button from '~/components/Button';
 import Grid from '~/components/Grid';
 import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
+import MDXComponents from '~/components/MDX/MDXComponents';
 import Text, { H1, H2, H3, Strong } from '~/components/Typography';
 
 import ContentfulGears from '~/lib/contentful';
@@ -17,7 +17,9 @@ import Layout from '~/layout';
 
 const styles = {
   svgStyle: css({
-    marginRight: '0.5rem'
+    marginRight: '0.5rem',
+    width: '2rem',
+    height: '2rem'
   })(),
   imageStyle: css({
     display: 'flex',
@@ -31,8 +33,6 @@ const CategoryIcons = {
       className={styles.svgStyle}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="32"
-      height="32"
       fill="none"
       stroke="currentColor"
     >
@@ -142,15 +142,16 @@ const Uses = ({ gearByCategory }) => {
               <Box
                 css={{
                   position: 'relative',
-                  marginTop: 'calc(1rem * 0)',
-                  marginBottom: 'calc(1rem * calc(1 - 0))'
+                  marginTop: 0,
+                  marginBottom: '1rem'
                 }}
                 key={category}
               >
                 <H2
                   css={{
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    fontSize: '1.875rem'
                   }}
                 >
                   {CategoryIcons[category]}
@@ -169,7 +170,7 @@ const Uses = ({ gearByCategory }) => {
             css={{
               padding: '1rem',
               color: 'var(--laodeaksar-colors-brand)',
-              borderRadius: '$0'
+              borderRadius: '6px'
             }}
           >
             <Flex>
@@ -179,7 +180,7 @@ const Uses = ({ gearByCategory }) => {
                   height="20"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
-                  fill="var(--laodeaksar-colors-brand)"
+                  fill="currentColor"
                   aria-hidden="true"
                 >
                   <path
@@ -192,11 +193,16 @@ const Uses = ({ gearByCategory }) => {
               <Box
                 css={{
                   marginLeft: '12px',
-                  marginTop: 'calc(1rem * 0)',
-                  marginBottom: 'calc(1rem * calc(1 - 0))'
+                  marginTop: 0,
+                  marginBottom: '1rem'
                 }}
               >
-                <Text as="p" size={1} css={{ marginBottom: 0 }}>
+                <Text
+                  as="p"
+                  variant="tertiary"
+                  size={1}
+                  css={{ marginBottom: 0 }}
+                >
                   If you click <Strong>Buy</Strong> or{' '}
                   <Strong>the image</Strong> you will get redirected to a page
                   where you can buy the product using an{' '}
@@ -292,14 +298,15 @@ function GeneralItems({ items }) {
             >
               <Box
                 css={{
-                  marginTop: 'calc(1rem * 0)',
-                  marginBottom: 'calc(1rem * calc(1 - 0))'
+                  marginTop: 0,
+                  marginBottom: '1rem'
                 }}
               >
                 <Grid
                   gapY={6}
                   css={{
                     gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+
                     '@lg': {
                       gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
                       columnGap: '2rem',
@@ -310,16 +317,17 @@ function GeneralItems({ items }) {
                   <Anchor href={affiliateLink || link}>
                     <Flex
                       gap={6}
-                      alignItems="center"
+                      alignItems="start"
                       justifyContent="center"
                       css={{
                         position: 'relative',
                         overflow: 'hidden',
                         padding: '1rem',
                         size: '6rem',
-                        borderRadius: '$0',
+                        borderRadius: '6px',
                         bc: 'var(--laodeaksar-colors-foreground)',
                         transition: 'background-color 0.3s',
+                        height: '$full',
 
                         '&:hover': {
                           bc: 'var(--laodeaksar-colors-secondary)'
@@ -359,15 +367,15 @@ function GeneralItems({ items }) {
                   <Flex
                     direction="column"
                     css={{
-                      marginTop: 'calc(1rem * 0)',
-                      marginBottom: 'calc(1rem * calc(1 - 0))',
+                      marginTop: '0',
+                      marginBottom: '1rem',
 
                       '@lg': {
                         gridColumn: 'span 2 / span 2'
                       }
                     }}
                   >
-                    <H3>{title}</H3>
+                    <H3 css={{ marginBottom: 0 }}>{title}</H3>
                     <Box
                       css={{
                         padding: '20px 0px',
@@ -397,7 +405,10 @@ function GeneralItems({ items }) {
                         }}
                       >
                         <Anchor href="affiliateLink">
-                          <Button variant="primary">
+                          <Button
+                            variant="primary"
+                            css={{ width: '$full', px: '2rem' }}
+                          >
                             {affiliateLinkText || 'Buy'}
                           </Button>
                         </Anchor>
@@ -432,13 +443,12 @@ function SoftwareItems({ items }) {
               gap={6}
               direction={{ '@initial': 'column', '@md': 'row' }}
               css={{
-                marginTop: 'calc(1rem * 0)',
-                marginBottom: 'calc(1rem * calc(1 - 0))',
+                marginTop: 0,
+                marginBottom: '1rem',
 
                 '@md': {
                   my: '0px',
-                  // marginLeft: 'calc(1.5rem * calc(1 - 0))',
-                  marginRight: 'calc(1.5rem * 0)'
+                  marginRight: '0'
                 }
               }}
             >
@@ -449,7 +459,7 @@ function SoftwareItems({ items }) {
                     position: 'relative',
                     flex: 'none',
                     padding: '1rem',
-                    borderRadius: '$0',
+                    borderRadius: '6px',
                     bc: 'var(--laodeaksar-colors-foreground)',
                     size: '6rem',
 
@@ -468,11 +478,11 @@ function SoftwareItems({ items }) {
               </Anchor>
               <Box
                 css={{
-                  marginTop: 'calc(1rem * 0)',
-                  marginBottom: 'calc(1rem * calc(1 - 0))'
+                  marginTop: 0,
+                  marginBottom: '1rem'
                 }}
               >
-                <H3>{title}</H3>
+                <H3 css={{ marginBottom: 0 }}>{title}</H3>
                 <Box
                   css={{
                     padding: '20px 0px',
