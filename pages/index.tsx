@@ -230,8 +230,6 @@ const Glow = styled(motion.div, {
 });
 
 const ButtonCard = styled('button', {
-  userSelect: 'none',
-
   width: '$full',
   outline: 'none',
   border: '0',

@@ -116,7 +116,6 @@ export default function Guestbook({ fallbackData }) {
           </Text>
           {!session && (
             <a
-              data-splitbee-event="Click CTA"
               href="/api/auth/signin/github"
               onClick={(e) => {
                 e.preventDefault();
@@ -129,7 +128,7 @@ export default function Guestbook({ fallbackData }) {
             </a>
           )}
           {session?.user && (
-            <form data-splitbee-event="Send Message" onSubmit={leaveEntry}>
+            <form onSubmit={leaveEntry}>
               <Flex
                 alignItems="flex-start"
                 gap={3}

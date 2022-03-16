@@ -5,7 +5,7 @@ import Card from '~/components/Card';
 import { CopyToClipboardButton } from '~/components/Button';
 
 import { calculateLinesToHighlight, hasTitle } from './utils';
-import type { CodeBlockProps, HighlightedCodeTextProps } from '.';
+import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
 
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;

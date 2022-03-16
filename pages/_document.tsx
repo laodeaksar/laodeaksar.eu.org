@@ -43,7 +43,6 @@ export default class Document extends NextDocument {
             href="/static/favicons/safari-pinned-tab.svg"
             color="#333333"
           />
-          <script async data-no-cookie data-api="/_hive" src="/bee.js" />
           <link
             rel="webmention"
             href="https://webmention.io/www.laodeaksar.eu.org/webmention"

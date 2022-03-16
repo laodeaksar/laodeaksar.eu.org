@@ -4,22 +4,11 @@ import invariant from 'tiny-invariant';
 const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(req: NextRequest, ev: NextFetchEvent) {
-  // const { pathname } = req.nextUrl;
-
   ev.waitUntil(
     (async () => {
       logPageView(req);
     })()
   );
-
-  // if (pathname === '/bee.js') {
-  //   return NextResponse.rewrite('https://cdn.splitbee.io/sb.js');
-  // }
-
-  // if (pathname.includes('_hive/')) {
-  //   const params = pathname.split('_hive/')[1];
-  //   return NextResponse.rewrite(`https://hive.splitbee.io/${params}`);
-  // }
 
   return addSecurityHeaders(NextResponse.next());
 }

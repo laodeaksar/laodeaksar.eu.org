@@ -1,4 +1,4 @@
-function trackEvent({ name, value, type = 'type' }) {
+const trackEvent = ({ name, value, type = 'type' }) => {
   const { splitbee } = window as any;
 
   if (splitbee) {
@@ -9,4 +9,6 @@ function trackEvent({ name, value, type = 'type' }) {
   } else {
     splitbee.track(name, { [type]: value });
   }
-}
+};
+
+export default trackEvent;

@@ -81,6 +81,9 @@ const Footer = () => (
                 <Anchor discreet href="https://www.figma.com/">
                   Roadmap
                 </Anchor>
+                <Link href="/guestbook" passHref>
+                  <Anchor discreet>Guestbook</Anchor>
+                </Link>
               </Grid>
             </Text>
           </Box>

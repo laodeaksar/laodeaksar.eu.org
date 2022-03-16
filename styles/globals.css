@@ -418,6 +418,7 @@ sup {
 .token.doctype,
 .token.cdata {
   color: var(--token-comment);
+  font-style: italic;
 }
 
 .token.punctuation {
@@ -467,4 +468,8 @@ sup {
 .token.important,
 .token.variable {
   color: var(--token-operator);
+}
+
+.token.italic {
+  font-style: italic;
 }

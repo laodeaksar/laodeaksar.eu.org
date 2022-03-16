@@ -35,10 +35,6 @@ export const Block = styled('div', {
 });
 
 export const Button = styled('button', {
-  // WebkitAppearance: 'none',
-  // WebkitTapHighlightColor: 'transparent',
-  userSelect: 'none',
-
   width: '$full',
   outline: 'none',
   border: '0',

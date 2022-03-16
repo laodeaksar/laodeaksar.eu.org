@@ -73,6 +73,9 @@ export function TagList({ post }) {
 }
 
 const Block = styled('div', {
+  $$background: 'transparent',
+  $$color: 'var(--laodeaksar-colors-typeface-primary)',
+
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
@@ -82,20 +85,19 @@ const Block = styled('div', {
   marginLeft: '-10px',
   height: '100px',
   boxShadow: 'none',
-  bc: 'var(--article-block-background-color, "transparent")',
-  color:
-    'var(--article-block-color, var(--laodeaksar-colors-typeface-primary))',
+  bc: '$$background',
+  color: '$$color',
   transition: 'background-color 0.25s, box-shadow 0.25s, color 0.25s',
 
   '&:focus': {
-    '--article-block-background-color': 'var(--laodeaksar-colors-emphasis)',
-    '--article-block-color': 'var(--laodeaksar-colors-brand)'
+    $$background: 'var(--laodeaksar-colors-emphasis)',
+    $$color: 'var(--laodeaksar-colors-brand)'
   },
 
   '@hover': {
     '&:hover': {
-      '--article-block-background-color': 'var(--laodeaksar-colors-emphasis)',
-      '--article-block-color': 'var(--laodeaksar-colors-brand)'
+      $$background: 'var(--laodeaksar-colors-emphasis)',
+      $$color: 'var(--laodeaksar-colors-brand)'
     }
   },
 

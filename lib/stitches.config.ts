@@ -245,7 +245,10 @@ export const getVariant = <
 ): R => {
   const values = Object.keys(config.theme[prop]) as T[];
   return values.reduce<R>(
-    (acc, tokenValue) => ({ ...acc, [tokenValue]: map(`$${tokenValue}` as P) }),
+    (acc, tokenValue) => ({
+      ...acc,
+      [tokenValue]: map(`$${String(tokenValue)}` as P)
+    }),
     {} as R
   );
 };
