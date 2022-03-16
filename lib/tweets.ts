@@ -17,7 +17,7 @@ export const getTweets = async (ids: string[]) => {
   });
 
   const response = await fetch(
-    'https://api.twitter.com/2/tweets' + queryParams,
+    'https://api.twitter.com/2/tweets?' + queryParams,
     {
       headers: {
         Authorization: 'Bearer ' + process.env.TWITTER_API_KEY
