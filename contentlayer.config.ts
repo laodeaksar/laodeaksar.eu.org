@@ -83,7 +83,9 @@ const contentLayerConfig = makeSource({
   documentTypes: [Blog, Snippet, OtherPage],
   mdx: {
     remarkPlugins: [
-      remarkSectionize
+remarkSlug,
+      remarkSectionize,
+remarkFigure
     ]
   }
 });
