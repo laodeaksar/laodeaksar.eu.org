@@ -455,6 +455,7 @@ function SoftwareItems({ items }) {
               <Anchor href={link}>
                 <Flex
                   justifyContent="center"
+                  alignItems="start"
                   css={{
                     position: 'relative',
                     flex: 'none',

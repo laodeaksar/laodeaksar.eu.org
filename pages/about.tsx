@@ -224,8 +224,9 @@ const About = ({ postsCount, initialAge }) => {
                       ref={spinnerRef}
                       css={{
                         position: 'absolute',
-                        top: 0,
-                        left: 0,
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-5%, -5%)',
                         size: '$full'
                       }}
                     >
@@ -244,6 +245,7 @@ const About = ({ postsCount, initialAge }) => {
                     <figcaption
                       style={{
                         display: 'flex',
+                        alignItems: 'center',
                         fontSize: '14px',
                         color: 'var(--laodeaksar-colors-typeface-secondary)'
                       }}
