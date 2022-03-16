@@ -10,7 +10,6 @@ import { remarkSectionize } from './lib/remark-sectionize-fork';
 import readingTime from 'reading-time';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
-import rehypePrism from 'rehype-prism-plus';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 const computedFields: ComputedFields = {
@@ -82,20 +81,7 @@ const OtherPage = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Snippet, OtherPage],
-  mdx: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      rehypePrism,
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: { className: ['anchor'] }
-        }
-      ]
-    ]
-  }
+  documentTypes: [Blog, Snippet, OtherPage]
 });
 
 export default contentLayerConfig;
