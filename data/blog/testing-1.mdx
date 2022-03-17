@@ -10,19 +10,19 @@ cover: ''
 
 <Callstack />
 
-<Tab>
-  <Tab.Item title="shell">
+<Tabs>
+  <Tabs.Item title="shell">
 
 ```bash {1}
 BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 ```
 
-  </Tab.Item>
-  <Tab.Item title="javascript">
+  </Tabs.Item>
+  <Tabs.Item title="javascript">
 
 ```js {1}
 const basicToken = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
 ```
 
-  </Tab.Item>
-</Tab>
+  </Tabs.Item>
+</Tabs>
