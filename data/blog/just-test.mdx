@@ -29,24 +29,24 @@ BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 ```
 
-<Tab>
-  <Tab.Item title="shell">
+<Tabs>
+  <Tabs.Item title="shell">
 
 ```bash {1}
 BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 ```
 
-  </Tab.Item>
-  <Tab.Item title="javascript">
+  </Tabs.Item>
+  <Tabs.Item title="javascript">
 
 ```js {1}
 const basicToken = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
 ```
 
-  </Tab.Item>
-</Tab>
+  </Tabs.Item>
+</Tabs>
 
-```js
+```jsx {1, 3-4} showLineNumbers
 const getCurrentlyPlaying = async () => {
   const { access_token } = await getAccessToken();
   const url = 'https://api.spotify.com/v1/me/player/currently-playing';

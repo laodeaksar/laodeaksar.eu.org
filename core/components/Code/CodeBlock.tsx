@@ -32,27 +32,23 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
         return (
           <div data-language={className}>
             <Pre className={className} style={style}>
-              {tokens.map((line, index) => {
+              {tokens.map((line, i) => {
                 const { className: lineClassName } = getLineProps({
                   className:
-                    highlightLine && highlightLine(index)
-                      ? 'highlight-line'
-                      : '',
-                  key: index,
+                    highlightLine && highlightLine(i) ? 'highlight-line' : '',
+                  key: i,
                   line
                 });
 
                 return (
-                  <Line key={index} className={lineClassName}>
-                    {showLineNumbers && <LineNo>{index + 1}</LineNo>}
-                    <LineContent>
-                      {line.map((token, key) => (
-                        <span
-                          key={`${index}.${key}`}
-                          {...getTokenProps({ key, token })}
-                        />
-                      ))}
-                    </LineContent>
+                  <Line key={i} className={lineClassName}>
+                    {showLineNumbers && <LineNo>{i + 1}</LineNo>}
+                    {line.map((token, key) => (
+                      <span
+                        key={`${i}.${key}`}
+                        {...getTokenProps({ key, token })}
+                      />
+                    ))}
                   </Line>
                 );
               })}

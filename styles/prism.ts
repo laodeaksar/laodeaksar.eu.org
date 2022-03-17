@@ -35,7 +35,12 @@ const prism = css({
 
   '$$prism-line-number': '#888',
 
-  '.code-line': { display: 'block', pl: '$4', pr: '$6' },
+  '.code-line': { display: 'block', pl: '$4', pr: '$6',borderCollapse: 'collapse',
+  borderLeft: '3px solid transparent',
+
+'&:hover': {
+    bc: 'var(--laodeaksar-colors-emphasis)'
+  } },
   '.code-line.inserted': { backgroundColor: '$$prism-line-inserted' },
   '.code-line.deleted': { backgroundColor: '$$prism-line-deleted' },
   '.line-number::before': {
@@ -43,11 +48,17 @@ const prism = css({
     color: '$$prism-line-number',
     display: 'inline-block',
     textAlign: 'right',
-    content: 'attr(line)'
+    content: 'attr(line)',
+width: 30,
   },
   '.token.prefix': { padding: '0 0.5em' },
   '.token.prefix.inserted': { color: '$$prism-prefix-inserted' },
-  '.token.prefix.deleted': { color: '$$prism-prefix-deleted' }
+  '.token.prefix.deleted': { color: '$$prism-prefix-deleted' },
+
+        '.highlight-line': {
+          background: 'var(--laodeaksar-colors-emphasis)',
+    borderColor: 'var(--laodeaksar-colors-brand)'
+}
 })();
 
 export default prism;

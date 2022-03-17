@@ -1,10 +1,9 @@
-export interface TabProps {
+export interface TabsProps {
   children: React.ReactNode;
   defaultTab?: number;
-  height?: string;
 }
 
-export interface TabItemProps {
+export interface TabsItemProps {
   title: string;
   children: React.ReactNode;
 }

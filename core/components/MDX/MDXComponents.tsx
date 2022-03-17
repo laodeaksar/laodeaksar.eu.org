@@ -13,7 +13,7 @@ import Card from '~/components/Card';
 import Pill from '~/components/Pill';
 import VideoPlayer from '~/components/VideoPlayer';
 import Text, { EM, H2, H3, Strong } from '~/components/Typography';
-import Tab from '~/components/Tab';
+import Tabs from '~/components/Tabs';
 
 // MDX only components
 import Image, { MdxImage } from './Image';
@@ -139,11 +139,11 @@ const MDXComponents = {
     <Text as="p" {...props} />
   ),
   Pill,
-  // pre: Pre,
-  code: Code,
+  pre: Pre,
+  // code: Code,
   strong: Strong,
   VideoPlayer,
-  Tab,
+  Tabs,
   ...customComponents
 };
 
