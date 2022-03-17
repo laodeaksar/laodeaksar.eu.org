@@ -1734,7 +1734,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-contentlayer@^0.1.0:
+contentlayer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/contentlayer/-/contentlayer-0.1.2.tgz#b6c1acd7aaa42a360596a36fcb123427d76f2700"
   integrity sha512-PKlPLgoIj1C9ZmXE1KMjCy8GO9AoKTLX0rlU6zR4Z0GX7u+4vO+dR2nKbF0xdQIgqS1q256IjVl7rEuIuxqdNQ==
@@ -4229,7 +4229,7 @@ next-auth@^4.2.1:
     preact-render-to-string "^5.1.19"
     uuid "^8.3.2"
 
-next-contentlayer@^0.1.0:
+next-contentlayer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/next-contentlayer/-/next-contentlayer-0.1.2.tgz#ef7ac606b649f3ee1584662ee368f84052b6185a"
   integrity sha512-oVq8dVbE898pINkRIyMkqJF1urhwC2AwLAU+cROAMx+gxhmVF+VUXmof27QogKz2ZwOxu2ff13DrpnrE0qrCbQ==
