@@ -83,7 +83,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Snippet, OtherPage],
   mdx: {
-    remarkPlugins: [remarkSectionize, remarkSlug, remarkAutolinkHeadings],
+    remarkPlugins: [remarkSlug, remarkAutolinkHeadings, remarkSectionize],
     rehypePlugins: [rehypePrism]
   }
 });
