@@ -17,6 +17,7 @@ require('prismjs/components/prism-swift');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
+  const showLineNumbers = !['shell', 'text'].includes(language);
 
   return (
     <Highlight
@@ -26,39 +27,39 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
-tokens.pop()
-return(<div data-language={className}>
-        <Pre className={className} style={style}>
-          {tokens.map((line, index) => {
-            const { className: lineClassName } = getLineProps({
-              className:
-                highlightLine && highlightLine(index) ? 'highlight-line' : '',
-              key: index,
-              line
-            });
+        tokens.pop();
 
-            return (
-              <Line key={index} className={lineClassName}>
-                <LineNo>{index + 1}</LineNo>
-                <LineContent>
-                  {line.map((token, key) => {
-                    return (
-                      <span
-                        key={key}
-                        {...getTokenProps({
-                          key,
-                          token
-                        })}
-                      />
-                    );
-                  })}
-                </LineContent>
-              </Line>
-            );
-          })}
-        </Pre>
-</div>)
-      })}
+        return (
+          <div data-language={className}>
+            <Pre className={className} style={style}>
+              {tokens.map((line, index) => {
+                const { className: lineClassName } = getLineProps({
+                  className:
+                    highlightLine && highlightLine(index)
+                      ? 'highlight-line'
+                      : '',
+                  key: index,
+                  line
+                });
+
+                return (
+                  <Line key={index} className={lineClassName}>
+                    {showLineNumbers && <LineNo>{index + 1}</LineNo>}
+                    <LineContent>
+                      {line.map((token, key) => (
+                        <span
+                          key={`${index}.${key}`}
+                          {...getTokenProps({ key, token })}
+                        />
+                      ))}
+                    </LineContent>
+                  </Line>
+                );
+              })}
+            </Pre>
+          </div>
+        );
+      }}
     </Highlight>
   );
 };

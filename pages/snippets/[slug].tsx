@@ -1,7 +1,7 @@
 import type { GetStaticPropsContext } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-import Pre from '~/components/Code/Pre';
+import Code from '~/components/Code';
 
 import SnippetLayout from '~/layouts/Snippet';
 
@@ -15,7 +15,7 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
     <SnippetLayout snippet={snippet}>
       <Component
         components={{
-          pre: Pre
+          pre: Code
         }}
       />
     </SnippetLayout>

@@ -213,7 +213,7 @@
   --laodeaksar-form-input-focus: hsla(var(--palette-blue-40), 0.55);
 
   ---shadow-color: var(--local-shadow-color, 223deg 5% 80%);
---scrollbar: #ebf2f9;
+  --scrollbar: #ebf2f9;
 
   --code-snippet-background: hsla(var(--palette-gray-03), 0.2);
   --token-comment: var(--laodeaksar-colors-typeface-tertiary);
@@ -253,7 +253,7 @@
   --laodeaksar-form-input-focus: hsla(var(--palette-blue-50), 1);
 
   ---shadow-color: var(--local-shadow-color, 223deg 5% 1%);
---scrollbar: #2c3038;
+  --scrollbar: #2c3038;
 
   --code-snippet-background: hsla(var(--palette-gray-85), 0.5);
   --token-comment: var(--laodeaksar-colors-typeface-tertiary);
@@ -420,6 +420,9 @@ sup {
 .token.doctype,
 .token.cdata {
   color: var(--token-comment);
+}
+
+.token.comment {
   font-style: italic;
 }
 
