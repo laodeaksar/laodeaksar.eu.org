@@ -132,7 +132,8 @@ const LineNo = styled('div', {
   padding: '0 12px',
   userSelect: 'none',
   opacity: '1',
-  color: 'var(--laodeaksar-colors-typeface-tertiary)'
+  color: 'var(--laodeaksar-colors-typeface-tertiary)',
+textAlign: 'right'
 });
 
 const LineContent = styled('span', {
