@@ -15,7 +15,7 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
     <SnippetLayout snippet={snippet}>
       <Component
         components={{
-          code: Code
+          pre: Code
         }}
       />
     </SnippetLayout>
