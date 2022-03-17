@@ -9,8 +9,9 @@ export const styles = {
     fontSize: '$1',
     letterSpacing: '0.025em',
     padding: '0.25rem 0.5rem',
+border: 'none',
     borderBottom: '1px solid transparent',
-    color: 'var(--laodeaksar-colors-emphasis)',
+    color: 'currentColor',
 
     '&[data-state="active"]': {
       color: 'var(--laodeaksar-colors-brand)',

@@ -29,6 +29,23 @@ BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
 ```
 
+<Tab>
+  <Tab.Item title="shell">
+
+```bash {1}
+BASIC_TOKEN=$(echo "$CLIENT_ID:$CLIENT_SECRET" | base64)
+```
+
+  </Tab.Item>
+  <Tab.Item title="javascript">
+
+```js {1}
+const basicToken = Buffer.from(`${clientId}:${clientSecret}`).toString('base64')
+```
+
+  </Tab.Item>
+</Tab>
+
 ```js
 const getCurrentlyPlaying = async () => {
   const { access_token } = await getAccessToken();

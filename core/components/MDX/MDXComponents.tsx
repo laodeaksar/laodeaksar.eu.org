@@ -12,6 +12,7 @@ import Card from '~/components/Card';
 import Pill from '~/components/Pill';
 import VideoPlayer from '~/components/VideoPlayer';
 import Text, { EM, H2, H3, Strong } from '~/components/Typography';
+import Tab from '~/components/Tab'
 
 // MDX only components
 import Image, { MdxImage } from './Image';
@@ -128,7 +129,7 @@ const MDXComponents = {
   h3: H3,
   Image,
   image: MdxImage,
-  code: InlineCode,
+  inlinecode: InlineCode,
   li: List.Item,
   ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
     <List variant="ordered" {...props} />
@@ -140,6 +141,7 @@ const MDXComponents = {
   pre: Pre,
   strong: Strong,
   VideoPlayer,
+Tab,
   ...customComponents
 };
 

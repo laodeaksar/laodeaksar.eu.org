@@ -213,6 +213,7 @@
   --laodeaksar-form-input-focus: hsla(var(--palette-blue-40), 0.55);
 
   ---shadow-color: var(--local-shadow-color, 223deg 5% 80%);
+--scrollbar: #ebf2f9;
 
   --code-snippet-background: hsla(var(--palette-gray-03), 0.2);
   --token-comment: var(--laodeaksar-colors-typeface-tertiary);
@@ -252,6 +253,7 @@
   --laodeaksar-form-input-focus: hsla(var(--palette-blue-50), 1);
 
   ---shadow-color: var(--local-shadow-color, 223deg 5% 1%);
+--scrollbar: #2c3038;
 
   --code-snippet-background: hsla(var(--palette-gray-85), 0.5);
   --token-comment: var(--laodeaksar-colors-typeface-tertiary);
@@ -296,18 +298,18 @@ html {
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  height: 6px;
-  width: 6px;
+  height: 10px;
+  width: 10px;
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--laodeaksar-colors-emphasis);
+  background: var(--scrollbar);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--laodeaksar-colors-brand);
+  background-color: #969db1;
   border-radius: 20px;
-  border: 3px solid var(--laodeaksar-colors-emphasis);
+  border: 3px solid var(--scrollbar);
 }
 
 *::-webkit-scrollbar-thumb:hover {
