@@ -1,4 +1,4 @@
-import { css } from '~/lib/stitches';
+import { css } from '~/lib/stitches.config';
 
 const prism = css({
   overflowX: 'auto',
