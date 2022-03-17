@@ -17,7 +17,6 @@ require('prismjs/components/prism-swift');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
-  const showLineNumbers = !['shell', 'text'].includes(language);
 
   return (
     <Highlight
@@ -26,36 +25,32 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
       code={codeString}
       language={language}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => {
-        tokens.pop();
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <Pre className={className} style={style}>
+          {tokens.map((line, i) => {
+            const { className: lineClassName } = getLineProps({
+              className:
+                highlightLine && highlightLine(i) ? 'highlight-line' : '',
+              key: i,
+              line
+            });
 
-        return (
-          <div data-language={className}>
-            <Pre className={className} style={style}>
-              {tokens.map((line, i) => {
-                const { className: lineClassName } = getLineProps({
-                  className:
-                    highlightLine && highlightLine(i) ? 'highlight-line' : '',
-                  key: i,
-                  line
-                });
-
-                return (
-                  <Line key={i} className={lineClassName}>
-                    {showLineNumbers && <LineNo>{i + 1}</LineNo>}
-                    {line.map((token, key) => (
-                      <span
-                        key={`${i}.${key}`}
-                        {...getTokenProps({ key, token })}
-                      />
-                    ))}
-                  </Line>
-                );
-              })}
-            </Pre>
-          </div>
-        );
-      }}
+            return (
+              <Line key={i} className={lineClassName}>
+                <LineNo>{i + 1}</LineNo>
+                <LineContent>
+                  {line.map((token, key) => (
+                    <span
+                      key={`${i}.${key}`}
+                      {...getTokenProps({ key, token })}
+                    />
+                  ))}
+                </LineContent>
+              </Line>
+            );
+          })}
+        </Pre>
+      )}
     </Highlight>
   );
 };
