@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Anchor from '~/components/Anchor';
 import Blockquote from '~/components/Blockquote';
 import Button from '~/components/Button';
-import Code from '~/components/Code/Pre';
+import Pre from '~/components/Code/Pre';
 import Callout from '~/components/Callout';
 import InlineCode from '~/components/InlineCode';
 import List from '~/components/List';
