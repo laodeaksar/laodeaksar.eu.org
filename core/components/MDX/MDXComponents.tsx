@@ -5,6 +5,7 @@ import Anchor from '~/components/Anchor';
 import Blockquote from '~/components/Blockquote';
 import Button from '~/components/Button';
 import Pre from '~/components/Code/Pre';
+import Code from '~/components/Code';
 import Callout from '~/components/Callout';
 import InlineCode from '~/components/InlineCode';
 import List from '~/components/List';
@@ -129,7 +130,7 @@ const MDXComponents = {
   h3: H3,
   Image,
   image: MdxImage,
-  inlinecode: InlineCode,
+  inlineCode: InlineCode,
   li: List.Item,
   ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
     <List variant="ordered" {...props} />
@@ -139,6 +140,7 @@ const MDXComponents = {
   ),
   Pill,
   pre: Pre,
+code: Code,
   strong: Strong,
   VideoPlayer,
 Tab,

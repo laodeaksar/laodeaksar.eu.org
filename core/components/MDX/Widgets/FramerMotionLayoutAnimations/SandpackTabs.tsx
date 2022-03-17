@@ -24,7 +24,7 @@ const Tabs = () => {
           tabIndex={0}
         >
           <span>{item}</span>
-            {focused === item ? (
+            {focused === item && (
               <motion.div
                 transition={{
                   layout: {
@@ -43,10 +43,10 @@ const Tabs = () => {
                   borderRadius: '8px',
                   zIndex: 0
                 }}
-                layoutId="highlight'
+                layoutId="highlight"
               />
-            ) : null}
-            {selected === item ? (
+            ) }
+            {selected === item && (
               <motion.div
                 style={{
                   position: 'absolute',
@@ -58,9 +58,9 @@ const Tabs = () => {
                   borderRadius: '8px',
                   zIndex: 0
                 }}
-                layoutId="underline'
+                layoutId="underline"
               />
-            ) : null}
+            ) }
         </Tab>
       ))}
     </Wrapper>

@@ -25,7 +25,9 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
       code={codeString}
       language={language}
     >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      {({ className, style, tokens, getLineProps, getTokenProps }) => {
+tokens.pop()
+return(<div data-language={className}>
         <Pre className={className} style={style}>
           {tokens.map((line, index) => {
             const { className: lineClassName } = getLineProps({
@@ -55,7 +57,8 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
             );
           })}
         </Pre>
-      )}
+</div>)
+      })}
     </Highlight>
   );
 };

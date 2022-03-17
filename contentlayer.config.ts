@@ -9,6 +9,7 @@ import { remarkSectionize } from './lib/remark-sectionize-fork';
 
 import readingTime from 'reading-time';
 import remarkSlug from 'remark-slug';
+import remarkGfm from 'remark-gfm';
 import rehypePrism from 'rehype-prism-plus';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 
@@ -83,7 +84,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Snippet, OtherPage],
   mdx: {
-    remarkPlugins: [remarkSlug, remarkAutolinkHeadings, remarkSectionize],
+    remarkPlugins: [remarkSlug, remarkAutolinkHeadings, remarkSectionize, remarkGfm],
     rehypePlugins: [rehypePrism]
   }
 });
