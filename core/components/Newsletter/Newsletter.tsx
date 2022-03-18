@@ -1,5 +1,4 @@
 import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
 import fetcher from '~/lib/fetcher';
@@ -13,6 +12,7 @@ import Anchor from '~/components/Anchor';
 import Button from '~/components/Button';
 import Card from '~/components/Card';
 import Flex from '~/components/Flex';
+import Link from '~/components/Link';
 import List from '~/components/List';
 import TextInput from '~/components/TextInput';
 import Spinner from '~/components/Spinner';
@@ -20,7 +20,6 @@ import Text, { EM, H3 } from '~/components/Typography';
 
 const Newsletter = (props: Props) => {
   const { large = false } = props;
-  const { pathname } = useRouter();
 
   // const { data } = useSWR<{ count: number }>('/api/newsletter/subscribers', fetcher);
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
@@ -31,8 +30,7 @@ const Newsletter = (props: Props) => {
 
     const res = await fetch('/api/newsletter/subscribe', {
       body: JSON.stringify({
-        email: e.currentTarget.elements['email'].value,
-        path: pathname
+        email: e.currentTarget.elements['email'].value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -144,24 +142,18 @@ const Newsletter = (props: Props) => {
             <ErrorMessage>
               Looks like you already subscribed! If you think this is a mistake
               you can still subscribe by heading directly to my{' '}
-              <Anchor
-                underline
-                href="https://www.getrevue.co/profile/laodeaksar"
-              >
+              <Link underline href="https://www.getrevue.co/profile/laodeaksar">
                 getrevue publication
-              </Anchor>
+              </Link>
               .
             </ErrorMessage>
           ) : (
             <ErrorMessage>
               😬 woops! We just hit a snag here, but don&apos;t worry! You can
               still subscribe by heading directly to my{' '}
-              <Anchor
-                underline
-                href="https://www.getrevue.co/profile/laodeaksar"
-              >
+              <Link underline href="https://www.getrevue.co/profile/laodeaksar">
                 getrevue publication
-              </Anchor>
+              </Link>
               .
             </ErrorMessage>
           ))}

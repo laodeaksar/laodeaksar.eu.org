@@ -23,11 +23,11 @@ import type { Blog } from 'contentlayer/generated';
 interface WebmentionBlogDataProps {
   date: string;
   postUrl: string;
-  subtitle?: string;
+  description?: string;
 }
 
 const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
-  const { date, postUrl, subtitle } = props;
+  const { date, postUrl, description } = props;
 
   return (
     <>
@@ -39,7 +39,9 @@ const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
         {new Date(date).toISOString()}
       </time>
       <a className="hidden u-url" href={postUrl} />
-      {subtitle && <p className="hidden p-summary e-content">{subtitle}</p>}
+      {description && (
+        <p className="hidden p-summary e-content">{description}</p>
+      )}
     </>
   );
 };
@@ -50,9 +52,18 @@ interface Props {
 }
 
 const BlogLayout = ({ children, post }: Props) => {
-  const { date, updated, slug, subtitle, title, readingTime, cover, tags } =
-    post;
-  const postUrl = config.openGraph.url + '/blog/' + slug;
+  const {
+    date,
+    updated,
+    slug,
+    description,
+    title,
+    readingTime,
+    image,
+    tags,
+    url
+  } = post;
+  const postUrl = config.openGraph.url + url;
 
   const headerProps = {
     title,
@@ -80,7 +91,7 @@ const BlogLayout = ({ children, post }: Props) => {
 
   const socialImageConf = generateSocialImage({
     title,
-    underlayImage: cover?.slice(cover.lastIndexOf('/') + 1),
+    underlayImage: image?.slice(image.lastIndexOf('/') + 1),
     cloudName: 'laodeaksar',
     imagePublicID: 'og_social_large.png'
   });
@@ -91,11 +102,11 @@ const BlogLayout = ({ children, post }: Props) => {
     <Layout footer header headerProps={headerProps}>
       <SEO
         title={title}
-        description={subtitle}
+        description={description}
         date={new Date(date).toISOString()}
         openGraph={{
           title: title,
-          description: subtitle,
+          description: description,
           type: 'article',
           images: [
             {
@@ -154,7 +165,7 @@ const BlogLayout = ({ children, post }: Props) => {
               </Flex>
             </Hero.Info>
 
-            {cover && <Hero.Img className="u-photo" src={cover} />}
+            {image && <Hero.Img className="u-photo" src={image} />}
           </Hero>
           <TableOfContent ids={ids} />
           <Box
@@ -176,7 +187,11 @@ const BlogLayout = ({ children, post }: Props) => {
           </Box>
         </Grid>
         <Signature title={title} url={postUrl} />
-        <WebmentionBlogData date={date} postUrl={postUrl} subtitle={subtitle} />
+        <WebmentionBlogData
+          date={date}
+          postUrl={postUrl}
+          description={description}
+        />
       </article>
     </Layout>
   );

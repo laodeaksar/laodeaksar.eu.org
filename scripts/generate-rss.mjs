@@ -18,7 +18,7 @@ async function generate() {
 
     feed.item({
       title: post.title,
-      description: post.subtitle,
+      description: post.description,
       date: post.date,
       author: "Aksar La'ode",
       url,

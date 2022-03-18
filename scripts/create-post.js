@@ -18,15 +18,17 @@ const genData = (response) => {
   tagArray.forEach((tag, index) => (tagArray[index] = tag.trim()));
   const tags = tagArray;
 
-  const date = new Date().toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta' })
+  const date = new Date().toLocaleDateString('id-ID', {
+    timeZone: 'Asia/Jakarta'
+  });
 
   const data = matter.stringify('<Callstack />', {
     title: response.title,
-    subtitle: response.subtitle,
+    description: response.description,
     date,
     updated: date,
     tags: response.tags ? tags : [],
-    cover: ``
+    image: ``
   });
   return data;
 };
@@ -51,8 +53,8 @@ prompt([
   },
   {
     type: 'input',
-    name: 'subtitle',
-    message: `What is the subtitle?`
+    name: 'description',
+    message: `What is the description?`
   },
   {
     type: 'input',

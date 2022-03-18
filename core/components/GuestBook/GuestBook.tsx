@@ -1,5 +1,4 @@
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import useSWR, { useSWRConfig } from 'swr';
 
@@ -30,13 +29,12 @@ function GuestbookEntry({ entry, user }) {
 
   return (
     <Card css={{ marginTop: '$4' }}>
+      <Card.Header css={{ fontSize: '$3' }}>{entry.created_by}</Card.Header>
       <Card.Body>
         <Flex>{entry.body}</Flex>
         <Grid gapX={2} flow="column" align="center" justify="start" mt={3}>
-          <Text as="p" css={{ marginBottom: 0 }}>
-            {entry.created_by}
-          </Text>
-          <span>&bull;</span>
+          {/* <Text as="p" css={{ marginBottom: 0 }}></Text> */}
+          {/* <span>&bull;</span> */}
           <time dateTime={entry.updated_at}>
             {new Date(entry.updated_at).toLocaleDateString('en', {
               month: 'short',
@@ -72,6 +70,10 @@ export default function Guestbook({ fallbackData }) {
   const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
+
+    if (inputEl.current.value.trim().length === 0) {
+      setForm({ state: Form.Error, message: 'Please enter a message' });
+    }
 
     const res = await fetch('/api/guestbook', {
       body: JSON.stringify({

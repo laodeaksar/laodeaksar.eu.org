@@ -180,7 +180,7 @@ const IndexPage = ({
                             variant="tertiary"
                             css={{ marginBottom: 0 }}
                           >
-                            {post.subtitle}
+                            {post.description}
                           </Text>
                         </Card.Body>
                       </Card>
@@ -208,7 +208,7 @@ export const getStaticProps = () => {
         'title',
         'colorFeatured',
         'date',
-        'subtitle',
+        'description',
         'featured'
       ])
     )

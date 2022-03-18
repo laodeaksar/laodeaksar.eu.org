@@ -9,7 +9,7 @@ import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { Button } from '../Styles';
 
 export function TagList({ post }) {
-  const { date, slug, title, subtitle } = post;
+  const { date, slug, title, description } = post;
   const [hasRead] = useIsArticleRead(slug);
 
   return (
@@ -59,7 +59,7 @@ export function TagList({ post }) {
               textOverflow: 'ellipsis'
             }}
           >
-            {subtitle}
+            {description}
           </Text>
         </Flex>
         {hasRead && (

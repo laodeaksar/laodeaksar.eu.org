@@ -40,7 +40,7 @@ const lunr = require('lunr');
 
   const index = lunr(function () {
     this.field('title');
-    this.field('subtitle');
+    this.field('description');
     this.field('keywords');
     this.field('type');
     this.ref('slug');
@@ -50,8 +50,8 @@ const lunr = require('lunr');
     }, this);
   });
 
-  const store = documents.reduce((acc, { slug, subtitle, title, type }) => {
-    acc[slug] = { title, subtitle, slug, type };
+  const store = documents.reduce((acc, { slug, description, title, type }) => {
+    acc[slug] = { title, description, slug, type };
     return acc;
   }, {});
 

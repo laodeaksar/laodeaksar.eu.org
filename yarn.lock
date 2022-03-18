@@ -308,7 +308,7 @@
     unified "^10.1.1"
     yaml "^1.10.2"
 
-"@contentlayer/utils@0.1.2":
+"@contentlayer/utils@0.1.2", "@contentlayer/utils@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@contentlayer/utils/-/utils-0.1.2.tgz#39ba76e5eaedbeee8ad3fd824bad1e8cf9b4b086"
   integrity sha512-kPKJix3lQx5nDJ2lA6M8igJqmyxDIPTPpGwfXEB+sHTr2rbXnk7cDuIgG5uJAfIrYEuU//S+eu492CkWT9jSVQ==

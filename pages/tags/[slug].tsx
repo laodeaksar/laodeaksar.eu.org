@@ -91,7 +91,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = ({ params }: GetStaticPropsContext) => {
   const posts = getAllBlogsWhichBelongToCurrentSlug(params, 'tags')
-    ?.map((posts) => pick(posts, ['date', 'subtitle', 'title', 'slug']))
+    ?.map((posts) => pick(posts, ['date', 'description', 'title', 'slug']))
     .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
 
   return { props: { posts, currentTag: params?.slug as string } };

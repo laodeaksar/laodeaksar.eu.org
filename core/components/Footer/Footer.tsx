@@ -6,6 +6,7 @@ import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
 import Flex from '~/components/Flex';
 import Grid from '~/components/Grid';
+import Links from '~/components/Link';
 import Logo from '~/components/Logo';
 import NowPlaying from '~/components/NowPlaying';
 import Text, { EM } from '~/components/Typography';
@@ -25,9 +26,9 @@ const Footer = () => (
                 <Link href="/design" passHref>
                   <Anchor discreet>Design</Anchor>
                 </Link>
-                <Link href="/feed.xml" passHref>
-                  <Anchor discreet>RSS</Anchor>
-                </Link>
+                <Links href="/feed.xml" discreet>
+                  RSS
+                </Links>
               </Grid>
             </Text>
           </Box>
@@ -44,6 +45,14 @@ const Footer = () => (
                 >
                   Twitter
                 </Anchor>
+                <Links
+                  data-splitbee-event="External Link"
+                  data-splitbee-event-destination="twitter"
+                  discreet
+                  href="https://twitter.com/ode_aksar"
+                >
+                  Twitter
+                </Links>
                 <Anchor
                   data-splitbee-event="External Link"
                   data-splitbee-event-destination="github"
