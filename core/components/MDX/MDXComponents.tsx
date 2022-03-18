@@ -15,8 +15,8 @@ import VideoPlayer from '~/components/VideoPlayer';
 import Text, { EM, H2, H3, Strong } from '~/components/Typography';
 import Tabs from '~/components/Tabs';
 
-// MDX only components
-import Image, { MdxImage } from './Image';
+// MDX only components Image, 
+import Image from './Image';
 
 // Widgets (used in blog post for interactive experiences)
 const ClipboardAnimationDetails = dynamic(
@@ -129,7 +129,6 @@ const MDXComponents = {
   h2: H2,
   h3: H3,
   Image,
-  image: MdxImage,
   inlineCode: InlineCode,
   li: List.Item,
   ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (

@@ -1,4 +1,4 @@
-import { useRef, useState, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
@@ -21,7 +21,6 @@ import Text, { EM, H3 } from '~/components/Typography';
 const Newsletter = (props: Props) => {
   const { large = false } = props;
   const { pathname } = useRouter();
-  const inputEl = useRef(null);
 
   // const { data } = useSWR<{ count: number }>('/api/newsletter/subscribers', fetcher);
   const [form, setForm] = useState<FormState>({ state: Form.Initial });
@@ -32,7 +31,7 @@ const Newsletter = (props: Props) => {
 
     const res = await fetch('/api/newsletter/subscribe', {
       body: JSON.stringify({
-        email: inputEl.current.value,
+        email: e.currentTarget.elements['email'].value,
         path: pathname
       }),
       headers: {
@@ -50,7 +49,6 @@ const Newsletter = (props: Props) => {
       return;
     }
 
-    inputEl.current.value = '';
     setForm({
       state: Form.Success,
       message
@@ -110,36 +108,37 @@ const Newsletter = (props: Props) => {
             <br />
           </>
         )}
-
-        <form onSubmit={subscribe}>
-          <Flex
-            alignItems="flex-start"
-            gap={3}
-            direction={{
-              '@initial': 'row',
-              '@media (max-width: 500px)': 'column'
-            }}
-          >
-            <TextInput
-              aria-label="Email"
-              id="email-input"
-              type="email"
-              placeholder="email@example.com"
-              autoComplete="off"
-              ref={inputEl}
-              required
-            />
-            <Button
-              aria-label="Subscribe to my newsletter"
-              disabled={form.state === Form.Loading}
-              title="Subscribe to my newsletter"
-              type="submit"
-              variant="primary"
+        {form.state !== Form.Success && form.state !== Form.Error && (
+          <form onSubmit={subscribe}>
+            <Flex
+              alignItems="flex-start"
+              gap={3}
+              direction={{
+                '@initial': 'row',
+                '@media (max-width: 500px)': 'column'
+              }}
             >
-              {form.state === Form.Loading ? <Spinner /> : 'Send'}
-            </Button>
-          </Flex>
-        </form>
+              <TextInput
+                aria-label="Email"
+                id="email-input"
+                type="email"
+                name="email"
+                placeholder="email@example.com"
+                autoComplete="off"
+                required
+              />
+              <Button
+                aria-label="Subscribe to my newsletter"
+                disabled={form.state === Form.Loading}
+                title="Subscribe to my newsletter"
+                type="submit"
+                variant="primary"
+              >
+                {form.state === Form.Loading ? <Spinner /> : 'Send'}
+              </Button>
+            </Flex>
+          </form>
+        )}
         {form.state === Form.Error &&
           (form.message.includes('already subscribed') ? (
             <ErrorMessage>

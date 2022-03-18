@@ -1,6 +1,7 @@
 import {
   ComputedFields,
   defineDocumentType,
+  defineNestedType,
   makeSource
 } from 'contentlayer/source-files';
 
@@ -36,6 +37,13 @@ const computedFields: ComputedFields = {
     resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, '')
   }
 };
+
+const Tag = defineNestedType(() =>({
+name:"Tag",
+fields:{
+title:{type: 'string', required: true}
+}
+}))
 
 const Blog = defineDocumentType(() => ({
   name: 'Blog',
@@ -84,7 +92,7 @@ const contentLayerConfig = makeSource({
   contentDirPath: 'data',
   documentTypes: [Blog, Snippet, OtherPage],
   mdx: {
-    remarkPlugins: [remarkSlug, remarkAutolinkHeadings, remarkSectionize, remarkGfm],
+    remarkPlugins: [remarkSlug, remarkAutolinkHeadings, remarkSectionize,remarkFigure, remarkGfm],
     rehypePlugins: [rehypePrism]
   }
 });
