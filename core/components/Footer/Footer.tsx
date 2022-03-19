@@ -1,12 +1,9 @@
-import Link from 'next/link';
-
 import { styled } from '~/lib/stitches.config';
 
-import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
 import Flex from '~/components/Flex';
 import Grid from '~/components/Grid';
-import Links from '~/components/Link';
+import Link from '~/components/Link';
 import Logo from '~/components/Logo';
 import NowPlaying from '~/components/NowPlaying';
 import Text, { EM } from '~/components/Typography';
@@ -20,78 +17,67 @@ const Footer = () => (
           <Box>
             <Text size={1}>
               <Grid>
-                <Link href="/" passHref>
-                  <Anchor discreet>Home</Anchor>
+                <Link href="/" discreet>
+                  Home
                 </Link>
-                <Link href="/design" passHref>
-                  <Anchor discreet>Design</Anchor>
+                <Link href="/design" discreet>
+                  Design
                 </Link>
-                <Links href="/feed.xml" discreet>
+                <Link href="/feed.xml" discreet>
                   RSS
-                </Links>
+                </Link>
               </Grid>
             </Text>
           </Box>
           <Box>
             <Text size={1}>
               <Grid>
-                <Anchor
-                  data-splitbee-event="External Link"
-                  data-splitbee-event-destination="twitter"
-                  discreet
-                  href="https://twitter.com/ode_aksar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </Anchor>
-                <Links
+                <Link
                   data-splitbee-event="External Link"
                   data-splitbee-event-destination="twitter"
                   discreet
                   href="https://twitter.com/ode_aksar"
                 >
                   Twitter
-                </Links>
-                <Anchor
+                </Link>
+                <Link
+                  data-splitbee-event="External Link"
+                  data-splitbee-event-destination="twitter"
+                  discreet
+                  href="https://twitter.com/ode_aksar"
+                >
+                  Twitter
+                </Link>
+                <Link
                   data-splitbee-event="External Link"
                   data-splitbee-event-destination="github"
                   discreet
                   href="https://github.com/laodeaksar"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Github
-                </Anchor>
-                <Anchor
+                </Link>
+                <Link
                   data-splitbee-event="External Link"
                   data-splitbee-event-destination="revue"
                   discreet
                   href="https://www.getrevue.co/profile/laodeaksar"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Newsletter
-                </Anchor>
+                </Link>
               </Grid>
             </Text>
           </Box>
           <Box>
             <Text size={1}>
               <Grid>
-                <Anchor
-                  discreet
-                  href="https://laodeaksar.eu.org/portfolio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link discreet href="https://laodeaksar.eu.org/portfolio">
                   Portfolio
-                </Anchor>
-                <Anchor discreet href="https://www.figma.com/">
+                </Link>
+                <Link discreet href="https://www.figma.com/">
                   Roadmap
-                </Anchor>
-                <Link href="/guestbook" passHref>
-                  <Anchor discreet>Guestbook</Anchor>
+                </Link>
+                <Link href="/guestbook" discreet>
+                  Guestbook
                 </Link>
               </Grid>
             </Text>
