@@ -1,8 +1,8 @@
-import { useState, useRef } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import useSWR, { useSWRConfig } from 'swr';
+import toast, { Toaster } from 'react-hot-toast';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { Form, FormState } from '~/types/form';
 import fetcher from '~/lib/fetcher';
 
 import Button from '~/components/Button';
@@ -27,6 +27,13 @@ function GuestbookEntry({ entry, user }) {
     mutate('/api/guestbook');
   };
 
+  const handleDelete = async () => {
+    await fetch(`/api/guestbook/${entry.id}`, {
+      method: 'DELETE'
+    });
+    await mutate('/api/guestbook');
+  };
+
   return (
     <Card css={{ marginTop: '$4' }}>
       <Card.Header css={{ fontSize: '$3' }}>{entry.created_by}</Card.Header>
@@ -39,15 +46,13 @@ function GuestbookEntry({ entry, user }) {
             {new Date(entry.updated_at).toLocaleDateString('en', {
               month: 'short',
               day: '2-digit',
-              year: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric'
+              year: 'numeric'
             })}
           </time>
           {user && entry.created_by === user.name && (
             <>
               <span>&bull;</span>
-              <Button variant="secondary" onClick={deleteEntry}>
+              <Button variant="primary" onClick={handleDelete}>
                 Delete
               </Button>
             </>
@@ -58,48 +63,56 @@ function GuestbookEntry({ entry, user }) {
   );
 }
 
+type Inputs = {
+  body: string;
+};
+
+interface GuestbookEntry {
+  id: string;
+  body: string;
+  created_by: string;
+  updated_at: string;
+  email: string;
+}
+
 export default function Guestbook({ fallbackData }) {
   const { data: session } = useSession();
   const { mutate } = useSWRConfig();
-  const [form, setForm] = useState<FormState>({ state: Form.Initial });
-  const inputEl = useRef(null);
   const { data: entries } = useSWR('/api/guestbook', fetcher, {
     fallbackData
   });
 
-  const leaveEntry = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setForm({ state: Form.Loading });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<Inputs>();
 
-    if (inputEl.current.value.trim().length === 0) {
-      setForm({ state: Form.Error, message: 'Please enter a message' });
-    }
-
-    const res = await fetch('/api/guestbook', {
-      body: JSON.stringify({
-        body: inputEl.current.value
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await toast.promise(
+      fetch('/api/guestbook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       }),
-      headers: {
-        'Content-Type': 'application/json'
+      {
+        loading: 'Posting your comment...',
+        success: 'Thank you for your comment!',
+        error: 'Something went wrong. Please try again later.'
       },
-      method: 'POST'
-    });
-
-    const { error } = await res.json();
-    if (error) {
-      setForm({
-        state: Form.Error,
-        message: error
-      });
-      return;
-    }
-
-    inputEl.current.value = '';
-    mutate('/api/guestbook');
-    setForm({
-      state: Form.Success,
-      message: `Hooray! Thanks for signing my Guestbook.`
-    });
+      {
+        style: {
+          minWidth: '200px'
+        },
+        success: {
+          duration: 5000
+        }
+      }
+    );
+    await mutate('/api/guestbook').then(() => reset());
   };
 
   return (
@@ -130,7 +143,7 @@ export default function Guestbook({ fallbackData }) {
             </a>
           )}
           {session?.user && (
-            <form onSubmit={leaveEntry}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Flex
                 alignItems="flex-start"
                 gap={3}
@@ -140,25 +153,28 @@ export default function Guestbook({ fallbackData }) {
                 }}
               >
                 <TextInput
-                  ref={inputEl}
+                  {...register('body', {
+                    required: "Don't forget to write something",
+                    maxLength: 200
+                  })}
                   aria-label="Your message"
+                  disabled={isSubmitting}
                   placeholder="Your message..."
-                  required
                   id="input-message"
                 />
                 <Button
                   aria-label="Send message"
-                  disabled={form.state === Form.Loading}
+                  disabled={isSubmitting}
                   title="Send message"
                   type="submit"
                   variant="primary"
                 >
-                  {form.state === Form.Loading ? <Spinner /> : 'Send'}
+                  {isSubmitting ? <Spinner /> : 'Send'}
                 </Button>
               </Flex>
             </form>
           )}
-          {form.state === Form.Error ? (
+          {errors ? (
             <Text
               as="p"
               size={2}
@@ -168,19 +184,7 @@ export default function Guestbook({ fallbackData }) {
                 marginBottom: 0
               }}
             >
-              {form.message}
-            </Text>
-          ) : form.state === Form.Success ? (
-            <Text
-              as="p"
-              size={2}
-              variant="success"
-              css={{
-                marginTop: '$2',
-                marginBottom: 0
-              }}
-            >
-              {form.message}
+              {errors.body?.message}
             </Text>
           ) : (
             <Text

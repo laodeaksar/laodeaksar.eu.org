@@ -1,8 +1,12 @@
 import { styled } from '~/lib/stitches.config';
 import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
+import darkTheme from 'prism-react-renderer/themes/nightOwl';
+import lightTheme from 'prism-react-renderer/themes/nightOwlLight';
 
 import Card from '~/components/Card';
 import { CopyToClipboardButton } from '~/components/Button';
+
+import { useTheme } from '~/context/ThemeContext';
 
 import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
@@ -17,11 +21,14 @@ require('prismjs/components/prism-swift');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
+  const { dark } = useTheme();
+
+  const theme = dark ? darkTheme : lightTheme;
 
   return (
     <Highlight
       {...defaultProps}
-      theme={{ plain: {}, styles: [] }}
+      theme={theme}
       code={codeString}
       language={language}
     >
@@ -133,7 +140,7 @@ const LineNo = styled('div', {
   userSelect: 'none',
   opacity: '1',
   color: 'var(--laodeaksar-colors-typeface-tertiary)',
-textAlign: 'right'
+  textAlign: 'right'
 });
 
 const LineContent = styled('span', {
