@@ -98,30 +98,24 @@ function GuestbookForm() {
           </Button>
         </Flex>
       </form>
-      {errors ? (
-        <Text
-          as="p"
-          size={2}
-          variant="danger"
-          css={{
-            marginTop: '$2',
-            marginBottom: 0
-          }}
-        >
-          {errors.body?.message}
-        </Text>
-      ) : (
-        <Text
-          as="p"
-          size={1}
-          css={{
-            marginTop: '$2',
-            marginBottom: 0
-          }}
-        >
-          Your information is only used to display your name and reply by email.
-        </Text>
-      )}
+      <Text
+        as="p"
+        size={errors ? 2 : 1}
+        variant={errors ? 'danger' : 'default'}
+        css={{
+          marginTop: '$2',
+          marginBottom: 0
+        }}
+      >
+        {errors ? (
+          <>{errors.body?.message}</>
+        ) : (
+          <>
+            Your information is only used to display your name and reply by
+            email.
+          </>
+        )}
+      </Text>
     </>
   );
 }
@@ -275,7 +269,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      '/api/guestbook': initialEntries
+      fallback: {
+        '/api/guestbook': initialEntries
+      }
     },
     revalidate: 60
   };

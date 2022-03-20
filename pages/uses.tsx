@@ -7,7 +7,6 @@ import Button from '~/components/Button';
 import Grid from '~/components/Grid';
 import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
-import MDXComponents from '~/components/MDX/MDXComponents';
 import Text, { H1, H2, H3, Strong } from '~/components/Typography';
 
 import ContentfulGears from '~/lib/contentful';

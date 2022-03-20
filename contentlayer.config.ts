@@ -5,6 +5,7 @@ import {
   makeSource
 } from 'contentlayer/source-files';
 import { pick } from 'contentlayer/client';
+import { omit } from 'contentlayer/utils';
 
 import { remarkFigure } from './lib/remark/remark-figure';
 import { remarkSectionize } from './lib/remark/remark-sectionize-fork';
@@ -78,7 +79,7 @@ const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
   contentType: 'mdx',
-  fields,
+  fields: omit(fields, ['language']),
   computedFields
 }));
 

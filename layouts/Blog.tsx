@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Anchor from '~/components/Anchor';
@@ -6,6 +5,7 @@ import Box from '~/components/Box';
 import Flex from '~/components/Flex';
 import Grid from '~/components/Grid';
 import Hero from '~/components/Hero';
+import Link from '~/components/Link';
 import Pill from '~/components/Pill';
 import SEO from '~/components/Seo';
 import TableOfContent from '~/components/TableOfContent';
@@ -127,10 +127,8 @@ const BlogLayout = ({ children, post }: Props) => {
                 fontSize: '$2'
               }}
             >
-              <Link href="/" passHref>
-                <Anchor arrow="left" discreet>
-                  Home
-                </Anchor>
+              <Link href="/" arrow="left" discreet>
+                Home
               </Link>
             </Box>
 
