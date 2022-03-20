@@ -1,4 +1,5 @@
 import NextLink from 'next/link';
+
 import Anchor from '~/components/Anchor';
 
 const Link = ({ href, children, ...rest }) => {
