@@ -186,10 +186,13 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
               <span>&bull;</span>
               <Button
                 css={{
+                  // $$color: 'var(--laodeaksar-colors-typeface-tertiary)',
+
                   '&:hover': {
                     '&:not(:disabled)': {
-                      $$border: 'var(--laodeaksar-colors-danger)'
-                    }
+                      $$border: 'var(--laodeaksar-colors-danger)',
+                      $$color: 'var(--laodeaksar-colors-danger)',
+}
                   }
                 }}
                 onClick={handleDelete}
@@ -201,7 +204,7 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    stroke="var(--laodeaksar-colors-danger)"
+                    stroke="var(--laodeaksar-colors-typeface-tertiary)"
                     strokeWidth="2"
                   >
                     <path
