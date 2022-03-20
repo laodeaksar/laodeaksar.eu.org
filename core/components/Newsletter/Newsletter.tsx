@@ -1,5 +1,7 @@
 import { useState, FormEvent } from 'react';
 import useSWR from 'swr';
+import toast, { Toaster } from 'react-hot-toast';
+import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
 
 import fetcher from '~/lib/fetcher';
 
@@ -18,39 +20,44 @@ import TextInput from '~/components/TextInput';
 import Spinner from '~/components/Spinner';
 import Text, { EM, H3 } from '~/components/Typography';
 
+type Inputs = {
+  email: string;
+};
+
 const Newsletter = (props: Props) => {
   const { large = false } = props;
 
-  // const { data } = useSWR<{ count: number }>('/api/newsletter/subscribers', fetcher);
-  const [form, setForm] = useState<FormState>({ state: Form.Initial });
+  // const { data: subs } = useSWR<{ count: number }>('/api/newsletter/subscribers', fetcher);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<Inputs>();
 
-  const subscribe = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setForm({ state: Form.Loading });
-
-    const res = await fetch('/api/newsletter/subscribe', {
-      body: JSON.stringify({
-        email: e.currentTarget.elements['email'].value
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await toast.promise(
+      fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       }),
-      headers: {
-        'Content-Type': 'application/json'
+      {
+        loading: 'Posting your comment...',
+        success: 'Thank you for your comment!',
+        error: 'Something went wrong. Please try again later.'
       },
-      method: 'POST'
-    });
-
-    const { error, message } = await res.json();
-    if (error) {
-      setForm({
-        state: Form.Error,
-        message: error
-      });
-      return;
-    }
-
-    setForm({
-      state: Form.Success,
-      message
-    });
+      {
+        style: {
+          minWidth: '200px'
+        },
+        success: {
+          duration: 5000
+        }
+      }
+    );
   };
 
   return (
@@ -106,63 +113,44 @@ const Newsletter = (props: Props) => {
             <br />
           </>
         )}
-        {form.state !== Form.Success && form.state !== Form.Error && (
-          <form onSubmit={subscribe}>
-            <Flex
-              alignItems="flex-start"
-              gap={3}
-              direction={{
-                '@initial': 'row',
-                '@media (max-width: 500px)': 'column'
-              }}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Flex
+            alignItems="flex-start"
+            gap={3}
+            direction={{
+              '@initial': 'row',
+              '@media (max-width: 500px)': 'column'
+            }}
+          >
+            <TextInput
+              {...register('email', {
+                required: "Don't forget to write your email",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'invalid email address'
+                }
+              })}
+              aria-label="Email"
+              id="email-input"
+              type="email"
+              placeholder="email@example.com"
+              autoComplete="off"
+              disabled={isSubmitting}
+            />
+            <Button
+              aria-label="Subscribe to my newsletter"
+              disabled={isSubmitting}
+              title="Subscribe to my newsletter"
+              type="submit"
+              variant="primary"
             >
-              <TextInput
-                aria-label="Email"
-                id="email-input"
-                type="email"
-                name="email"
-                placeholder="email@example.com"
-                autoComplete="off"
-                required
-              />
-              <Button
-                aria-label="Subscribe to my newsletter"
-                disabled={form.state === Form.Loading}
-                title="Subscribe to my newsletter"
-                type="submit"
-                variant="primary"
-              >
-                {form.state === Form.Loading ? <Spinner /> : 'Send'}
-              </Button>
-            </Flex>
-          </form>
-        )}
-        {form.state === Form.Error &&
-          (form.message.includes('already subscribed') ? (
-            <ErrorMessage>
-              Looks like you already subscribed! If you think this is a mistake
-              you can still subscribe by heading directly to my{' '}
-              <Link underline href="https://www.getrevue.co/profile/laodeaksar">
-                getrevue publication
-              </Link>
-              .
-            </ErrorMessage>
-          ) : (
-            <ErrorMessage>
-              😬 woops! We just hit a snag here, but don&apos;t worry! You can
-              still subscribe by heading directly to my{' '}
-              <Link underline href="https://www.getrevue.co/profile/laodeaksar">
-                getrevue publication
-              </Link>
-              .
-            </ErrorMessage>
-          ))}
-        {form.state === Form.Success && (
-          <Text as="p" css={{ margin: '$4 0 0 0', textAlign: 'center' }}>
-            (You will receive a confirmation email in a few seconds)
-          </Text>
-        )}
+              {isSubmitting ? <Spinner /> : 'Send'}
+            </Button>
+          </Flex>
+        </form>
+        {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
       </NewsletterFormContent>
+      <Toaster />
     </Card>
   );
 };

@@ -112,8 +112,6 @@ export const StyledIconButton = styled('button', {
   $$color: 'var(--laodeaksar-colors-typeface-tertiary)',
   $$scale: 1,
 
-  // WebkitAppearance: 'none',
-  // WebkitTapHighlightColor: 'transparent',
   userSelect: 'none',
   display: 'flex',
   justifyContent: 'center',
