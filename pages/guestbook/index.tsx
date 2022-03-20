@@ -192,7 +192,7 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    stroke="var(--laodeaksar-colors-danger)"
                     strokeWidth="2"
                   >
                     <path
