@@ -102,7 +102,7 @@ function GuestbookForm() {
         <Text
           as="p"
           size={2}
-          variant='danger'
+          variant="danger"
           css={{
             marginTop: '$2',
             marginBottom: 0
@@ -191,6 +191,8 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     stroke="var(--laodeaksar-colors-danger)"
                     strokeWidth="2"
