@@ -98,24 +98,30 @@ function GuestbookForm() {
           </Button>
         </Flex>
       </form>
-      <Text
-        as="p"
-        size={errors ? 2 : 1}
-        variant={errors ? 'danger' : 'default'}
-        css={{
-          marginTop: '$2',
-          marginBottom: 0
-        }}
-      >
-        {errors ? (
-          <>{errors.body?.message}</>
-        ) : (
-          <>
-            Your information is only used to display your name and reply by
-            email.
-          </>
-        )}
-      </Text>
+      {errors ? (
+        <Text
+          as="p"
+          size={2}
+          variant='danger'
+          css={{
+            marginTop: '$2',
+            marginBottom: 0
+          }}
+        >
+          {errors.body?.message}
+        </Text>
+      ) : (
+        <Text
+          as="p"
+          size={1}
+          css={{
+            marginTop: '$2',
+            marginBottom: 0
+          }}
+        >
+          Your information is only used to display your name and reply by email.
+        </Text>
+      )}
     </>
   );
 }
@@ -154,7 +160,7 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
   const { data } = useSession();
 
   const handleDelete = async () => {
-    await fetch(`/api/guestbook/${entry.id}`, {
+    await fetch('/api/guestbook/' + entry.id, {
       method: 'DELETE'
     });
     await mutate('/api/guestbook');
@@ -179,6 +185,7 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
             <>
               <span>&bull;</span>
               <Button
+                onClick={handleDelete}
                 variant="icon"
                 icon={
                   <svg
@@ -195,7 +202,6 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
                     />
                   </svg>
                 }
-                onClick={handleDelete}
               />
             </>
           )}
@@ -217,41 +223,47 @@ function GuestbookEntries() {
   );
 }
 
-const GuestbookPage = ({ fallback }) => (
-  <Layout footer header headerProps={{ offsetHeight: 256 }}>
-    <SEO title="Guestbook Page" />
-    <Grid columns="medium" gapX={4} gapY={12} all>
-      <div>
-        <H2>Guestbook</H2>
-        <Text as="p">
-          Leave a comment below. It could be anything - appreciation,
-          information, wisdom, or even humor. Surprise me!
-        </Text>
-        <Card>
-          <Card.Header css={{ fontSize: '$5' }}>Sign the Guestbook</Card.Header>
-          <Card.Body>
-            <Text
-              as="p"
-              css={{
-                marginTop: '0px',
-                marginBottom: '$2'
-              }}
-            >
-              Share a message for a future visitor of my site.
-            </Text>
-            <GuestbookBody />
-          </Card.Body>
-        </Card>
-        <SWRConfig value={{ fallback }}>
-          <GuestbookEntries />
-        </SWRConfig>
-        <Toaster />
-      </div>
-    </Grid>
-  </Layout>
-);
-
-export default GuestbookPage;
+export default function Guestbook({
+  fallback
+}: {
+  fallback: { string: GuestbookEntry[] };
+}) {
+  return (
+    <Layout footer header headerProps={{ offsetHeight: 256 }}>
+      <SEO title="Guestbook Page" />
+      <Grid columns="medium" gapX={4} gapY={12} all>
+        <div>
+          <H2>Guestbook</H2>
+          <Text as="p">
+            Leave a comment below. It could be anything - appreciation,
+            information, wisdom, or even humor. Surprise me!
+          </Text>
+          <Card>
+            <Card.Header css={{ fontSize: '$5' }}>
+              Sign the Guestbook
+            </Card.Header>
+            <Card.Body>
+              <Text
+                as="p"
+                css={{
+                  marginTop: '0px',
+                  marginBottom: '$2'
+                }}
+              >
+                Share a message for a future visitor of my site.
+              </Text>
+              <GuestbookBody />
+            </Card.Body>
+          </Card>
+          <SWRConfig value={{ fallback }}>
+            <GuestbookEntries />
+          </SWRConfig>
+          <Toaster />
+        </div>
+      </Grid>
+    </Layout>
+  );
+}
 
 export const getStaticProps = async () => {
   const entries = await prisma.guestbook.findMany({
@@ -272,7 +284,6 @@ export const getStaticProps = async () => {
       fallback: {
         '/api/guestbook': initialEntries
       }
-    },
-    revalidate: 60
+    }
   };
 };

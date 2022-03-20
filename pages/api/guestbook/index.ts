@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === 'GET') {
     const entries = await prisma.guestbook.findMany({
       orderBy: {
-        updated_at: 'desc'
+        created_at: 'desc'
       }
     });
 
@@ -19,17 +19,17 @@ export default async function handler(
         id: entry.id.toString(),
         body: entry.body,
         created_by: entry.created_by,
-        updated_at: entry.updated_at
+        updated_at: entry.updated_at,
+        email: entry.email
       }))
     );
   }
 
   const session = await getSession({ req });
-  const { email, name } = session.user;
 
-  if (!session) {
-    return res.status(403).send('Unauthorized');
-  }
+  if (!session) return res.status(403).send('Unauthorized');
+
+  const { name, email } = session.user as { name: string; email: string };
 
   if (req.method === 'POST') {
     const newEntry = await prisma.guestbook.create({

@@ -84,7 +84,26 @@ export const StyledButton = styled('button', {
         '&:focus-visible': {
           $$shadow: '$$shadow-hover-primary'
         }
-      }
+      },
+      danger: {
+        $$background: 'var(--laodeaksar-colors-emphasis)',
+        $$color: 'var(--laodeaksar-colors-danger)',
+
+        '&:disabled': {
+          $$background: 'var(--laodeaksar-form-input-disabled)',
+          $$color: 'var(--laodeaksar-colors-typeface-tertiary)'
+        },
+
+        '&:hover': {
+          '&:not(:disabled)': {
+            $$shadow: '$$shadow-hover-primary'
+          }
+        },
+
+        '&:focus-visible': {
+          $$shadow: '$$shadow-hover-primary'
+        }
+      } 
     }
   }
 });

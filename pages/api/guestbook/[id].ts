@@ -7,16 +7,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const session = await getSession({ req });
-
   const { id } = req.query;
-  const { email } = session.user;
-
   const entry = await prisma.guestbook.findUnique({
     where: {
       id: Number(id)
     }
   });
+
+  if (!entry) return res.status(404).send(`No entry found for id ${id}`);
 
   if (req.method === 'GET') {
     return res.json({
@@ -27,7 +25,12 @@ export default async function handler(
     });
   }
 
-  if (!session || email !== entry.email) {
+  const session = await getSession({ req });
+  if (!session) return res.status(403).send('Requires authentication');
+
+  const { email } = session.user as { email: string };
+
+  if (email !== entry.email) {
     return res.status(403).send('Unauthorized');
   }
 
@@ -38,7 +41,7 @@ export default async function handler(
       }
     });
 
-    return res.status(204).json({});
+    return res.status(204).end();
   }
 
   if (req.method === 'PUT') {
@@ -60,5 +63,5 @@ export default async function handler(
     });
   }
 
-  return res.send('Method not allowed.');
+  return res.send('Method not allowed :(');
 }
