@@ -185,6 +185,13 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
             <>
               <span>&bull;</span>
               <Button
+                css={{
+                  '&:hover': {
+                    '&:not(:disabled)': {
+                      $$border: 'var(--laodeaksar-colors-danger)'
+                    }
+                  }
+                }}
                 onClick={handleDelete}
                 variant="icon"
                 icon={
