@@ -21,8 +21,8 @@ const Image = defineNestedType(() => ({
   fields: {
     url: { type: 'string', required: true },
     title: { type: 'string', required: true },
-    alt: { type: 'string', required: true },
-    caption: { type: 'string', required: true }
+    alt: { type: 'string' },
+    caption: { type: 'string' }
   }
 }));
 
@@ -39,12 +39,16 @@ const fields: FieldDefs = {
   description: { type: 'string', required: true },
   date: { type: 'date', required: true },
   updated: { type: 'date', required: true },
+  category: { type: 'string' },
   tags: { type: 'list', required: true, of: { type: 'string' }, default: [] },
   image: { type: 'string' },
   colorFeatured: { type: 'string' },
   fontFeatured: { type: 'string' },
   language: { type: 'string' },
-  featured: { type: 'boolean' }
+  featured: { type: 'boolean' },
+  link: { type: 'string' },
+  affiliateLink: { type: 'string' },
+  affiliateLinkText: { type: 'string' }
 };
 
 const computedFields: ComputedFields = {
@@ -79,7 +83,13 @@ const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/*.mdx',
   contentType: 'mdx',
-  fields: omit(fields, ['language']),
+  fields: omit(fields, [
+    'language',
+    'link',
+    'affiliateLink',
+    'affiliateLinkText',
+    'category'
+  ]),
   computedFields
 }));
 
@@ -88,6 +98,22 @@ const Snippet = defineDocumentType(() => ({
   filePathPattern: 'snippets/*.mdx',
   contentType: 'mdx',
   fields: pick(fields, ['title', 'description', 'date', 'image', 'language']),
+  computedFields: pick(computedFields, ['slug', 'url'])
+}));
+
+const Uses = defineDocumentType(() => ({
+  name: 'Uses',
+  filePathPattern: 'uses/*.mdx',
+  contentType: 'mdx',
+  fields: pick(fields, [
+    'title',
+    'description',
+    'category',
+    'image',
+    'link',
+    'affiliateLink',
+    'affiliateLinkText'
+  ]),
   computedFields: pick(computedFields, ['slug', 'url'])
 }));
 
@@ -109,8 +135,8 @@ const contentLayerConfig = makeSource({
       remarkSectionize,
       remarkFigure,
       remarkGfm
-    ],
-    rehypePlugins: [[rehypePrism, { ignoreMissing: true }]]
+    ]
+    //  rehypePlugins: [[rehypePrism, { ignoreMissing: true }]]
   }
 });
 
