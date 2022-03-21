@@ -1,3 +1,5 @@
+import type { CSS } from "~/lib/stitches.config";
+
 export type TextInputTypes = 'email' | 'password' | 'search' | 'text' | 'url';
 
 export interface TextInputProps
@@ -7,5 +9,6 @@ export interface TextInputProps
   value?: string;
   id: string;
   ['aria-label']: string;
+  css?:CSS
   onChange?: React.FormEventHandler<HTMLInputElement>;
 }

@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useEffect,useState, FormEvent } from 'react';
 import useSWR from 'swr';
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
@@ -58,6 +58,7 @@ const Newsletter = (props: Props) => {
         }
       }
     );
+    reset({ ...data })
   };
 
   return (
