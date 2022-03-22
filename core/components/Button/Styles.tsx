@@ -7,8 +7,6 @@ export const StyledButton = styled('button', {
   $$opacity: 1,
   $$color: 'black',
 
-  // WebkitAppearance: 'none',
-  // WebkitTapHighlightColor: 'transparent',
   userSelect: 'none',
   display: 'flex',
   justifyContent: 'center',

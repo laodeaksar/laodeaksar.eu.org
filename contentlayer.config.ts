@@ -19,8 +19,8 @@ import remarkAutolinkHeadings from 'remark-autolink-headings';
 const Image = defineNestedType(() => ({
   name: 'Image',
   fields: {
-    url: { type: 'string', required: true },
-    title: { type: 'string', required: true },
+    url: { type: 'string' },
+    title: { type: 'string' },
     alt: { type: 'string' },
     caption: { type: 'string' }
   }
@@ -41,7 +41,8 @@ const fields: FieldDefs = {
   updated: { type: 'date', required: true },
   category: { type: 'string' },
   tags: { type: 'list', required: true, of: { type: 'string' }, default: [] },
-  image: { type: 'string' },
+  // image: { type: 'string' },
+  image: { type: 'nested', of: Image },
   colorFeatured: { type: 'string' },
   fontFeatured: { type: 'string' },
   language: { type: 'string' },
@@ -101,10 +102,10 @@ const Snippet = defineDocumentType(() => ({
   computedFields: pick(computedFields, ['slug', 'url'])
 }));
 
-const Uses = defineDocumentType(() => ({
-  name: 'Uses',
-  filePathPattern: 'uses/*.mdx',
-  contentType: 'mdx',
+const Gear = defineDocumentType(() => ({
+  name: 'Gear',
+  filePathPattern: 'gear/*.md',
+  contentType: 'markdown',
   fields: pick(fields, [
     'title',
     'description',
@@ -114,7 +115,6 @@ const Uses = defineDocumentType(() => ({
     'affiliateLink',
     'affiliateLinkText'
   ]),
-  computedFields: pick(computedFields, ['slug', 'url'])
 }));
 
 const OtherPage = defineDocumentType(() => ({
@@ -127,7 +127,7 @@ const OtherPage = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Snippet, OtherPage],
+  documentTypes: [Blog, Snippet, Gear, OtherPage],
   mdx: {
     remarkPlugins: [
       remarkSlug,

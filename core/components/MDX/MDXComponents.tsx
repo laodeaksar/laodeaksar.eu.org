@@ -139,6 +139,7 @@ const MDXComponents = {
   ),
   Pill,
   pre: Pre,
+  //pre: Code,
   strong: Strong,
   VideoPlayer,
   Tabs,

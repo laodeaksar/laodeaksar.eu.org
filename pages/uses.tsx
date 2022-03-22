@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+
+import MDXComponents from '~/components/MDX/MDXComponents';
 
 import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
@@ -7,12 +10,16 @@ import Button from '~/components/Button';
 import Grid from '~/components/Grid';
 import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
+import Link from '~/components/Link';
 import Text, { H1, H2, H3, Strong } from '~/components/Typography';
 
 import ContentfulGears from '~/lib/contentful';
 import { css, Shadows } from '~/lib/stitches.config';
 
 import Layout from '~/layout';
+
+import { allUses } from 'contentlayer/generated';
+import { allGears } from 'contentlayer/generated';
 
 const styles = {
   svgStyle: css({
@@ -22,7 +29,8 @@ const styles = {
   })(),
   imageStyle: css({
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius: '6px'
   })()
 };
 
@@ -131,9 +139,12 @@ const Uses = ({ gearByCategory }) => {
         >
           <H1>My Gear</H1>
           <Text as="p" css={{ fontSize: '1.125rem' }}>
-            Inspired by <a href="https://uses.tech/">many others</a> I created a
-            list on hardware, software and equipment I use daily to make my life
-            easier.
+            Inspired by{' '}
+            <Link underline href="https://uses.tech/">
+              many others
+            </Link>{' '}
+            I created a list on hardware, software and equipment I use daily to
+            make my life easier.
           </Text>
 
           {Object?.entries(gearByCategory).map(([category, { items }]: any) => {
@@ -146,16 +157,25 @@ const Uses = ({ gearByCategory }) => {
                 }}
                 key={category}
               >
-                <H2
+                <Box
                   css={{
                     display: 'flex',
                     alignItems: 'center',
-                    fontSize: '1.875rem'
+                    marginBottom: '$3'
                   }}
                 >
                   {CategoryIcons[category]}
-                  {category}
-                </H2>
+                  <H2
+                    css={{
+                      fontSize: '1.875rem',
+                      margin: 0,
+                      padding: 0,
+                      transform: 'translateY(3.5px)'
+                    }}
+                  >
+                    {category}
+                  </H2>
+                </Box>
                 {category === 'Software' ? (
                   <SoftwareItems items={items} />
                 ) : (
@@ -167,7 +187,7 @@ const Uses = ({ gearByCategory }) => {
 
           <Box
             css={{
-              padding: '1rem',
+              padding: '0',
               color: 'var(--laodeaksar-colors-brand)',
               borderRadius: '6px'
             }}
@@ -191,7 +211,7 @@ const Uses = ({ gearByCategory }) => {
               </Box>
               <Box
                 css={{
-                  marginLeft: '12px',
+                  marginLeft: '0',
                   marginTop: 0,
                   marginBottom: '1rem'
                 }}
@@ -202,13 +222,13 @@ const Uses = ({ gearByCategory }) => {
                   size={1}
                   css={{ marginBottom: 0 }}
                 >
-                  If you click <Strong>Buy</Strong> or{' '}
-                  <Strong>the image</Strong> you will get redirected to a page
+                  If you click <strong>Buy</strong> or{' '}
+                  <strong>the image</strong> you will get redirected to a page
                   where you can buy the product using an{' '}
-                  <Strong>affilated link</Strong>.
+                  <strong>affilated link</strong>.
                 </Text>
 
-                <Text as="p" size={1}>
+                <Text as="p" variant="tertiary" size={1}>
                   An affilate link will not increase your price, but it will get
                   me a small commission and helps me out :)
                 </Text>
@@ -224,7 +244,10 @@ const Uses = ({ gearByCategory }) => {
 export default Uses;
 
 export async function getStaticProps() {
-  const gear = await ContentfulGears.getAll();
+  //const gear = await ContentfulGears.getAll();
+
+  const gear = allGears;
+
   const gearByCategory = gear?.reduce((accu, gearItem) => {
     if (accu[gearItem.category]) {
       accu[gearItem.category].items.push(gearItem);
@@ -274,16 +297,16 @@ function ProductLink({ children, to }) {
 
 function GeneralItems({ items }) {
   return (
-    <Grid as="ul" gapY="3">
+    <Grid as="ul" gapY={3} css={{ margin: 0, padding: 0 }}>
       {items.map(
         ({
           id,
           title,
-          description,
           image,
           link,
           affiliateLink,
-          affiliateLinkText
+          affiliateLinkText,
+          body
         }) => {
           return (
             <Box
@@ -297,6 +320,7 @@ function GeneralItems({ items }) {
             >
               <Box
                 css={{
+                  width: '$full',
                   marginTop: 0,
                   marginBottom: '1rem'
                 }}
@@ -304,7 +328,9 @@ function GeneralItems({ items }) {
                 <Grid
                   gapY={6}
                   css={{
+                    width: '$full',
                     gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
+                    alignItems: 'start',
 
                     '@lg': {
                       gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
@@ -322,7 +348,7 @@ function GeneralItems({ items }) {
                         position: 'relative',
                         overflow: 'hidden',
                         padding: '1rem',
-                        size: '6rem',
+                        width: '6rem',
                         borderRadius: '6px',
                         bc: 'var(--laodeaksar-colors-foreground)',
                         transition: 'background-color 0.3s',
@@ -365,6 +391,7 @@ function GeneralItems({ items }) {
                   </Anchor>
                   <Flex
                     direction="column"
+                    alignItems="start"
                     css={{
                       marginTop: '0',
                       marginBottom: '1rem',
@@ -390,7 +417,7 @@ function GeneralItems({ items }) {
                         }
                       }}
                     >
-                      {description}
+                      <div dangerouslySetInnerHTML={{ __html: body.html }} />
                     </Box>
                     {link && (
                       <ProductLink to={link}>Product Details</ProductLink>
@@ -403,7 +430,7 @@ function GeneralItems({ items }) {
                           maxWidth: '24rem'
                         }}
                       >
-                        <Anchor href="affiliateLink">
+                        <Anchor href={affiliateLink}>
                           <Button
                             variant="primary"
                             css={{ width: '$full', px: '2rem' }}
@@ -427,7 +454,7 @@ function GeneralItems({ items }) {
 function SoftwareItems({ items }) {
   return (
     <Grid as="ul" gap={6} css={{ margin: 0, padding: 0 }}>
-      {items?.map(({ id, title, description, image, link }) => {
+      {items?.map(({ id, title, image, link, body }) => {
         return (
           <Box
             as={motion.li}
@@ -440,10 +467,15 @@ function SoftwareItems({ items }) {
           >
             <Flex
               gap={6}
-              direction={{ '@initial': 'column', '@md': 'row' }}
+              direction={{
+                '@initial': 'column',
+                '@md': 'row'
+              }}
+              alignItems="start"
               css={{
                 marginTop: 0,
                 marginBottom: '1rem',
+                width: '$full',
 
                 '@md': {
                   my: '0px',
@@ -479,7 +511,8 @@ function SoftwareItems({ items }) {
               <Box
                 css={{
                   marginTop: 0,
-                  marginBottom: '1rem'
+                  marginBottom: '1rem',
+                  width: '$full'
                 }}
               >
                 <H3 css={{ marginBottom: 0 }}>{title}</H3>
@@ -498,7 +531,7 @@ function SoftwareItems({ items }) {
                     }
                   }}
                 >
-                  {description}
+                  <div dangerouslySetInnerHTML={{ __html: body.html }} />
                 </Box>
                 <ProductLink to={link}>Homepage</ProductLink>
               </Box>
