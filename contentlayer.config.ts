@@ -41,7 +41,6 @@ const fields: FieldDefs = {
   updated: { type: 'date', required: true },
   category: { type: 'string' },
   tags: { type: 'list', required: true, of: { type: 'string' }, default: [] },
-  // image: { type: 'string' },
   image: { type: 'nested', of: Image },
   colorFeatured: { type: 'string' },
   fontFeatured: { type: 'string' },
@@ -108,7 +107,6 @@ const Gear = defineDocumentType(() => ({
   contentType: 'markdown',
   fields: pick(fields, [
     'title',
-    'description',
     'category',
     'image',
     'link',

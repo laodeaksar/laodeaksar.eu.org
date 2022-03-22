@@ -95,7 +95,7 @@ const Footer = () => (
               weight="3"
               css={{ margin: 0 }}
             >
-              &copy; {new Date().getFullYear()} Aksar La&apos;ode ---{' '}
+              &copy; {new Date().getFullYear()} Aksar La&apos;ode --{' '}
               <EM size={1}>Kendari</EM>
             </Text>
             <Box

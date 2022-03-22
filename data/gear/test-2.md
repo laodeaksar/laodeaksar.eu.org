@@ -1,6 +1,5 @@
 ---
 title: test 2
-description: test
 category: Hardware
 link: test
 image: 

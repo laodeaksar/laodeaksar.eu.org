@@ -1,18 +1,17 @@
-import { css } from '~/lib/stitches.config';
+import { styled } from '~/lib/stitches.config';
 
 import type { LogoProp } from './types';
 
-const transitionLogo = css({
+const Svg = styled('svg', {
   transition: '0.5s',
   willChange: 'stroke, fill'
-})();
+});
 
 const Logo = ({ alt, size }: LogoProp) => (
-  <svg
+  <Svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 595 503"
     xmlSpace="preserve"
-    className={transitionLogo}
     aria-label={alt}
     width={size || 44}
     fill="none"
@@ -33,7 +32,7 @@ const Logo = ({ alt, size }: LogoProp) => (
       strokeMiterlimit={10}
       strokeWidth={40}
     />
-  </svg>
+  </Svg>
 );
 
 export default Logo;

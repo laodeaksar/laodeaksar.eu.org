@@ -24,11 +24,11 @@ export const StyledCheckbox = styled('input', {
 
   '$$shadow-hover-primary': '0 2px 20px 3px var(--laodeaksar-form-input-focus)',
 
-    $$do: '0.2s',
-    $$dt: '0.3s',
-    $$dte: 'ease',
-    $$dtd: '0s',
-    $$rotation: '20deg',
+  $$do: '0.2s',
+  $$dt: '0.3s',
+  $$dte: 'ease',
+  $$dtd: '0s',
+  $$rotation: '20deg',
 
   '&:after': {
     content: '""',

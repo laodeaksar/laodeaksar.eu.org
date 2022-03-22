@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 
-import Anchor from '~/components/Anchor';
+import Link from '~/components/Link';
 import Text from '~/components/Typography';
 
 import type { Props, Reply } from './types';
@@ -75,27 +75,23 @@ const WebmentionReplies = ({ title, url }: Props) => {
         <div style={{ height: heightRow * numberOfRow, width: '100%' }} />
       )}
       <Text as="p">
-        <Anchor
+        <Link
           data-splitbee-event="External Link"
           data-splitbee-event-destination="twitter"
           underline
           href={'https://twitter.com/intent/tweet?text=' + encodeURI(text)}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           Tweet about this post
-        </Anchor>{' '}
+        </Link>{' '}
         and it will show up here! Or,{' '}
-        <Anchor
+        <Link
           data-splitbee-event="External Link"
           data-splitbee-event-destination="twitter"
           underline
           href={'https://mobile.twitter.com/search?q=' + url}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           click here to leave a comment
-        </Anchor>{' '}
+        </Link>{' '}
         and discuss about it on Twitter.
       </Text>
     </div>

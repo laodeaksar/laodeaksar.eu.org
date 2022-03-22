@@ -13,6 +13,7 @@ export const NewsletterFormContent = styled(Card.Body, {
           padding: '$8 20px 30px 20px'
         }
       },
+      
       false: {
         padding: '24px'
       }

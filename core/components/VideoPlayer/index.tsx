@@ -8,6 +8,7 @@ import { getDisplayedPoster } from './utils';
 
 const VideoPlayer = (props: Props) => {
   const { controls, loop, width, height, poster, src } = props;
+  
   const { dark } = useTheme();
   const [currentPoster, setCurrentPoster] = useState<string | undefined>(
     undefined

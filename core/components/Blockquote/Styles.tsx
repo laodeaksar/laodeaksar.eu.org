@@ -20,6 +20,8 @@ export const StyledBlockquote = styled('blockquote', {
   cite: {
     letterSpacing: '$normal',
     fontSize: '$2',
+    wordBreak:'break-word',
+    breakBefore:'auto',
 
     '@lg': {
       fontSize: '$3'

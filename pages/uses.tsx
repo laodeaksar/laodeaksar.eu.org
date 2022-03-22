@@ -1,8 +1,5 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useMDXComponent } from 'next-contentlayer/hooks';
-
-import MDXComponents from '~/components/MDX/MDXComponents';
 
 import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
@@ -11,33 +8,29 @@ import Grid from '~/components/Grid';
 import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
 import Link from '~/components/Link';
-import Text, { H1, H2, H3, Strong } from '~/components/Typography';
+import Text, { H1, H2, H3 } from '~/components/Typography';
 
-import ContentfulGears from '~/lib/contentful';
-import { css, Shadows } from '~/lib/stitches.config';
+import { Shadows, styled } from '~/lib/stitches.config';
 
 import Layout from '~/layout';
 
-import { allUses } from 'contentlayer/generated';
 import { allGears } from 'contentlayer/generated';
 
-const styles = {
-  svgStyle: css({
-    marginRight: '0.5rem',
-    width: '2rem',
-    height: '2rem'
-  })(),
-  imageStyle: css({
-    display: 'flex',
-    justifyContent: 'center',
-    borderRadius: '6px'
-  })()
-};
+const Svg = styled('svg', {
+  marginRight: '0.5rem',
+  width: '2rem',
+  height: '2rem'
+});
+
+const Img = styled(Image, {
+  display: 'flex',
+  justifyContent: 'center',
+  borderRadius: '6px'
+});
 
 const CategoryIcons = {
   Hardware: (
-    <svg
-      className={styles.svgStyle}
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
@@ -49,15 +42,12 @@ const CategoryIcons = {
         strokeWidth={2}
         d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
       />
-    </svg>
+    </Svg>
   ),
   Software: (
-    <svg
-      className={styles.svgStyle}
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="32"
-      height="32"
       fill="none"
       stroke="currentColor"
     >
@@ -67,15 +57,12 @@ const CategoryIcons = {
         strokeWidth={2}
         d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
       />
-    </svg>
+    </Svg>
   ),
   Office: (
-    <svg
-      className={styles.svgStyle}
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="32"
-      height="32"
       fill="none"
       stroke="currentColor"
     >
@@ -85,15 +72,12 @@ const CategoryIcons = {
         strokeWidth={2}
         d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
       />
-    </svg>
+    </Svg>
   ),
   Lifestyle: (
-    <svg
-      className={styles.svgStyle}
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      width="32"
-      height="32"
       fill="none"
       stroke="currentColor"
     >
@@ -103,7 +87,7 @@ const CategoryIcons = {
         strokeWidth={2}
         d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
       />
-    </svg>
+    </Svg>
   )
 };
 
@@ -244,8 +228,6 @@ const Uses = ({ gearByCategory }) => {
 export default Uses;
 
 export async function getStaticProps() {
-  //const gear = await ContentfulGears.getAll();
-
   const gear = allGears;
 
   const gearByCategory = gear?.reduce((accu, gearItem) => {
@@ -319,16 +301,16 @@ function GeneralItems({ items }) {
               whileHover="hover"
             >
               <Box
+                full
                 css={{
-                  width: '$full',
                   marginTop: 0,
                   marginBottom: '1rem'
                 }}
               >
                 <Grid
                   gapY={6}
+                  full
                   css={{
-                    width: '$full',
                     gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
                     alignItems: 'start',
 
@@ -344,6 +326,7 @@ function GeneralItems({ items }) {
                       gap={6}
                       alignItems="start"
                       justifyContent="center"
+                      full
                       css={{
                         position: 'relative',
                         overflow: 'hidden',
@@ -352,19 +335,13 @@ function GeneralItems({ items }) {
                         borderRadius: '6px',
                         bc: 'var(--laodeaksar-colors-foreground)',
                         transition: 'background-color 0.3s',
-                        height: '$full',
 
                         '&:hover': {
                           bc: 'var(--laodeaksar-colors-secondary)'
                         }
                       }}
                     >
-                      <Image
-                        className={styles.imageStyle}
-                        src={image?.url}
-                        alt={image?.title}
-                        layout="fill"
-                      />
+                      <Img src={image?.url} alt={image?.title} layout="fill" />
                       <Box
                         css={{
                           position: 'absolute',
@@ -404,7 +381,7 @@ function GeneralItems({ items }) {
                     <H3 css={{ marginBottom: 0 }}>{title}</H3>
                     <Box
                       css={{
-                        padding: '20px 0px',
+                        paddingBottom: '20px',
                         gridColumn: '2',
                         color: 'var(--laodeaksar-colors-typeface-secondary)',
 
@@ -414,11 +391,21 @@ function GeneralItems({ items }) {
 
                         section: {
                           marginTop: '5em'
+                        },
+
+                        '> p': {
+                          fontSize: '$4',
+                          fontWeight: '$2',
+                          letterSpacing: '0.3px',
+                          lineHeight: 1.9
+                        },
+
+                        '> a': {
+                          fontWeight: '$3'
                         }
                       }}
-                    >
-                      <div dangerouslySetInnerHTML={{ __html: body.html }} />
-                    </Box>
+                      dangerouslySetInnerHTML={{ __html: body.html }}
+                    />
                     {link && (
                       <ProductLink to={link}>Product Details</ProductLink>
                     )}
@@ -472,10 +459,10 @@ function SoftwareItems({ items }) {
                 '@md': 'row'
               }}
               alignItems="start"
+              full
               css={{
                 marginTop: 0,
                 marginBottom: '1rem',
-                width: '$full',
 
                 '@md': {
                   my: '0px',
@@ -500,25 +487,20 @@ function SoftwareItems({ items }) {
                     }
                   }}
                 >
-                  <Image
-                    className={styles.imageStyle}
-                    src={image?.url}
-                    alt={image?.title}
-                    layout="fill"
-                  />
+                  <Img src={image?.url} alt={image?.title} layout="fill" />
                 </Flex>
               </Anchor>
               <Box
+                full
                 css={{
                   marginTop: 0,
-                  marginBottom: '1rem',
-                  width: '$full'
+                  marginBottom: '1rem'
                 }}
               >
                 <H3 css={{ marginBottom: 0 }}>{title}</H3>
                 <Box
                   css={{
-                    padding: '20px 0px',
+                    paddingBottom: '20px',
                     gridColumn: '2',
                     color: 'var(--laodeaksar-colors-typeface-secondary)',
 
@@ -528,11 +510,21 @@ function SoftwareItems({ items }) {
 
                     section: {
                       marginTop: '5em'
+                    },
+
+                    '> p': {
+                      fontSize: '$4',
+                      fontWeight: '$2',
+                      letterSpacing: '0.3px',
+                      lineHeight: 1.9
+                    },
+
+                    '> a': {
+                      fontWeight: '$3'
                     }
                   }}
-                >
-                  <div dangerouslySetInnerHTML={{ __html: body.html }} />
-                </Box>
+                  dangerouslySetInnerHTML={{ __html: body.html }}
+                />
                 <ProductLink to={link}>Homepage</ProductLink>
               </Box>
             </Flex>
