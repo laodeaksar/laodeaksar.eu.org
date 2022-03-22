@@ -91,7 +91,7 @@ const BlogLayout = ({ children, post }: Props) => {
 
   const socialImageConf = generateSocialImage({
     title,
-    underlayImage: image?.url.slice(image.url.lastIndexOf('/') + 1),
+    underlayImage: image?.url?.slice(image.url.lastIndexOf('/') + 1),
     cloudName: 'laodeaksar',
     imagePublicID: 'og_social_large.png'
   });
