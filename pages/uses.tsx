@@ -402,8 +402,16 @@ function GeneralItems({ items }) {
                           lineHeight: 1.9
                         },
 
-                        '> a': {
-                          fontWeight: '$3'
+                        a: {
+                          fontWeight: '$3',
+                          fontSize: '$4'
+                        },
+
+                        ul: {
+                          margin: 0,
+                          padding: 0,
+                          fontSize: '$4',
+                          fontWeight: '$2'
                         }
                       }}
                       dangerouslySetInnerHTML={{ __html: body.html }}
@@ -521,8 +529,16 @@ function SoftwareItems({ items }) {
                       lineHeight: 1.9
                     },
 
-                    '> a': {
-                      fontWeight: '$3'
+                    a: {
+                      fontWeight: '$3',
+                      fontSize:'$4'
+                    },
+
+                    ul: {
+                      margin: 0,
+                      padding: 0,
+                      fontSize: '$4',
+                      fontWeight: '$2'
                     }
                   }}
                   dangerouslySetInnerHTML={{ __html: body.html }}
