@@ -1,14 +1,10 @@
 ---
 title: Visual Studio Code
 category: Software
-link: test
+link: https://code.visualstudio.com
 image: 
-  url: /static/images/me.jpg
-  title: Visual Studio Code
+  url: https://code.visualstudio.com/assets/images/code-stable.png
+  title: VS Code Icon
 ---
 
-If you click Buy or the image you will get redirected to a page where you can buy the product using an affilated link.
-
-An affilate link will `not` increase your price, but it will get me a small commission and helps me out :)
-
-[code](http://code.com)
+My preferred code editor of choice. The amount of extensions and customizability is just phenomenal.

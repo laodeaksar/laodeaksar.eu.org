@@ -3,8 +3,8 @@ title: Setapp
 category: Software
 link: https://go.setapp.com/invite/p1ftjivz?s=l
 image: 
-  url: https://go.setapp.com/invite/p1ftjivz?s=l
-  title: Setapp
+  url: https://images.ctfassets.net/hb3id6ag4raq/kedkJlgmSzzg0hczd6aqr/18c5b1fabbf35610ce9c8ffe19b3bbd0/image.png
+  title: Setapp Logo
 ---
 
 I started using Setapp and I really like it. I think it brings a lot of value for a low price. Lots of app included in Setapp are very usefull and you could buy them all seperatly, but would also have to upgrade the license yearly (eq Tableplus).
