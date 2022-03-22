@@ -1,7 +1,7 @@
-import Link from 'next/link';
+//import Link from 'next/link';
 import { styled } from '~/lib/stitches.config';
 
-import Anchor from '~/components/Anchor';
+import Link from '~/components/Link';
 import Grid from '~/components/Grid';
 import { H1, H3 } from '~/components/Typography';
 import SEO from '~/components/Seo';
@@ -16,8 +16,8 @@ const NotFoundPage = () => (
         <H3>
           Oh no! You just got lost 😱! <br />
           Don&apos;t worry I got you!{' '}
-          <Link href="/" passHref>
-            <Anchor underline>Click here</Anchor>
+          <Link href="/" underline>
+            Click here
           </Link>{' '}
           to go back home.
         </H3>

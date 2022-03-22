@@ -91,7 +91,7 @@ const BlogLayout = ({ children, post }: Props) => {
 
   const socialImageConf = generateSocialImage({
     title,
-    underlayImage: image?.slice(image.lastIndexOf('/') + 1),
+    underlayImage: image?.url.slice(image.url.lastIndexOf('/') + 1),
     cloudName: 'laodeaksar',
     imagePublicID: 'og_social_large.png'
   });
@@ -163,7 +163,7 @@ const BlogLayout = ({ children, post }: Props) => {
               </Flex>
             </Hero.Info>
 
-            {image && <Hero.Img className="u-photo" src={image} />}
+            {image && <Hero.Img className="u-photo" src={image.url} />}
           </Hero>
           <TableOfContent ids={ids} />
           <Box

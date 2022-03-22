@@ -42,14 +42,6 @@ const Footer = () => (
                 </Link>
                 <Link
                   data-splitbee-event="External Link"
-                  data-splitbee-event-destination="twitter"
-                  discreet
-                  href="https://twitter.com/ode_aksar"
-                >
-                  Twitter
-                </Link>
-                <Link
-                  data-splitbee-event="External Link"
                   data-splitbee-event-destination="github"
                   discreet
                   href="https://github.com/laodeaksar"

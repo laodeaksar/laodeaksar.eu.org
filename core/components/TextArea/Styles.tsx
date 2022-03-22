@@ -29,7 +29,7 @@ export const StyledTextArea = styled('textarea', {
   boxShadow: '$$shadow',
   transition: 'border-color 0.3s, box-shadow 0.3s',
 
-  '--shadow-hover-primary':
+  '$$shadow-hover-primary':
     '0 2px 20px -2px var(--laodeaksar-form-input-focus)',
 
   '&::placeholder': {
@@ -54,13 +54,13 @@ export const StyledTextArea = styled('textarea', {
   '&:hover': {
     '&:not(:disabled)': {
       $$border: 'var(--laodeaksar-form-input-active)',
-      $$shadow: 'var(--shadow-hover-primary)'
+      $$shadow: '$$shadow-hover-primary'
     }
   },
 
   '&:focus-within': {
     $$border: 'var(--laodeaksar-form-input-active)',
-    $$shadow: 'var(--shadow-hover-primary)'
+    $$shadow: '$$shadow-hover-primary'
   },
 
   variants: {

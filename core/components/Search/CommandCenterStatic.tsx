@@ -1,6 +1,7 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 
 import Box from '~/components/Box';
+import Link from '~/components/Link';
 import VisuallyHidden from '~/components/VisuallyHidden';
 import {
   ArrowIcon,
@@ -40,69 +41,55 @@ const CommandCenterStatic = () => (
     <Separator>Navigation</Separator>
     <Item key="home-navigation">
       <Link href="/">
-        <a>
-          <ArrowIcon size={4} />
-          <span style={{ marginLeft: '20px' }}>Home</span>
-        </a>
+        <ArrowIcon size={4} />
+        <span style={{ marginLeft: '20px' }}>Home</span>
       </Link>
     </Item>
     <Item key="design-navigation">
-      <Link href="/design" passHref>
-        <a>
-          <ArrowIcon size={4} />
-          <span style={{ marginLeft: '20px' }}>Design System</span>
-        </a>
+      <Link href="/design">
+        <ArrowIcon size={4} />
+        <span style={{ marginLeft: '20px' }}>Design System</span>
       </Link>
     </Item>
     <Separator>Links</Separator>
     <Item key="twitter-social-link">
-      <a
-        href="https://twitter.com/ode_aksar"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link href="https://twitter.com/ode_aksar">
         <TwitterIcon />
         <span style={{ marginLeft: '15px' }}>Twitter</span>
         <VisuallyHidden as="p">
           Link redirects to my Twitter profile page
           https://twitter.com/ode_aksar.
         </VisuallyHidden>
-      </a>
+      </Link>
     </Item>
     <Item key="email-link">
-      <a
-        href="mailto:me@laodeaksar.eu.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link href="mailto:me@laodeaksar.eu.org">
         <ContactIcon />
         <span style={{ marginLeft: '15px' }}>Contact</span>
         <VisuallyHidden as="p">
           Link opens your default mail client with my email address
           hello@laodeaksar.com prefilled.
         </VisuallyHidden>
-      </a>
+      </Link>
     </Item>
     <Item key="roadmap-link">
-      <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer">
+      <Link href="https://www.figma.com">
         <MapIcon />
         <span style={{ marginLeft: '15px' }}>Contact</span>
         <VisuallyHidden as="p">
           Link redirects to a Figma file where you can see the roadmap with my
           upcoming projects and ideas.
         </VisuallyHidden>
-      </a>
+      </Link>
     </Item>
     <Item key="project-link">
-      <Link href="/project" passHref>
-        <a>
-          <PortfolioIcon />
-          <span style={{ marginLeft: '15px' }}>Work</span>
-        </a>
+      <Link href="/project">
+        <PortfolioIcon />
+        <span style={{ marginLeft: '15px' }}>Work</span>
       </Link>
     </Item>
     <Item key="rss-link">
-      <Link href="/feed.xml" aria-label="RSS Feed">
+      <NextLink href="/feed.xml" aria-label="RSS Feed">
         <a title="RSS Feed">
           <RSSIcon />
           <span style={{ marginLeft: '15px' }}>RSS</span>
@@ -110,7 +97,7 @@ const CommandCenterStatic = () => (
             Link redirects to the rss.xml file.
           </VisuallyHidden>
         </a>
-      </Link>
+      </NextLink>
     </Item>
   </Box>
 );

@@ -3,15 +3,9 @@ import NextLink from 'next/link';
 import Anchor from '~/components/Anchor';
 
 const Link = ({ href, children, ...rest }) => {
-  if (href.match(/^(http|https):/g)) {
+  if (href.match(/^(http|https|mailto):/g)) {
     return (
-      <Anchor
-        href={href}
-        target="_blank"
-        rel="noopener 
-        noreferer"
-        {...rest}
-      >
+      <Anchor href={href} target="_blank" rel="noopener noreferer" {...rest}>
         {children}
       </Anchor>
     );

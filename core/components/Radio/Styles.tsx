@@ -24,19 +24,24 @@ export const StyledRadio = styled('input', {
 
   '$$shadow-hover-primary': '0 2px 20px 3px var(--laodeaksar-form-input-focus)',
 
+  $$do: '0.2s',
+  $$dt: '0.3s',
+  $$dte: 'ease',
+  $$scale: '0.7',
+  $$opacity: '0',
+
   '&:after': {
     content: '""',
     display: 'block',
     position: 'absolute',
     left: 0,
     top: 0,
-    transition:
-      'transform var(---dt, 0.3s) var(---dte, ease), opacity var(---do, 0.2s)',
+    transition: 'transform $$dt $$dte, opacity $$do',
     size: '22px',
     borderRadius: '$round',
     background: 'var(--laodeaksar-form-input-background)',
-    opacity: 'var(---opacity, 0)',
-    transform: 'scale(var(---scale, 0.7))'
+    opacity: '$$opacity',
+    transform: 'scale($$scale)'
   },
 
   '&:checked': {

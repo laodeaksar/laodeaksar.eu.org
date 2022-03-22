@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
+//import Link from 'next/link';
 
-import Anchor from '~/components/Anchor';
+import Link from '~/components/Link';
 import Box from '~/components/Box';
 import Grid from '~/components/Grid';
 import Newsletter from '~/components/Newsletter';
@@ -308,14 +308,9 @@ const About = ({ postsCount, initialAge }) => {
                     My true passion is to create modern websites and webapps
                     with state of the art technology. My prefered framework for
                     creating websites these days, is{' '}
-                    <Anchor
-                      underline
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      href="https:reactjs.org/"
-                    >
+                    <Link underline href="https:reactjs.org/">
                       React
-                    </Anchor>
+                    </Link>
                     . I started learning React in 2016 and since then I kept
                     learning new tools, concepts and technologies evolving
                     around React.
@@ -324,8 +319,8 @@ const About = ({ postsCount, initialAge }) => {
                     I started this blog early 2020 and oh boy did I not know
                     what a crazy year this is gonna be. On January 7th I
                     published{' '}
-                    <Link href="/hello-world" passHref>
-                      <Anchor underline>my very first blog post</Anchor>
+                    <Link href="/hello-world" underline>
+                      my very first blog post
                     </Link>{' '}
                     and since then I have written <Strong>{postsCount}</Strong>{' '}
                     articles.
@@ -336,14 +331,9 @@ const About = ({ postsCount, initialAge }) => {
                     guitar. On rainy days (or even sunny ones haha) I also like
                     watching movies and TV shows on Netflix. I try to do more
                     sports, so I (try to) train at least 3 days a week with{' '}
-                    <Anchor
-                      underline
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      href="https://www.freeletics.com/"
-                    >
+                    <Link underline href="https://www.freeletics.com/">
                       Freeletics
-                    </Anchor>{' '}
+                    </Link>{' '}
                     workouts or go for a run.
                   </Text>
                 </Box>

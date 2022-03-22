@@ -66,7 +66,7 @@ export const StyledInputWrapper = styled('div', {
   position: 'relative',
   width: '$full',
 
-  '--shadow-hover-primary':
+  '$$shadow-hover-primary':
     '0 2px 20px -2px var(--laodeaksar-form-input-focus)',
 
   svg: {
@@ -103,7 +103,7 @@ export const StyledInputWrapper = styled('div', {
   '&:hover': {
     input: {
       '&:not(:disabled)': {
-        $$shadow: 'var(--shadow-hover-primary)',
+        $$shadow: '$$shadow-hover-primary',
         $$border: 'var(--laodeaksar-form-input-active)',
 
         '& + svg': {
@@ -122,7 +122,7 @@ export const StyledInputWrapper = styled('div', {
   '&:focus-within': {
     $$border: 'var(--laodeaksar-form-input-active)',
     $$stroke: 'var(--laodeaksar-form-input-active)',
-    $$shadow: 'var(--shadow-hover-primary)'
+    $$shadow: '$$shadow-hover-primary'
   },
 
   variants: {

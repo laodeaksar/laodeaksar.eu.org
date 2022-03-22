@@ -172,8 +172,6 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
       <Card.Body>
         <Flex>{entry.body}</Flex>
         <Grid gapX={2} flow="column" align="center" justify="start" mt={3}>
-          {/* <Text as="p" css={{ marginBottom: 0 }}></Text> */}
-          {/* <span>&bull;</span> */}
           <time dateTime={entry.updated_at}>
             {new Date(entry.updated_at).toLocaleDateString('en', {
               month: 'short',
@@ -209,7 +207,6 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    //stroke="var(--laodeaksar-colors-typeface-tertiary)"
                     stroke="currentColor"
                     strokeWidth="2"
                   >

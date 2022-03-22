@@ -1,4 +1,4 @@
-import { useEffect,useState, FormEvent } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import useSWR from 'swr';
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
@@ -58,7 +58,7 @@ const Newsletter = (props: Props) => {
         }
       }
     );
-    reset({ ...data })
+    reset({ ...data });
   };
 
   return (
@@ -150,6 +150,7 @@ const Newsletter = (props: Props) => {
           </Flex>
         </form>
         {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
+        {/*errors.email.message.includes==='already subscribe'&&*/}
       </NewsletterFormContent>
       <Toaster />
     </Card>

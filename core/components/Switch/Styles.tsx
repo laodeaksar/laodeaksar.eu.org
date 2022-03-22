@@ -44,7 +44,6 @@ export const StyledSwitch = styled('input', {
     background: '$$ab',
 
     transition: 'transform $$dt $$dte, opacity $$do, box-shadow 0.2s',
-    // 'transform var(---dt, 0.3s) var(---dte, ease), opacity var(---do, 0.2s), box-shadow 0.2s',
     transform: 'translateX($$x)'
   },
 

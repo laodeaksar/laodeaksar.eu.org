@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-import Anchor from '~/components/Anchor';
+import Link from '~/components/Link';
 import Text from '~/components/Typography';
 import { WebmentionReplies } from '~/components/Webmentions';
 
@@ -16,16 +16,14 @@ const Signature = ({ title, url }: { title: string; url: string }) => {
         <Text as="p">
           Do you have any questions, comments or simply wish to contact me
           privately? Don&apos;t hesitate to shoot me a DM on{' '}
-          <Anchor
+          <Link
             data-splitbee-event="External Link"
             data-splitbee-event-destination="twitter"
             favicon
             href="http://twitter.com/ode_aksar"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Twitter
-          </Anchor>
+          </Link>
           .
         </Text>
         <br />

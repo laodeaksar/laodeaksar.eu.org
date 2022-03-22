@@ -24,12 +24,18 @@ export const StyledCheckbox = styled('input', {
 
   '$$shadow-hover-primary': '0 2px 20px 3px var(--laodeaksar-form-input-focus)',
 
+    $$do: '0.2s',
+    $$dt: '0.3s',
+    $$dte: 'ease',
+    $$dtd: '0s',
+    $$rotation: '20deg',
+
   '&:after': {
     content: '""',
     display: 'block',
     position: 'absolute',
     opacity: '$$opacity',
-    transition: 'transform var(---dt, 0.3s) var(---dte, ease) var(---dtd, 0s), opacity var(---do, 0.2s)',
+    transition: 'transform $$dt $$dte $$dtd, opacity $$do',
     width: '6px',
     height: '10px',
     border: '2px solid var(--laodeaksar-form-input-background)',
@@ -37,7 +43,7 @@ export const StyledCheckbox = styled('input', {
     borderLeft: '0',
     left: '8px',
     top: '5px',
-    transform: 'rotate(var(---rotation, 20deg))'
+    transform: 'rotate($$rotation)'
   },
 
   '&:checked': {
