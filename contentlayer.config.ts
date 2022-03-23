@@ -133,8 +133,8 @@ const contentLayerConfig = makeSource({
       remarkSectionize,
       remarkFigure,
       remarkGfm
-    ]
-    //  rehypePlugins: [[rehypePrism, { ignoreMissing: true }]]
+    ],
+    rehypePlugins: [[rehypePrism, { ignoreMissing: true }]]
   }
 });
 
