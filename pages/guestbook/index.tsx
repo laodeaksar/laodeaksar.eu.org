@@ -198,7 +198,6 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
         </time>
         {data?.user?.email === entry.email && (
           <>
-            <span>&bull;</span>
             <Button
               css={{
                 $$background: 'transparent',
@@ -253,6 +252,7 @@ function GuestbookEntries() {
         {session && (
           <Button
             variant="icon"
+            css={{my:4}}
             onClick={() => signOut()}
             icon={
               <svg
