@@ -171,13 +171,24 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
     <Box
       css={{
         '&:not(:last-child)': {
-          borderBottom: '2px'
+          paddingBottom: '2rem',
+          marginBottom: '2rem',
+          borderBottom: '2px solid currentColor'
         }
       }}
     >
-      <Text as="p">{entry.created_by}</Text>
+      <Text
+        size={5}
+        weight={3}
+        css={{
+          marginBottom: 2
+        }}
+        as="p"
+      >
+        {entry.created_by}
+      </Text>
       <Flex>{entry.body}</Flex>
-      <Grid gapX={2} flow="column" align="center" justify="start" mt={3}>
+      <Grid gapX={2} flow="column" align="center" justify='between' mt={3}>
         <time dateTime={entry.updated_at}>
           {new Date(entry.updated_at).toLocaleDateString('en', {
             month: 'short',
@@ -236,7 +247,28 @@ function GuestbookEntries() {
 
   return (
     <Card css={{ marginTop: '$4' }}>
-      <Card.Header css={{ fontSize: '$3' }}>All Message</Card.Header>
+      <Card.Header css={{ fontSize: '$3' }}>
+        All Message
+        <Button
+          variant="icon"
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          }
+        />
+      </Card.Header>
       <Card.Body>
         {entries?.map((entry) => (
           <Entry key={entry.id} entry={entry} />
