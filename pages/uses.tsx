@@ -170,57 +170,18 @@ const Uses = ({ gearByCategory }) => {
             );
           })}
 
-          <Box
-            css={{
-              padding: '0',
-              color: 'var(--laodeaksar-colors-brand)',
-              borderRadius: '6px'
-            }}
-          >
-            <Callout variant="info">
-              <Text
-                as="p"
-                variant="tertiary"
-                size={1}
-                css={{ marginBottom: 0 }}
-              >
-                If you click <strong>Buy</strong> or <strong>the image</strong>{' '}
-                you will get redirected to a page where you can buy the product
-                using an <strong>affilated link</strong>.
-              </Text>
+          <Callout variant="info">
+            <Text as="p" variant="tertiary" size={1} css={{ marginBottom: 0 }}>
+              If you click <strong>Buy</strong> or <strong>the image</strong>{' '}
+              you will get redirected to a page where you can buy the product
+              using an <strong>affilated link</strong>.
+            </Text>
 
-              <Text as="p" variant="tertiary" size={1}>
-                An affilate link will not increase your price, but it will get
-                me a small commission and helps me out :)
-              </Text>
-            </Callout>
-            <Flex>
-              <Box
-                css={{
-                  marginLeft: '0',
-                  marginTop: 0,
-                  marginBottom: '1rem'
-                }}
-              >
-                <Text
-                  as="p"
-                  variant="tertiary"
-                  size={1}
-                  css={{ marginBottom: 0 }}
-                >
-                  If you click <strong>Buy</strong> or{' '}
-                  <strong>the image</strong> you will get redirected to a page
-                  where you can buy the product using an{' '}
-                  <strong>affilated link</strong>.
-                </Text>
-
-                <Text as="p" variant="tertiary" size={1}>
-                  An affilate link will not increase your price, but it will get
-                  me a small commission and helps me out :)
-                </Text>
-              </Box>
-            </Flex>
-          </Box>
+            <Text as="p" variant="tertiary" size={1}>
+              An affilate link will not increase your price, but it will get me
+              a small commission and helps me out :)
+            </Text>
+          </Callout>
         </Box>
       </Grid>
     </Layout>
@@ -326,17 +287,16 @@ function GeneralItems({ items }) {
                   <Anchor href={affiliateLink || link}>
                     <Flex
                       gap={6}
-                      alignItems="start"
+                      alignItems="center"
                       justifyContent="center"
-                      full
                       css={{
                         position: 'relative',
                         overflow: 'hidden',
                         padding: '1rem',
-                        width: '6rem',
                         borderRadius: '6px',
                         bc: 'var(--laodeaksar-colors-foreground)',
                         transition: 'background-color 0.3s',
+                        height: '$full',
 
                         '&:hover': {
                           bc: 'var(--laodeaksar-colors-secondary)'
@@ -411,7 +371,8 @@ function GeneralItems({ items }) {
                           margin: 0,
                           padding: 0,
                           fontSize: '$4',
-                          fontWeight: '$2'
+                          fontWeight: '$2',
+                          listStyle: '→ inside none'
                         }
                       }}
                       dangerouslySetInnerHTML={{ __html: body.html }}
@@ -531,14 +492,15 @@ function SoftwareItems({ items }) {
 
                     a: {
                       fontWeight: '$3',
-                      fontSize:'$4'
+                      fontSize: '$4'
                     },
 
                     ul: {
                       margin: 0,
                       padding: 0,
                       fontSize: '$4',
-                      fontWeight: '$2'
+                      fontWeight: '$2',
+                      listStyle: '→ inside none'
                     }
                   }}
                   dangerouslySetInnerHTML={{ __html: body.html }}

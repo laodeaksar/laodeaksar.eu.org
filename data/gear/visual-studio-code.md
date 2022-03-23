@@ -3,7 +3,7 @@ title: Visual Studio Code
 category: Software
 link: https://code.visualstudio.com
 image: 
-  url: https://code.visualstudio.com/assets/images/code-stable.png
+  url: /static/images/me.jpg
   title: VS Code Icon
 ---
 
