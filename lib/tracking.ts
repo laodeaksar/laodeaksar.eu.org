@@ -1,4 +1,4 @@
-const trackEvent = ({ name, value, type = 'type' }) => {
+const trackEvent = ({ event, name, value, type = 'type' }) => {
   const { splitbee } = window as any;
 
   if (splitbee) {

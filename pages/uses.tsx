@@ -16,6 +16,7 @@ import Layout from '~/layout';
 
 import { allGears } from 'contentlayer/generated';
 import Callout from '~/components/Callout';
+import { ExternalIcon } from '~/components/Icons';
 
 const Svg = styled('svg', {
   marginRight: '0.5rem',
@@ -142,13 +143,7 @@ const Uses = ({ gearByCategory }) => {
                 }}
                 key={category}
               >
-                <Box
-                  css={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '$3'
-                  }}
-                >
+                <Flex css={{ marginBottom: '$3' }}>
                   {CategoryIcons[category]}
                   <H2
                     css={{
@@ -160,7 +155,7 @@ const Uses = ({ gearByCategory }) => {
                   >
                     {category}
                   </H2>
-                </Box>
+                </Flex>
                 {category === 'Software' ? (
                   <SoftwareItems items={items} />
                 ) : (
@@ -209,34 +204,20 @@ export async function getStaticProps() {
   };
 }
 
-function ProductLink({ children, to }) {
+function ProductLink({ children, href }) {
   return (
-    <Anchor
+    <Link
       style={{
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
         gap: '0.5rem',
         fontWeight: '700'
       }}
-      href={to}
+      href={href}
     >
       {children}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        fill="none"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-        />
-      </svg>
-    </Anchor>
+      <ExternalIcon />
+    </Link>
   );
 }
 
@@ -272,10 +253,13 @@ function GeneralItems({ items }) {
               >
                 <Grid
                   gapY={6}
-                  full
+                  align="start"
+                  flow={{
+                    '@initial': 'row',
+                    '@lg': 'column'
+                  }}
                   css={{
                     gridTemplateColumns: 'repeat(1, minmax(0, 1fr))',
-                    alignItems: 'start',
 
                     '@lg': {
                       gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
@@ -284,11 +268,19 @@ function GeneralItems({ items }) {
                     }
                   }}
                 >
-                  <Anchor href={affiliateLink || link}>
+                  <Link
+                    href={affiliateLink || link}
+                    tracking={{
+                      event: 'click',
+                      name: 'Affiliate Link',
+                      value: affiliateLink
+                    }}
+                  >
                     <Flex
                       gap={6}
                       alignItems="center"
                       justifyContent="center"
+                      direction="column"
                       css={{
                         position: 'relative',
                         overflow: 'hidden',
@@ -299,12 +291,13 @@ function GeneralItems({ items }) {
                         height: '$full',
 
                         '&:hover': {
-                          bc: 'var(--laodeaksar-colors-secondary)'
+                          bc: 'var(--laodeaksar-colors-emphasis)'
                         }
                       }}
                     >
-                      <Img src={image?.url} alt={image?.title} layout="fill" />
-                      <Box
+                      <img src={image?.url} alt={image?.title} />
+                      <Flex
+                        justifyContent="center"
                         css={{
                           position: 'absolute',
                           bottom: '0',
@@ -314,6 +307,7 @@ function GeneralItems({ items }) {
                           transform: 'translateY(100%)',
                           bc: 'var(--laodeaksar-colors-foreground)',
                           boxShadow: Shadows[1],
+                          width: '$full',
 
                           '&:hover': {
                             transform: 'translateY(0)'
@@ -325,9 +319,9 @@ function GeneralItems({ items }) {
                             ? 'Clicking will redirect using the affiliate link'
                             : 'Clicking will redirect to product page'}
                         </Text>
-                      </Box>
+                      </Flex>
                     </Flex>
-                  </Anchor>
+                  </Link>
                   <Flex
                     direction="column"
                     alignItems="start"
@@ -340,7 +334,7 @@ function GeneralItems({ items }) {
                       }
                     }}
                   >
-                    <H3 css={{ marginBottom: 0 }}>{title}</H3>
+                    <H2 css={{ marginBottom: 0 }}>{title}</H2>
                     <Box
                       css={{
                         paddingBottom: '20px',
@@ -355,7 +349,7 @@ function GeneralItems({ items }) {
                           marginTop: '5em'
                         },
 
-                        '> p': {
+                        p: {
                           fontSize: '$4',
                           fontWeight: '$2',
                           letterSpacing: '0.3px',
@@ -372,30 +366,44 @@ function GeneralItems({ items }) {
                           padding: 0,
                           fontSize: '$4',
                           fontWeight: '$2',
-                          listStyle: '→ inside none'
+                          listStyle: 'disc inside none',
+
+                          li: {
+                            my: '$3'
+                          }
                         }
                       }}
                       dangerouslySetInnerHTML={{ __html: body.html }}
                     />
                     {link && (
-                      <ProductLink to={link}>Product Details</ProductLink>
+                      <ProductLink href={link}>Product Details</ProductLink>
                     )}
                     {affiliateLink && (
                       <Flex
                         alignItems="flex-end"
                         css={{
                           flex: '1',
-                          maxWidth: '24rem'
+                          maxWidth: '20rem'
                         }}
                       >
-                        <Anchor href={affiliateLink}>
-                          <Button
-                            variant="primary"
-                            css={{ width: '$full', px: '2rem' }}
-                          >
-                            {affiliateLinkText || 'Buy'}
-                          </Button>
-                        </Anchor>
+                        <Link
+                          css={{
+                            textAlign: 'center',
+                            background: 'var(--laodeaksar-colors-brand)',
+                            color: 'var(--laodeaksar-colors-background)',
+                            width: '$max',
+                            padding: '$3 $8',
+                            borderRadius: '$1'
+                          }}
+                          href={affiliateLink}
+                          tracking={{
+                            event: 'click',
+                            name: 'Affiliate Link',
+                            value: affiliateLink
+                          }}
+                        >
+                          {affiliateLinkText || 'Buy'}
+                        </Link>
                       </Flex>
                     )}
                   </Flex>
@@ -430,7 +438,6 @@ function SoftwareItems({ items }) {
                 '@md': 'row'
               }}
               alignItems="start"
-              full
               css={{
                 marginTop: 0,
                 marginBottom: '1rem',
@@ -454,21 +461,15 @@ function SoftwareItems({ items }) {
                     size: '6rem',
 
                     '&:hover': {
-                      bc: 'var(--laodeaksar-colors-foreground)'
+                      bc: 'var(--laodeaksar-colors-emphasis)'
                     }
                   }}
                 >
                   <Img src={image?.url} alt={image?.title} layout="fill" />
                 </Flex>
               </Anchor>
-              <Box
-                full
-                css={{
-                  marginTop: 0,
-                  marginBottom: '1rem'
-                }}
-              >
-                <H3 css={{ marginBottom: 0 }}>{title}</H3>
+              <Box css={{ marginTop: 0, marginBottom: '1rem' }}>
+                <H2 css={{ marginBottom: 0 }}>{title}</H2>
                 <Box
                   css={{
                     paddingBottom: '20px',
@@ -483,7 +484,7 @@ function SoftwareItems({ items }) {
                       marginTop: '5em'
                     },
 
-                    '> p': {
+                    p: {
                       fontSize: '$4',
                       fontWeight: '$2',
                       letterSpacing: '0.3px',
@@ -492,20 +493,24 @@ function SoftwareItems({ items }) {
 
                     a: {
                       fontWeight: '$3',
-                      fontSize: '$4'
+                      fontSize: '$4',
+                      color: 'var(--laodeaksar-colors-brand)'
                     },
 
                     ul: {
-                      margin: 0,
-                      padding: 0,
+                      paddingLeft: '$3',
                       fontSize: '$4',
                       fontWeight: '$2',
-                      listStyle: '→ inside none'
+                      listStyle: 'disc outside none',
+
+                      li: {
+                        my: '$3'
+                      }
                     }
                   }}
                   dangerouslySetInnerHTML={{ __html: body.html }}
                 />
-                <ProductLink to={link}>Homepage</ProductLink>
+                <ProductLink href={link}>Homepage</ProductLink>
               </Box>
             </Flex>
           </Box>

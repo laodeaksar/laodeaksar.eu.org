@@ -14,6 +14,7 @@ export type IconButtonVariant = 'icon';
 interface BaseButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   as?: ForwardRefComponent<HTMLButtonElement, HTMLMotionProps<'button'>>;
   type?: 'button' | 'reset' | 'submit';
+  tracking?: any;
 }
 
 interface MainButtonProps extends BaseButtonProps {

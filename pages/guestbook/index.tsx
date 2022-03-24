@@ -173,7 +173,7 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
         '&:not(:last-child)': {
           paddingBottom: '2rem',
           marginBottom: '2rem',
-          borderBottom: '1px solid currentColor'
+          borderBottom: '1px solid var(--laodeaksar-border-color)'
         }
       }}
     >
