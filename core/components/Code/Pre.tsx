@@ -4,8 +4,16 @@ import {styled}from'~/lib/stitches.config';
 import prism from '~/styles/prism';
 
 import Card from '~/components/Card';
+import { hasTitle } from './utils';
+import { CodeBlockProps } from './types';
+import { CopyToClipboardButton } from '../Button';
 
-const Pre = ({ children }: { children: React.ReactNode }) => {
+
+const Pre = (props: CodeBlockProps) => {
+  const { codeString, children, metastring } = props;
+
+  const title = hasTitle(metastring);
+
   return (
     <Card
       css={{
@@ -19,9 +27,20 @@ const Pre = ({ children }: { children: React.ReactNode }) => {
           right: '50%',
           mx: '-50vw',
           borderRadius: '0px'
-        },
+        }
       }}
     >
+      {title && (
+        <Card.Header
+          css={{
+            padding: '0px 16px',
+            bc: 'var(--code-snippet-background)'
+          }}
+        >
+          <CodeSnippetTitle>{title}</CodeSnippetTitle>
+          <CopyToClipboardButton title={title} text={codeString} />
+        </Card.Header>
+      )}
       <PreWrapper className={prism}>{children}</PreWrapper>
     </Card>
   );
@@ -36,4 +55,12 @@ const PreWrapper = styled('pre', {
   bc: 'var(--code-snippet-background)',
   fontSize: '$1',
   lineHeight: '26px'
+});
+
+const CodeSnippetTitle = styled('p', {
+  marginBlockStart: '0px',
+  fontSize: '$1',
+  marginBottom: '0px',
+  color: 'var(--laodeaksar-colors-typeface-primary)',
+  fontWeight: '$3'
 });

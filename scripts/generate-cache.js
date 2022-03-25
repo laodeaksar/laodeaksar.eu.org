@@ -11,15 +11,15 @@ const lunr = require('lunr');
     snippet: 'data/snippets'
   };
 
-  function getPosts(type) {
+  function getPosts(types) {
     const files = fs
-      .readdirSync(join(root, typeToPath[type]))
+      .readdirSync(join(root, typeToPath[types]))
       .filter((name) => name !== 'img');
 
     const posts = files
       .reduce((allPosts, postSlug) => {
         const source = fs.readFileSync(
-          join(root, typeToPath[type], postSlug),
+          join(root, typeToPath[types], postSlug),
           'utf8'
         );
         const { data } = matter(source);
@@ -41,8 +41,8 @@ const lunr = require('lunr');
   const index = lunr(function () {
     this.field('title');
     this.field('description');
-    this.field('keywords');
-    this.field('type');
+    this.field('tags');
+    this.field('types');
     this.ref('slug');
 
     documents.forEach(function (doc) {
@@ -50,8 +50,8 @@ const lunr = require('lunr');
     }, this);
   });
 
-  const store = documents.reduce((acc, { slug, description, title, type }) => {
-    acc[slug] = { title, description, slug, type };
+  const store = documents.reduce((acc, { slug, description, title, types }) => {
+    acc[slug] = { title, description, slug, types };
     return acc;
   }, {});
 

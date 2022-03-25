@@ -1,7 +1,7 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
 import useSWR, { SWRConfig, useSWRConfig } from 'swr';
 import toast, { Toaster } from 'react-hot-toast';
-import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
 
 import fetcher from '~/lib/fetcher';
 
@@ -11,9 +11,9 @@ import Flex from '~/components/Flex';
 import Grid from '~/components/Grid';
 import TextInput from '~/components/TextInput';
 import Text, { H2 } from '~/components/Typography';
+import SEO from '~/components/Seo';
 import Spinner from '~/components/Spinner';
 import { GithubIcon } from '~/components/Icons';
-import SEO from '~/components/Seo';
 
 import prisma from '~/lib/prisma';
 import Layout from '~/layout';

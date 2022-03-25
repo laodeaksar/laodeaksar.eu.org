@@ -48,7 +48,8 @@ const fields: FieldDefs = {
   featured: { type: 'boolean' },
   link: { type: 'string' },
   affiliateLink: { type: 'string' },
-  affiliateLinkText: { type: 'string' }
+  affiliateLinkText: { type: 'string' },
+  types: { type: 'enum', options: ['snippet', 'blog'], default: 'snippet' }
 };
 
 const computedFields: ComputedFields = {
@@ -88,7 +89,8 @@ const Blog = defineDocumentType(() => ({
     'link',
     'affiliateLink',
     'affiliateLinkText',
-    'category'
+    'category',
+    'types'
   ]),
   computedFields
 }));
@@ -97,7 +99,7 @@ const Snippet = defineDocumentType(() => ({
   name: 'Snippet',
   filePathPattern: 'snippets/*.mdx',
   contentType: 'mdx',
-  fields: pick(fields, ['title', 'description', 'date', 'image', 'language']),
+  fields: pick(fields, ['title', 'description', 'date', 'image', 'language','types']),
   computedFields: pick(computedFields, ['slug', 'url'])
 }));
 
@@ -111,8 +113,8 @@ const Gear = defineDocumentType(() => ({
     'image',
     'link',
     'affiliateLink',
-    'affiliateLinkText'
-  ]),
+    'affiliateLinkText',
+  ])
 }));
 
 const OtherPage = defineDocumentType(() => ({

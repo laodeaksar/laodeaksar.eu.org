@@ -23,7 +23,7 @@ import {
 } from './Styles';
 
 type Result = {
-  type: 'Snippet' | 'Blog';
+  types: 'snippet' | 'blog';
   slug: string;
   title: string;
 };
@@ -117,7 +117,7 @@ const Search = (props: Props) => {
         switch (e.key) {
           case 'Enter':
             const href = `/${
-              selectedResult.type === 'Snippet' ? 'snippets' : 'blog'
+              selectedResult.types === 'snippet' ? 'snippets' : 'blog'
             }/${selectedResult.slug}/`;
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
@@ -270,7 +270,7 @@ const Search = (props: Props) => {
                   >
                     <Link
                       href={`/${
-                        result.type === 'Snippet' ? 'snippets' : 'blog'
+                        result.types === 'snippet' ? 'snippets' : 'blog'
                       }/${result.slug}`}
                     >
                       <a onClick={() => setTimeout(onClose, 600)}>

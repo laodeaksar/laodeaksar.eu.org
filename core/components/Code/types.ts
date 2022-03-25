@@ -1,4 +1,5 @@
 import { Language } from 'prism-react-renderer';
+import React from 'react';
 
 export type PrePropsType = {
   props: {
@@ -21,6 +22,7 @@ export interface CodeBlockProps {
   metastring: string | null;
   live?: boolean;
   render?: boolean;
+  children?: React.ReactNode
 }
 
 export interface HighlightedCodeTextProps {

@@ -77,7 +77,7 @@ export const Image = ({
           variant="tertiary"
           weight="3"
         >
-          {alt}
+          {alt || title}
         </Text>
       </Box>
     </Box>

@@ -1,7 +1,31 @@
-import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import NextDocument, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript
+} from 'next/document';
 import { getCssText } from '~/lib/stitches.config';
 
 export default class Document extends NextDocument {
+  /*
+  static async getInitialProps(ctx: DocumentContext) {
+    const cssText = getCssText();
+    const { css } = await postCss([
+      postCssPresetEnv() as AcceptedPlugin,
+    ]).process(cssText);
+    const initialProps = await NextDocument.getInitialProps(ctx)
+    return {
+      ...initialProps,
+      styles: (
+        <>
+          {initialProps.styles}
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: css }} />
+        </>
+      ),
+    };
+  }
+  */
   render() {
     return (
       <Html lang="en">
@@ -12,36 +36,6 @@ export default class Document extends NextDocument {
             href="/fonts/ibm-plex-sans-var.woff2"
             as="font"
             crossOrigin="anonymous"
-          />
-          <meta
-            name="msapplication-config"
-            content="/static/favicons/browserconfig.xml"
-          />
-          <meta
-            name="msapplication-TileImage"
-            content="/static/favicons/mstile-144x144.png"
-          />
-          <meta name="theme-color" content="#ffffff" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/static/favicons/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/svg+xml"
-            href="/static/favicons/favicon.svg"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            href="/static/favicons/favicon.png"
-          />
-          <link rel="manifest" href="/static/favicons/site.webmanifest" />
-          <link
-            rel="mask-icon"
-            href="/static/favicons/safari-pinned-tab.svg"
-            color="#333333"
           />
           <link
             rel="webmention"
