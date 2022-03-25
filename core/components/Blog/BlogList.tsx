@@ -35,8 +35,14 @@ export function BlogList({ post }: { post: Post }) {
           as="p"
           css={{
             textAlign: 'left',
-            marginBottom: 0
+            marginBottom: 0,
+            maxWidth: '10rem',
+
+            '@md': {
+              maxWidth: '$full'
+            }
           }}
+          ellipsis
         >
           {title}
         </Text>

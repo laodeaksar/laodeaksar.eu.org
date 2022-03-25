@@ -41,5 +41,5 @@ export const Button = styled('button', {
   background: 'transparent',
   fontSize: '$3',
   lineHeight: '1.9',
-  letterSpacing: '0.3px'
+  letterSpacing: '0.3px',
 });

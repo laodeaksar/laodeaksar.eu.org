@@ -39,7 +39,7 @@ const spaces = {
   15: '512px'
 };
 
-const { styled, css, theme, getCssText, keyframes, config } = createStitches({
+const { styled, css, theme, getCssText, keyframes, config,reset } = createStitches({
   theme: {
     fonts: {
       default: 'inherit',

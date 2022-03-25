@@ -34,7 +34,10 @@ export function TagList({ post }) {
         <Flex
           direction="column"
           alignItems="start"
-          css={{ gap: 0, textAlign: 'left' }}
+          css={{
+            gap: 0,
+            textAlign: 'left'
+          }}
         >
           <Text
             as="p"
@@ -42,10 +45,13 @@ export function TagList({ post }) {
             weight={3}
             css={{
               marginBottom: 0,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis'
+              maxWidth: '10rem',
+
+              '@md': {
+                maxWidth: '$full'
+              }
             }}
+            ellipsis
           >
             {title}
           </Text>
@@ -54,10 +60,13 @@ export function TagList({ post }) {
             size={2}
             css={{
               marginBottom: 0,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis'
+              maxWidth: '10rem',
+
+              '@md': {
+                maxWidth: '$full'
+              }
             }}
+            ellipsis
           >
             {description}
           </Text>

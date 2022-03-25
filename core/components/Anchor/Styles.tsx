@@ -109,6 +109,23 @@ export const StyledAnchor = styled('a', {
           }
         }
       }
+    },
+    tags: {
+      true: {
+        '--size': '1.1em',
+
+        '&:before': {
+          content: '""',
+          display: 'inline-block',
+          verticalAlign: 'middle',
+          size: 'var(--size, 1.05em)',
+          maskImage: 'var(--icon)',
+          WebkitMaskRepeat: 'no-repeat',
+          bc: 'currentColor',
+          marginRight: '0.18em',
+          transform: 'translateY(-2px)'
+        }
+      }
     }
   }
 });
