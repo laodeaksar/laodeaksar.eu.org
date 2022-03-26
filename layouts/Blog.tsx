@@ -135,11 +135,11 @@ const BlogLayout = ({ children, post }: Props) => {
             <Hero.Title className="p-name">{title}</Hero.Title>
             <Hero.Info>
               <Flex mb={3} wrap>
-                {tags.map((text) => (
-                  <Link key={text} href={'/tags/' + text} arrow="right" discreet>
+                {/*tags.map((text) => (
+                  <Link key={text} href={'/tags/' + text} tags discreet>
                     {text}
                   </Link>
-                ))}
+                ))*/}
                 <Text
                   as="p"
                   size="1"

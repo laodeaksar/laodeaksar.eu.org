@@ -5,6 +5,9 @@ import NextDocument, {
   Main,
   NextScript
 } from 'next/document';
+// import postCss, { AcceptedPlugin } from 'postcss';
+// import postCssPresetEnv from 'postcss-preset-env';
+
 import { getCssText } from '~/lib/stitches.config';
 
 export default class Document extends NextDocument {

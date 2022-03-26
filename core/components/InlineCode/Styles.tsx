@@ -1,6 +1,6 @@
 import { Shadows, styled } from '~/lib/stitches.config';
 
-export const StyledInlineCode = styled('span', {
+export const StyledInlineCode = styled('code', {
   fontFamily: '$mono',
   lineHeight: '1.45rem',
   borderRadius: '$1',

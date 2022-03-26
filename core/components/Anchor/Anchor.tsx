@@ -9,7 +9,6 @@ const Anchor = forwardRef(
     const {
       children,
       href,
-      tags,
       arrow,
       underline,
       favicon,
@@ -17,7 +16,7 @@ const Anchor = forwardRef(
       ...rest
     } = props;
 
-    const icon = getIconString(href, arrow, tags);
+    const icon = getIconString(href, arrow);
 
     return (
       <StyledAnchor
@@ -26,7 +25,6 @@ const Anchor = forwardRef(
         discreet={discreet}
         favicon={favicon}
         href={href}
-        tags={tags}
         underline={underline}
         ref={ref}
         {...rest}

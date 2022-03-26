@@ -67,8 +67,6 @@ const IndexPage = ({
               </a>
             </Link>
             <a
-              data-splitbee-event="External Link"
-              data-splitbee-event-destination="twitter"
               href="https://twitter.com/ode_aksar"
               target="_blank"
               rel="noreferrer noopener"
@@ -165,7 +163,7 @@ const IndexPage = ({
                         }}
                         depth={1}
                       >
-                        <Card.Body dotMatrix>
+                        <Card.Body>
                           <H3
                             gradient
                             css={{

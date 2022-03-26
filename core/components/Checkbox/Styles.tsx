@@ -59,6 +59,7 @@ export const StyledCheckbox = styled('input', {
 
   '&:disabled': {
     $$background: 'var(--laodeaksar-form-input-disabled)',
+    
     cursor: 'not-allowed',
     opacity: '0.65',
 

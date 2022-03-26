@@ -13,6 +13,7 @@ import { remarkSectionize } from './lib/remark/remark-sectionize-fork';
 import readingTime from 'reading-time';
 import remarkSlug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
+import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import remarkAutolinkHeadings from 'remark-autolink-headings';
 
@@ -99,7 +100,14 @@ const Snippet = defineDocumentType(() => ({
   name: 'Snippet',
   filePathPattern: 'snippets/*.mdx',
   contentType: 'mdx',
-  fields: pick(fields, ['title', 'description', 'date', 'image', 'language','types']),
+  fields: pick(fields, [
+    'title',
+    'description',
+    'date',
+    'image',
+    'language',
+    'types'
+  ]),
   computedFields: pick(computedFields, ['slug', 'url'])
 }));
 
@@ -113,7 +121,7 @@ const Gear = defineDocumentType(() => ({
     'image',
     'link',
     'affiliateLink',
-    'affiliateLinkText',
+    'affiliateLinkText'
   ])
 }));
 
@@ -136,7 +144,7 @@ const contentLayerConfig = makeSource({
       remarkFigure,
       remarkGfm
     ],
-    rehypePlugins: [[rehypePrism, { ignoreMissing: true }]]
+    rehypePlugins: [[rehypePrism, { ignoreMissing: true }], rehypeCodeTitles]
   }
 });
 

@@ -1,6 +1,6 @@
 import Grid from '~/components/Grid';
-import Tweet from '~/components/Tweet';
 import SEO from '~/components/Seo';
+import Tweet from '~/components/Tweet';
 import { H1 } from '~/components/Typography';
 
 import Layout from '~/layout';

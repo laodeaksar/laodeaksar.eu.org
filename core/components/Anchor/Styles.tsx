@@ -113,6 +113,7 @@ export const StyledAnchor = styled('a', {
     tags: {
       true: {
         '--size': '1.1em',
+        border: '1px solid currentColor',
 
         '&:before': {
           content: '""',

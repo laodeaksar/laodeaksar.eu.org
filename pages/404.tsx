@@ -1,10 +1,9 @@
-//import Link from 'next/link';
 import { styled } from '~/lib/stitches.config';
 
 import Link from '~/components/Link';
 import Grid from '~/components/Grid';
-import { H1, H3 } from '~/components/Typography';
 import SEO from '~/components/Seo';
+import { H1, H3 } from '~/components/Typography';
 
 const NotFoundPage = () => (
   <Grid columns="medium" gapX={4}>

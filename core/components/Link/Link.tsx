@@ -33,8 +33,8 @@ const Link = ({ href, children, tracking, ...rest }: Props) => {
         href={href}
         target="_blank"
         rel="noopener noreferer"
-        {...rest}
         onClick={handleOutboundLinkClicked}
+        {...rest}
       >
         {children}
       </Anchor>

@@ -33,24 +33,18 @@ const Footer = () => (
             <Text size={1}>
               <Grid>
                 <Link
-                  data-splitbee-event="External Link"
-                  data-splitbee-event-destination="twitter"
                   discreet
                   href="https://twitter.com/ode_aksar"
                 >
                   Twitter
                 </Link>
                 <Link
-                  data-splitbee-event="External Link"
-                  data-splitbee-event-destination="github"
                   discreet
                   href="https://github.com/laodeaksar"
                 >
                   Github
                 </Link>
                 <Link
-                  data-splitbee-event="External Link"
-                  data-splitbee-event-destination="revue"
                   discreet
                   href="https://www.getrevue.co/profile/laodeaksar"
                 >

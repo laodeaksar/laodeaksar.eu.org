@@ -19,7 +19,6 @@ const Github =
 export const getIconString = (
   href?: string,
   arrow?: ArrowPosition,
-  tags?: boolean
 ): any => {
   switch (true) {
     case typeof arrow !== 'undefined':
@@ -28,7 +27,7 @@ export const getIconString = (
       return Twitter;
     case href && href.includes('github.com'):
       return Github;
-    case tags === true:
+    case href&&href.includes('tags'):
       return Hastag;
     default:
       // Improve: Add default link icon here

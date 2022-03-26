@@ -27,7 +27,7 @@ const Tag = ({
   const title = `Posts list for ${currentTag} tags`;
 
   return (
-    <Layout footer header headerProps={{ offsetHeight: 256 }}>
+    <Layout footer header headerProps={{ offsetHeight: 200 }}>
       <SEO title={title} />
       <Grid columns="medium" gapX={4} gapY={12} all>
         <Box as="section">
