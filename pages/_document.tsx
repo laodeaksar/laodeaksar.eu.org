@@ -5,13 +5,12 @@ import NextDocument, {
   Main,
   NextScript
 } from 'next/document';
-// import postCss, { AcceptedPlugin } from 'postcss';
-// import postCssPresetEnv from 'postcss-preset-env';
+import postCss, { AcceptedPlugin } from 'postcss';
+import postCssPresetEnv from 'postcss-preset-env';
 
 import { getCssText } from '~/lib/stitches.config';
 
 export default class Document extends NextDocument {
-  /*
   static async getInitialProps(ctx: DocumentContext) {
     const cssText = getCssText();
     const { css } = await postCss([
@@ -28,7 +27,7 @@ export default class Document extends NextDocument {
       ),
     };
   }
-  */
+
   render() {
     return (
       <Html lang="en">
@@ -48,10 +47,10 @@ export default class Document extends NextDocument {
             rel="pingback"
             href="https://webmention.io/www.laodeaksar.eu.org/xmlrpc"
           />
-          <style
+          {/*<style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
-          />
+          />*/}
         </Head>
         <body className="laodeaksar-light">
           <script
