@@ -1,4 +1,5 @@
 import type { VFC } from 'react';
+import Script from 'next/script';
 
 import SEO from '.';
 
@@ -6,7 +7,7 @@ const Head: VFC = () => {
   return (
     <SEO>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <script async data-api="_hive" src="/bee.js" />;
+      <Script async data-api="_hive" src="/bee.js" />;
       <meta
         name="msapplication-config"
         content="/static/favicons/browserconfig.xml"

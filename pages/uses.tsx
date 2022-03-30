@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+//import { Flex } from "@laodeaksar/design-system";
+
 import Anchor from '~/components/Anchor';
 import Box from '~/components/Box';
 import Button from '~/components/Button';
@@ -390,7 +392,7 @@ function GeneralItems({ items }) {
                           css={{
                             textAlign: 'center',
                             background: 'var(--laodeaksar-colors-brand)',
-                            color: 'var(--laodeaksar-colors-background)',
+                            color: 'var(--laodeaksar-colors-body)',
                             width: '$max',
                             padding: '$3 $8',
                             borderRadius: '$1'

@@ -36,7 +36,7 @@ export function BlogList({ post }: { post: Post }) {
           css={{
             textAlign: 'left',
             marginBottom: 0,
-            maxWidth: '10rem',
+            maxWidth: '12rem',
 
             '@md': {
               maxWidth: '$full'
