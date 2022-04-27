@@ -7,11 +7,6 @@ const runtimeCaching = require("next-pwa/cache");
  */
 
 module.exports = withContentlayer(withPWA({
-  pwa: {
-    dest: "public",
-    runtimeCaching,
-    buildExcludes: [/middleware-manifest.json$/],
-  },
   swcMinify: true,
   reactStrictMode: true,
   typescript: {
@@ -26,6 +21,19 @@ module.exports = withContentlayer(withPWA({
       'images.ctfassets.net'
     ],
     formats: ['image/avif', 'image/webp']
+  },
+  pwa: {
+    dest: "public",
+    runtimeCaching,
+    disable: process.env.NODE_ENV === 'development',
+    mode: "production",
+    buildExcludes: [
+      /middleware-manifest\.json$/,
+      /middleware-runtime\.js$/,
+      /middleware-runtime\.js.map$/,
+      /middleware\.js$/,
+      /middleware\.js.map$/,
+    ],
   },
   async rewrites() {
     return [
