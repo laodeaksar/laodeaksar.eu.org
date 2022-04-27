@@ -33,7 +33,7 @@
     "googleapis": "92.0.0",
     "lunr": "^2.3.9",
     "next": "12.1.0",
-    "next-auth": "^4.2.1",
+    "next-auth": "^4.3.2",
     "next-contentlayer": "^0.1.2",
     "preact": "^10.6.6",
     "prism-react-renderer": "^1.1.1",
