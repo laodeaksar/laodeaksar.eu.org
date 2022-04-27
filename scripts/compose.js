@@ -17,7 +17,14 @@ const genData = (response) => {
   const tagArray = response.tags.split(',');
   tagArray.forEach((tag, index) => (tagArray[index] = tag.trim()));
   const tags = tagArray;
-
+/**
+  let d = new Date();
+  const date = [
+    d.getFullYear(),
+    ("0" + (d.getMonth() + 1)).slice(-2),
+    ("0" + d.getDate()).slice(-2),
+  ].join("-");
+*/
   const date = new Date().toLocaleDateString('id-ID', {
     timeZone: 'Asia/Jakarta'
   });
