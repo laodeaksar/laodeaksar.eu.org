@@ -11,7 +11,7 @@
     "generate:cache": "node ./scripts/generate-cache",
     "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "generate:rss": "node --experimental-json-modules scripts/generate-rss.mjs",
-    "create-post": "node scripts/create-post.js",
+    "compose": "node scripts/compose.js",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
