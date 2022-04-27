@@ -1,10 +1,12 @@
 const { withContentlayer } = require('next-contentlayer');
+const withPWA = require("next-pwa");
+const runtimeCaching = require("next-pwa/cache");
 
 /**
  * @type {import('next').NextConfig}
  */
 
-module.exports = withContentlayer()({
+module.exports = withContentlayer(withPWA({
   swcMinify: true,
   reactStrictMode: true,
   typescript: {
@@ -44,4 +46,4 @@ module.exports = withContentlayer()({
     }
     return config;
   }
-});
+}));
