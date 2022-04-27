@@ -7,6 +7,11 @@ const runtimeCaching = require("next-pwa/cache");
  */
 
 module.exports = withContentlayer(withPWA({
+  pwa: {
+    dest: "public",
+    runtimeCaching,
+    buildExcludes: [/middleware-manifest.json$/],
+  },
   swcMinify: true,
   reactStrictMode: true,
   typescript: {
