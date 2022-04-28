@@ -59,7 +59,7 @@
     "eslint-config-next": "^12.1.0",
     "fast-glob": "^3.2.11",
     "gray-matter": "^4.0.3",
-    "inquirer": "^8.2.0",
+    "inquirer": "^8.2.4",
     "postcss": "^8.4.12",
     "postcss-preset-env": "^7.4.3",
     "prettier": "^2.5.1",
