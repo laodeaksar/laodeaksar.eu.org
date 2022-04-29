@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^0.19.3",
-    "@laodeaksar/design-system": "^0.0.3",
+    "@laodeaksarr/design-system": "0.0.12",
     "@prisma/client": "^3.9.2",
     "@radix-ui/react-tabs": "^0.1.5",
     "@stitches/react": "^1.2.8",
