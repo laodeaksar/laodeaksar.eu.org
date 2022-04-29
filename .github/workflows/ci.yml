@@ -150,7 +150,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Run build
         run: |
-          npx playwright install && yarn build
+          yarn build
         env:
           TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
       - name: Upload build artifacts
