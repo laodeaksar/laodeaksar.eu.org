@@ -19,7 +19,7 @@
     "@laodeaksar/design-system": "^0.0.3",
     "@prisma/client": "^3.9.2",
     "@radix-ui/react-tabs": "^0.1.5",
-    "@stitches/react": "^1.2.6",
+    "@stitches/react": "^1.2.8",
     "@visx/drag": "^2.6.0",
     "@visx/group": "^2.1.0",
     "@visx/responsive": "^2.8.0",
