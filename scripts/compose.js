@@ -67,6 +67,33 @@ prompt([
     type: 'input',
     name: 'tags',
     message: `Any tags? Separate them with , or leave empty if no tags.`
+  },
+  {
+    type: 'confirm',
+    name: 'featured',
+    message: 'Is this a featured?'
+  },
+  {
+    type: 'list',
+    name:'colorFeatured',
+    message:'Select color for featured!',
+    choices:[
+      'linear-gradient(104.01deg, #9BEBEB 5.51%, #0FA6E9 98.93%)'
+    ],
+    when(response){
+       return response.featured
+    }
+  },
+  {
+    type: 'list',
+    name:'fontFeatured',
+    message:'Select font color for featured!',
+    choices:[
+      '#000000'
+    ],
+    when(response){
+       return response.featured
+    }
   }
 ])
   .then((response) => {
