@@ -4,7 +4,7 @@ export default function generateSocialImage({
   imagePublicID,
   cloudinaryUrlBase = 'https://res.cloudinary.com',
   version = null,
-  titleFont = 'ibmplexsans.ttf',
+  titleFont = 'arial',
   titleExtraConfig = '_bold',
   underlayImageWidth = 580,
   underlayImageHeight = 630,
