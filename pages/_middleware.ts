@@ -56,21 +56,23 @@ async function logPageView(req: NextRequest) {
 }
 
 function addSecurityHeaders(response: NextResponse) {
-  const ContentSecurityPolicy = `
+  const csp = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.google-analystics.com *.codesandbox.io *.splitbee.io;
     child-src *.youtube.com *.google.com *.twitter.com *.codesandbox.io *.splitbee.io;
-    style-src 'self' 'unsafe-inline' *.googleapis.com;
-    img-src * blob: data:;
-    media-src 'none';
+    style-src 'self' 'unsafe-inline' 'unsafe-eval' *.googleapis.com;
+    img-src 'self' data: https: blob: https://www.googletagmanager.com;
+    worker-src 'self' *.youtube.com *.google.com *.twitter.com;
     connect-src *;
+    object-src 'none';
+    form-action 'self';
+    frame-ancestors 'none';
+    base-uri 'none';
+    media-src 'none';
     font-src 'self';
   `;
 
-  response.headers.set(
-    'Content-Security-Policy',
-    ContentSecurityPolicy.replace(/\n/g, '')
-  );
+  response.headers.set('Content-Security-Policy', csp.replace(/\n/g, ''));
   response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
   response.headers.set(
     'Permissions-Policy',
