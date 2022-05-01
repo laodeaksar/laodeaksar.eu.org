@@ -11,7 +11,7 @@ import postCssPresetEnv from 'postcss-preset-env';
 import { getCssText } from '~/lib/stitches.config';
 
 export default class Document extends NextDocument {
-  static async getInitialProps(ctx: DocumentContext) {
+  /**static async getInitialProps(ctx: DocumentContext) {
     const cssText = getCssText();
     const { css } = await postCss([
       postCssPresetEnv() as AcceptedPlugin,
@@ -26,7 +26,7 @@ export default class Document extends NextDocument {
         </>
       ),
     };
-  }
+  }*/
 
   render() {
     return (
@@ -47,10 +47,10 @@ export default class Document extends NextDocument {
             rel="pingback"
             href="https://webmention.io/www.laodeaksar.eu.org/xmlrpc"
           />
-          {/*<style
+          <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
-          />*/}
+          />
         </Head>
         <body className="laodeaksar-light">
           <script
