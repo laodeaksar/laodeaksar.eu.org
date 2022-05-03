@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
 import Anchor from '~/components/Anchor';
+import Box from '~/components/Box';
 
 import useProgress from '~/hooks/useProgress';
 import useScrollSpy from '~/hooks/useScrollSpy';
@@ -56,9 +57,18 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
         <ul>
           {ids.map((item, index) => {
             return (
-              <motion.li
+              <Box
+                as={motion.li}
                 initial="hide"
-                className={currentActiveIndex === index ? 'isCurrent' : ''}
+                css={
+                  currentActiveIndex === index
+                    ? {
+                        a: {
+                          color: 'var(--laodeaksar-colors-brand)!important',
+                        },
+                      }
+                    : {}
+                }
                 variants={variants}
                 animate="show"
                 transition={{ type: 'spring' }}
@@ -72,7 +82,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
                 >
                   {item.title}
                 </Anchor>
-              </motion.li>
+              </Box>
             );
           })}
         </ul>
