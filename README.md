@@ -2,16 +2,13 @@
 
 # laodeaksar.eu.org
 
-<!--     "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
- -->
-
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Database**: [PlanetScale](https://planetscale.com)
 - **ORM**: [Prisma](https://prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Content**: [MDX](https://github.com/mdx-js/mdx)/[contentlayer]()
-- **Styling**: [Stitches](https://stitches.dev/)
+- **Styling**: [Stitches](https://stitches.dev/) by [Design System]()
 
 ## Overview
 
@@ -30,10 +27,10 @@
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/laodeaksar/laodeaksar.eu.org.git
+$ git clone https://github.com/laodeaksarr/laodeaksar.eu.org.git
 $ cd laodeaksar.eu.org
 $ yarn
 $ yarn dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/laodeaksar/laodeaksar.eu.org/blob/main/.env.example).
+Create a `.env` file similar to [`.env.example`](https://github.com/laodeaksarr/laodeaksar.eu.org/blob/main/.env.example).
