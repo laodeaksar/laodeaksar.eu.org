@@ -48,6 +48,9 @@ const Tweet = ({ tweet }: Props) => {
   const tweetURL = 'https://twitter.com/' + author.username + '/status/' + id;
   const createdAt = new Date(created_at);
 
+  const formattedText = text
+    .replace(/https:\/\/[\n\S]+/g, '')
+    .replace('&amp;', '&');
   const quoteTweet =
     referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
 
@@ -107,7 +110,7 @@ const Tweet = ({ tweet }: Props) => {
         }}
         variant="primary"
       >
-        {text}
+        {formattedText}
       </Text>
       {media && media?.length > 1 ? (
         <ImageGrid>
