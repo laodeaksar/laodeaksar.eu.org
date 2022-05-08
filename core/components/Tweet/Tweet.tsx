@@ -175,7 +175,9 @@ const Tweet = ({ tweet }: Props) => {
           rel="noopener noreferrer"
         >
           <ReplyIcon outline={false} variant="none" />
-          <span>{new Number(public_metrics.reply_count).toLocaleString()}</span>
+          <span>{new Number(public_metrics.reply_count).toLocaleString('en', {
+              notation: 'compact'
+            })}</span>
         </ActionIcons>
         <ActionIcons
           css={{
@@ -189,7 +191,9 @@ const Tweet = ({ tweet }: Props) => {
         >
           <RetweetIcon outline={false} variant="none" />
           <span>
-            {new Number(public_metrics.retweet_count).toLocaleString()}
+            {new Number(public_metrics.retweet_count).toLocaleString('en', {
+              notation: 'compact'
+            })}
           </span>
         </ActionIcons>
         <ActionIcons
@@ -203,7 +207,9 @@ const Tweet = ({ tweet }: Props) => {
           rel="noopener noreferrer"
         >
           <LikeIcon outline={false} variant="none" />
-          <span>{new Number(public_metrics.like_count).toLocaleString()}</span>
+          <span>{new Number(public_metrics.like_count).toLocaleString('en', {
+              notation: 'compact'
+            })}</span>
         </ActionIcons>
       </Flex>
     </TweetWrapper>
