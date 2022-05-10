@@ -1,6 +1,7 @@
 import { useCallback, forwardRef, useMemo, useState } from 'react';
 
 import Label from '~/components/Label';
+import Box from '~/components/Box';
 
 import { AtSignIcon, EyeIcon, Tick } from './Icons';
 import { StyledInput, StyledInputWrapper } from './Styles';
@@ -41,6 +42,7 @@ const TextInput = forwardRef(
             {label}
           </Label>
         )}
+<Box css={{ position: 'relative' }}>
         <StyledInput
           id={id}
           className={isValid ? 'valid' : ''}
@@ -69,6 +71,7 @@ const TextInput = forwardRef(
             <EyeIcon />
           </button>
         )}
+</Box>
       </StyledInputWrapper>
     );
   }
