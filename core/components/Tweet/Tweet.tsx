@@ -27,7 +27,7 @@ import type { Props } from './types';
   Note: this is heavily inspired by https://github.com/leerob/leerob.io/blob/main/components/Tweet.js
 */
 const Tweet = ({ tweet }: Props) => {
-  if (!tweet) {
+  if (!tweet || !tweet.author) {
     return null;
   }
 
