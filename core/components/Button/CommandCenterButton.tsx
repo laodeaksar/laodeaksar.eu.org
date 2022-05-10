@@ -6,7 +6,7 @@ import Button from './Button';
 import type { Props } from './types';
 
 const CommandCenterButton = (props: Props) => {
-  const { isSearchShown, onClick } = props;
+  const { isSearchShown = false, onClick } = props;
   const duration = 0.7;
 
   const pathLength = useMotionValue(1);
