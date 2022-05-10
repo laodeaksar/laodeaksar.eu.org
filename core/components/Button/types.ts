@@ -1,6 +1,6 @@
 export interface Props {
   onClick: () => void;
-  isSearchShown: boolean;
+  isSearchShown?: boolean;
 }
 
 import {
