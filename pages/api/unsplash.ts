@@ -1,12 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function hundler(_: NextApiRequest, res: NextApiResponse) {
+  const accessToken = process.env.UNSPLASH_ACCESS_KEY;
   const response = await fetch(
-    "https://api.unsplash.com/users/jpvalery/statistics",
+    `https://api.unsplash.com/users/jpvalery/statistics?client_id=${accessToken}`,
     {
-      headers: {
-        Authorization: 'Bearer' + process.env.UNSPLASH_REFACTOR_TOKEN,
-      },
       method: "GET",
     }
   );
