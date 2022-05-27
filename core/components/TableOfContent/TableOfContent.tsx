@@ -53,7 +53,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
   return (
     <Wrapper hidden={!shouldShowTableOfContent}>
       <ProgressBar progress={readingProgress} />
-      {ids.length > 0 && (
+      {ids.length > 0 ? (
         <ul>
           {ids.map((item, index) => {
             return (
@@ -78,7 +78,9 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
                 <Anchor
                   discreet
                   href={`#${item.id}`}
-                  onClick={(e) => handleLinkClick(e, item.id + '-section')}
+                  onClick={(event) =>
+                    handleLinkClick(event, `${item.id}-section`)
+                  }
                 >
                   {item.title}
                 </Anchor>
@@ -86,7 +88,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
             );
           })}
         </ul>
-      )}
+      ) : null}
     </Wrapper>
   );
 };
