@@ -6,7 +6,7 @@ import NextDocument, {
   NextScript
 } from 'next/document';
 
-import { getCssText } from '~/lib/stitches.config';
+import { getCssText } from '@laodeaksarr/design-system';
 
 export default class Document extends NextDocument {
   render() {
