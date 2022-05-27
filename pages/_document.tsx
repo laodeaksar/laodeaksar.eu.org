@@ -5,29 +5,10 @@ import NextDocument, {
   Main,
   NextScript
 } from 'next/document';
-import postCss, { AcceptedPlugin } from 'postcss';
-import postCssPresetEnv from 'postcss-preset-env';
 
 import { getCssText } from '~/lib/stitches.config';
 
 export default class Document extends NextDocument {
-  /**static async getInitialProps(ctx: DocumentContext) {
-    const cssText = getCssText();
-    const { css } = await postCss([
-      postCssPresetEnv() as AcceptedPlugin,
-    ]).process(cssText);
-    const initialProps = await NextDocument.getInitialProps(ctx)
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <style id="stitches" dangerouslySetInnerHTML={{ __html: css }} />
-        </>
-      ),
-    };
-  }*/
-
   render() {
     return (
       <Html lang="en">
