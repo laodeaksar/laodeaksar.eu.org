@@ -5,7 +5,7 @@ import Box from '~/components/Box';
 import Text from '~/components/Typography';
 
 interface Props {
-  src: string | StaticImageData;
+  src: string // | StaticImageData;
   alt?: string;
   className?: string;
   title?: string;
