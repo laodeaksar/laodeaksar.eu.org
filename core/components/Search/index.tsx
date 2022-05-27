@@ -4,6 +4,7 @@ import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import FocusTrap from 'focus-trap-react';
 
+import useBodyScrollLock from '@theme/hooks/useBodyScrollLock';
 import useDebouncedValue from '~/hooks/useDebouncedValue';
 import { useTheme } from '~/context/ThemeContext';
 
@@ -84,11 +85,13 @@ function useIndexItem<T>(
 
 const Search = (props: Props) => {
   const { onClose } = props;
-  const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState<Result[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+
+  useBodyScrollLock();
+  const router = useRouter();
   const debouncedSearchQuery = useDebouncedValue(searchQuery, 250);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -149,9 +152,9 @@ const Search = (props: Props) => {
       inputRef.current.focus();
     }
 
-    toggleLockScroll();
+    // toggleLockScroll();
 
-    return () => toggleLockScroll();
+    // return () => toggleLockScroll();
   }, []);
 
   useEffect(() => {

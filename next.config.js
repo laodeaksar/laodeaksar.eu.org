@@ -22,6 +22,10 @@ module.exports = withContentlayer(withPWA({
     ],
     formats: ['image/avif', 'image/webp']
   },
+  experimental: {
+    legacyBrowsers: false,
+    browsersListForSwc: true
+  },
   pwa: {
     dest: "public",
     runtimeCaching,

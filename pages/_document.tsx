@@ -47,6 +47,10 @@ export default class Document extends NextDocument {
             rel="pingback"
             href="https://webmention.io/www.laodeaksar.eu.org/xmlrpc"
           />
+        <meta
+          content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          name="robots"
+        />
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssText() }}
