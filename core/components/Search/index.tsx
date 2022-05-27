@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import FocusTrap from 'focus-trap-react';
 
-import useBodyScrollLock from '@theme/hooks/useBodyScrollLock';
+import useBodyScrollLock from '~/hooks/useBodyScrollLock';
 import useDebouncedValue from '~/hooks/useDebouncedValue';
 import { useTheme } from '~/context/ThemeContext';
 
