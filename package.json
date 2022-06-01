@@ -36,7 +36,7 @@
     "next-auth": "^4.3.4",
     "next-contentlayer": "^0.1.2",
     "next-pwa": "^5.4.0",
-    "preact": "^10.6.6",
+    "preact": "^10.7.3",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.28.0",
     "react": "17.0.2",
