@@ -9,9 +9,7 @@ import {
 } from 'framer-motion';
 import { PrismTheme } from 'prism-react-renderer';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
-import { styled } from '~/lib/stitches.config';
-
-import Pill from '~/components/Pill';
+import { styled, Pill } from '@laodeaksarr/design-system';
 
 import type { CodeBlockProps } from './types';
 
@@ -118,7 +116,39 @@ const StyledEditorWrapper = styled('div', {
     bc: 'var(--code-snippet-background) !important',
     fontFamily: '$mono !important',
     fontSize: '$1 !important',
-    lineHeight: '26px !important'
+    lineHeight: '26px !important',
+
+    '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata': {
+      color: 'var(--token-comment)',
+    },
+
+    '.token.punctuation': {
+      color: 'var(--token-punctuation)',
+    },
+
+    '.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted': {
+      color: 'var(--token-symbol)',
+    },
+
+    '.token.selector,.token.attr-name,.token.char,.token.builtin,.token.number,.token.string,.token.inserted': {
+      color: 'var(--token-selector)',
+    },
+
+    '.token.operator,.token.entity,.token.url,.language-css .style': {
+      color: 'var(--token-operator)',
+    },
+
+    '.token.atrule,.token.attr-value,.token.keyword': {
+      color: 'var(--token-keyword)',
+    },
+
+    '.token.function,.token.maybe-class-name,.token.class-name': {
+      color: 'var(--token-function)',
+    },
+
+    '.token.regex,.token.important,.token.variable': {
+      color: 'var(--token-operator)',
+    },
   }
 });
 

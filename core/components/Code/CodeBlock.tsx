@@ -1,12 +1,7 @@
-import { styled } from '~/lib/stitches.config';
+import { Card, styled } from '@laodeaksarr/design-system';
 import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
-import darkTheme from 'prism-react-renderer/themes/nightOwl';
-import lightTheme from 'prism-react-renderer/themes/nightOwlLight';
 
-import Card from '~/components/Card';
 import { CopyToClipboardButton } from '~/components/Button';
-
-import { useTheme } from '~/context/ThemeContext';
 
 import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
@@ -21,14 +16,11 @@ require('prismjs/components/prism-swift');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
-  const { dark } = useTheme();
-
-  const theme = dark ? darkTheme : lightTheme;
-
+ 
   return (
     <Highlight
       {...defaultProps}
-      theme={theme}
+      theme={{ plain: {}, styles: [] }}
       code={codeString}
       language={language}
     >
