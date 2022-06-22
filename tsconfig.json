@@ -7,7 +7,6 @@
       "~/lib/*": ["lib/*"],
       "~/styles/*": ["styles/*"],
       "~/types/*": ["types/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -27,8 +26,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    ".contentlayer/generated"
+    "**/*.tsx"
   ],
   "exclude": ["node_modules", "**/*.mjs"]
 }

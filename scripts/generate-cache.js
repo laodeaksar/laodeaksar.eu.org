@@ -1,42 +1,13 @@
 const fs = require('fs');
-const { join } = require('path');
-const matter = require('gray-matter');
 const lunr = require('lunr');
+import { sanityClient } from 'lib/sanity-server';
+import { allSnippetQuery ,indexQuery } from '~/lib/queries';
 
 (async () => {
-  const root = process.cwd();
+  const blog = await sanityClient.fetch(indexQuery);
+  const snippet = await sanityClient.fetch(allSnippetQuery);
 
-  const typeToPath = {
-    blog: 'data/blog',
-    snippet: 'data/snippets'
-  };
-
-  function getPosts(types) {
-    const files = fs
-      .readdirSync(join(root, typeToPath[types]))
-      .filter((name) => name !== 'img');
-
-    const posts = files
-      .reduce((allPosts, postSlug) => {
-        const source = fs.readFileSync(
-          join(root, typeToPath[types], postSlug),
-          'utf8'
-        );
-        const { data } = matter(source);
-
-        return [
-          {
-            ...data,
-            slug: postSlug.replace('.mdx', '')
-          },
-          ...allPosts
-        ];
-      }, [])
-      .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-    return posts;
-  }
-
-  const documents = [...getPosts('blog'), ...getPosts('snippet')];
+  const documents = [...blog, ...snippet];
 
   const index = lunr(function () {
     this.field('title');

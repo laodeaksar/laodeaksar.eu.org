@@ -1,4 +1,4 @@
-import { RawTweetType, TransformedTweet, TweetData } from '~/types/tweet';
+import { RawTweetType, TransformedTweet, TweetData } from './types';
 
 export const getTweets = async (ids: string[]) => {
   if (ids.length === 0) {

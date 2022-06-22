@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer');
+// const { withContentlayer } = require('next-contentlayer');
 const withPWA = require("next-pwa");
 const runtimeCaching = require("next-pwa/cache");
 
@@ -6,7 +6,7 @@ const runtimeCaching = require("next-pwa/cache");
  * @type {import('next').NextConfig}
  */
 
-module.exports = withContentlayer(withPWA({
+module.exports = withPWA({
   swcMinify: true,
   reactStrictMode: true,
   typescript: {
@@ -18,7 +18,8 @@ module.exports = withContentlayer(withPWA({
       'i.scdn.co', // Spotify Album Art
       'pbs.twimg.com', // Twitter Images
       'assets.vercel.com',
-      'images.ctfassets.net'
+      'images.ctfassets.net',
+      'cdn.sanity.io'
     ],
     formats: ['image/avif', 'image/webp']
   },
@@ -53,14 +54,14 @@ module.exports = withContentlayer(withPWA({
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat'
-      });
-    }
+    // if (!dev && !isServer) {
+    //   Object.assign(config.resolve.alias, {
+    //     'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
+    //     react: 'preact/compat',
+    //     'react-dom/test-utils': 'preact/test-utils',
+    //     'react-dom': 'preact/compat'
+    //   });
+    // }
     return config;
   }
-}));
+});
