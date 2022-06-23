@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^0.19.3",
-    "@laodeaksarr/design-system": "0.1.11",
+    "@laodeaksarr/design-system": "^0.3.0",
     "@prisma/client": "^3.14.0",
     "@radix-ui/react-tabs": "^0.1.5",
     "@sanity/image-url": "^1.0.1",
@@ -45,8 +45,8 @@
     "react-hot-toast": "^2.2.0",
     "react-intersection-observer": "^8.33.1",
     "react-live": "^2.4.1",
-    "sanity": "^2.29.3",
-    "sanity-plugin-markdown": "^2.1.1",
+    "sanity": "dev-preview",
+    "sanity-plugin-markdown": "^3.0.0-v3-studio.0",
     "styled-components": "^5.3.5",
     "swr": "^1.2.1",
     "tiny-invariant": "^1.2.0"

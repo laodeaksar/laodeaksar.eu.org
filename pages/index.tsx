@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import { motion, MotionProps } from 'framer-motion';
 import type { InferGetStaticPropsType } from 'next';
 
+import {Box, } from "@laodeaksarr/design-system"
+
 import Box from '~/components/Box';
 import Button from '~/components/Button';
 import BlogCard from '~/components/Blog';

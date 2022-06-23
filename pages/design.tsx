@@ -2,56 +2,65 @@ import { useState, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-import { Shadows, styled } from '~/lib/stitches.config';
-
 import {
-  ContactIcon,
-  EnterIcon,
-  ExternalIcon,
-  PortfolioIcon,
-  RSSIcon,
-  TwitterIcon,
-  ArrowIcon,
-  PlayIcon,
-  PauseIcon,
-  RepeatIcon,
-  InfoIcon,
-  AlertIcon,
-  GithubIcon,
-  MapIcon,
-  StackIcon
-} from '~/components/Icons';
-import Anchor from '~/components/Anchor';
-import Blockquote from '~/components/Blockquote';
-import Box from '~/components/Box';
-import Button from '~/components/Button';
-import Callout from '~/components/Callout';
-import Checkbox from '~/components/Checkbox';
+  Anchor,
+  Blockquote,
+  Box,
+  Button,
+  Callout,
+  Checkbox,
+  Flex,
+  Grid,
+  InlineCode,
+  Pill,
+  Radio,
+  Range,
+  Switch,
+  TextInput,
+  TextArea,
+  Tooltip,
+  Card,
+  Text,
+  EM,
+  H1,
+  H2,
+  Heading,
+  Strong,
+  Icon,
+  Shadows,
+  styled
+} from '@laodeaksarr/design-system';
+// import Anchor from '~/components/Anchor';
+// import Blockquote from '~/components/Blockquote';
+// import Box from '~/components/Box';
+// import Button from '~/components/Button';
+// import Callout from '~/components/Callout';
+// import Checkbox from '~/components/Checkbox';
 import CodeBlock from '~/components/Code/CodeBlock';
-import Flex from '~/components/Flex';
+// import Flex from '~/components/Flex';
 import Glow from '~/components/Glow';
-import Grid from '~/components/Grid';
-import InlineCode from '~/components/InlineCode';
+// import Grid from '~/components/Grid';
+// import InlineCode from '~/components/InlineCode';
 import List from '~/components/List';
 import Logo from '~/components/Logo';
-import Pill from '~/components/Pill';
-import Radio from '~/components/Radio';
-import Range from '~/components/Range';
+// import Pill from '~/components/Pill';
+// import Radio from '~/components/Radio';
+// import Range from '~/components/Range';
 import SEO from '~/components/Seo';
-import Switch from '~/components/Switch';
-import TextInput from '~/components/TextInput';
-import TextArea from '~/components/TextArea';
-import Tooltip from '~/components/Tooltip';
+// import Switch from '~/components/Switch';
+// import TextInput from '~/components/TextInput';
+// import TextArea from '~/components/TextArea';
+// import Tooltip from '~/components/Tooltip';
 import Tweet from '~/components/Tweet';
-import Card, { Gradients } from '~/components/Card';
-import Text, { EM, H1, H2, Heading, Strong } from '~/components/Typography';
+import { Gradients } from '~/components/Card';
+// import Text, { EM, H1, H2, Heading, Strong } from '~/components/Typography';
 
 import { useTheme } from '~/context/ThemeContext';
 
 import Layout from '~/layout';
 
 import { getTweets } from '~/lib/tweets';
-import type { TransformedTweet } from '~/types/tweet';
+import type { TransformedTweet } from '~/lib/types';
 
 const Sandpack = dynamic(() => import('~/components/Code/Sandpack'));
 const Search = dynamic(() => import('~/components/Search'), {
@@ -616,7 +625,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               }}
               aria-describedby="exampletooltip"
             >
-              <TwitterIcon stroke="var(--laodeaksar-colors-typeface-tertiary)" />{' '}
+              <Icon.Twitter stroke="var(--laodeaksar-colors-typeface-tertiary)" />{' '}
               Hover Me!
             </Flex>
           </Tooltip>
@@ -645,20 +654,20 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             <Glow>
               <Button variant="primary">Glow Primary</Button>
             </Glow>
-            <Button variant="primary" startIcon={<TwitterIcon />}>
+            <Button variant="primary" startIcon={<Icon.Twitter />}>
               Follow me!
             </Button>
-            <Button variant="primary" endIcon={<ExternalIcon />}>
+            <Button variant="primary" endIcon={<Icon.External />}>
               Portfolio
             </Button>
             <Button variant="primary" disabled>
               Primary Disabled
             </Button>
             <Button variant="secondary">Secondary</Button>
-            <Button variant="secondary" startIcon={<TwitterIcon />}>
+            <Button variant="secondary" startIcon={<Icon.Twitter />}>
               Follow me!
             </Button>
-            <Button variant="secondary" endIcon={<ExternalIcon />}>
+            <Button variant="secondary" endIcon={<Icon.External />}>
               Portfolio
             </Button>
             <Button variant="secondary" disabled>
@@ -669,13 +678,13 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               <Button
                 aria-label="Follow me on Twitter"
                 variant="icon"
-                icon={<TwitterIcon />}
+                icon={<Icon.Twitter />}
               />
               <Button
                 aria-label="Follow me on Twitter"
                 disabled
                 variant="icon"
-                icon={<TwitterIcon />}
+                icon={<Icon.Twitter />}
               />
             </div>
           </Grid>
@@ -1035,7 +1044,7 @@ they can change the world, are the ones who do.`}
         </Box>
         <Box as="section" id="blockquote">
           <Blockquote>
-              Almost before we knew it, we had left the ground.
+            Almost before we knew it, we had left the ground.
             <cite>~test</cite>
           </Blockquote>
         </Box>
@@ -1135,13 +1144,13 @@ const Label = styled('p', {
 const IconSection = () => (
   <Flex direction="column" gap={8} alignItems="stretch" css={{ width: '100%' }}>
     <Grid flow="column" gap={4}>
-      <TwitterIcon variant="info" size={5} />
-      <TwitterIcon variant="danger" size={5} />
-      <TwitterIcon variant="success" size={5} />
-      <TwitterIcon variant="warning" size={5} />
-      <TwitterIcon variant="primary" size={5} />
-      <TwitterIcon variant="secondary" size={5} />
-      <TwitterIcon variant="tertiary" size={5} />
+      <Icon.Twitter variant="info" size={5} />
+      <Icon.Twitter variant="danger" size={5} />
+      <Icon.Twitter variant="success" size={5} />
+      <Icon.Twitter variant="warning" size={5} />
+      <Icon.Twitter variant="primary" size={5} />
+      <Icon.Twitter variant="secondary" size={5} />
+      <Icon.Twitter variant="tertiary" size={5} />
     </Grid>
     <Box
       css={{
@@ -1153,84 +1162,84 @@ const IconSection = () => (
         }
       }}
     >
-      <TwitterIcon />
+      <Icon.Twitter />
     </Box>
     <Grid gapY={4} columns={5} flow="row" align="center">
-      <TwitterIcon variant="default" size={7} />
-      <TwitterIcon variant="default" size={6} />
-      <TwitterIcon variant="default" size={5} />
-      <TwitterIcon variant="default" size={4} />
-      <TwitterIcon variant="default" size={3} />
-      <GithubIcon variant="default" size={7} />
-      <GithubIcon variant="default" size={6} />
-      <GithubIcon variant="default" size={5} />
-      <GithubIcon variant="default" size={4} />
-      <GithubIcon variant="default" size={3} />
-      <ContactIcon variant="default" size={7} />
-      <ContactIcon variant="default" size={6} />
-      <ContactIcon variant="default" size={5} />
-      <ContactIcon variant="default" size={4} />
-      <ContactIcon variant="default" size={3} />
-      <MapIcon variant="default" size={7} />
-      <MapIcon variant="default" size={6} />
-      <MapIcon variant="default" size={5} />
-      <MapIcon variant="default" size={4} />
-      <MapIcon variant="default" size={3} />
-      <ExternalIcon variant="default" size={7} />
-      <ExternalIcon variant="default" size={6} />
-      <ExternalIcon variant="default" size={5} />
-      <ExternalIcon variant="default" size={4} />
-      <ExternalIcon variant="default" size={3} />
-      <RSSIcon variant="default" size={7} />
-      <RSSIcon variant="default" size={6} />
-      <RSSIcon variant="default" size={5} />
-      <RSSIcon variant="default" size={4} />
-      <RSSIcon variant="default" size={3} />
-      <EnterIcon variant="default" size={7} />
-      <EnterIcon variant="default" size={6} />
-      <EnterIcon variant="default" size={5} />
-      <EnterIcon variant="default" size={4} />
-      <EnterIcon variant="default" size={3} />
-      <ArrowIcon variant="default" size={7} />
-      <ArrowIcon variant="default" size={6} />
-      <ArrowIcon variant="default" size={5} />
-      <ArrowIcon variant="default" size={4} />
-      <ArrowIcon variant="default" size={3} />
-      <PortfolioIcon variant="default" size={7} />
-      <PortfolioIcon variant="default" size={6} />
-      <PortfolioIcon variant="default" size={5} />
-      <PortfolioIcon variant="default" size={4} />
-      <PortfolioIcon variant="default" size={3} />
-      <PlayIcon variant="default" size={7} />
-      <PlayIcon variant="default" size={6} />
-      <PlayIcon variant="default" size={5} />
-      <PlayIcon variant="default" size={4} />
-      <PlayIcon variant="default" size={3} />
-      <PauseIcon variant="default" size={7} />
-      <PauseIcon variant="default" size={6} />
-      <PauseIcon variant="default" size={5} />
-      <PauseIcon variant="default" size={4} />
-      <PauseIcon variant="default" size={3} />
-      <RepeatIcon variant="default" size={7} />
-      <RepeatIcon variant="default" size={6} />
-      <RepeatIcon variant="default" size={5} />
-      <RepeatIcon variant="default" size={4} />
-      <RepeatIcon variant="default" size={3} />
-      <InfoIcon variant="default" size={7} />
-      <InfoIcon variant="default" size={6} />
-      <InfoIcon variant="default" size={5} />
-      <InfoIcon variant="default" size={4} />
-      <InfoIcon variant="default" size={3} />
-      <AlertIcon variant="default" size={7} />
-      <AlertIcon variant="default" size={6} />
-      <AlertIcon variant="default" size={5} />
-      <AlertIcon variant="default" size={4} />
-      <AlertIcon variant="default" size={3} />
-      <StackIcon variant="default" size={7} />
-      <StackIcon variant="default" size={6} />
-      <StackIcon variant="default" size={5} />
-      <StackIcon variant="default" size={4} />
-      <StackIcon variant="default" size={3} />
+      <Icon.Twitter variant="default" size={7} />
+      <Icon.Twitter variant="default" size={6} />
+      <Icon.Twitter variant="default" size={5} />
+      <Icon.Twitter variant="default" size={4} />
+      <Icon.Twitter variant="default" size={3} />
+      <Icon.Github variant="default" size={7} />
+      <Icon.Github variant="default" size={6} />
+      <Icon.Github variant="default" size={5} />
+      <Icon.Github variant="default" size={4} />
+      <Icon.Github variant="default" size={3} />
+      <Icon.Contact variant="default" size={7} />
+      <Icon.Contact variant="default" size={6} />
+      <Icon.Contact variant="default" size={5} />
+      <Icon.Contact variant="default" size={4} />
+      <Icon.Contact variant="default" size={3} />
+      <Icon.Map variant="default" size={7} />
+      <Icon.Map variant="default" size={6} />
+      <Icon.Map variant="default" size={5} />
+      <Icon.Map variant="default" size={4} />
+      <Icon.Map variant="default" size={3} />
+      <Icon.External variant="default" size={7} />
+      <Icon.External variant="default" size={6} />
+      <Icon.External variant="default" size={5} />
+      <Icon.External variant="default" size={4} />
+      <Icon.External variant="default" size={3} />
+      <Icon.RSS variant="default" size={7} />
+      <Icon.RSS variant="default" size={6} />
+      <Icon.RSS variant="default" size={5} />
+      <Icon.RSS variant="default" size={4} />
+      <Icon.RSS variant="default" size={3} />
+      <Icon.Enter variant="default" size={7} />
+      <Icon.Enter variant="default" size={6} />
+      <Icon.Enter variant="default" size={5} />
+      <Icon.Enter variant="default" size={4} />
+      <Icon.Enter variant="default" size={3} />
+      <Icon.Arrow variant="default" size={7} />
+      <Icon.Arrow variant="default" size={6} />
+      <Icon.Arrow variant="default" size={5} />
+      <Icon.Arrow variant="default" size={4} />
+      <Icon.Arrow variant="default" size={3} />
+      <Icon.Portfolio variant="default" size={7} />
+      <Icon.Portfolio variant="default" size={6} />
+      <Icon.Portfolio variant="default" size={5} />
+      <Icon.Portfolio variant="default" size={4} />
+      <Icon.Portfolio variant="default" size={3} />
+      <Icon.Play variant="default" size={7} />
+      <Icon.Play variant="default" size={6} />
+      <Icon.Play variant="default" size={5} />
+      <Icon.Play variant="default" size={4} />
+      <Icon.Play variant="default" size={3} />
+      <Icon.Pause variant="default" size={7} />
+      <Icon.Pause variant="default" size={6} />
+      <Icon.Pause variant="default" size={5} />
+      <Icon.Pause variant="default" size={4} />
+      <Icon.Pause variant="default" size={3} />
+      <Icon.Repeat variant="default" size={7} />
+      <Icon.Repeat variant="default" size={6} />
+      <Icon.Repeat variant="default" size={5} />
+      <Icon.Repeat variant="default" size={4} />
+      <Icon.Repeat variant="default" size={3} />
+      <Icon.Info variant="default" size={7} />
+      <Icon.Info variant="default" size={6} />
+      <Icon.Info variant="default" size={5} />
+      <Icon.Info variant="default" size={4} />
+      <Icon.Info variant="default" size={3} />
+      <Icon.Alert variant="default" size={7} />
+      <Icon.Alert variant="default" size={6} />
+      <Icon.Alert variant="default" size={5} />
+      <Icon.Alert variant="default" size={4} />
+      <Icon.Alert variant="default" size={3} />
+      <Icon.Stack variant="default" size={7} />
+      <Icon.Stack variant="default" size={6} />
+      <Icon.Stack variant="default" size={5} />
+      <Icon.Stack variant="default" size={4} />
+      <Icon.Stack variant="default" size={3} />
     </Grid>
   </Flex>
 );
