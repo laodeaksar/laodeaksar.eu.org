@@ -1,5 +1,5 @@
-import { sanityClient } from 'lib/sanity-server';
-import { postSlugsQuery } from 'lib/queries';
+import { sanityClient } from '~/lib/sanity-server';
+import { postSlugsQuery } from '~/lib/queries';
 
 const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -7,7 +7,7 @@ const createSitemap = (slugs) => `<?xml version="1.0" encoding="UTF-8"?>
           .map((slug) => {
             return `
                 <url>
-                    <loc>${`https://leerob.io/${slug}`}</loc>
+                    <loc>${`https://laodeaksar.eu.org/${slug}`}</loc>
                 </url>
             `;
           })
