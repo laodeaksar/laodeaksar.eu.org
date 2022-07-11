@@ -10,6 +10,7 @@ import {
   Callout,
   Checkbox,
   Flex,
+  // Gradients,
   Grid,
   InlineCode,
   Pill,
@@ -27,7 +28,7 @@ import {
   Heading,
   Strong,
   Icon,
-  Shadows,
+  // Shadows,
   styled
 } from '@laodeaksarr/design-system';
 // import Anchor from '~/components/Anchor';
@@ -1114,14 +1115,18 @@ function sayHi(name) {
             Show Command Center
           </Button>
           <AnimatePresence>
-            {showSearch && <Search onClose={() => setShowSearch(false)} />}
+            {showSearch && (
+              <Search onClose={() => setShowSearch(false)} />
+            )}
           </AnimatePresence>
         </Box>
         <Box as="section" id="tweet">
-          <H2>Tweet</H2>
-          {tweets.map((tweet: TransformedTweet) => (
-            <Tweet key={tweet.id} {...{ tweet }} />
-          ))}
+          <>
+            <H2>Tweet</H2>
+            {tweets.map((tweet: TransformedTweet) => (
+              <Tweet key={tweet.id} {...{ tweet }} />
+            ))}
+          </>
         </Box>
       </Grid>
     </Layout>

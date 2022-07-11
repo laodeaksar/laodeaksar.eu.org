@@ -17,7 +17,7 @@ const rotateGradient = keyframes({
   }
 });
 
-export const Gradients: React.FC = (props) => (
+export const Gradients: React.FC<{ children: React.ReactNode }> = (props) => (
   <Card
     css={{
       my: '150px',
