@@ -7,22 +7,20 @@ import {
 } from '@codesandbox/sandpack-react';
 import '@codesandbox/sandpack-react/dist/index.css';
 
-import { Shadows, styled } from '~/lib/stitches.config';
+import { Shadows, styled } from '@laodeaksarr/design-system';
 import setupFiles from './SandpackSetupFiles';
 
 // Default Theme
 const theme = {
-  palette: {
-    activeText: 'var(--laodeaksar-colors-brand)',
-    defaultText: 'var(--laodeaksar-colors-typeface-secondary)',
-    inactiveText: 'unset',
-    // inactiveText: 'var(--laodeaksar-border-color)',
-    activeBackground: 'var(--laodeaksar-colors-emphasis)',
-    // defaultBackground: 'var(--laodeaksar-card-background-color)',
-    defaultBackground: 'unset',
+  colors: {
+    hover: 'var(--laodeaksar-colors-brand)',
+    clickable: 'var(--laodeaksar-colors-typeface-secondary)',
     accent: 'var(--laodeaksar-colors-brand)',
-    errorBackground: 'var(--laodeaksar-colors-body)',
-    errorForeground: 'var(--laodeaksar-colors-danger)'
+    errorSurface: 'var(--laodeaksar-colors-danger-emphasis)',
+    error: 'var(--laodeaksar-colors-danger)',
+    surface3: 'var(--laodeaksar-colors-emphasis)',
+    surface2: 'var(--laodeaksar-border-color)',
+    surface1: 'var(--laodeaksar-snippet-background)'
   },
 
   syntax: {
@@ -41,10 +39,10 @@ const theme = {
     string: 'var(--token-selector)'
   },
 
-  typography: {
-    bodyFont: 'var(--fonts-display)',
-    monoFont: 'var(--fonts-mono)',
-    fontSize: '14px',
+  font: {
+    body: '$display',
+    mono: '$mono',
+    size: '14px',
     lineHeight: '26px'
   }
 };
@@ -60,9 +58,8 @@ const defaultEditorOptions = {
 const SandpackWrapper = styled('div', {
   '.sp-layout': {
     position: 'relative',
-    marginBottom: '32px',
+    marginBottom: '2.25rem',
     borderRadius: '$2',
-    border: '1px solid var(--laodeaksar-border-color)',
     shadow: Shadows[1],
 
     '@media (max-width: 750px)': {
@@ -84,42 +81,20 @@ const SandpackWrapper = styled('div', {
     }
   },
 
-  '.sp-navigator,.sp-tabs-scrollable-container': {
-    background: 'var(--code-snippet-background)'
+  '.cm-gutterElement': {
+    fontSize: '12px',
+    userSelect: 'none',
+    opacity: '1',
+    color: 'var(--laodeaksar-colors-typeface-tertiary)'
   },
 
-  '.sp-preview-container': {
-    background: 'var(--laodeaksar-colors-foreground)',
-    backdropFilter: 'blur(6px)'
-  },
-
-  '.sp-cm': {
-    padding: '2px 0'
-  },
-
-  '.sp-button': {
+  '.button': {
     bc: 'var(--laodeaksar-colors-body)!important',
     cursor: 'pointer !important',
 
     '&:hover': {
       bc: 'var(--laodeaksar-colors-body)!important'
     }
-  },
-
-  '.sp-icon,.sp-icon-standalone': {
-    color: 'var(--laodeaksar-colors-typeface-secondary) !important',
-
-    svg: {
-      fill: 'currentColor'
-    }
-  },
-
-  '.cm-gutters': {
-    background: 'var(--code-snippet-background)'
-  },
-
-  '.cm-scroller': {
-    background: 'var(--code-snippet-background)'
   }
 });
 
@@ -169,20 +144,23 @@ const Sandpack = (props: SandpackProps) => {
     <SandpackWrapper>
       <SandpackProvider
         template={template}
+        theme={theme}
+        files={{
+          ...files,
+          ...defaultFilesByTemplate[template]
+        }}
         customSetup={{
-          files: {
-            ...files,
-            ...defaultFilesByTemplate[template]
-          },
           dependencies: dependencies || {}
         }}
-        autorun={autorun}
+        options={{
+          autorun
+        }}
       >
-        <SandpackLayout theme={theme}>
+        <SandpackLayout>
           {!editorOnly && (
             <SandpackPreview
               showNavigator={defaultEditorOptions.showNavigator}
-              customStyle={{
+              style={{
                 height: defaultEditorOptions.editorHeight,
                 flexGrow: previewPart,
                 flexShrink: previewPart,
@@ -193,7 +171,7 @@ const Sandpack = (props: SandpackProps) => {
           {!renderOnly && (
             <SandpackCodeEditor
               {...defaultEditorOptions}
-              customStyle={{
+              style={{
                 height: defaultEditorOptions.editorHeight,
                 flexGrow: editorPart,
                 flexShrink: editorPart,

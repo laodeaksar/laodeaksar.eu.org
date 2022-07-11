@@ -138,7 +138,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
   const palette = ['gray', 'blue', 'red', 'orange', 'green', 'pink', 'indigo'];
 
   return (
-    <Layout footer headerProps={{ offsetHeight: 100 }}>
+    <Layout footer>
       <SEO title="Design Page" />
       <Grid
         columns="medium"
@@ -148,7 +148,13 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
         css={{ paddingTop: '64px' }}
       >
         <Box as="section">
-          <H1 css={{ marginBottom: '0px' }}>Components / Design System</H1>
+          <H1
+            css={{
+              marginBottom: '0px'
+            }}
+          >
+            Components / Design System
+          </H1>
           <HR />
           <Flex justifyContent="space-between">
             <Pill variant="warning">Work In Progress</Pill>
@@ -173,7 +179,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
           <H2>Colors</H2>
           <Grid gap={3}>
             Brand:
-            <Tooltip id="brand" tooltipText="--brand">
+            <Tooltip id="brand" content="--brand">
               <Box
                 as="section"
                 css={{
@@ -185,7 +191,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               />
             </Tooltip>
             Background:
-            <Tooltip id="background" tooltipText="--background">
+            <Tooltip id="background" content="--background">
               <Box
                 as="section"
                 css={{
@@ -197,7 +203,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               />
             </Tooltip>
             Foreground:
-            <Tooltip id="foreground" tooltipText="--foreground">
+            <Tooltip id="foreground" content="--foreground">
               <Box
                 as="section"
                 css={{
@@ -210,7 +216,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             </Tooltip>
             Typeface:
             <Grid css={{ gridTemplateColumns: 'repeat(3, 44px)' }} gap={3}>
-              <Tooltip id="typeface-primary" tooltipText="--typeface-primary">
+              <Tooltip id="typeface-primary" content="--typeface-primary">
                 <Box
                   as="section"
                   css={{
@@ -221,10 +227,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                   }}
                 />
               </Tooltip>
-              <Tooltip
-                id="typeface-secondary"
-                tooltipText="--typeface-secondary"
-              >
+              <Tooltip id="typeface-secondary" content="--typeface-secondary">
                 <Box
                   as="section"
                   css={{
@@ -235,7 +238,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                   }}
                 />
               </Tooltip>
-              <Tooltip id="typeface-tertiary" tooltipText="--typeface-tertiary">
+              <Tooltip id="typeface-tertiary" content="--typeface-tertiary">
                 <Box
                   as="section"
                   css={{
@@ -269,7 +272,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                   <Tooltip
                     id={`${paletteItem}-${shade}`}
                     key={`${paletteItem}-${shade}`}
-                    tooltipText={`--palette-${paletteItem}-${shade}`}
+                    content={`--palette-${paletteItem}-${shade}`}
                   >
                     <Box
                       as="section"
@@ -612,8 +615,8 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
           <H2>Tooltip</H2>
           <Tooltip
             id="exampletooltip"
-            tooltipText="@ode_aksar"
-            tooltipVisuallyHiddenText="Follow Me on Twitter"
+            content="@ode_aksar"
+            visuallyHiddenText="Follow Me on Twitter"
           >
             <Flex
               alignItems="center"
@@ -1084,7 +1087,9 @@ function sayHi(name) {
           <Sandpack
             template="react"
             dependencies={{
-              'framer-motion': '5.2.1'
+              'framer-motion': '5.2.1',
+              react: '17.0.2',
+              'react-dom': '17.0.2'
             }}
             files={{
               '/App.js': {
