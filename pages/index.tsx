@@ -3,9 +3,8 @@ import dynamic from 'next/dynamic';
 import { motion, MotionProps } from 'framer-motion';
 import type { InferGetStaticPropsType } from 'next';
 
-import {Box, } from "@laodeaksarr/design-system"
+import { Box, styled } from '@laodeaksarr/design-system';
 
-import Box from '~/components/Box';
 import Button from '~/components/Button';
 import BlogCard from '~/components/Blog';
 import Card from '~/components/Card';
@@ -16,11 +15,9 @@ import Text, { H1, H2, H3 } from '~/components/Typography';
 import { ExternalIcon, TwitterIcon } from '~/components/Icons';
 
 import Layout from '~/layout';
-import { styled } from '~/lib/stitches.config';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 
 import { pick } from 'lodash';
-import { allBlogs } from 'contentlayer/generated';
 
 const Newsletter = dynamic(() => import('~/components/Newsletter'));
 
