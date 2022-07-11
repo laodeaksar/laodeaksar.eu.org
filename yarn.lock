@@ -1398,10 +1398,10 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
   integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
 
-"@laodeaksarr/design-system@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@laodeaksarr/design-system/-/design-system-0.3.0.tgz#fbb7111737570352022da140e2a759770f6a3521"
-  integrity sha512-xk0paBU6Ezk174m2DL1Wh/fKNqOeH58Q5kqLsO7VtmGEuY62LRZWI4kx60wjSKctuk0ne3p9yGZYRt5CdEXqEA==
+"@laodeaksarr/design-system@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@laodeaksarr/design-system/-/design-system-0.3.3.tgz#36f36ed52dbaa4c65a8a0b60519e561bad7bc8ac"
+  integrity sha512-Pjc6fvw/dOI8GVvPJamR2E/U4MaUHcGbtUJqQKAjkn2hWIR5qa6iSno2NMYI14rc17hohbONXaqF6RHl3SVgTA==
   dependencies:
     "@radix-ui/react-tooltip" "^0.1.7"
     "@stitches/react" "^1.2.8"
