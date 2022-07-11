@@ -2,9 +2,7 @@ const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN || '';
 
-const basicToken = Buffer.from(`${clientId}:${clientSecret}`).toString(
-  'base64'
-);
+const basicToken = btoa(`${clientId}:${clientSecret}`);
 
 const getAccessToken = async () => {
   const url = 'https://accounts.spotify.com/api/token';
