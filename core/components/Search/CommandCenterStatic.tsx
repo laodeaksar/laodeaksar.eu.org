@@ -1,26 +1,18 @@
-import NextLink from 'next/link';
+import NextLink from "next/link";
 
-import Box from '~/components/Box';
-import Link from '~/components/Link';
-import VisuallyHidden from '~/components/VisuallyHidden';
-import {
-  ArrowIcon,
-  ContactIcon,
-  MapIcon,
-  PortfolioIcon,
-  RSSIcon,
-  TwitterIcon
-} from '~/components/Icons';
+import Link from "~/components/Link";
 
-import { MAX_HEIGHT } from './constants';
-import { Separator, Item, KBD } from './Styles';
+import { Box, VisuallyHidden, Icon } from "@laodeaksarr/design-system";
+
+import { MAX_HEIGHT } from "./constants";
+import { Separator, Item, KBD } from "./Styles";
 
 const CommandCenterStatic = () => (
   <Box
     css={{
-      bc: 'var(--laodeaksar-colors-body)',
+      bc: "var(--laodeaksar-colors-body)",
       maxHeight: `${MAX_HEIGHT}px`,
-      overflowY: 'scroll'
+      overflowY: "scroll",
     }}
   >
     <Separator>Shortcuts</Separator>
@@ -41,21 +33,21 @@ const CommandCenterStatic = () => (
     <Separator>Navigation</Separator>
     <Item key="home-navigation">
       <Link href="/">
-        <ArrowIcon size={4} />
-        <span style={{ marginLeft: '20px' }}>Home</span>
+        <Icon.Arrow size={4} />
+        <span style={{ marginLeft: "20px" }}>Home</span>
       </Link>
     </Item>
     <Item key="design-navigation">
       <Link href="/design">
-        <ArrowIcon size={4} />
-        <span style={{ marginLeft: '20px' }}>Design System</span>
+        <Icon.Arrow size={4} />
+        <span style={{ marginLeft: "20px" }}>Design System</span>
       </Link>
     </Item>
     <Separator>Links</Separator>
     <Item key="twitter-social-link">
       <Link href="https://twitter.com/ode_aksar">
-        <TwitterIcon />
-        <span style={{ marginLeft: '15px' }}>Twitter</span>
+        <Icon.Twitter />
+        <span style={{ marginLeft: "15px" }}>Twitter</span>
         <VisuallyHidden as="p">
           Link redirects to my Twitter profile page
           https://twitter.com/ode_aksar.
@@ -64,8 +56,8 @@ const CommandCenterStatic = () => (
     </Item>
     <Item key="email-link">
       <Link href="mailto:me@laodeaksar.eu.org">
-        <ContactIcon />
-        <span style={{ marginLeft: '15px' }}>Contact</span>
+        <Icon.Contact />
+        <span style={{ marginLeft: "15px" }}>Contact</span>
         <VisuallyHidden as="p">
           Link opens your default mail client with my email address
           hello@laodeaksar.com prefilled.
@@ -74,8 +66,8 @@ const CommandCenterStatic = () => (
     </Item>
     <Item key="roadmap-link">
       <Link href="https://www.figma.com">
-        <MapIcon />
-        <span style={{ marginLeft: '15px' }}>Contact</span>
+        <Icon.Map />
+        <span style={{ marginLeft: "15px" }}>Contact</span>
         <VisuallyHidden as="p">
           Link redirects to a Figma file where you can see the roadmap with my
           upcoming projects and ideas.
@@ -84,15 +76,15 @@ const CommandCenterStatic = () => (
     </Item>
     <Item key="project-link">
       <Link href="/project">
-        <PortfolioIcon />
-        <span style={{ marginLeft: '15px' }}>Work</span>
+        <Icon.Portfolio />
+        <span style={{ marginLeft: "15px" }}>Work</span>
       </Link>
     </Item>
     <Item key="rss-link">
       <NextLink href="/feed.xml" aria-label="RSS Feed">
         <a title="RSS Feed">
-          <RSSIcon />
-          <span style={{ marginLeft: '15px' }}>RSS</span>
+          <Icon.RSS />
+          <span style={{ marginLeft: "15px" }}>RSS</span>
           <VisuallyHidden as="p">
             Link redirects to the rss.xml file.
           </VisuallyHidden>

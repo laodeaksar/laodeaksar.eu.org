@@ -1,32 +1,28 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import { createPortal } from 'react-dom';
-import Link from 'next/link';
-import FocusTrap from 'focus-trap-react';
-
-import useBodyScrollLock from '~/hooks/useBodyScrollLock';
-import useDebouncedValue from '~/hooks/useDebouncedValue';
-import { useTheme } from '~/context/ThemeContext';
-
-import { Flex, } from "@laodeaksarr/design-system";
-
-import Label from '~/components/Label';
-import Flex from '~/components/Flex';
-import { EnterIcon } from '~/components/Icons';
-
-import { CommandCenterStatic } from './CommandCenterStatic';
-import { HEIGHT, MAX_HEIGHT } from './constants';
-
+import {
+  Flex,
+  Icon,
+  Label,
+  useDebouncedValue,
+  useTheme,
+} from "@laodeaksarr/design-system";
+import FocusTrap from "focus-trap-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import { createPortal } from "react-dom";
+import { CommandCenterStatic } from "./CommandCenterStatic";
+import { HEIGHT, MAX_HEIGHT } from "./constants";
 import {
   Overlay,
   SearchBox,
   FormWrapper,
   SearchResults,
-  Result
-} from './Styles';
+  Result,
+} from "./Styles";
+import useBodyScrollLock from "~/hooks/useBodyScrollLock";
 
 type Result = {
-  types: 'snippet' | 'blog';
+  type: "snippet" | "blog";
   slug: string;
   title: string;
 };
@@ -34,11 +30,6 @@ type Result = {
 interface Props {
   onClose: () => void;
 }
-
-const toggleLockScroll = () => {
-  document.documentElement.classList.toggle('lock-scroll');
-  return;
-};
 
 export type IndexOperator = (nudge?: number) => void;
 
@@ -61,22 +52,22 @@ function useIndexItem<T>(
   IndexOperator,
   React.Dispatch<React.SetStateAction<number>>
 ] {
-  const [index, setIndex] = useState(initial);
-  const itemsRef = useRef(items);
+  const [index, setIndex] = React.useState(initial);
+  const itemsRef = React.useRef(items);
 
-  useEffect(() => {
+  React.useEffect(() => {
     itemsRef.current = items;
 
     setIndex((index) => clamp(index, 0, Math.max(items.length - 1, 0)));
   }, [items]);
 
-  const previousItem = useCallback((nudge: number = 1) => {
+  const previousItem = React.useCallback((nudge: number = 1) => {
     setIndex((index) =>
       wrap(index - nudge, 0, Math.max(itemsRef.current.length, 0))
     );
   }, []);
 
-  const nextItem = useCallback((nudge: number = 1) => {
+  const nextItem = React.useCallback((nudge: number = 1) => {
     setIndex((index) =>
       wrap(index + nudge, 0, Math.max(itemsRef.current.length, 0))
     );
@@ -88,16 +79,16 @@ function useIndexItem<T>(
 const Search = (props: Props) => {
   const { onClose } = props;
 
-  const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState<Result[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = React.useState(true);
+  const [results, setResults] = React.useState<Result[]>([]);
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   useBodyScrollLock();
   const router = useRouter();
   const debouncedSearchQuery = useDebouncedValue(searchQuery, 250);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-  const SearchRef = useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const SearchRef = React.useRef<HTMLDivElement>(null);
 
   const [selectedResult, previousResult, nextResult, setSelectedResult] =
     useIndexItem(results);
@@ -116,23 +107,23 @@ const Search = (props: Props) => {
 
   const handlePointer = (index: number) => setSelectedResult(index);
 
-  const handleKey = useCallback(
-    (e: KeyboardEvent) => {
-      if (debouncedSearchQuery !== '') {
-        switch (e.key) {
-          case 'Enter':
+  const handleKey = React.useCallback(
+    (event: KeyboardEvent) => {
+      if (debouncedSearchQuery !== "") {
+        switch (event.key) {
+          case "Enter":
             const href = `/${
-              selectedResult.types === 'snippet' ? 'snippets' : 'blog'
+              selectedResult.type === "snippet" ? "snippets" : "blog"
             }/${selectedResult.slug}/`;
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
             break;
-          case 'ArrowUp':
-            e.preventDefault();
+          case "ArrowUp":
+            event.preventDefault();
             previousResult();
             break;
-          case 'ArrowDown':
-            e.preventDefault();
+          case "ArrowDown":
+            event.preventDefault();
             nextResult();
             break;
           default:
@@ -145,11 +136,11 @@ const Search = (props: Props) => {
       router,
       onClose,
       previousResult,
-      nextResult
+      nextResult,
     ]
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (inputRef && inputRef.current) {
       inputRef.current.focus();
     }
@@ -159,10 +150,10 @@ const Search = (props: Props) => {
     // return () => toggleLockScroll();
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setLoading(true);
 
-    if (debouncedSearchQuery && debouncedSearchQuery !== '') {
+    if (debouncedSearchQuery && debouncedSearchQuery !== "") {
       const searchEndpoint = `/api/search?q=${debouncedSearchQuery.toLowerCase()}`;
       fetch(searchEndpoint)
         .then((res) => res.json())
@@ -172,25 +163,25 @@ const Search = (props: Props) => {
         });
     }
 
-    if (debouncedSearchQuery === '') {
+    if (debouncedSearchQuery === "") {
       setResults([]);
       setLoading(false);
     }
   }, [debouncedSearchQuery]);
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKey);
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKey);
 
     return () => {
-      window.removeEventListener('keydown', handleKey);
+      window.removeEventListener("keydown", handleKey);
     };
   }, [handleKey]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (selectedResult) {
       document
         .getElementById(selectedResult.slug)
-        ?.scrollIntoView({ block: 'nearest' });
+        ?.scrollIntoView({ block: "nearest" });
     }
   }, [selectedResult]);
 
@@ -201,33 +192,36 @@ const Search = (props: Props) => {
       <aside>
         <Overlay
           initial={{
-            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
+            backgroundColor: dark ? "rgba(0,0,0,0)" : "rgba(241, 243, 247, 0)",
           }}
           animate={{
             backgroundColor: dark
-              ? 'rgba(0,0,0,0.8)'
-              : 'rgba(241, 243, 247, 0.8)'
+              ? "rgba(0,0,0,0.8)"
+              : "rgba(241, 243, 247, 0.8)",
           }}
           exit={{
-            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
+            backgroundColor: dark ? "rgba(0,0,0,0)" : "rgba(241, 243, 247, 0)",
           }}
+          // transition={{ duration: 0.4 }}
           onClick={clickOutside}
           aria-label="search"
+          // The dialog container element has aria-modal set to true.
           aria-modal="true"
           tabIndex={-1}
+          // All elements required to operate the dialog are descendants of the element that has role dialog.
           role="dialog"
         >
           <SearchBox
-            initial={{ scale: 0.8, opacity: 0, x: '-50%' }}
+            initial={{ scale: 0.8, opacity: 0, x: "-50%" }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{
               scale: 0.5,
               opacity: 0,
-              transition: { duration: 0.15, delay: 0.1 }
+              transition: { duration: 0.15, delay: 0.1 },
             }}
             transition={{
-              ease: 'easeOut',
-              duration: 0.2
+              ease: "easeOut",
+              duration: 0.2,
             }}
           >
             <FormWrapper ref={SearchRef}>
@@ -246,24 +240,24 @@ const Search = (props: Props) => {
                 />
                 <Label
                   style={{
-                    width: '120px'
+                    width: "120px",
                   }}
                 >
-                  {debouncedSearchQuery !== '' && !loading
+                  {debouncedSearchQuery !== "" && !loading
                     ? `${results.length} results`
                     : null}
                 </Label>
               </form>
             </FormWrapper>
-            {debouncedSearchQuery !== '' ? (
+            {debouncedSearchQuery !== "" ? (
               <SearchResults
                 style={{
                   height:
                     results.length * HEIGHT >= MAX_HEIGHT
                       ? MAX_HEIGHT
                       : results.length * HEIGHT,
-                  transition: 'height 0.4s ease-out',
-                  willChange: 'height'
+                  transition: "height 0.4s ease-out",
+                  willChange: "height",
                 }}
               >
                 {results.map((result, index) => (
@@ -275,7 +269,7 @@ const Search = (props: Props) => {
                   >
                     <Link
                       href={`/${
-                        result.types === 'snippet' ? 'snippets' : 'blog'
+                        result.type === "snippet" ? "snippets" : "blog"
                       }/${result.slug}`}
                     >
                       <a onClick={() => setTimeout(onClose, 600)}>
@@ -286,17 +280,17 @@ const Search = (props: Props) => {
                       alignItems="center"
                       justifyContent="center"
                       css={{
-                        marginLeft: '$4',
-                        size: '35px',
-                        backgroundColor: 'var(--laodeaksar-colors-emphasis)',
-                        borderRadius: '$1',
+                        marginLeft: "$4",
+                        size: "35px",
+                        backgroundColor: "var(--laodeaksar-colors-emphasis)",
+                        borderRadius: "$1",
 
                         path: {
-                          stroke: 'var(--laodeaksar-colors-brand)'
-                        }
+                          stroke: "var(--laodeaksar-colors-brand)",
+                        },
                       }}
                     >
-                      <EnterIcon size={4} />
+                      <Icon.Enter size={4} />
                     </Flex>
                   </Result>
                 ))}
@@ -312,4 +306,4 @@ const Search = (props: Props) => {
   );
 };
 
-export default Search;
+export { Search };

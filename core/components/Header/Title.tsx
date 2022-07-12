@@ -1,25 +1,25 @@
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from "framer-motion";
 
-import Text from '~/components/Typography';
+import { Text } from "@laodeaksarr/design-system";
 
-import { fixTruncate, HeaderTitleWrapper } from './Styles';
-import type { HeaderTitleProps } from './types';
+import { fixTruncate, HeaderTitleWrapper } from "./Styles";
+import type { HeaderTitleProps } from "./types";
 
 const titleVariants = {
   open: {
     y: 70,
     transition: {
-      ease: 'easeInOut',
-      duration: 0.4
-    }
+      ease: "easeInOut",
+      duration: 0.4,
+    },
   },
   collapsed: {
     y: 0,
     transition: {
-      ease: 'easeInOut',
-      duration: 0.4
-    }
-  }
+      ease: "easeInOut",
+      duration: 0.4,
+    },
+  },
 };
 
 export const HeaderTitle = (props: HeaderTitleProps) => {
@@ -38,14 +38,14 @@ export const HeaderTitle = (props: HeaderTitleProps) => {
         css={{ marginBottom: 0 }}
         style={{
           y: titleY,
-          opacity: titleOpacity
+          opacity: titleOpacity,
         }}
       >
         <a
           href="#top"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
           tabIndex={-1}
         >

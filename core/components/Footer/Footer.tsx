@@ -1,12 +1,15 @@
-import { styled } from '~/lib/stitches.config';
+import {
+  styled,
+  Box,
+  Grid,
+  Text,
+  EM,
+  Flex,
+} from '@laodeaksarr/design-system';
 
-import Box from '~/components/Box';
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
 import Link from '~/components/Link';
 import Logo from '~/components/Logo';
 import NowPlaying from '~/components/NowPlaying';
-import Text, { EM } from '~/components/Typography';
 
 const Footer = () => (
   <FooterBlock>

@@ -3,12 +3,14 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
-import Logo from '~/components/Logo';
-import Tooltip from '~/components/Tooltip';
+import {
+  Flex,
+  Grid,
+  Tooltip,
+  useKeyboardShortcut,
+} from '@laodeaksarr/design-system';
 
-import useKeyboardShortcut from '~/hooks/useKeyboardShortcut';
+import Logo from '~/components/Logo';
 import useProgress from '~/hooks/useProgress';
 import useScrollCounter from '~/hooks/useScrollCounter';
 
