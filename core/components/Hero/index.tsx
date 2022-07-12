@@ -1,9 +1,7 @@
 import { Component } from 'react';
 import Image from 'next/image';
 
-import { H1 } from '~/components/Typography';
-
-import { styled } from '~/lib/stitches.config';
+import { H1, styled } from '@laodeaksarr/design-system';
 // import { loader } from '~/lib/next-image-loader'
 
 import { HeroImgProps } from './types';
@@ -65,6 +63,7 @@ const HeroImg = (props: HeroImgProps) => (
 class Hero extends Component<{
   id?: string;
   className?: string;
+  children?: React.ReactNode;
 }> {
   public static Img = HeroImg;
   public static Info = HeroInfo;

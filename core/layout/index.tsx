@@ -4,7 +4,7 @@ import Header from '~/components/Header';
 import { Wrapper } from './Styles';
 import type { LayoutProps } from './types';
 
-const Layout: React.FC<LayoutProps> = (props) => {
+const Layout = (props: LayoutProps) => {
   const { children, header, footer, headerProps } = props;
 
   return (

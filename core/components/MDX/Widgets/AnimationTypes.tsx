@@ -2,12 +2,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { css } from '~/lib/stitches.config';
+import { Card, Grid, Label, Range, css } from '@laodeaksarr/design-system';
 
-import Card from '~/components/Card';
-import Grid from '~/components/Grid';
-import Label from '~/components/Label';
-import Range from '~/components/Range/Range';
 import { HighlightedCodeText } from '~/components/Code/CodeBlock';
 
 import {

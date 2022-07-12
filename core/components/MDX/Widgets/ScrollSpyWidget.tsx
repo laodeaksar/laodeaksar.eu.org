@@ -1,13 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { Shadows, styled } from 'lib/stitches.config';
+import {
+  Card,
+  Flex,
+  InlineCode,
+  Range,
+  Shadows,
+  styled,
+  useTheme
+} from '@laodeaksarr/design-system';
 
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import InlineCode from '~/components/InlineCode';
-import Range from '~/components/Range';
-
-import { useTheme } from '~/context/ThemeContext';
 import useScrollSpy from '~/hooks/useScrollSpy';
 
 import { AnimationCardContent, Form, HighlightedValue } from './Components';

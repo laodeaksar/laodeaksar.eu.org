@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Card from '~/components/Card';
-import Range from '~/components/Range';
-
 import { AnimationCardContent, Form, HighlightedValue } from './Components';
 import { useDebounce } from './utils';
 
-import { css } from '~/lib/stitches.config';
+import { css, Card, Range } from '@laodeaksarr/design-system';
 
 const Orchestration = () => {
   const [key, setKey] = useState(0);

@@ -3,16 +3,22 @@ import dynamic from 'next/dynamic';
 import { motion, MotionProps } from 'framer-motion';
 import type { InferGetStaticPropsType } from 'next';
 
-import { Box, styled } from '@laodeaksarr/design-system';
+import {
+  Button,
+  Box,
+  Card,
+  Flex,
+  Grid,
+  H1,
+  H2,
+  H3,
+  Icon,
+  VisuallyHidden,
+  styled,
+  Text
+} from '@laodeaksarr/design-system';
 
-import Button from '~/components/Button';
 import BlogCard from '~/components/Blog';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
-import VisuallyHidden from '~/components/VisuallyHidden';
-import Text, { H1, H2, H3 } from '~/components/Typography';
-import { ExternalIcon, TwitterIcon } from '~/components/Icons';
 
 import Layout from '~/layout';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
@@ -59,7 +65,7 @@ const IndexPage = ({
           <Flex gap={4} css={{ mx: '-$3' }}>
             <Link href="/about" passHref>
               <a>
-                <Button variant="secondary" endIcon={<ExternalIcon />}>
+                <Button variant="secondary" endIcon={<Icon.External />}>
                   About me
                 </Button>
                 <VisuallyHidden as="p">Link redirects to /about</VisuallyHidden>
@@ -71,7 +77,7 @@ const IndexPage = ({
               rel="noreferrer noopener"
               tabIndex={-1}
             >
-              <Button variant="secondary" endIcon={<TwitterIcon />}>
+              <Button variant="secondary" endIcon={<Icon.Twitter />}>
                 @ode_aksar
               </Button>
               <VisuallyHidden as="p">

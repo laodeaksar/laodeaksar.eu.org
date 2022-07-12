@@ -3,10 +3,9 @@ import type { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 
 import tagColors from '~/lib/tagColor';
 
-import Box from '~/components/Box';
-import Grid from '~/components/Grid';
+import { Box, Grid, H2, Text } from '@laodeaksarr/design-system';
+
 import SEO from '~/components/Seo';
-import Text, { H2 } from '~/components/Typography';
 import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';

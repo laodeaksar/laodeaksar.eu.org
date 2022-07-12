@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import Anchor from '~/components/Anchor';
-import Box from '~/components/Box';
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
+import { Box, Flex, Grid, Pill, Text } from '@laodeaksarr/design-system';
+
 import Hero from '~/components/Hero';
 import Link from '~/components/Link';
-import Pill from '~/components/Pill';
 import SEO from '~/components/Seo';
 import TableOfContent from '~/components/TableOfContent';
-import Text from '~/components/Typography';
 import { WebmentionCount } from '~/components/Webmentions';
 
 import Layout from '~/layout';

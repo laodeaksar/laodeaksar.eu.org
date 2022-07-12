@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { styled } from '~/lib/stitches.config';
+import {
+  Button,
+  Card as DesignSystemCard,
+  Flex,
+  Icon,
+  InlineCode,
+  styled
+} from '@laodeaksarr/design-system';
 import { AnimatePresence, motion } from 'framer-motion';
-
-import Button from '~/components/Button';
-import Flex from '~/components/Flex';
-import DesignSystemCard from '~/components/Card';
-import InlineCode from '~/components/InlineCode';
-import { ArrowIcon } from '~/components/Icons';
 
 import { AnimationCardContent, TransitionGridWrapper } from './Components';
 
@@ -90,7 +91,7 @@ const ContentDemo = (props: Props) => {
           variant="icon"
           onMouseEnter={() => setAboutToBeClicked('prev')}
           onClick={prev}
-          icon={<ArrowIcon style={{ transform: 'scaleX(-1)' }} />}
+          icon={<Icon.Arrow style={{ transform: 'scaleX(-1)' }} />}
         />
         <Button
           id="next"
@@ -98,7 +99,7 @@ const ContentDemo = (props: Props) => {
           variant="icon"
           onMouseEnter={() => setAboutToBeClicked('next')}
           onClick={next}
-          icon={<ArrowIcon />}
+          icon={<Icon.Arrow />}
         />
       </Flex>
     </>

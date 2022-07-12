@@ -1,13 +1,11 @@
 import React from 'react';
 
-import {styled}from'~/lib/stitches.config';
+import { Card, styled } from '@laodeaksarr/design-system';
 import prism from '~/styles/prism';
 
-import Card from '~/components/Card';
 import { hasTitle } from './utils';
 import { CodeBlockProps } from './types';
-import { CopyToClipboardButton } from '../Button';
-
+import { CopyToClipboardButton } from '../Buttons';
 
 const Pre = (props: CodeBlockProps) => {
   const { codeString, children, metastring } = props;

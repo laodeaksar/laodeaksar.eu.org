@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import useSWR from 'swr';
 
-import Flex from '~/components/Flex';
-import Text from '~/components/Typography';
+import { Flex, Text } from '@laodeaksarr/design-system';
 
 import SpotifyLogo, { Glass } from './icons';
 import { styles } from './Styles';

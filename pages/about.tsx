@@ -2,18 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Image from 'next/image';
 
+import { Box, css, Grid, Text, H1, Strong } from '@laodeaksarr/design-system';
+
 import Link from '~/components/Link';
-import Box from '~/components/Box';
-import Grid from '~/components/Grid';
 import Newsletter from '~/components/Newsletter';
 import SEO from '~/components/Seo';
 import Spinner from '~/components/Spinner';
-import Text, { H1, Strong } from '~/components/Typography';
 
 import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
-
-import { css } from '~/lib/stitches.config';
 
 import { allBlogs } from 'contentlayer/generated';
 

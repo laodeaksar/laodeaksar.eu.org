@@ -1,9 +1,6 @@
 import Image from 'next/image';
 
-import Anchor from '~/components/Anchor';
-import Box from '~/components/Box';
-import Flex from '~/components/Flex';
-import Text from '~/components/Typography';
+import { Anchor, Box, Flex, Text } from '@laodeaksarr/design-system';
 
 import {
   LikeIcon,
@@ -52,7 +49,8 @@ const Tweet = ({ tweet }: Props) => {
     .replace(/https:\/\/[\n\S]+/g, '')
     .replace('&amp;', '&');
   const quoteTweet =
-    referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
+    referenced_tweets &&
+    referenced_tweets.find((t: any) => t.type === 'quoted');
 
   return (
     <TweetWrapper>
@@ -114,7 +112,7 @@ const Tweet = ({ tweet }: Props) => {
       </Text>
       {media && media?.length > 1 ? (
         <ImageGrid>
-          {media.map((m) => (
+          {media.map((m: any) => (
             <Box
               key={m.media_key}
               css={{
@@ -135,7 +133,7 @@ const Tweet = ({ tweet }: Props) => {
       ) : null}
       {media && media?.length === 1 ? (
         <SingleImageWrapper>
-          {media.map((m) => (
+          {media.map((m: any) => (
             <Image
               key={m.media_key}
               alt={text}
@@ -178,9 +176,11 @@ const Tweet = ({ tweet }: Props) => {
           rel="noopener noreferrer"
         >
           <ReplyIcon outline={false} variant="none" />
-          <span>{new Number(public_metrics.reply_count).toLocaleString('en', {
+          <span>
+            {new Number(public_metrics.reply_count).toLocaleString('en', {
               notation: 'compact'
-            })}</span>
+            })}
+          </span>
         </ActionIcons>
         <ActionIcons
           css={{
@@ -210,9 +210,11 @@ const Tweet = ({ tweet }: Props) => {
           rel="noopener noreferrer"
         >
           <LikeIcon outline={false} variant="none" />
-          <span>{new Number(public_metrics.like_count).toLocaleString('en', {
+          <span>
+            {new Number(public_metrics.like_count).toLocaleString('en', {
               notation: 'compact'
-            })}</span>
+            })}
+          </span>
         </ActionIcons>
       </Flex>
     </TweetWrapper>

@@ -1,8 +1,7 @@
 import { SpinnerStyled } from './Styles';
 import type { SpinnerProps } from './types';
 
-import VisuallyHidden from '~/components/VisuallyHidden';
-import Flex from '~/components/Flex';
+import { Flex, VisuallyHidden } from '@laodeaksarr/design-system';
 
 const Spinner = (props: SpinnerProps) => {
   const { label = 'Loading...' } = props;

@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 
-import { css } from '~/lib/stitches.config';
+import {
+  css,
+  Card,
+  Flex,
+  Icon,
+  Pill,
+  Switch,
+  Text
+} from '@laodeaksarr/design-system';
 
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Pill from '~/components/Pill';
-import Switch from '~/components/Switch';
-import Text from '~/components/Typography';
 import { HighlightedCodeText } from '~/components/Code/CodeBlock';
-import { XIcon } from '~/components/Icons';
 
 const ITEMS = [
   {
@@ -90,7 +92,7 @@ const List = (props: {
                     )
                   }
                 >
-                  <XIcon size={4} />
+                  <Icon.X size={4} />
                 </button>
                 <Text
                   size={2}

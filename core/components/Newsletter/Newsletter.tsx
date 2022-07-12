@@ -1,24 +1,23 @@
-import { useEffect, useState, FormEvent } from 'react';
-import useSWR from 'swr';
 import toast, { Toaster } from 'react-hot-toast';
 import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
-
-import fetcher from '~/lib/fetcher';
 
 import { ErrorMessage, NewsletterFormContent } from './Styles';
 import { NewsletterHeader } from './Icons';
 import type { Props } from './types';
-import { Form, FormState } from '~/types/form';
 
-import Anchor from '~/components/Anchor';
-import Button from '~/components/Button';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Link from '~/components/Link';
-import List from '~/components/List';
-import TextInput from '~/components/TextInput';
+import {
+  Anchor,
+  Button,
+  Card,
+  EM,
+  Flex,
+  H3,
+  List,
+  Text,
+  TextInput
+} from '@laodeaksarr/design-system';
+
 import Spinner from '~/components/Spinner';
-import Text, { EM, H3 } from '~/components/Typography';
 
 type Inputs = {
   email: string;

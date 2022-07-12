@@ -1,4 +1,4 @@
-import { css, keyframes } from '~/lib/stitches.config';
+import { css, keyframes } from '@laodeaksarr/design-system';
 
 const bounceBar = keyframes({
   '0%': {

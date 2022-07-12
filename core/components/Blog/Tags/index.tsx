@@ -1,9 +1,6 @@
-import Flex from '~/components/Flex';
-import Pill from '~/components/Pill';
-import Text from '~/components/Typography';
+import { Flex, Pill, Text, styled } from '@laodeaksarr/design-system';
 
 import useIsArticleRead from '~/hooks/useIsArticleRead';
-import { styled } from '~/lib/stitches.config';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 
 import { Button } from '../Styles';

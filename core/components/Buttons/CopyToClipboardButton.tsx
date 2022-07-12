@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
-import { styled } from '~/lib/stitches.config';
+import { styled } from '@laodeaksarr/design-system';
 
 const CopyButton = styled('button', {
   background: 'transparent',

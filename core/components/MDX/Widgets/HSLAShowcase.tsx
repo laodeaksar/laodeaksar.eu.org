@@ -1,10 +1,6 @@
 import { useState } from 'react';
 
-import Box from '~/components/Box';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Range from '~/components/Range';
-import InlineCode from '~/components/InlineCode';
+import { Box, Card, Flex, InlineCode, Range } from '@laodeaksarr/design-system';
 
 import { AnimationCardContent, Form, HighlightedValue } from './Components';
 

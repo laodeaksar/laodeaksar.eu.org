@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
-import Card from '~/components/Card';
-import Grid from '~/components/Grid';
-import Label from '~/components/Label';
-import Range from '~/components/Range';
+import { Card, Grid, Label, Range } from '@laodeaksarr/design-system';
 
 import { AnimationCardContent, Form, HighlightedValue } from './Components';
 

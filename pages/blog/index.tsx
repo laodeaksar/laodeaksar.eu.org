@@ -1,10 +1,9 @@
 import type { InferGetStaticPropsType } from 'next';
 
-import Box from '~/components/Box';
+import { Box, Grid, H2 } from '@laodeaksarr/design-system';
+
 import BlogCard from '~/components/Blog';
-import Grid from '~/components/Grid';
 import SEO from '~/components/Seo';
-import { H2 } from '~/components/Typography';
 
 import Layout from '~/layout';
 

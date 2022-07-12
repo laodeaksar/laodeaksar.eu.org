@@ -1,24 +1,28 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-//import { Flex } from "@laodeaksar/design-system";
+import {
+  Anchor,
+  Box,
+  Button,
+  Callout,
+  Flex,
+  Grid,
+  Icon,
+  Text,
+  H1,
+  H2,
+  H3,
+  Shadows,
+  styled
+} from '@laodeaksarr/design-system';
 
-import Anchor from '~/components/Anchor';
-import Box from '~/components/Box';
-import Button from '~/components/Button';
-import Grid from '~/components/Grid';
-import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
 import Link from '~/components/Link';
-import Text, { H1, H2, H3 } from '~/components/Typography';
-
-import { Shadows, styled } from '~/lib/stitches.config';
 
 import Layout from '~/layout';
 
 import { allGears } from 'contentlayer/generated';
-import Callout from '~/components/Callout';
-import { ExternalIcon } from '~/components/Icons';
 
 const Svg = styled('svg', {
   marginRight: '0.5rem',
@@ -218,7 +222,7 @@ function ProductLink({ children, href }) {
       href={href}
     >
       {children}
-      <ExternalIcon />
+      <Icon.External />
     </Link>
   );
 }

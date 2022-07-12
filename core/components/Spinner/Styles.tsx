@@ -3,7 +3,7 @@ import {
   keyframes,
   styled,
   VariantProps
-} from '~/lib/stitches.config';
+} from '@laodeaksarr/design-system';
 
 const spin = keyframes({
   from: {

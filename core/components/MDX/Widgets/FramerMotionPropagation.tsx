@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { css, Shadows, styled } from '~/lib/stitches.config';
-
-import Button from '~/components/Button';
-import DesignSystemCard from '~/components/Card';
-import Flex from '~/components/Flex';
-import { H3 } from '~/components/Typography';
-import { StackIcon } from '~/components/Icons';
+import {
+  Button,
+  Card as DesignSystemCard,
+  Flex,
+  H3,
+  Icon,
+  css,
+  Shadows,
+  styled
+} from '@laodeaksarr/design-system';
 
 import { AnimationCardContent } from './Components';
 
@@ -113,7 +116,7 @@ const CardWithGlow = () => {
       <Button
         title={inPerspective ? 'Disable perspective' : 'Enable perspective'}
         variant="icon"
-        icon={<StackIcon />}
+        icon={<Icon.Stack />}
         onClick={() => setInPerspective((prev) => !prev)}
       />
     </Flex>

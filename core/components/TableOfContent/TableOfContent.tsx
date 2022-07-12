@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-import Anchor from '~/components/Anchor';
-import Box from '~/components/Box';
+import { Anchor, Box } from '@laodeaksarr/design-system';
 
 import useProgress from '~/hooks/useProgress';
 import useScrollSpy from '~/hooks/useScrollSpy';
@@ -64,8 +63,8 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
                   currentActiveIndex === index
                     ? {
                         a: {
-                          color: 'var(--laodeaksar-colors-brand)!important',
-                        },
+                          color: 'var(--laodeaksar-colors-brand)!important'
+                        }
                       }
                     : {}
                 }

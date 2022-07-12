@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Box from '~/components/Box';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
-import Switch from '~/components/Switch';
+import { Box, Card, Flex, Grid, Switch } from '@laodeaksarr/design-system';
 
 const LayoutProp = () => {
   const [expanded, setExpanded] = useState(true);

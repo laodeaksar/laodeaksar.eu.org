@@ -1,23 +1,27 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import useSWR, { SWRConfig, useSWRConfig } from 'swr';
 import toast, { Toaster } from 'react-hot-toast';
 
 import fetcher from '~/lib/fetcher';
 
-import Button from '~/components/Button';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
-import TextInput from '~/components/TextInput';
-import Text, { H2 } from '~/components/Typography';
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  Grid,
+  H2,
+  Icon,
+  Text,
+  TextInput
+} from '@laodeaksarr/design-system';
+
 import SEO from '~/components/Seo';
 import Spinner from '~/components/Spinner';
-import { GithubIcon } from '~/components/Icons';
 
 import prisma from '~/lib/prisma';
 import Layout from '~/layout';
-import Box from '~/components/Box';
 
 type Inputs = {
   body: string;
@@ -137,7 +141,7 @@ function LogInWithGithub() {
         signIn('github');
       }}
     >
-      <Button variant="primary" endIcon={<GithubIcon />}>
+      <Button variant="primary" endIcon={<Icon.Github />}>
         Signup with Github
       </Button>
     </a>

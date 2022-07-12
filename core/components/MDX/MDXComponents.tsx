@@ -1,21 +1,26 @@
 import dynamic from 'next/dynamic';
 
 // Components
-import Anchor from '~/components/Anchor';
-import Blockquote from '~/components/Blockquote';
-import Button from '~/components/Button';
-import Pre from '~/components/Code/Pre';
+import {
+  Anchor,
+  Blockquote,
+  Button,
+  Callout,
+  Card,
+  InlineCode,
+  List,
+  Pill,
+  Text,
+  EM,
+  H2,
+  H3,
+  Strong,
+  Tabs
+} from '@laodeaksarr/design-system';
 import Code from '~/components/Code';
-import Callout from '~/components/Callout';
-import InlineCode from '~/components/InlineCode';
-import List from '~/components/List';
-import Card from '~/components/Card';
-import Pill from '~/components/Pill';
 import VideoPlayer from '~/components/VideoPlayer';
-import Text, { EM, H2, H3, Strong } from '~/components/Typography';
-import Tabs from '~/components/Tabs';
 
-// MDX only components Image, 
+// MDX only components Image,
 import Image from './Image';
 
 // Widgets (used in blog post for interactive experiences)
@@ -138,8 +143,7 @@ const MDXComponents = {
     <Text as="p" {...props} />
   ),
   Pill,
-  pre: Pre,
-  //pre: Code,
+  pre: Code,
   strong: Strong,
   VideoPlayer,
   Tabs,

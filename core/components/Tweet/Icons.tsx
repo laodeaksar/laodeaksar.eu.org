@@ -1,5 +1,5 @@
-import { StyledSVG } from '~/components/Icons/Styles';
-import { IconProps } from '~/components/Icons/types';
+import { StyledSVG } from '@laodeaksarr/design-system/dist/types/components/Icon/Icon.styles';
+import { IconProps } from '@laodeaksarr/design-system/dist/types/components/Icon/Icon.types';
 
 export const TwitterLogo = (props: IconProps) => (
   <StyledSVG
