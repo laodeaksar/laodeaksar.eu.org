@@ -12,8 +12,6 @@ import Spinner from '~/components/Spinner';
 import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
 
-import { allBlogs } from 'contentlayer/generated';
-
 const styles = {
   pointsStyle: css({
     position: 'absolute',

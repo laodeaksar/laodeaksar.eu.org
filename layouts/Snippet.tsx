@@ -4,8 +4,6 @@ import SEO from '~/components/Seo';
 
 import Layout from '~/layout';
 
-import type { Snippet } from 'contentlayer/generated';
-
 const SnippetLayout = ({
   children,
   snippet

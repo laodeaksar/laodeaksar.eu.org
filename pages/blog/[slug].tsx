@@ -1,5 +1,4 @@
 import type { GetStaticPropsContext } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import MDXComponents from '~/components/MDX/MDXComponents';
 import Tweet from '~/components/Tweet';
@@ -7,9 +6,7 @@ import Tweet from '~/components/Tweet';
 import BlogLayout from '~/layouts/Blog';
 
 import { getTweets } from '~/lib/tweets';
-import { getAllBlogs, getCurrentBlog, getNextBlogs } from '~/lib/get-data';
-
-import type { Blog } from 'contentlayer/generated';
+=
 
 interface BlogProps {
   post: Blog;

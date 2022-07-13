@@ -1,5 +1,5 @@
 import toast, { Toaster } from 'react-hot-toast';
-import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { ErrorMessage, NewsletterFormContent } from './Styles';
 import { NewsletterHeader } from './Icons';

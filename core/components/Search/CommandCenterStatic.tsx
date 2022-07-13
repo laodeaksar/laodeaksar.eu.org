@@ -2,7 +2,7 @@ import NextLink from "next/link";
 
 import Link from "~/components/Link";
 
-import { Box, VisuallyHidden, Icon } from "@laodeaksarr/design-system";
+import { Box, Icon, VisuallyHidden } from '@laodeaksarr/design-system';
 
 import { MAX_HEIGHT } from "./constants";
 import { Separator, Item, KBD } from "./Styles";

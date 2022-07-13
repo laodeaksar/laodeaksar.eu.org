@@ -22,8 +22,6 @@ import Link from '~/components/Link';
 
 import Layout from '~/layout';
 
-import { allGears } from 'contentlayer/generated';
-
 const Svg = styled('svg', {
   marginRight: '0.5rem',
   width: '2rem',
@@ -99,7 +97,7 @@ const CategoryIcons = {
   )
 };
 
-const Uses = ({ gearByCategory }) => {
+const Uses = ({ gearByCategory }: any) => {
   const easing = [0.175, 0.85, 0.42, 0.96];
 
   return (
@@ -210,7 +208,7 @@ export async function getStaticProps() {
   };
 }
 
-function ProductLink({ children, href }) {
+function ProductLink({ children, href }: any) {
   return (
     <Link
       style={{
@@ -227,7 +225,7 @@ function ProductLink({ children, href }) {
   );
 }
 
-function GeneralItems({ items }) {
+function GeneralItems({ items }: any) {
   return (
     <Grid as="ul" gapY={3} css={{ margin: 0, padding: 0 }}>
       {items.map(
@@ -239,7 +237,7 @@ function GeneralItems({ items }) {
           affiliateLink,
           affiliateLinkText,
           body
-        }) => {
+        }: any) => {
           return (
             <Box
               as={motion.li}
@@ -423,10 +421,10 @@ function GeneralItems({ items }) {
   );
 }
 
-function SoftwareItems({ items }) {
+function SoftwareItems({ items }: any) {
   return (
     <Grid as="ul" gap={6} css={{ margin: 0, padding: 0 }}>
-      {items?.map(({ id, title, image, link, body }) => {
+      {items?.map(({ id, title, image, link, body }: any) => {
         return (
           <Box
             as={motion.li}

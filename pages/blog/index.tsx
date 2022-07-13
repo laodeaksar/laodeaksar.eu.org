@@ -7,9 +7,6 @@ import SEO from '~/components/Seo';
 
 import Layout from '~/layout';
 
-import { pick } from 'contentlayer/client';
-import { allBlogs } from 'contentlayer/generated';
-
 const BlogPage = ({
   posts
 }: InferGetStaticPropsType<typeof getStaticProps>) => {

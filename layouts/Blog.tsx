@@ -14,7 +14,6 @@ import Signature from './Signature';
 import config from 'config/seo_meta.json';
 import generateSocialImage from '~/lib/OpenGraph';
 
-import type { Blog } from 'contentlayer/generated';
 
 interface WebmentionBlogDataProps {
   date: string;

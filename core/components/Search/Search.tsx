@@ -1,28 +1,29 @@
+import React from 'react';
+import Link from 'next/link';
+import FocusTrap from 'focus-trap-react';
+import { useRouter } from 'next/router';
+import { createPortal } from 'react-dom';
+
 import {
   Flex,
   Icon,
   Label,
   useDebouncedValue,
-  useTheme,
-} from "@laodeaksarr/design-system";
-import FocusTrap from "focus-trap-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
-import { createPortal } from "react-dom";
-import { CommandCenterStatic } from "./CommandCenterStatic";
-import { HEIGHT, MAX_HEIGHT } from "./constants";
+  useTheme
+} from '@laodeaksarr/design-system';
+import { CommandCenterStatic } from './CommandCenterStatic';
+import { HEIGHT, MAX_HEIGHT } from './constants';
 import {
   Overlay,
   SearchBox,
   FormWrapper,
   SearchResults,
-  Result,
-} from "./Styles";
-import useBodyScrollLock from "~/hooks/useBodyScrollLock";
+  Result
+} from './Styles';
+import useBodyScrollLock from '~/hooks/useBodyScrollLock';
 
 type Result = {
-  type: "snippet" | "blog";
+  type: 'snippet' | 'blog';
   slug: string;
   title: string;
 };
@@ -81,7 +82,7 @@ const Search = (props: Props) => {
 
   const [loading, setLoading] = React.useState(true);
   const [results, setResults] = React.useState<Result[]>([]);
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   useBodyScrollLock();
   const router = useRouter();
@@ -109,20 +110,20 @@ const Search = (props: Props) => {
 
   const handleKey = React.useCallback(
     (event: KeyboardEvent) => {
-      if (debouncedSearchQuery !== "") {
+      if (debouncedSearchQuery !== '') {
         switch (event.key) {
-          case "Enter":
+          case 'Enter':
             const href = `/${
-              selectedResult.type === "snippet" ? "snippets" : "blog"
+              selectedResult.type === 'snippet' ? 'snippets' : 'blog'
             }/${selectedResult.slug}/`;
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
             break;
-          case "ArrowUp":
+          case 'ArrowUp':
             event.preventDefault();
             previousResult();
             break;
-          case "ArrowDown":
+          case 'ArrowDown':
             event.preventDefault();
             nextResult();
             break;
@@ -136,7 +137,7 @@ const Search = (props: Props) => {
       router,
       onClose,
       previousResult,
-      nextResult,
+      nextResult
     ]
   );
 
@@ -153,7 +154,7 @@ const Search = (props: Props) => {
   React.useEffect(() => {
     setLoading(true);
 
-    if (debouncedSearchQuery && debouncedSearchQuery !== "") {
+    if (debouncedSearchQuery && debouncedSearchQuery !== '') {
       const searchEndpoint = `/api/search?q=${debouncedSearchQuery.toLowerCase()}`;
       fetch(searchEndpoint)
         .then((res) => res.json())
@@ -163,17 +164,17 @@ const Search = (props: Props) => {
         });
     }
 
-    if (debouncedSearchQuery === "") {
+    if (debouncedSearchQuery === '') {
       setResults([]);
       setLoading(false);
     }
   }, [debouncedSearchQuery]);
 
   React.useEffect(() => {
-    window.addEventListener("keydown", handleKey);
+    window.addEventListener('keydown', handleKey);
 
     return () => {
-      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener('keydown', handleKey);
     };
   }, [handleKey]);
 
@@ -181,7 +182,7 @@ const Search = (props: Props) => {
     if (selectedResult) {
       document
         .getElementById(selectedResult.slug)
-        ?.scrollIntoView({ block: "nearest" });
+        ?.scrollIntoView({ block: 'nearest' });
     }
   }, [selectedResult]);
 
@@ -192,15 +193,15 @@ const Search = (props: Props) => {
       <aside>
         <Overlay
           initial={{
-            backgroundColor: dark ? "rgba(0,0,0,0)" : "rgba(241, 243, 247, 0)",
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
           }}
           animate={{
             backgroundColor: dark
-              ? "rgba(0,0,0,0.8)"
-              : "rgba(241, 243, 247, 0.8)",
+              ? 'rgba(0,0,0,0.8)'
+              : 'rgba(241, 243, 247, 0.8)'
           }}
           exit={{
-            backgroundColor: dark ? "rgba(0,0,0,0)" : "rgba(241, 243, 247, 0)",
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
           }}
           // transition={{ duration: 0.4 }}
           onClick={clickOutside}
@@ -212,16 +213,16 @@ const Search = (props: Props) => {
           role="dialog"
         >
           <SearchBox
-            initial={{ scale: 0.8, opacity: 0, x: "-50%" }}
+            initial={{ scale: 0.8, opacity: 0, x: '-50%' }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{
               scale: 0.5,
               opacity: 0,
-              transition: { duration: 0.15, delay: 0.1 },
+              transition: { duration: 0.15, delay: 0.1 }
             }}
             transition={{
-              ease: "easeOut",
-              duration: 0.2,
+              ease: 'easeOut',
+              duration: 0.2
             }}
           >
             <FormWrapper ref={SearchRef}>
@@ -240,24 +241,24 @@ const Search = (props: Props) => {
                 />
                 <Label
                   style={{
-                    width: "120px",
+                    width: '120px'
                   }}
                 >
-                  {debouncedSearchQuery !== "" && !loading
+                  {debouncedSearchQuery !== '' && !loading
                     ? `${results.length} results`
                     : null}
                 </Label>
               </form>
             </FormWrapper>
-            {debouncedSearchQuery !== "" ? (
+            {debouncedSearchQuery !== '' ? (
               <SearchResults
                 style={{
                   height:
                     results.length * HEIGHT >= MAX_HEIGHT
                       ? MAX_HEIGHT
                       : results.length * HEIGHT,
-                  transition: "height 0.4s ease-out",
-                  willChange: "height",
+                  transition: 'height 0.4s ease-out',
+                  willChange: 'height'
                 }}
               >
                 {results.map((result, index) => (
@@ -269,7 +270,7 @@ const Search = (props: Props) => {
                   >
                     <Link
                       href={`/${
-                        result.type === "snippet" ? "snippets" : "blog"
+                        result.type === 'snippet' ? 'snippets' : 'blog'
                       }/${result.slug}`}
                     >
                       <a onClick={() => setTimeout(onClose, 600)}>
@@ -280,14 +281,14 @@ const Search = (props: Props) => {
                       alignItems="center"
                       justifyContent="center"
                       css={{
-                        marginLeft: "$4",
-                        size: "35px",
-                        backgroundColor: "var(--laodeaksar-colors-emphasis)",
-                        borderRadius: "$1",
+                        marginLeft: '$4',
+                        size: '35px',
+                        backgroundColor: 'var(--laodeaksar-colors-emphasis)',
+                        borderRadius: '$1',
 
                         path: {
-                          stroke: "var(--laodeaksar-colors-brand)",
-                        },
+                          stroke: 'var(--laodeaksar-colors-brand)'
+                        }
                       }}
                     >
                       <Icon.Enter size={4} />

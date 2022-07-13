@@ -10,10 +10,6 @@ import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
 
-import {
-  getAllBlogsWhichBelongToCurrentSlug,
-  getAllTags
-} from '~/lib/get-data';
 
 let year = 0;
 

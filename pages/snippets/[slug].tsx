@@ -1,12 +1,8 @@
 import type { GetStaticPropsContext } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import Pre from '~/components/Code/Pre';
 
 import SnippetLayout from '~/layouts/Snippet';
-
-import { allSnippets } from 'contentlayer/generated';
-import type { Snippet } from 'contentlayer/generated';
 
 export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
   const Component = useMDXComponent(snippet.body.code);

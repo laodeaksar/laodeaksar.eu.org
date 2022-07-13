@@ -10,9 +10,10 @@ import {
   Callout,
   Checkbox,
   Flex,
-  // Gradients,
+  Gradients,
   Grid,
   InlineCode,
+  List,
   Pill,
   Radio,
   Range,
@@ -29,17 +30,14 @@ import {
   Strong,
   Icon,
   // Shadows,
-  styled
+  styled,
+  useTheme
 } from '@laodeaksarr/design-system';
 import CodeBlock from '~/components/Code/CodeBlock';
 import Glow from '~/components/Glow';
-import List from '~/components/List';
 import Logo from '~/components/Logo';
 import SEO from '~/components/Seo';
 import Tweet from '~/components/Tweet';
-import { Gradients } from '~/components/Card';
-
-import { useTheme } from '~/context/ThemeContext';
 
 import Layout from '~/layout';
 
