@@ -1,32 +1,37 @@
-import type { InferGetStaticPropsType } from 'next';
+import { Suspense } from "react";
+import type { InferGetStaticPropsType } from "next";
 
-import { Box, Grid, H2 } from '@laodeaksarr/design-system';
+import { Box, Grid, H2 } from "@laodeaksarr/design-system";
 
-import BlogCard from '~/components/Blog';
-import SEO from '~/components/Seo';
+import BlogCard from "~/components/Blog";
+import SEO from "~/components/Seo";
 
-import Layout from '~/layout';
+import Layout from "~/layout";
+
+import { indexQuery } from "~/lib/queries";
+import { getClient } from "~/lib/sanity-server";
+import { Post } from "~/lib/types";
 
 const BlogPage = ({
-  posts
+  posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout footer header headerProps={{ offsetHeight: 256 }}>
       <SEO title="Blog Page" />
       <Grid columns="medium" gapX={4} gapY={12} all>
-        <Box as="section">
-          <H2>All articles</H2>
-          <BlogCard posts={posts} />
-        </Box>
+        <Suspense fallback={null}>
+          <Box as="section">
+            <H2>All articles</H2>
+            <BlogCard posts={posts} />
+          </Box>
+        </Suspense>
       </Grid>
     </Layout>
   );
 };
 
-export const getStaticProps = async () => {
-  const posts = allBlogs
-    .map((post) => pick(post, ['slug', 'title', 'date']))
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+export const getStaticProps = async ({ preview = false }) => {
+  const posts: Post[] = await getClient(preview).fetch(indexQuery);
 
   return { props: { posts } };
 };
