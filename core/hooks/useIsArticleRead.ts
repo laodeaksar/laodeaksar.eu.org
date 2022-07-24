@@ -10,6 +10,7 @@ const useIsArticleRead = (slug: string) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      //@ts-ignore
       const initialState = JSON.parse(localStorage.getItem(slug)) || null;
       setHasRead(initialState?.has_read ?? false);
     }

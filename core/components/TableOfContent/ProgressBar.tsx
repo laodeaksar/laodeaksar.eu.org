@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 import { ProgressBarWrapper } from './Styles';
 
-import Box from '~/components/Box';
+import { Box } from '@laodeaksarr/design-system';
 
 const ProgressBar = ({ progress }: { progress: number }) => {
   const [visibility, setVisibility] = useState(true);

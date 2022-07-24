@@ -1,6 +1,4 @@
-import Box from '~/components/Box';
-import Grid from '~/components/Grid';
-import Text from '~/components/Typography';
+import { Box, Grid, Text } from '@laodeaksarr/design-system';
 
 import { BlogList } from './BlogList';
 import { Post } from './types';

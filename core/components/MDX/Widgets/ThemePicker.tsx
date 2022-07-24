@@ -1,9 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { styled } from '~/lib/stitches.config';
-
-import Card from '~/components/Card';
-import Grid from '~/components/Grid';
+import { Card, Grid, styled } from '@laodeaksarr/design-system';
 
 import { AnimationCardContent } from './Components';
 

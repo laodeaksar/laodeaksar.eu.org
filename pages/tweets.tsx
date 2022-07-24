@@ -1,12 +1,12 @@
-import Grid from '~/components/Grid';
 import SEO from '~/components/Seo';
 import Tweet from '~/components/Tweet';
-import { H1 } from '~/components/Typography';
+
+import { Grid, H1 } from '@laodeaksarr/design-system';
 
 import Layout from '~/layout';
 
 import { getTweets } from '~/lib/tweets';
-import type { TransformedTweet } from '~/types/tweet';
+import type { TransformedTweet } from '~/lib/types';
 
 const Tweets = ({ tweets }: Record<string, TransformedTweet>) => {
   return (
@@ -14,10 +14,12 @@ const Tweets = ({ tweets }: Record<string, TransformedTweet>) => {
       <SEO title="Tweets Page" />
       <Grid columns="medium" gapX={4} gapY={12} all>
         <div>
-          <H1>Tweets</H1>
-          {tweets.map((tweet: TransformedTweet) => (
-            <Tweet key={tweet.id} tweet={tweet} />
-          ))}
+          <>
+            <H1>Tweets</H1>
+            {tweets.map((tweet: TransformedTweet) => (
+              <Tweet key={tweet.id} tweet={tweet} />
+            ))}
+          </>
         </div>
       </Grid>
     </Layout>

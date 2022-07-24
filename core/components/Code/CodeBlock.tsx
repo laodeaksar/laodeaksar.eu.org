@@ -1,7 +1,7 @@
 import { Card, styled } from '@laodeaksarr/design-system';
 import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
 
-import { CopyToClipboardButton } from '~/components/Button';
+import { CopyToClipboardButton } from '~/components/Buttons';
 
 import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';

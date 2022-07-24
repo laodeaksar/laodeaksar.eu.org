@@ -10,9 +10,10 @@ import {
   Callout,
   Checkbox,
   Flex,
-  // Gradients,
+  Gradients,
   Grid,
   InlineCode,
+  List,
   Pill,
   Radio,
   Range,
@@ -29,34 +30,14 @@ import {
   Strong,
   Icon,
   // Shadows,
-  styled
+  styled,
+  useTheme
 } from '@laodeaksarr/design-system';
-// import Anchor from '~/components/Anchor';
-// import Blockquote from '~/components/Blockquote';
-// import Box from '~/components/Box';
-// import Button from '~/components/Button';
-// import Callout from '~/components/Callout';
-// import Checkbox from '~/components/Checkbox';
 import CodeBlock from '~/components/Code/CodeBlock';
-// import Flex from '~/components/Flex';
 import Glow from '~/components/Glow';
-// import Grid from '~/components/Grid';
-// import InlineCode from '~/components/InlineCode';
-import List from '~/components/List';
 import Logo from '~/components/Logo';
-// import Pill from '~/components/Pill';
-// import Radio from '~/components/Radio';
-// import Range from '~/components/Range';
 import SEO from '~/components/Seo';
-// import Switch from '~/components/Switch';
-// import TextInput from '~/components/TextInput';
-// import TextArea from '~/components/TextArea';
-// import Tooltip from '~/components/Tooltip';
 import Tweet from '~/components/Tweet';
-import { Gradients } from '~/components/Card';
-// import Text, { EM, H1, H2, Heading, Strong } from '~/components/Typography';
-
-import { useTheme } from '~/context/ThemeContext';
 
 import Layout from '~/layout';
 
@@ -1115,9 +1096,7 @@ function sayHi(name) {
             Show Command Center
           </Button>
           <AnimatePresence>
-            {showSearch && (
-              <Search onClose={() => setShowSearch(false)} />
-            )}
+            {showSearch && <Search onClose={() => setShowSearch(false)} />}
           </AnimatePresence>
         </Box>
         <Box as="section" id="tweet">

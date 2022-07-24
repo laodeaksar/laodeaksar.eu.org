@@ -33,7 +33,7 @@ class ContentfulApi {
         response.json()
       );
       return data;
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(error);
     }
   }

@@ -1,6 +1,4 @@
-import Flex from '~/components/Flex';
-import Pill from '~/components/Pill';
-import Text from '~/components/Typography';
+import { Flex, Pill, Text } from '@laodeaksarr/design-system';
 
 import useIsArticleRead from '~/hooks/useIsArticleRead';
 import { handleArticleClicked } from '~/lib/handleArticleClick';

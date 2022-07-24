@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Card from '~/components/Card';
-import Switch from '~/components/Switch';
-import InlineCode from '~/components/InlineCode';
+import { Card, InlineCode, Switch } from '@laodeaksarr/design-system';
 
 const HighlightSection = () => {
   const [highlight, setHighlight] = useState(false);

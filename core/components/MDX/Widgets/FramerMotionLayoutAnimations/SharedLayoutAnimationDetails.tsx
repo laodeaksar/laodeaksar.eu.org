@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Box from '~/components/Box';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Range from '~/components/Range';
-import { ArrowIcon } from '~/components/Icons';
+import { Box, Card, Flex, Range, Icon } from '@laodeaksarr/design-system';
 
 import { HighlightedValue } from '../Components';
 
@@ -61,7 +57,7 @@ const SharedLayoutAnimationDetails = () => {
                       }
                     }}
                   >
-                    <ArrowIcon
+                    <Icon.Arrow
                       style={{
                         color: COLORS[index],
                         transform: 'rotate(-90deg)'

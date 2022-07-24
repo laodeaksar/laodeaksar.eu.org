@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 
-import Button from '~/components/Button';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Text from '~/components/Typography';
-import Tooltip from '~/components/Tooltip';
+import {
+  Button,
+  Card,
+  Flex,
+  Icon,
+  Text,
+  Tooltip
+} from '@laodeaksarr/design-system';
 import { HighlightedCodeText } from '~/components/Code/CodeBlock';
 import { calculateLinesToHighlight } from '~/components/Code/utils';
-import { ArrowIcon, PauseIcon, PlayIcon } from '~/components/Icons';
 
 function getStackTrace() {
   let stack = new Error().stack || '';
@@ -137,23 +139,23 @@ const Callstack = () => {
         <Flex justifyContent="space-between">
           <Tooltip
             id="playpauseButton-callstack"
-            tooltipText={paused ? 'Play' : 'Pause'}
+            content={paused ? 'Play' : 'Pause'}
           >
             <Button
               aria-label={paused ? 'Play' : 'Pause'}
               aria-describedby="playpauseButton"
               variant="icon"
-              icon={paused ? <PlayIcon /> : <PauseIcon />}
+              icon={paused ? <Icon.Play /> : <Icon.Pause />}
               onClick={() => setPaused((prev) => !prev)}
             />
           </Tooltip>
           <Flex justifyContent="center" gap={3}>
-            <Tooltip id="previous-step-callstack" tooltipText="Previous step">
+            <Tooltip id="previous-step-callstack" content="Previous step">
               <Button
                 id="prev"
                 aria-label="Previous"
                 variant="icon"
-                icon={<ArrowIcon style={{ transform: 'scaleX(-1)' }} />}
+                icon={<Icon.Arrow style={{ transform: 'scaleX(-1)' }} />}
                 onClick={() =>
                   setIndexHighlight((prev) => {
                     if (prev - 1 < 0) {
@@ -167,12 +169,12 @@ const Callstack = () => {
             <Text css={{ marginBottom: 0 }} size="2">
               {indexHighlight + 1}/{linesToHighlight.length - 1}
             </Text>
-            <Tooltip id="next-step-callstack" tooltipText="Next step">
+            <Tooltip id="next-step-callstack" content="Next step">
               <Button
                 id="next"
                 aria-label="Next"
                 variant="icon"
-                icon={<ArrowIcon />}
+                icon={<Icon.Arrow />}
                 onClick={() =>
                   setIndexHighlight((prev) => {
                     if (prev + 1 > linesToHighlight.length - 1) {

@@ -1,21 +1,22 @@
-import type { GetStaticPropsContext } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import type { GetStaticPropsContext } from "next";
+import { MDXRemote } from "next-mdx-remote";
 
-import Pre from '~/components/Code/Pre';
+import Code from "~/components/Code";
 
-import SnippetLayout from '~/layouts/Snippet';
+import SnippetLayout from "~/layouts/Snippet";
 
-import { allSnippets } from 'contentlayer/generated';
-import type { Snippet } from 'contentlayer/generated';
+import { snippetsQuery, snippetSlugsQuery } from "~/lib/queries";
+import { sanityClient, getClient } from "~/lib/sanity-server";
+import { mdxToHtml } from "~/lib/mdx";
+import { Snippet } from "~/lib/types";
 
 export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
-  const Component = useMDXComponent(snippet.body.code);
-
   return (
     <SnippetLayout snippet={snippet}>
-      <Component
+      <MDXRemote
+        {...snippet.content}
         components={{
-          pre: Pre
+          pre: Code,
         }}
       />
     </SnippetLayout>
@@ -23,14 +24,30 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
 }
 
 export const getStaticPaths = () => {
+  const paths = await sanityClient.fetch(snippetSlugsQuery);
   return {
-    paths: allSnippets.map((s) => ({ params: { slug: s.slug } })),
-    fallback: false
+    paths: paths.map((slug) => ({ params: { slug } })),
+    fallback: "blocking",
   };
 };
 
-export const getStaticProps = ({ params }: GetStaticPropsContext) => {
-  const snippet = allSnippets.find((s) => s.slug === params?.slug)!;
+export const getStaticProps = ({ params, preview = false }) => {
+  const { snippet } = await getClient(preview).fetch(snippetsQuery, {
+    slug: params.slug,
+  });
 
-  return { props: { snippet } };
+  if (!snippet) {
+    return { notFound: true };
+  }
+
+  const { html } = await mdxToHtml(snippet.content);
+
+  return {
+    props: {
+      snippet: {
+        ...snippet,
+        content: html,
+      },
+    },
+  };
 };

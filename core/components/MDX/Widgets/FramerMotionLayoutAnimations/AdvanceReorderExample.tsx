@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion, Reorder } from 'framer-motion';
 
-import { styled, css } from '~/lib/stitches.config';
-
-import Button from '~/components/Button';
-import Card from '~/components/Card';
-import Checkbox from '~/components/Checkbox';
-import Flex from '~/components/Flex';
-import Text from '~/components/Typography';
-import Tooltip from '~/components/Tooltip';
-import { RepeatIcon, XIcon } from '~/components/Icons';
+import {
+  Button,
+  Card,
+  Checkbox,
+  Flex,
+  Icon,
+  styled,
+  css,
+  Text,
+  Tooltip
+} from '@laodeaksarr/design-system';
 
 const HR = styled('hr', {
   height: '2px',
@@ -94,11 +96,11 @@ const AdvanceReorderExample = () => {
             >
               Add item
             </Button>
-            <Tooltip id="tooltip-reset-list" tooltipText="Reset task list">
+            <Tooltip id="tooltip-reset-list" content="Reset task list">
               <Button
                 variant="icon"
                 onClick={() => setItems(ITEMS)}
-                icon={<RepeatIcon />}
+                icon={<Icon.Repeat />}
               />
             </Tooltip>
           </Flex>
@@ -179,7 +181,7 @@ const AdvanceReorderExample = () => {
                         >
                           <Button
                             variant="icon"
-                            icon={<XIcon />}
+                            icon={<Icon.X />}
                             onClick={() =>
                               setItems((prev) =>
                                 prev.filter((task) => task.id !== item.id)

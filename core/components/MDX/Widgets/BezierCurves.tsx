@@ -4,12 +4,14 @@ import { ParentSize } from '@visx/responsive';
 import { scaleLinear } from '@visx/scale';
 import { LinePath } from '@visx/shape';
 
-import Button from '~/components/Button';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Range from '~/components/Range';
-import Tooltip from '~/components/Tooltip';
-import { PauseIcon, PlayIcon, RepeatIcon } from '~/components/Icons';
+import {
+  Button,
+  Card,
+  Flex,
+  Icon,
+  Range,
+  Tooltip
+} from '@laodeaksarr/design-system';
 
 import useInterval from '~/hooks/useInterval';
 import { HighlightedValue } from './Components';
@@ -569,21 +571,21 @@ const Chart = ({ width, type }: ChartProps) => {
         />
       </Flex>
       <Flex gap={4} justifyContent="center">
-        <Tooltip id="playpauseButton" tooltipText={paused ? 'Play' : 'Pause'}>
+        <Tooltip id="playpauseButton" content={paused ? 'Play' : 'Pause'}>
           <Button
             aria-label={paused ? 'Play' : 'Pause'}
             aria-describedby="playpauseButton"
             variant="icon"
-            icon={paused ? <PlayIcon /> : <PauseIcon />}
+            icon={paused ? <Icon.Play /> : <Icon.Pause />}
             onClick={() => setPaused((prev) => !prev)}
           />
         </Tooltip>
-        <Tooltip id="repeatButton" tooltipText="Repeat">
+        <Tooltip id="repeatButton" content="Repeat">
           <Button
             aria-label="Repeat"
             aria-describedby="repeatButton"
             variant="icon"
-            icon={<RepeatIcon />}
+            icon={<Icon.Repeat />}
             onClick={repeat}
           />
         </Tooltip>

@@ -1,4 +1,4 @@
-import { styled } from '~/lib/stitches.config';
+import { styled } from '@laodeaksarr/design-system';
 
 export const Block = styled('div', {
   $$background: 'transparent',

@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import Box from '~/components/Box';
+import { Box } from '@laodeaksarr/design-system';
 
 import { StyledGlow } from './Styles';
 

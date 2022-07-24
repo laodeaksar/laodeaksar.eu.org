@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Flex from '~/components/Flex';
-import Grid from '~/components/Grid';
-import Text from '~/components/Typography';
+import { Flex, Grid, Text } from '@laodeaksarr/design-system';
 
 const initialCounts = {
   count: 0,

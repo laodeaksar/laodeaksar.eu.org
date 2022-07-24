@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { styled } from '~/lib/stitches.config';
+import { styled } from '@laodeaksarr/design-system';
 
 export const Wrapper = styled('div', {
   position: 'fixed',

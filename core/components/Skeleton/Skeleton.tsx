@@ -1,4 +1,4 @@
-import { keyframes, styled } from '~/lib/stitches.config';
+import { keyframes, styled } from '@laodeaksarr/design-system';
 
 export const pulse = keyframes({
   '0%, 100%': { opacity: 1 },

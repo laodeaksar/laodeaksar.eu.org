@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Box from '~/components/Box';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Switch from '~/components/Switch';
+import { Box, Card, Flex, Switch } from '@laodeaksarr/design-system';
 import { HighlightedCodeText } from '~/components/Code/CodeBlock';
 
 const Distorsions = () => {

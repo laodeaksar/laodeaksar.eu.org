@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { styled } from '~/lib/stitches.config';
-
-import { useTheme } from '~/context/ThemeContext';
+import { styled, useTheme } from '@laodeaksarr/design-system';
 
 import type { Props } from './types';
 import { getDisplayedPoster } from './utils';
 
 const VideoPlayer = (props: Props) => {
   const { controls, loop, width, height, poster, src } = props;
-  
+
   const { dark } = useTheme();
   const [currentPoster, setCurrentPoster] = useState<string | undefined>(
     undefined

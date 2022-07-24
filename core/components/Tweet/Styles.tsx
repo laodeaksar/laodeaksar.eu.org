@@ -1,4 +1,4 @@
-import { css, Shadows, styled } from 'lib/stitches.config';
+import { css, Shadows, styled } from '@laodeaksarr/design-system';
 
 export const TweetWrapper = styled('div', {
   color: 'var(--laodeaksar-colors-typeface-primary)',

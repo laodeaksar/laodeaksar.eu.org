@@ -1,5 +1,4 @@
 import NextDocument, {
-  DocumentContext,
   Head,
   Html,
   Main,

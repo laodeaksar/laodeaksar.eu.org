@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import Button from '~/components/Button';
-import Box from '~/components/Box';
-import Card from '~/components/Card';
-import Flex from '~/components/Flex';
-import Pill from '~/components/Pill';
-import Switch from '~/components/Switch';
-import Tooltip from '~/components/Tooltip';
 import { HighlightedCodeText } from '~/components/Code/CodeBlock';
-import { RepeatIcon, XIcon } from '~/components/Icons';
 
-import { styled } from '~/lib/stitches.config';
+import {
+  styled,
+  Button,
+  Box,
+  Card,
+  Flex,
+  Pill,
+  Switch,
+  Tooltip,
+  Icon
+} from '@laodeaksarr/design-system';
 
 const IconButton = styled(motion.button, {
   appearance: 'none',
@@ -92,7 +94,7 @@ const LayoutPosition = () => {
                         )
                       }
                     >
-                      <XIcon size={3} />
+                      <Icon.X size={3} />
                     </IconButton>
                     <span>Label {item}</span>
                   </Flex>
@@ -107,12 +109,12 @@ const LayoutPosition = () => {
             onChange={() => setPosition((prev) => !prev)}
           />
 
-          <Tooltip id="reset-tooltip" tooltipText="Reset">
+          <Tooltip id="reset-tooltip" content="Reset">
             <Button
               aria-label="Reset"
               aria-describedby="reset-tooltip"
               variant="icon"
-              icon={<RepeatIcon />}
+              icon={<Icon.Repeat />}
               onClick={() => setItems(ITEMS)}
             />
           </Tooltip>

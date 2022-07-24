@@ -1,9 +1,6 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
-import Tooltip from '~/components/Tooltip';
-import { useTheme } from '~/context/ThemeContext';
-
-import Button from './Button';
+import { Button, Tooltip, useTheme } from '@laodeaksarr/design-system';
 
 const LightDarkSwitcher = () => {
   const theme = useTheme();
@@ -37,8 +34,8 @@ const LightDarkSwitcher = () => {
   return (
     <Tooltip
       id="lightDarkSwitcherTooltip"
-      tooltipText={isChecked ? 'Activate light mode' : 'Activate dark mode'}
-      tooltipVisuallyHiddenText="Toggles between light and dark mode."
+      content={isChecked ? 'Activate light mode' : 'Activate dark mode'}
+      visuallyHiddenText="Toggles between light and dark mode."
     >
       <Button
         as={motion.button}

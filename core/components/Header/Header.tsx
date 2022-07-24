@@ -25,9 +25,9 @@ import { HeaderTitle } from './Title';
 import type { HeaderProps } from './types';
 
 const CommandCenterButton = dynamic(
-  () => import('../Button/CommandCenterButton')
+  () => import('../Buttons/CommandCenterButton')
 );
-const LightDarkSwitcher = dynamic(() => import('../Button/LightDarkSwitcher'));
+const LightDarkSwitcher = dynamic(() => import('../Buttons/LightDarkSwitcher'));
 const Search = dynamic(() => import('../Search'));
 
 const headerVariants = {
@@ -82,7 +82,7 @@ const Header = (props: HeaderProps) => {
             className={fixTruncate}
           >
             <Flex className={fixTruncate}>
-              <Tooltip id="hometooltip" tooltipText="Home">
+              <Tooltip id="hometooltip" content="Home">
                 <Link href="/">
                   <a aria-label="Home" aria-describedby="hometooltip">
                     <Logo alt="Logo" size={44} />

@@ -1,11 +1,10 @@
 // import { loader } from '~/lib/next-image-loader'
 import NextImage from 'next/image';
 
-import Box from '~/components/Box';
-import Text from '~/components/Typography';
+import { Box, Text } from '@laodeaksarr/design-system';
 
 interface Props {
-  src: string // | StaticImageData;
+  src: string; // | StaticImageData;
   alt?: string;
   className?: string;
   title?: string;
@@ -21,7 +20,6 @@ interface Props {
 export const Image = ({
   src,
   alt,
-  title,
   height,
   width,
   className,

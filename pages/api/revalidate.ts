@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidRequest } from '@sanity/webhook';
-import { sanityClient } from 'lib/sanity-server';
-import { postUpdatedQuery } from 'lib/queries';
+import { sanityClient } from '~/lib/sanity-server';
+import { postUpdatedQuery } from '~/lib/queries';
 
 export default async function handler(
   req: NextApiRequest,

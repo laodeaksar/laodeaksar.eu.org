@@ -1,4 +1,4 @@
-import { styled } from '~/lib/stitches.config';
+import { styled } from '@laodeaksarr/design-system';
 
 export const Wrapper = styled('main', {
   background: 'var(--laodeaksar-colors-body)',

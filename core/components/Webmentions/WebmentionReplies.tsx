@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 
 import Link from '~/components/Link';
-import Text from '~/components/Typography';
+import { Text } from '@laodeaksarr/design-system';
 
 import type { Props, Reply } from './types';
 

@@ -1,6 +1,7 @@
 import router from 'next/router';
 
 export function handleArticleClicked(slug: string) {
+  //@ts-ignore
   const localData = JSON.parse(localStorage.getItem(slug));
 
   if (typeof window !== 'undefined') {

@@ -1,10 +1,9 @@
 import dynamic from 'next/dynamic';
 
 import Link from '~/components/Link';
-import Text from '~/components/Typography';
 import { WebmentionReplies } from '~/components/Webmentions';
 
-import { styled } from '~/lib/stitches.config';
+import { styled, Text } from '@laodeaksarr/design-system';
 
 const Newsletter = dynamic(() => import('~/components/Newsletter'));
 

@@ -1,24 +1,26 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-//import { Flex } from "@laodeaksar/design-system";
+import {
+  Anchor,
+  Box,
+  Button,
+  Callout,
+  Flex,
+  Grid,
+  Icon,
+  Text,
+  H1,
+  H2,
+  H3,
+  Shadows,
+  styled
+} from '@laodeaksarr/design-system';
 
-import Anchor from '~/components/Anchor';
-import Box from '~/components/Box';
-import Button from '~/components/Button';
-import Grid from '~/components/Grid';
-import Flex from '~/components/Flex';
 import SEO from '~/components/Seo';
 import Link from '~/components/Link';
-import Text, { H1, H2, H3 } from '~/components/Typography';
-
-import { Shadows, styled } from '~/lib/stitches.config';
 
 import Layout from '~/layout';
-
-import { allGears } from 'contentlayer/generated';
-import Callout from '~/components/Callout';
-import { ExternalIcon } from '~/components/Icons';
 
 const Svg = styled('svg', {
   marginRight: '0.5rem',
@@ -95,7 +97,7 @@ const CategoryIcons = {
   )
 };
 
-const Uses = ({ gearByCategory }) => {
+const Uses = ({ gearByCategory }: any) => {
   const easing = [0.175, 0.85, 0.42, 0.96];
 
   return (
@@ -206,7 +208,7 @@ export async function getStaticProps() {
   };
 }
 
-function ProductLink({ children, href }) {
+function ProductLink({ children, href }: any) {
   return (
     <Link
       style={{
@@ -218,12 +220,12 @@ function ProductLink({ children, href }) {
       href={href}
     >
       {children}
-      <ExternalIcon />
+      <Icon.External />
     </Link>
   );
 }
 
-function GeneralItems({ items }) {
+function GeneralItems({ items }: any) {
   return (
     <Grid as="ul" gapY={3} css={{ margin: 0, padding: 0 }}>
       {items.map(
@@ -235,7 +237,7 @@ function GeneralItems({ items }) {
           affiliateLink,
           affiliateLinkText,
           body
-        }) => {
+        }: any) => {
           return (
             <Box
               as={motion.li}
@@ -419,10 +421,10 @@ function GeneralItems({ items }) {
   );
 }
 
-function SoftwareItems({ items }) {
+function SoftwareItems({ items }: any) {
   return (
     <Grid as="ul" gap={6} css={{ margin: 0, padding: 0 }}>
-      {items?.map(({ id, title, image, link, body }) => {
+      {items?.map(({ id, title, image, link, body }: any) => {
         return (
           <Box
             as={motion.li}
