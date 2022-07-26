@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { styled, useTheme } from '@laodeaksarr/design-system';
+import { useEffect, useState } from "react";
+import { styled, useTheme } from "@laodeaksarr/design-system";
 
-import type { Props } from './types';
-import { getDisplayedPoster } from './utils';
+import type { VideoPlayerProps } from "./types";
+import { getDisplayedPoster } from "./utils";
 
-const VideoPlayer = (props: Props) => {
-  const { controls, loop, width, height, poster, src } = props;
+const VideoPlayer = (props: VideoPlayerProps) => {
+  const { autoplay, controls, loop, muted, width, height, poster, src } = props;
 
   const { dark } = useTheme();
   const [currentPoster, setCurrentPoster] = useState<string | undefined>(
@@ -14,7 +14,7 @@ const VideoPlayer = (props: Props) => {
 
   useEffect(() => {
     if (poster) {
-      if (!poster.includes('.png')) {
+      if (!poster.includes(".png")) {
         setCurrentPoster(getDisplayedPoster(poster, dark));
       } else {
         setCurrentPoster(poster);
@@ -25,11 +25,13 @@ const VideoPlayer = (props: Props) => {
   return (
     <Wrapper>
       <video
+        autoplay={autoplay}
         poster={currentPoster}
         width={width}
         height={height}
         controls={controls}
         loop={loop || false}
+        muted={muted}
       >
         <source src={src} type="video/mp4" />
       </video>
@@ -39,15 +41,15 @@ const VideoPlayer = (props: Props) => {
 
 export default VideoPlayer;
 
-const Wrapper = styled('div', {
-  marginBottom: '32px',
-  display: 'flex',
+const Wrapper = styled("div", {
+  marginBottom: "32px",
+  display: "flex",
 
   video: {
-    margin: '0 auto',
-    background: 'var(--laodeaksar-colors-emphasis)',
-    maxWidth: '$full',
-    height: 'auto'
+    margin: "0 auto",
+    background: "var(--laodeaksar-colors-emphasis)",
+    maxWidth: "$full",
+    height: "auto",
     // aspectRatio: '16 / 9'
-  }
+  },
 });

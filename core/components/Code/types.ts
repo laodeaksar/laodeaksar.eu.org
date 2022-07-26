@@ -18,7 +18,7 @@ export type PrePropsType = {
 
 export interface CodeBlockProps {
   codeString: string;
-  language: Language;
+  language: Language | 'glsl';
   metastring: string | null;
   live?: boolean;
   render?: boolean;
