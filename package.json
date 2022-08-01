@@ -59,7 +59,7 @@
     "@types/react-dom": "^18.0.5",
     "@types/rss": "^0.0.29",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.2",
+    "eslint-config-next": "12.2.3",
     "fast-glob": "^3.2.11",
     "gray-matter": "^4.0.3",
     "inquirer": "^9.0.0",
