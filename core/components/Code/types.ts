@@ -2,10 +2,6 @@ import { Language } from 'prism-react-renderer';
 import React from 'react';
 
 export type PrePropsType = {
-  props: {
-    live?: boolean;
-    render?: boolean;
-  };
   children: {
     props: {
       metastring: string;
@@ -20,8 +16,6 @@ export interface CodeBlockProps {
   codeString: string;
   language: Language | 'glsl';
   metastring: string | null;
-  live?: boolean;
-  render?: boolean;
   children?: React.ReactNode
 }
 
