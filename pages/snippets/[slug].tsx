@@ -1,5 +1,6 @@
 import type { GetStaticPropsContext } from "next";
 import { MDXRemote } from "next-mdx-remote";
+import dynamic from 'next/dynamic';
 
 import Code from "~/components/Code";
 
@@ -10,6 +11,10 @@ import { sanityClient, getClient } from "~/lib/sanity-server";
 import { mdxToHtml } from "~/lib/mdx";
 import { Snippet } from "~/lib/types";
 
+const WaveAnimationSandpack = dynamic(
+  () => import('@theme/components/MDX/Widgets/WaveAnimation/Sandpack')
+);
+
 export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
   return (
     <SnippetLayout snippet={snippet}>
@@ -17,6 +22,7 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
         {...snippet.content}
         components={{
           pre: Code,
+          WaveAnimationSandpack,
         }}
       />
     </SnippetLayout>
