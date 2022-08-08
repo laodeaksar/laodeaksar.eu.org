@@ -58,7 +58,7 @@
     "eslint-config-next": "12.2.2",
     "gray-matter": "^4.0.3",
     "prettier": "^2.6.2",
-    "prisma": "^3.9.2",
+    "prisma": "^4.1.1",
     "reading-time": "^1.5.0",
     "remark-autolink-headings": "^7.0.1",
     "remark-slug": "^7.0.1",
