@@ -123,9 +123,9 @@ const customComponents = {
 };
 
 const MDXComponents = {
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <Anchor underline {...props} />
-  ),
+  a: function A(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+    return <Anchor underline {...props} />;
+  },
   Anchor,
   Button,
   blockquote: Blockquote,
@@ -134,17 +134,20 @@ const MDXComponents = {
   h2: H2,
   h3: H3,
   Image,
-  inlineCode: InlineCode,
+  code: InlineCode,
   li: List.Item,
-  ol: (props: React.OlHTMLAttributes<HTMLOListElement>) => (
-    <List variant="ordered" {...props} />
-  ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <Text as="p" {...props} />
-  ),
+  ol: function OL(props: React.OlHTMLAttributes<HTMLOListElement>) {
+    return <List variant="ordered" {...props} />;
+  },
+  p: function P(props: React.HTMLAttributes<HTMLParagraphElement>) {
+    return <Text as="p" {...props} />;
+  },
   Pill,
   pre: Code,
   strong: Strong,
+  ul: function UL(props: React.HTMLAttributes<HTMLUListElement>) {
+    return <List variant="unordered" {...props} />;
+  },
   VideoPlayer,
   Tabs,
   ...customComponents

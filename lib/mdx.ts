@@ -1,6 +1,7 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 import { remarkFigure } from "./remark/remark-figure";
+import { remarkMeta } from './remark/remark-meta';
 import { remarkSectionize } from "./remark/remark-sectionize-fork";
 
 export async function mdxToHtml(source: any) {
@@ -8,10 +9,11 @@ export async function mdxToHtml(source: any) {
     mdxOptions: {
       remarkPlugins: [
         require('remark-slug'),
-        require('remark-autolink-headings'), 
-        remarkFigure, 
+        require('remark-autolink-headings'),
+        remarkFigure,
         remarkSectionize
       ],
+      rehypePlugins: [remarkMeta],
       format: 'mdx'
     }
   });

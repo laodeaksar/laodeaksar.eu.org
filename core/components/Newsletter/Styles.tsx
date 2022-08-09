@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, styled, Text } from '@laodeaksarr/design-system';
 
 export const NewsletterFormContent = styled(Card.Body, {
@@ -18,11 +19,7 @@ export const NewsletterFormContent = styled(Card.Body, {
   }
 });
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-export const ErrorMessage = ({ children }: Props) => (
+export const ErrorMessage = ({ children }: React.PropsWithChildren) => (
   <Text
     as="p"
     css={{
