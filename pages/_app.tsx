@@ -1,7 +1,11 @@
 import '~/styles/globals.css';
 import '~/styles/font.css';
 
-import { globalStyles, ThemeProvider } from '@laodeaksarr/design-system';
+import {
+  globalStyles,
+  ThemeProvider,
+  Tooltip
+} from '@laodeaksarr/design-system';
 
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
@@ -15,7 +19,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ThemeProvider>
       <Head />
       <SessionProvider session={pageProps.session}>
-        <Component {...pageProps} />
+        <Tooltip.Provider>
+          <Component {...pageProps} />
+        </Tooltip.Provider>
       </SessionProvider>
     </ThemeProvider>
   );

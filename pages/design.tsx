@@ -20,7 +20,7 @@ import {
   Switch,
   TextInput,
   TextArea,
-  Tooltip,
+  // Tooltip,
   Card,
   Text,
   EM,
@@ -43,6 +43,8 @@ import Layout from "~/layout";
 
 import { getTweets } from "~/lib/tweets";
 import type { TransformedTweet } from "~/lib/types";
+
+const Tooltip = (props: any) => <>{props.children}</>;
 
 const SandpackExample = dynamic(
   () => import("~/components/MDX/Widgets/WaveAnimation/Sandpack")

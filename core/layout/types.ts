@@ -1,3 +1,4 @@
+import React from 'react';
 import type { HeaderProps } from '~/components/Header';
 
 export interface LayoutProps {
