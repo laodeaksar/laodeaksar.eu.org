@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.2.2",
-    "@laodeaksarr/design-system": "^1.0.5",
+    "@laodeaksarr/design-system": "^1.0.4",
     "@prisma/client": "^4.2.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^1.0.2",
