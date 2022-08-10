@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Box, Flex, Grid, Pill, Text } from "@laodeaksarr/design-system";
+import { Box, Flex, formatDate, Grid, Pill, Text } from "@laodeaksarr/design-system";
 import Hero from "~/components/Hero";
 import SEO from "~/components/Seo";
 
@@ -34,11 +34,12 @@ const SnippetLayout = ({
                   css={{ marginBottom: 0 }}
                 >
                   Created{" "}
-                  {new Date(date).toLocaleDateString("en", {
+                  {formatDate(date)}
+                  {/*new Date(date).toLocaleDateString("en", {
                     month: "long",
                     day: "2-digit",
                     year: "numeric",
-                  })}
+                  })*/}
                 </Text>
                 <Pill variant="info">{language.toUpperCase()}</Pill>
               </Flex>

@@ -34,8 +34,8 @@ export default createConfig({
             type: 'markdown'
           },
           {
-            name: 'excerpt',
-            title: 'Excerpt',
+            name: 'description',
+            title: 'Description',
             type: 'string'
           },
           {

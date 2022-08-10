@@ -4,7 +4,7 @@ import { Box } from '@laodeaksarr/design-system';
 
 import { StyledGlow } from './Styles';
 
-const Glow = (props: PropsWithChildren<{}>) => {
+const Glow = (props: PropsWithChildren) => {
   const { children, ...rest } = props;
 
   return (

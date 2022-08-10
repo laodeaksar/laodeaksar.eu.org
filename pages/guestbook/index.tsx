@@ -13,12 +13,12 @@ import {
   Grid,
   H2,
   Icon,
+  Spinner,
   Text,
   TextInput
 } from '@laodeaksarr/design-system';
 
 import SEO from '~/components/Seo';
-import Spinner from '~/components/Spinner';
 
 import prisma from '~/lib/prisma';
 import Layout from '~/layout';
@@ -95,11 +95,12 @@ function GuestbookForm() {
           <Button
             aria-label="Send message"
             disabled={isSubmitting}
+            isLoading={isSubmitting}
             title="Send message"
             type="submit"
             variant="primary"
           >
-            {isSubmitting ? <Spinner /> : 'Send'}
+            {!isSubmitting && 'Send'}
           </Button>
         </Flex>
       </form>

@@ -11,14 +11,9 @@ import { sanityClient, getClient } from '~/lib/sanity-server';
 import { mdxToHtml } from '~/lib/mdx';
 import { Post } from '~/lib/types';
 
-interface BlogProps {
-  post: Post;
-  tweets: any[];
-}
-
-export default function Post({ post, tweets }: BlogProps) {
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
+export default function Post({ post }: { post: Post }) {
+  const StaticTweet = ({ id }: any) => {
+    const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
   };
 
@@ -40,12 +35,12 @@ export default function Post({ post, tweets }: BlogProps) {
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(postSlugsQuery);
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 };
 
-export const getStaticProps = async ({ params, preview = false }) => {
+export const getStaticProps = async ({ params, preview = false }: any) => {
   const { post } = await getClient(preview).fetch(postQuery, {
     slug: params.slug
   });

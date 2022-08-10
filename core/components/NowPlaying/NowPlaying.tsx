@@ -49,7 +49,7 @@ const NowPlaying = () => {
               size={2}
               weight={4}
               variant="secondary"
-              ellipsis
+              truncate
               className={styles.title}
             >
               {music?.isPlaying ? music.title : 'Spotify'}
@@ -59,7 +59,7 @@ const NowPlaying = () => {
                 <Text
                   size={1}
                   variant="tertiary"
-                  ellipsis
+                  truncate
                   className={styles.artists + ' artists'}
                 >
                   {music.artists}
