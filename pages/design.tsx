@@ -47,7 +47,7 @@ import type { TransformedTweet } from "~/lib/types";
 const Tooltip = (props: any) => <>{props.children}</>;
 
 const SandpackExample = dynamic(
-  () => import("~/components/MDX/Widgets/WaveAnimation/Sandpack")
+  () => import("~/components/MDX/WaveAnimation/Sandpack")
 );
 const Search = dynamic(() => import("~/components/Search"), {
   ssr: false,

@@ -12,7 +12,7 @@ import { mdxToHtml } from '~/lib/mdx';
 import { Snippet } from '~/lib/types';
 
 const WaveAnimationSandpack = dynamic(
-  () => import('~/components/MDX/Widgets/WaveAnimation/Sandpack')
+  () => import('~/components/MDX/WaveAnimation/Sandpack')
 );
 
 export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
