@@ -1,6 +1,6 @@
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Flaodeaksar%2Flaodeaksar.eu.org)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://aksarlaode-laodeaksareu-ipzz6ugdb66.ws-us59.gitpod.io/)
+// [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://aksarlaode-laodeaksareu-ipzz6ugdb66.ws-us59.gitpod.io/)
 
 # laodeaksar.eu.org
 
