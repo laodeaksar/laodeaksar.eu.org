@@ -7,7 +7,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (!isValidRequest(req, process.env.SANITY_STUDIO_REVALIDATE_SECRET)) {
+  const secret = process.env.SANITY_STUDIO_REVALIDATE_SECRET;
+  if (!isValidRequest(req, secret)) {
     return res.status(401).json({ message: 'Invalid request' });
   }
 
@@ -19,8 +20,8 @@ export default async function handler(
   try {
     const slug = await sanityClient.fetch(postUpdatedQuery, { id });
     await Promise.all([
-      res.unstable_revalidate('/blog'),
-      res.unstable_revalidate(`/blog/${slug}`)
+      res.revalidate('/blog'),
+      res.revalidate(`/blog/${slug}`)
     ]);
     return res.status(200).json({ message: `Updated ${slug}` });
   } catch (err) {
