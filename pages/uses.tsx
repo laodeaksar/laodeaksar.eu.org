@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import {
   Anchor,
   Box,
-  Button,
   Callout,
   Flex,
   Grid,
@@ -12,7 +11,6 @@ import {
   Text,
   H1,
   H2,
-  H3,
   Shadows,
   styled
 } from '@laodeaksarr/design-system';

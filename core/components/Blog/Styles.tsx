@@ -17,7 +17,12 @@ export const Block = styled('div', {
   color: '$$color',
   transition: 'background-color 0.25s, box-shadow 0.25s, color 0.25s',
 
-  '&:focus': {
+  hocus: {
+    $$background: 'var(--laodeaksar-colors-emphasis)',
+    $$color: 'var(--laodeaksar-colors-brand)'
+  },
+
+  /*'&:focus': {
     $$background: 'var(--laodeaksar-colors-emphasis)',
     $$color: 'var(--laodeaksar-colors-brand)'
   },
@@ -27,7 +32,7 @@ export const Block = styled('div', {
       $$background: 'var(--laodeaksar-colors-emphasis)',
       $$color: 'var(--laodeaksar-colors-brand)'
     }
-  },
+  },*/
 
   '@media (max-width: 700px)': {
     height: '100px'
@@ -41,5 +46,5 @@ export const Button = styled('button', {
   background: 'transparent',
   fontSize: '$3',
   lineHeight: '1.9',
-  letterSpacing: '0.3px',
+  letterSpacing: '0.3px'
 });

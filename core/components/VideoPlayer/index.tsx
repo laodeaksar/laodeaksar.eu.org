@@ -5,7 +5,7 @@ import type { VideoPlayerProps } from "./types";
 import { getDisplayedPoster } from "./utils";
 
 const VideoPlayer = (props: VideoPlayerProps) => {
-  const { autoplay, controls, loop, muted, width, height, poster, src } = props;
+  const { autoPlay, controls, loop, muted, width, height, poster, src } = props;
 
   const { dark } = useTheme();
   const [currentPoster, setCurrentPoster] = useState<string | undefined>(
@@ -25,7 +25,7 @@ const VideoPlayer = (props: VideoPlayerProps) => {
   return (
     <Wrapper>
       <video
-        autoplay={autoplay}
+        autoPlay={autoPlay}
         poster={currentPoster}
         width={width}
         height={height}

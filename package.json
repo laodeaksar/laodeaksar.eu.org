@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.2.2",
-    "@laodeaksarr/design-system": "^1.0.4",
+    "@laodeaksarr/design-system": "^1.0.5",
     "@prisma/client": "^4.2.0",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^1.0.2",
@@ -24,7 +24,6 @@
     "@visx/scale": "^2.2.2",
     "@visx/shape": "^2.11.1",
     "d3-array": "^3.1.6",
-    "date-fns": "^2.29.1",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.0.0",
     "googleapis": "104.0.0",

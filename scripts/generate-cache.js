@@ -1,7 +1,7 @@
 const fs = require('fs');
 const lunr = require('lunr');
-import { sanityClient } from '~/lib/sanity-server';
-import { allSnippetQuery ,indexQuery } from '~/lib/queries';
+import { sanityClient } from '../lib/sanity-server';
+import { allSnippetQuery ,indexQuery } from '../lib/queries';
 
 (async () => {
   const blog = await sanityClient.fetch(indexQuery);

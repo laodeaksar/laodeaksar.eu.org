@@ -1419,10 +1419,10 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.3.1.tgz#b50a781709c81e10701004214340f25475a171a0"
   integrity sha512-zMM9Ds+SawiUkakS7y94Ymqx+S0ORzpG3frZirN3l+UlXUmSUR7hF4wxCVqW+ei94JzV5kt0uXBcoOEAuiydrw==
 
-"@laodeaksarr/design-system@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@laodeaksarr/design-system/-/design-system-1.0.4.tgz#0e2fb6f59b90e5079d219b459e8b92148ff0206c"
-  integrity sha512-qLSEOs7I303aZrYTMTOA4S+j+mtf8RfXHA3Vq6aCsVST7bw/MV6e/JhB9JTZHoV9/fd6Kxc6hE18uBXCCwwu7Q==
+"@laodeaksarr/design-system@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@laodeaksarr/design-system/-/design-system-1.0.5.tgz#5f83c052a454255e0721817267587798848f4a0b"
+  integrity sha512-tiGF/RlAkt80C/UkCBn0B+Qlsw3ecYPDI+eMTNlCbpfM2P0LV/SsZ4gOBZfuS8uPyxbVWuDKWvch+jUGZpow4w==
   dependencies:
     "@radix-ui/react-tabs" "^1.0.0"
     "@radix-ui/react-tooltip" "^1.0.0"
@@ -3795,7 +3795,7 @@ dataloader@^2.1.0:
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.1.0.tgz#c69c538235e85e7ac6c6c444bae8ecabf5de9df7"
   integrity sha512-qTcEYLen3r7ojZNgVUaRggOI+KM7jrKxXeSHhogh/TWxYMeONEMqY+hmkobiYQozsGIyg9OYVzO4ZIfoB4I0pQ==
 
-date-fns@^2.26.1, date-fns@^2.29.1:
+date-fns@^2.26.1:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.1.tgz#9667c2615525e552b5135a3116b95b1961456e60"
   integrity sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==

@@ -34,7 +34,7 @@ export const HeaderTitle = (props: HeaderTitleProps) => {
         size={4}
         weight={4}
         variants={titleVariants}
-        ellipsis
+        truncate
         css={{ marginBottom: 0 }}
         style={{
           y: titleY,

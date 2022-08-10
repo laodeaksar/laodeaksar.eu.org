@@ -48,7 +48,7 @@ export function TagList({ post }) {
                 maxWidth: '$full'
               }
             }}
-            ellipsis
+            truncate
           >
             {title}
           </Text>
@@ -63,7 +63,7 @@ export function TagList({ post }) {
                 maxWidth: '$full'
               }
             }}
-            ellipsis
+            truncate
           >
             {description}
           </Text>
@@ -95,7 +95,12 @@ const Block = styled('div', {
   color: '$$color',
   transition: 'background-color 0.25s, box-shadow 0.25s, color 0.25s',
 
-  '&:focus': {
+  hocus: {
+    $$background: 'var(--laodeaksar-colors-emphasis)',
+    $$color: 'var(--laodeaksar-colors-brand)'
+  },
+
+  /*'&:focus': {
     $$background: 'var(--laodeaksar-colors-emphasis)',
     $$color: 'var(--laodeaksar-colors-brand)'
   },
@@ -105,7 +110,7 @@ const Block = styled('div', {
       $$background: 'var(--laodeaksar-colors-emphasis)',
       $$color: 'var(--laodeaksar-colors-brand)'
     }
-  },
+  },*/
 
   '@media (max-width: 700px)': {
     height: '120px'

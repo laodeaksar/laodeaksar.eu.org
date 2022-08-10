@@ -1,6 +1,6 @@
 import { useEffect, useState, type PropsWithChildren, Suspense } from "react";
 
-import { Box, Flex, Grid, Pill, Text } from "@laodeaksarr/design-system";
+import { Box, Flex, formatDate, Grid, Pill, Text } from "@laodeaksarr/design-system";
 
 import Hero from "~/components/Hero";
 import Link from "~/components/Link";
@@ -138,12 +138,13 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
                     weight="3"
                     css={{ marginBottom: 0 }}
                   >
-                    {new Date(date).toLocaleDateString("en", {
+                    {formatDate(date)}{" "}
+                    {/*new Date(date).toLocaleDateString("en", {
                       month: "long",
                       day: "2-digit",
                       year: "numeric",
-                    })}{" "}
-                    / {readingTime.text} /{" "}
+                    })}{" "*/}
+                    / {readingTime} /{" "}
                   </Text>
                   <WebmentionCount target={postUrl} />
                 </Flex>

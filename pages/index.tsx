@@ -211,7 +211,7 @@ const IndexPage = ({
   );
 };
 
-export const getStaticProps = ({ preview = false }) => {
+export const getStaticProps = async ({ preview = false }) => {
   const posts: Post[] = await getClient(preview).fetch(indexQuery);
   return { props: { posts } };
 };

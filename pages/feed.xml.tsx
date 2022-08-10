@@ -2,8 +2,9 @@ import RSS from 'rss';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { indexQuery } from '~/lib/queries';
+import { Post } from '~/lib/types';
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({ res }: any) {
   const feed = new RSS({
     title: 'Lee Robinson',
     site_url: 'https://laodeaksar.eu.org',
@@ -11,12 +12,12 @@ export async function getServerSideProps({ res }) {
   });
 
   const allPosts = await sanityClient.fetch(indexQuery);
-  allPosts.map((post) => {
+  allPosts.map((post: Post) => {
     feed.item({
       title: post.title,
       url: `https://laodeaksar.eu.org/blog/${post.slug}`,
       date: post.date,
-      description: post.excerpt
+      description: post.description
     });
   });
 

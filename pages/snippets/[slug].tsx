@@ -1,18 +1,18 @@
-import type { GetStaticPropsContext } from "next";
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote } from 'next-mdx-remote';
 import dynamic from 'next/dynamic';
 
-import Code from "~/components/Code";
+import Code from '~/components/Code';
+//import components from '~/components/MDX/MDXComponents';
 
-import SnippetLayout from "~/layouts/Snippet";
+import SnippetLayout from '~/layouts/Snippet';
 
-import { snippetsQuery, snippetSlugsQuery } from "~/lib/queries";
-import { sanityClient, getClient } from "~/lib/sanity-server";
-import { mdxToHtml } from "~/lib/mdx";
-import { Snippet } from "~/lib/types";
+import { snippetsQuery, snippetSlugsQuery } from '~/lib/queries';
+import { sanityClient, getClient } from '~/lib/sanity-server';
+import { mdxToHtml } from '~/lib/mdx';
+import { Snippet } from '~/lib/types';
 
 const WaveAnimationSandpack = dynamic(
-  () => import('@theme/components/MDX/Widgets/WaveAnimation/Sandpack')
+  () => import('~/components/MDX/Widgets/WaveAnimation/Sandpack')
 );
 
 export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
@@ -20,26 +20,28 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
     <SnippetLayout snippet={snippet}>
       <MDXRemote
         {...snippet.content}
-        components={{
-          pre: Code,
-          WaveAnimationSandpack,
-        }}
+        components={
+          {
+            pre: Code,
+            WaveAnimationSandpack
+          } as any
+        }
       />
     </SnippetLayout>
   );
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(snippetSlugsQuery);
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: "blocking",
+    paths: paths.map((slug: string) => ({ params: { slug } })),
+    fallback: 'blocking'
   };
 };
 
-export const getStaticProps = ({ params, preview = false }) => {
+export const getStaticProps = async ({ params, preview = false }: any) => {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, {
-    slug: params.slug,
+    slug: params.slug
   });
 
   if (!snippet) {
@@ -52,8 +54,8 @@ export const getStaticProps = ({ params, preview = false }) => {
     props: {
       snippet: {
         ...snippet,
-        content: html,
-      },
-    },
+        content: html
+      }
+    }
   };
 };

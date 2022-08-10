@@ -40,7 +40,7 @@ export function BlogList({ post }: { post: Post }) {
               maxWidth: '$full'
             }
           }}
-          ellipsis
+          truncate
         >
           {title}
         </Text>

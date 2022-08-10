@@ -5,34 +5,44 @@ export type Post = {
   slug: string;
   content: MDXRemoteSerializeResult;
   title: string;
+  subtitle: string;
   date: string;
-  excerpt: string;
-  coverImage: string;
+  updated: string;
+  description: string;
+  featured?: string;
+  colorFeatured?: string;
+  fontFeatured?: string;
+  keywords?: string[];
+  cover?: string;
   readingTime: string;
+  image: any;
+  tags: string[];
+  url: any;
   tweets: any[];
 };
 
 export type Snippet = {
   _id: string;
+  date: string;
+  language: string;
+  snippetImage: string;
   slug: string;
   content: MDXRemoteSerializeResult;
   title: string;
   description: string;
-  logo: string;
 };
 
 export enum Form {
-    Initial,
-    Loading,
-    Success,
-    Error
-}                                                     
-
-export interface FormState {
-    state: Form;
-    message?: string;
+  Initial,
+  Loading,
+  Success,
+  Error
 }
 
+export interface FormState {
+  state: Form;
+  message?: string;
+}
 
 type TweetMedia = {
   media_key: string;
