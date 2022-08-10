@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:cache": "node ./scripts/generate-cache",
-    "compose": "node scripts/compose.js",
+    "generate:cache": "node scripts/generate-cache.mjs",
     "type-check": "tsc --noEmit",
     "sanity-start": "sanity start"
   },
