@@ -40,5 +40,6 @@ yarn-error.log*
 public/sitemap.xml
 public/feed.xml
 
-# Contentlayer
+# Sanity
 .sanity
+/dist
