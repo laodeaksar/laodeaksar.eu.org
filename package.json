@@ -9,14 +9,16 @@
     "lint": "next lint",
     "generate:cache": "node scripts/generate-cache.mjs",
     "type-check": "tsc --noEmit",
-    "sanity-start": "sanity start"
+    "sanity:start": "sanity start",
+    "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.3.5",
     "@laodeaksarr/design-system": "^1.0.5",
     "@prisma/client": "^4.2.1",
+    "@sanity/core": "^2.30.3",
     "@sanity/image-url": "^1.0.1",
-    "@sanity/webhook": "^1.0.2",
+    "@sanity/webhook": "^2.0.0",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.0.0",
     "googleapis": "104.0.0",
@@ -33,7 +35,7 @@
     "react-hook-form": "^7.34.0",
     "react-hot-toast": "^2.3.0",
     "react-intersection-observer": "^8.33.1",
-    "sanity": "dev-preview",
+    "sanity": "3.0.0-dev-preview.12",
     "sanity-plugin-markdown": "^3.0.0-v3-studio.0",
     "styled-components": "^5.3.5",
     "swr": "^1.3.0"
