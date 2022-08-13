@@ -9,10 +9,9 @@ export type Post = {
   date: string;
   updated: string;
   description: string;
-  featured?: string;
+  featured?: boolean;
   colorFeatured?: string;
   fontFeatured?: string;
-  keywords?: string[];
   cover?: string;
   readingTime: string;
   image: any;

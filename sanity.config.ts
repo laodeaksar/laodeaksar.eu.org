@@ -21,6 +21,11 @@ export default createConfig({
             type: 'string'
           },
           {
+            name: 'subtitle',
+            title: 'Subtitle',
+            type: 'string'
+          },
+          {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
@@ -39,13 +44,39 @@ export default createConfig({
             type: 'string'
           },
           {
-            name: 'coverImage',
-            title: 'Cover Image',
+            name: 'cover',
+            title: 'Cover',
             type: 'image'
           },
           {
             name: 'date',
             title: 'Date',
+            type: 'datetime'
+          },
+          {
+            name: 'featured',
+            title: 'Featured',
+            type: 'boolean'
+          },
+          {
+            name: 'colorFeatured',
+            title: 'Color Featured',
+            type: 'string'
+          },
+          {
+            name: 'fontFeatured',
+            title: 'Font Featured',
+            type: 'string'
+          },
+          {
+            name: 'tags',
+            title: 'Tags',
+            type: 'array',
+            of: [{ type: 'string' }]
+          },
+          {
+            name: 'updated',
+            title: 'Updated',
             type: 'datetime'
           }
         ]

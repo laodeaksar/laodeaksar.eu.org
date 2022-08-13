@@ -1,11 +1,11 @@
 const fs = require('fs');
 const lunr = require('lunr');
 import { sanityClient } from '../lib/sanity-server';
-import { allSnippetQuery ,indexQuery } from '../lib/queries';
+import { indexQuery, snippetsQuery } from '../lib/queries';
 
 (async () => {
   const blog = await sanityClient.fetch(indexQuery);
-  const snippet = await sanityClient.fetch(allSnippetQuery);
+  const snippet = await sanityClient.fetch(snippetsQuery);
 
   const documents = [...blog, ...snippet];
 
