@@ -15,13 +15,13 @@ export type PrePropsType = {
 
 export interface CodeBlockProps {
   codeString: string;
-  language: Language | 'glsl';
+  language: Language;
   metastring: string | null;
   children?: React.ReactNode;
 }
 
 export interface HighlightedCodeTextProps {
   codeString: string;
-  language: Language;
+  language: Language | 'glsl';
   highlightLine?: (index: number) => boolean;
 }

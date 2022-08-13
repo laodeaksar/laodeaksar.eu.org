@@ -13,11 +13,10 @@ import {
   Flex,
   H3,
   List,
+  Spinner,
   Text,
   TextInput
 } from '@laodeaksarr/design-system';
-
-import Spinner from '~/components/Spinner';
 
 type Inputs = {
   email: string;
