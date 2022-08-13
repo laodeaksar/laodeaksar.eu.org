@@ -3,11 +3,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "yarn generate:cache",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:cache": "node scripts/generate-cache.mjs",
     "type-check": "tsc --noEmit",
     "sanity:start": "sanity start",
     "sanity:deploy": "sanity deploy"
@@ -44,6 +42,7 @@
     "@types/lodash": "^4.14.182",
     "@types/lru-cache": "^7.10.10",
     "@types/lunr": "^2.3.4",
+    "@types/node": "^18.7.2",
     "@types/react": "^18.0.16",
     "@types/react-dom": "^18.0.6",
     "@types/rss": "^0.0.29",
