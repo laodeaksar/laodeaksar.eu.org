@@ -30,9 +30,3 @@ model post {
   views      BigInt   @default(0)
   created_at DateTime @default(now()) @db.DateTime(6)
 }
-
-model likes {
-  id         String   @id
-  likes      BigInt   @default(1)
-  created_at DateTime @default(now()) @db.DateTime(6)
-}

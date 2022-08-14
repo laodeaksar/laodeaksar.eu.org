@@ -31,6 +31,10 @@ export type Snippet = {
   description: string;
 };
 
+export type Views = {
+  total: number;
+};
+
 export enum Form {
   Initial,
   Loading,
