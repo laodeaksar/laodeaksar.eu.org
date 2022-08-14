@@ -5,6 +5,7 @@ type Props = {
   type?: any;
 };
 
+// @ts-ignore
 const trackEvent = ({ event, name, value, type = 'type' }: Props) => {
   const { splitbee } = window as any;
 
