@@ -34,7 +34,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = element.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
-    const offsetPosition = elementPosition - 50;
+    const offsetPosition = elementPosition - 100;
 
     window.scrollTo({
       top: offsetPosition,
@@ -60,13 +60,11 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
                 as={motion.li}
                 initial="hide"
                 css={
-                  currentActiveIndex === index
-                    ? {
-                        a: {
-                          color: 'var(--laodeaksar-colors-brand)!important'
-                        }
-                      }
-                    : {}
+                  currentActiveIndex === index && {
+                    a: {
+                      color: 'var(--maximeheckel-colors-brand)!important'
+                    }
+                  }
                 }
                 variants={variants}
                 animate="show"
