@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const serialize = (obj: { [key: string | number]: any }) => {
   const str = [];
   for (const p in obj) {
