@@ -1,6 +1,7 @@
 import createImageUrlBuilder from '@sanity/image-url';
 import { sanityConfig } from './sanity-config';
 
+// @ts-ignore
 export const imageBuilder = createImageUrlBuilder(sanityConfig);
 
 export const urlForImage = (source:any) =>
