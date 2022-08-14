@@ -2,7 +2,7 @@ import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { postUpdatedQuery } from '~/lib/queries';
-import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '@/lib/api';
+import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '~/lib/api';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
