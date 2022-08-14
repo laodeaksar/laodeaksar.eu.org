@@ -2,7 +2,15 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Image from 'next/image';
 
-import { Box, css, Grid, Spinner, Text, H1, Strong } from '@laodeaksarr/design-system';
+import {
+  Box,
+  css,
+  Grid,
+  Spinner,
+  Text,
+  H1,
+  Strong
+} from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';
 import Newsletter from '~/components/Newsletter';
@@ -10,6 +18,9 @@ import SEO from '~/components/Seo';
 
 import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
+import { Post } from '~/lib/types';
+import { getClient } from '~/lib/sanity-server';
+import { indexQuery } from '~/lib/queries';
 
 const styles = {
   pointsStyle: css({
@@ -107,8 +118,8 @@ function getBirthdayInSecond() {
   return Math.round(((now as any) - dob.getTime()) / 1000);
 }
 
-export const getStaticProps = () => {
-  const posts = allBlogs;
+export const getStaticProps = async ({ preview = false }) => {
+  const posts: Post[] = await getClient(preview).fetch(indexQuery);
   return {
     props: {
       postsCount: posts.length,
@@ -117,7 +128,7 @@ export const getStaticProps = () => {
   };
 };
 
-const About = ({ postsCount, initialAge }) => {
+const About = ({ postsCount, initialAge }: any) => {
   const [age, setAge] = useState(initialAge);
   const ageInYears = useMemo(() => Math.floor(age / 31536000), [age]);
   const mounted = useRef<boolean>();

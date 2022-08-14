@@ -1,5 +1,4 @@
-import { pick } from 'lodash';
-import type { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
+import type { InferGetStaticPropsType } from 'next';
 
 import tagColors from '~/lib/tagColor';
 
@@ -9,7 +8,9 @@ import SEO from '~/components/Seo';
 import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
-
+import { getClient, sanityClient } from '~/lib/sanity-server';
+import { postSlugsQuery, indexQuery } from '~/lib/queries';
+import { Post } from '~/lib/types';
 
 let year = 0;
 
@@ -78,16 +79,20 @@ const Tag = ({
 export default Tag;
 
 export const getStaticPaths = async () => {
+  const paths = await sanityClient.fetch(postSlugsQuery);
   return {
-    paths: getAllTags().map((slug) => ({ params: { slug } })),
-    fallback: false
+    paths: paths.map((slug: string) => ({ params: { slug } })),
+    fallback: 'blocking'
   };
 };
 
-export const getStaticProps = ({ params }: GetStaticPropsContext) => {
-  const posts = getAllBlogsWhichBelongToCurrentSlug(params, 'tags')
-    ?.map((posts) => pick(posts, ['date', 'description', 'title', 'slug']))
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+export const getStaticProps = async ({ params, preview = false }: any) => {
+  const posts: Post[] = await getClient(preview).fetch(indexQuery);
 
-  return { props: { posts, currentTag: params?.slug as string } };
+  return {
+    props: {
+      posts,
+      currentTag: params?.slug as string
+    }
+  };
 };

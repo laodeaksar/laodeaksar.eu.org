@@ -33,7 +33,10 @@ const BlogPage = ({
 export const getStaticProps = async ({ preview = false }) => {
   const posts: Post[] = await getClient(preview).fetch(indexQuery);
 
-  return { props: { posts } };
+  return {
+    props: { posts },
+    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
+  };
 };
 
 export default BlogPage;

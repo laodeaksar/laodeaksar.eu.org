@@ -1,9 +1,14 @@
 const postFields = `
   _id,
   title,
+  subtitle,
   date,
-  excerpt,
-  coverImage,
+  updated,
+  description,
+  featured,
+  colorFeatured,
+  cover,
+  "tags": tags,
   "slug": slug.current,
 `;
 
@@ -35,8 +40,10 @@ export const postUpdatedQuery = `*[_type == "post" && _id == $id].slug.current`;
 const snippetFields = `
   _id,
   title,
+  language,
+  date,
   description,
-  logo,
+  sneppetImage,
   "slug": slug.current,
 `;
 
