@@ -50,7 +50,7 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
     title,
     readingTime,
     image,
-    tags,
+    // tags,
     url,
   } = post;
   const postUrl = config.openGraph.url + url;
