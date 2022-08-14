@@ -1,8 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { isValidRequest, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
+import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
+
 import { sanityClient } from '~/lib/sanity-server';
 import { postUpdatedQuery } from '~/lib/queries';
-import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '~/lib/api';
+import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '@/lib/api';
+
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 async function stringifyRequest(req: NextApiRequest) {
   const chunks = [];
@@ -34,7 +36,7 @@ export default async function handler(
   }
 
   if (
-    !isValidRequest(
+    !isValidSignature(
       stringifiedRequest,
       signature,
       process.env.SANITY_STUDIO_REVALIDATE_SECRET
@@ -54,7 +56,7 @@ export default async function handler(
       res.revalidate('/blog'),
       res.revalidate(`/blog/${slug}`)
     ]);
-    return res.status(200).json({ message: `[Revalidated] ${slug}` });
+    return res.status(200).json({ message: `[Revalidated] '${slug}' (${id})` });
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({ message: err.message });
@@ -67,6 +69,6 @@ export default async function handler(
 // Next.js will by default parse the body, which can lead to invalid signatures
 export const config = {
   api: {
-    bodyParser: false
-  }
+    bodyParser: false,
+  },
 };
