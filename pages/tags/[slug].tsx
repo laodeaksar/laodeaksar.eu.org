@@ -84,10 +84,21 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = ({ params }: GetStaticPropsContext) => {
-  const posts = getAllBlogsWhichBelongToCurrentSlug(params, 'tags')
-    ?.map((posts) => pick(posts, ['date', 'description', 'title', 'slug']))
-    .sort((a, b) => Number(new Date(b.date)) - Number(new Date(a.date)));
+export const getStaticProps = async ({ params, preview = false }: any) => {
+  const { post } = await getClient(preview).fetch(postTagsQuery, {
+    slug: params.slug
+  });
 
+  if (!post) {
+    return { notFound: true };
+  }
+
+
+  return {
+    props: {
+      post: {
+        ...post,
+      },
+      
   return { props: { posts, currentTag: params?.slug as string } };
 };
