@@ -8,10 +8,6 @@ const runtimeCaching = require("next-pwa/cache");
 module.exports = withPWA({
   swcMinify: true,
   reactStrictMode: true,
-  typescript: {
-    ignoreDevErrors: true,
-    ignoreBuildErrors: true
-  },
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art

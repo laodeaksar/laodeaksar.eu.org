@@ -2,10 +2,11 @@ import { Flex, Pill, Text, styled } from '@laodeaksarr/design-system';
 
 import useIsArticleRead from '~/hooks/useIsArticleRead';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
+import { Post } from '~/lib/types';
 
 import { Button } from '../Styles';
 
-export function TagList({ post }) {
+export function TagList({ post }: { post: Post }) {
   const { date, slug, title, description } = post;
   const [hasRead] = useIsArticleRead(slug);
 

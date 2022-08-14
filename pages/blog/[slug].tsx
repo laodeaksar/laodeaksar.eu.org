@@ -11,7 +11,7 @@ import { sanityClient, getClient } from '~/lib/sanity-server';
 import { mdxToHtml } from '~/lib/mdx';
 import { Post } from '~/lib/types';
 
-export default function Post({ post }: { post: Post }) {
+export default function PostPage({ post }: { post: Post }) {
   const StaticTweet = ({ id }: any) => {
     const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;

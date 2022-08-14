@@ -47,7 +47,6 @@
     "@types/rss": "^0.0.29",
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.4",
-    "eslint-plugin-prettier": "4.2.1",
     "gray-matter": "^4.0.3",
     "prettier": "^2.6.2",
     "prisma": "^4.2.1",
