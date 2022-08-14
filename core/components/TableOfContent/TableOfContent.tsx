@@ -59,10 +59,11 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
               <Box
                 as={motion.li}
                 initial="hide"
+                // @ts-ignore
                 css={
                   currentActiveIndex === index && {
                     a: {
-                      color: 'var(--maximeheckel-colors-brand)!important'
+                      color: 'var(--laodeaksar-colors-brand) !important'
                     }
                   }
                 }
