@@ -7,3 +7,12 @@ export type Props =
       spotifyUrl: string;
       cover: string;
     };
+
+export type NowPlayingSong = {
+  album: string;
+  albumImageUrl: string;
+  artist: string;
+  isPlaying: boolean;
+  songUrl: string;
+  title: string;
+};
