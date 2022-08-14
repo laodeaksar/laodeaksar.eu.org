@@ -86,7 +86,7 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
     imagePublicID: "og_social_large.png",
   });
 
-  const keywords = tags.join(", ");
+  // const keywords = tags.join(", ");
 
   return (
     <Layout footer header headerProps={headerProps}>
