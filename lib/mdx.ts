@@ -6,7 +6,7 @@ import { remarkSectionize } from "./remark/remark-sectionize-fork";
 import remarkSlug from 'remark-slug';
 import remarkAutolinkHeading from 'remark-autolink-headings';
 
-export async function mdxToHtml(source: any) {
+export async function mdxToHtml(source: string) {
   const mdxSource = await serialize(source, {
     mdxOptions: {
       remarkPlugins: [

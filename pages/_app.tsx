@@ -1,5 +1,5 @@
-import '~/styles/globals.css';
-import '~/styles/font.css';
+import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from 'next/app';
 
 import {
   globalStyles,
@@ -7,10 +7,10 @@ import {
   Tooltip
 } from '@laodeaksarr/design-system';
 
-import { SessionProvider } from 'next-auth/react';
-import type { AppProps } from 'next/app';
-
 import { Head } from '~/components/Seo';
+
+import '~/styles/globals.css';
+import '~/styles/font.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   globalStyles();
