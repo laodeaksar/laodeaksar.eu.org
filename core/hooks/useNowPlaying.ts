@@ -1,7 +1,7 @@
-import { TrackData } from "~/lib/spotify";
+import { TrackData } from '~/lib/spotify';
 
 // import { useActivity } from './useActivity';
-import { useRequest } from "./useRequest";
+import { useRequest } from './useRequest';
 
 interface NowPlayingData {
   data?: TrackData | null;
@@ -10,7 +10,7 @@ interface NowPlayingData {
 }
 
 export const useNowPlaying = (): NowPlayingData => {
-  const { data, loading, error } = useRequest<TrackData>("/api/now-playing");
+  const { data, loading, error } = useRequest<TrackData>('/api/now-playing');
   /* const {
     data: activity,
     loading: activityLoading,
@@ -24,6 +24,6 @@ export const useNowPlaying = (): NowPlayingData => {
   return {
     data,
     loading,
-    error,
+    error
   };
 };

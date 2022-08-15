@@ -1,4 +1,4 @@
-import { getCurrentlyPlaying } from '~/lib/spotify';
+import { getCurrentlyPlaying } from '~/lib/spotify.draft';
 
 export const config = {
   runtime: 'experimental-edge'

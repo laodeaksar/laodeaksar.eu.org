@@ -1,15 +1,15 @@
-import Image from "next/image";
+import Image from 'next/image';
 //import useSWR from "swr";
 
-import { Flex, Text } from "@laodeaksarr/design-system";
+import { Flex, Text } from '@laodeaksarr/design-system';
 
-import Skeleton from "~/components/Skeleton";
-import SpotifyLogo, { Glass } from "./icons";
-import { styles } from "./Styles";
+import Skeleton from '~/components/Skeleton';
+import SpotifyLogo, { Glass } from './icons';
+import { styles } from './Styles';
 //import type { Props } from "./types";
 
 //import fetcher from "~/lib/fetcher";
-import { useNowPlaying } from "~/hooks/useNowPlaying";
+import { useNowPlaying } from '~/hooks/useNowPlaying';
 
 const Bars = () => (
   <Flex className={styles.bars}>
@@ -22,15 +22,15 @@ const Bars = () => (
 
 const NowPlaying = () => {
   // const { data: music } = useSWR<Props>('/api/currently-playing', fetcher);
-  const { data: music, loading } = useNowPlaying();
+  const { data, loading } = useNowPlaying();
 
   const renderImage = () => {
-    if (music?.isPlaying) {
+    if (data?.isPlaying) {
       return (
         <Image
           unoptimized
-          src={music.cover}
-          alt={[music.title] + " Cover Album"}
+          src={data.image?.url || ''}
+          alt={[data.title] + ' Cover Album'}
           layout="fill"
         />
       );
@@ -41,7 +41,7 @@ const NowPlaying = () => {
 
   return (
     <a
-      href={music?.isPlaying ? music.url : undefined}
+      href={data?.isPlaying ? data.url : undefined}
       className={styles.outer}
       target="_blank"
       rel="noreferrer"
@@ -63,40 +63,36 @@ const NowPlaying = () => {
             >
               {loading ? (
                 <Skeleton variant="title" />
-              ) : music?.isPlaying ? (
-                music.title
+              ) : data?.isPlaying ? (
+                data.title
               ) : (
-                "Spotify"
+                'Spotify'
               )}
             </Text>
             {loading ? (
               <Skeleton variant="text" />
-            ) : music?.isPlaying ? (
+            ) : data?.isPlaying ? (
               <>
                 <Text
                   size={1}
                   variant="tertiary"
                   truncate
-                  className={styles.artists + " artists"}
+                  className={styles.artist + ' artists'}
                 >
-                  {music.artist}
+                  {data.artist}
                 </Text>
-                <Text size={1} className={styles.artists + " play"}>
+                <Text size={1} className={styles.artist + ' play'}>
                   Play on Spotify
                 </Text>
               </>
             ) : (
-              <Text size={1} variant="tertiary" className={styles.artists}>
-                {music ? "Not Playing" : "Loading..."}
+              <Text size={1} variant="tertiary" className={styles.artist}>
+                {data ? 'Not Playing' : 'Loading...'}
               </Text>
             )}
           </Flex>
         </Flex>
-        {loading ? (
-          <Skeleton variant="avatar1" />
-        ) : (
-          music?.isPlaying && <Bars />
-        )}
+        {loading ? <Skeleton variant="avatar1" /> : data?.isPlaying && <Bars />}
       </Flex>
     </a>
   );

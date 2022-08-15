@@ -55,7 +55,7 @@ export const styles = {
     maxWidth: '15ch',
     margin: '0 !important'
   })(),
-  artists: css({
+  artist: css({
     lineHeight: '1.375 !important',
     maxWidth: '18ch',
     margin: '0 !important'

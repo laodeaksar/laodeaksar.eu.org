@@ -1,30 +1,30 @@
-import { serialize } from "./serialize";
+import { serialize } from './serialize';
 
-const clientId = process.env.SPOTIFY_CLIENT_ID || "";
-const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || "";
+const clientId = process.env.SPOTIFY_CLIENT_ID || '';
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
 const refreshToken =
   process.env.SPOTIFY_CLIENT_REFRESH_TOKEN ||
   process.env.SPOTIFY_CLIENT_TOKEN ||
-  "";
+  '';
 
 const basicToken = btoa(`${clientId}:${clientSecret}`);
 
 const getAccessToken = async () => {
-  const url = "https://accounts.spotify.com/api/token";
+  const url = 'https://accounts.spotify.com/api/token';
   const headers = {
-    "Content-Type": "application/x-www-form-urlencoded",
-    Authorization: "Basic " + basicToken,
+    'Content-Type': 'application/x-www-form-urlencoded',
+    Authorization: 'Basic ' + basicToken
   };
 
   const body = serialize({
-    grant_type: "refresh_token",
-    refresh_token: refreshToken,
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken
   });
 
   const response = await fetch(url, {
-    method: "POST",
+    method: 'POST',
     headers,
-    body,
+    body
   });
 
   return response.json();
@@ -33,10 +33,10 @@ const getAccessToken = async () => {
 export const getTopTracks = async () => {
   const { access_token } = await getAccessToken();
   const url =
-    "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50";
+    'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50';
   const headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer " + access_token,
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + access_token
   };
 
   return await fetch(url, { headers });
@@ -47,11 +47,11 @@ export const getTopTracks = async () => {
 
 export const getNowPlaying = async () => {
   const { access_token } = await getAccessToken();
-  const url = "https://api.spotify.com/v1/me/player/currently-playing";
+  const url = 'https://api.spotify.com/v1/me/player/currently-playing';
 
   const headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer " + access_token,
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer ' + access_token
   };
 
   return await fetch(url, { headers });
@@ -60,7 +60,7 @@ export const getNowPlaying = async () => {
   //return null;
 };
 
-const forbiddenKeywords = ["netflix", "disney", "musical"];
+const forbiddenKeywords = ['netflix', 'disney', 'musical'];
 
 export interface TopTrackData {
   title?: string;

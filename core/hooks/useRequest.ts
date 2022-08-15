@@ -9,7 +9,7 @@ interface SwrData<T = unknown> {
   error?: string | Error | null;
   mutate?: (
     data?: T | Promise<T> | MutatorCallback<T>,
-    shouldRevalidate?: boolean,
+    shouldRevalidate?: boolean
   ) => Promise<T | undefined>;
 }
 
@@ -19,6 +19,6 @@ export const useRequest = <T>(url: string): SwrData<T> => {
     data,
     error,
     mutate,
-    loading: !data && !error,
-  }
-}
+    loading: !data && !error
+  };
+};
