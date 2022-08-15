@@ -41,7 +41,7 @@ const SnippetLayout = ({
                     year: "numeric",
                   })*/}
                 </Text>
-                <Pill variant="info">{language.toUpperCase()}</Pill>
+                <Pill variant="info">{language?.toUpperCase()}</Pill>
               </Flex>
             </Hero.Info>
           </Hero>
