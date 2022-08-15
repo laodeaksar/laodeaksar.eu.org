@@ -3,7 +3,6 @@ import Image from 'next/image';
 
 import { Flex, Text } from '@laodeaksarr/design-system';
 
-import Skeleton from '~/components/Skeleton';
 import SpotifyLogo, { Glass } from './icons';
 import { styles } from './Styles';
 //import type { Props } from "./types";
@@ -22,22 +21,7 @@ const Bars = () => (
 
 const NowPlaying = () => {
   // const { data: music } = useSWR<Props>('/api/currently-playing', fetcher);
-  const { data, loading } = useNowPlaying();
-
-  const renderImage = () => {
-    if (data?.isPlaying) {
-      return (
-        <Image
-          unoptimized
-          src={data.image?.url || ''}
-          alt={[data.title] + ' Cover Album'}
-          layout="fill"
-        />
-      );
-    } else {
-      return <SpotifyLogo />;
-    }
-  };
+  const { data /*, loading*/ } = useNowPlaying();
 
   return (
     <a
@@ -50,7 +34,16 @@ const NowPlaying = () => {
       <Flex className={styles.inner} gap={0}>
         <Flex gap={3}>
           <Flex className={styles.cover} justifyContent="center">
-            {loading ? <Skeleton variant="avatar2" /> : renderImage()}
+            {data?.isPlaying ? (
+              <Image
+                unoptimized
+                src={data.image?.url || ''}
+                alt={[data.title] + ' Cover Album'}
+                layout="fill"
+              />
+            ) : (
+              <SpotifyLogo />
+            )}
           </Flex>
           <Flex direction="column" alignItems="start" gap={0}>
             <Text
@@ -61,17 +54,9 @@ const NowPlaying = () => {
               truncate
               className={styles.title}
             >
-              {loading ? (
-                <Skeleton variant="title" />
-              ) : data?.isPlaying ? (
-                data.title
-              ) : (
-                'Spotify'
-              )}
+              {data?.isPlaying ? data.title : 'Spotify'}
             </Text>
-            {loading ? (
-              <Skeleton variant="text" />
-            ) : data?.isPlaying ? (
+            {data?.isPlaying ? (
               <>
                 <Text
                   size={1}
@@ -92,7 +77,7 @@ const NowPlaying = () => {
             )}
           </Flex>
         </Flex>
-        {loading ? <Skeleton variant="avatar1" /> : data?.isPlaying && <Bars />}
+        {data?.isPlaying && <Bars />}
       </Flex>
     </a>
   );

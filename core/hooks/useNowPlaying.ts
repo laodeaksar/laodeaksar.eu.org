@@ -22,7 +22,7 @@ export const useNowPlaying = (): NowPlayingData => {
     error: error || activityError,
   }; */
   return {
-    data,
+    data: { ...data },
     loading,
     error
   };

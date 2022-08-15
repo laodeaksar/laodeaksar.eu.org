@@ -1,11 +1,8 @@
-import { serialize } from './serialize';
+//import { serialize } from './serialize';
 
 const clientId = process.env.SPOTIFY_CLIENT_ID || '';
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
-const refreshToken =
-  process.env.SPOTIFY_CLIENT_REFRESH_TOKEN ||
-  process.env.SPOTIFY_CLIENT_TOKEN ||
-  '';
+const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
 
 const basicToken = btoa(`${clientId}:${clientSecret}`);
 
@@ -16,7 +13,11 @@ const getAccessToken = async () => {
     Authorization: 'Basic ' + basicToken
   };
 
-  const body = serialize({
+  /*const body = serialize({
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken
+  });*/
+  const formData = new URLSearchParams({
     grant_type: 'refresh_token',
     refresh_token: refreshToken
   });
@@ -24,7 +25,7 @@ const getAccessToken = async () => {
   const response = await fetch(url, {
     method: 'POST',
     headers,
-    body
+    body: formData.toString()
   });
 
   return response.json();
