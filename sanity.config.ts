@@ -113,6 +113,11 @@ export default createConfig({
             name: 'logo',
             title: 'Logo',
             type: 'image'
+          },
+          {
+            name: 'language',
+            title: 'Language',
+            type: 'string'
           }
         ]
       }

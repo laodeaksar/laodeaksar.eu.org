@@ -4,6 +4,7 @@ import { remarkFigure } from "./remark/remark-figure";
 import { remarkMeta } from './remark/remark-meta';
 import { remarkSectionize } from "./remark/remark-sectionize-fork";
 import remarkSlug from 'remark-slug';
+import remarkGfm from 'remark-gfm';
 import remarkAutolinkHeading from 'remark-autolink-headings';
 
 export async function mdxToHtml(source: string) {
@@ -13,6 +14,7 @@ export async function mdxToHtml(source: string) {
         remarkSlug,
         remarkAutolinkHeading,
         remarkFigure,
+        remarkGfm,
         remarkSectionize
       ],
       rehypePlugins: [remarkMeta],

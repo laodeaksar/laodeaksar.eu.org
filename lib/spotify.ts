@@ -1,8 +1,8 @@
 //import { serialize } from './serialize';
 
-const clientId = process.env.SPOTIFY_CLIENT_ID || '';
-const clientSecret = process.env.SPOTIFY_CLIENT_SECRET || '';
-const refreshToken = process.env.SPOTIFY_CLIENT_REFRESH_TOKEN || '';
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN || '';
 
 const basicToken = btoa(`${clientId}:${clientSecret}`);
 
@@ -10,7 +10,7 @@ const getAccessToken = async () => {
   const url = 'https://accounts.spotify.com/api/token';
   const headers = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    Authorization: 'Basic ' + basicToken
+    Authorization: `Basic ${basicToken}`
   };
 
   /*const body = serialize({
@@ -24,8 +24,8 @@ const getAccessToken = async () => {
 
   const response = await fetch(url, {
     method: 'POST',
-    headers,
-    body: formData.toString()
+    body: formData.toString(),
+    headers
   });
 
   return response.json();
@@ -37,7 +37,7 @@ export const getTopTracks = async () => {
     'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50';
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + access_token
+    Authorization: `Bearer ${access_token}`
   };
 
   return await fetch(url, { headers });
@@ -52,7 +52,7 @@ export const getNowPlaying = async () => {
 
   const headers = {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer ' + access_token
+    Authorization: `Bearer ${access_token}`
   };
 
   return await fetch(url, { headers });

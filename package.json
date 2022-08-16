@@ -32,6 +32,7 @@
     "react-hook-form": "^7.34.0",
     "react-hot-toast": "^2.3.0",
     "react-intersection-observer": "^8.33.1",
+    "remark-gfm": "^3.0.1",
     "sanity": "3.0.0-dev-preview.12",
     "sanity-plugin-markdown": "^3.0.0-v3-studio.0",
     "styled-components": "^5.3.5",
