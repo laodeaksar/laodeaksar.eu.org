@@ -1,7 +1,8 @@
+import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+//import { useForm, SubmitHandler } from 'react-hook-form';
 import useSWR, { SWRConfig, useSWRConfig } from 'swr';
-import toast, { Toaster } from 'react-hot-toast';
+//import toast, { Toaster } from 'react-hot-toast';
 
 import fetcher from '~/lib/fetcher';
 
@@ -22,10 +23,7 @@ import SEO from '~/components/Seo';
 
 import prisma from '~/lib/prisma';
 import Layout from '~/layout';
-
-type Inputs = {
-  body: string;
-};
+import { ClickEvent, Form, FormState } from '~/lib/types';
 
 interface GuestbookEntry {
   id: string;
@@ -37,8 +35,51 @@ interface GuestbookEntry {
 
 function GuestbookForm() {
   const { mutate } = useSWRConfig();
+  const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
+  const inputEl = React.useRef<HTMLInputElement | null>(null);
 
-  const {
+  const leaveEntry = async (e: ClickEvent) => {
+    e.preventDefault();
+    setForm({ state: Form.Loading });
+
+    if (inputEl === null || inputEl.current === null) {
+      setForm({ state: Form.Error });
+      return;
+    }
+
+    if (inputEl.current.value.trim().length === 0) {
+      setForm({ state: Form.Error, message: 'Thank you for your comment!' });
+      return;
+    }
+
+    const res = await fetch('/api/guestbook', {
+      body: JSON.stringify({
+        body: inputEl.current.value
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST'
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      setForm({
+        state: Form.Error,
+        message: error
+      });
+      return;
+    }
+
+    inputEl.current.value = '';
+    mutate('/api/guestbook');
+    setForm({
+      state: Form.Success,
+      message: 'Something went wrong. Please try again later.'
+    });
+  };
+
+  /*const {
     register,
     handleSubmit,
     reset,
@@ -69,11 +110,11 @@ function GuestbookForm() {
       }
     );
     await mutate('/api/guestbook').then(() => reset());
-  };
+  };*/
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={leaveEntry}>
         <Flex
           alignItems="flex-start"
           gap={3}
@@ -83,28 +124,25 @@ function GuestbookForm() {
           }}
         >
           <TextInput
-            {...register('body', {
-              required: "Don't forget to write something",
-              maxLength: 200
-            })}
-            aria-label="Your message"
-            disabled={isSubmitting}
+            // @ts-ignore
+            ref={inputEl}
+            disabled={form.state === Form.Loading}
             placeholder="Your message..."
             id="input-message"
           />
           <Button
             aria-label="Send message"
-            disabled={isSubmitting}
-            isLoading={isSubmitting}
+            disabled={form.state === Form.Loading}
+            isLoading={form.state === Form.Loading}
             title="Send message"
             type="submit"
             variant="primary"
           >
-            {!isSubmitting && 'Send'}
+            {form.state === Form.Loading ? '' : 'Send'}
           </Button>
         </Flex>
       </form>
-      {errors ? (
+      {form.state === Form.Error ? (
         <Text
           as="p"
           size={2}
@@ -114,7 +152,19 @@ function GuestbookForm() {
             marginBottom: 0
           }}
         >
-          {errors.body?.message}
+          {form.message as string}
+        </Text>
+      ) : form.state === Form.Success ? (
+        <Text
+          as="p"
+          size={2}
+          variant="success"
+          css={{
+            marginTop: '$2',
+            marginBottom: 0
+          }}
+        >
+          {form?.message as string}
         </Text>
       ) : (
         <Text
@@ -165,7 +215,9 @@ function Entry({ entry }: { entry: GuestbookEntry }) {
   const { mutate } = useSWRConfig();
   const { data } = useSession();
 
-  const handleDelete = async () => {
+  const handleDelete = async (e: ClickEvent) => {
+    e.preventDefault();
+
     await fetch('/api/guestbook/' + entry.id, {
       method: 'DELETE'
     });
@@ -315,7 +367,7 @@ export default function Guestbook({
           <SWRConfig value={{ fallback }}>
             <GuestbookEntries />
           </SWRConfig>
-          <Toaster />
+          {/*<Toaster />*/}
         </div>
       </Grid>
     </Layout>

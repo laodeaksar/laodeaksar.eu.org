@@ -118,3 +118,7 @@ export interface TransformedTweet extends TweetData {
   media: TweetMedia[];
   referenced_tweets: TransformedTweet[];
 }
+
+export type ClickEvent = {
+  preventDefault: () => void;
+};
