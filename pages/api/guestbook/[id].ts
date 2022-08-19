@@ -1,20 +1,40 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
+import { unstable_getServerSession } from 'next-auth/next';
 
 import prisma from '~/lib/prisma';
+import { authOptions } from '../auth/[...nextauth]';
+import {
+  BadRequest,
+  isValidHttpMethod,
+  MethodNotAllowed,
+  Unauthorized
+} from '~/lib/api';
+
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (!isValidHttpMethod(req.method, ['GET', 'DELETE', 'PUT'])) {
+    return MethodNotAllowed(res);
+  }
+
+  const session = await unstable_getServerSession(req, res, authOptions);
   const { id } = req.query;
+
+  if (!id || !Number(id)) {
+    return BadRequest(res, 'Invalid id');
+  }
+
   const entry = await prisma.guestbook.findUnique({
     where: {
       id: Number(id)
     }
   });
 
-  if (!entry) return res.status(404).send(`No entry found for id ${id}`);
+  if (!entry) {
+    return BadRequest(res, 'Entry not found');
+  }
 
   if (req.method === 'GET') {
     return res.json({
@@ -25,13 +45,8 @@ export default async function handler(
     });
   }
 
-  const session = await getSession({ req });
-  if (!session) return res.status(403).send('Requires authentication');
-
-  const { email } = session.user as { email: string };
-
-  if (email !== entry.email) {
-    return res.status(403).send('Unauthorized');
+  if (!session || session.user?.email !== entry.email) {
+    return Unauthorized(res);
   }
 
   if (req.method === 'DELETE') {
@@ -41,27 +56,35 @@ export default async function handler(
       }
     });
 
-    return res.status(204).end();
+    await res.revalidate('/guestbook');
+
+    return res.status(200).json({ message: `Deleted entry ${id}` });
   }
 
-  if (req.method === 'PUT') {
-    const body = (req.body.body || '').slice(0, 500);
-
-    await prisma.guestbook.update({
-      where: {
-        id: Number(id)
-      },
-      data: {
-        body,
-        updated_at: new Date().toISOString()
-      }
-    });
-
-    return res.status(201).json({
-      ...entry,
-      body
-    });
+  if (
+    typeof req.body.body !== 'string' ||
+    req.body.body.trim().length === 0 ||
+    !req.body.body
+  ) {
+    return BadRequest(res, 'Invalid body');
   }
 
-  return res.send('Method not allowed :(');
+  const body = req.body.body.slice(0, 500);
+
+  await prisma.guestbook.update({
+    where: {
+      id: Number(id)
+    },
+    data: {
+      body,
+      updated_at: new Date().toISOString()
+    }
+  });
+
+  await res.revalidate('/guestbook');
+
+  return res.status(201).json({
+    ...entry,
+    body
+  });
 }
