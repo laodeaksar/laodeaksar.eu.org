@@ -31,11 +31,10 @@ const BlogPage = ({
 };
 
 export const getStaticProps = async ({ preview = false }) => {
-  const posts: Post[] = await getClient(preview).fetch(indexQuery);
+  const posts = await getClient(preview).fetch<Post[]>(indexQuery);
 
   return {
     props: { posts },
-    revalidate: process.env.SANITY_REVALIDATE_SECRET ? undefined : 60
   };
 };
 

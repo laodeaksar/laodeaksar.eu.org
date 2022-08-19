@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
+import type { GetStaticProps } from 'next';
 
 import components from '~/components/MDX/MDXComponents';
 import Tweet from '~/components/Tweet';
@@ -40,9 +41,12 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params, preview = false }: any) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false
+}) => {
   const { post } = await getClient(preview).fetch(postQuery, {
-    slug: params.slug
+    slug: params?.slug
   });
 
   if (!post) {
