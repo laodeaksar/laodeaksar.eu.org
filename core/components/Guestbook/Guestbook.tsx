@@ -35,9 +35,16 @@ const Guestbook = ({ fallbackData }: { fallbackData: guestbook[] }) => {
           All Message
           {session && (
             <Button
+              // @ts-ignore
+              css={{
+                my: 4,
+                $$background: 'transparent !important'
+              }}
               variant="icon"
-              css={{ my: 4, $$background: 'transparent !important' }}
-              onClick={() => signOut()}
+              onClick={(e) => {
+                e.preventDefault();
+                signOut();
+              }}
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

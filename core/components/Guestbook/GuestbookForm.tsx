@@ -1,6 +1,7 @@
-import { Button, Flex, Text, TextInput } from '@laodeaksarr/design-system';
 import React from 'react';
 import { useSWRConfig } from 'swr';
+
+import { Button, Flex, Text, TextInput } from '@laodeaksarr/design-system';
 import { ClickEvent, Form, FormState } from '~/lib/types';
 
 function GuestbookForm() {
@@ -18,7 +19,10 @@ function GuestbookForm() {
     }
 
     if (inputEl.current.value.trim().length === 0) {
-      setForm({ state: Form.Error, message: 'Thank you for your comment!' });
+      setForm({
+        state: Form.Error,
+        message: 'Something went wrong. Please try again later.'
+      });
       return;
     }
 
@@ -45,7 +49,7 @@ function GuestbookForm() {
     mutate('/api/guestbook');
     setForm({
       state: Form.Success,
-      message: 'Something went wrong. Please try again later.'
+      message: 'Thank you for your comment!'
     });
   };
 

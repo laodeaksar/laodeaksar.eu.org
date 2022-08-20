@@ -1,12 +1,13 @@
-import { Button, Icon } from "@laodeaksarr/design-system";
-import { signIn } from "next-auth/react";
+import { Button, Icon } from '@laodeaksarr/design-system';
+import { signIn } from 'next-auth/react';
+import { ClickEvent } from '~/lib/types';
 
 function LogInWithGithub() {
   return (
     // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a
       href="/api/auth/signin/github"
-      onClick={(e) => {
+      onClick={(e: ClickEvent) => {
         e.preventDefault();
         signIn('github');
       }}
@@ -18,4 +19,4 @@ function LogInWithGithub() {
   );
 }
 
-export default LogInWithGithub
+export default LogInWithGithub;
