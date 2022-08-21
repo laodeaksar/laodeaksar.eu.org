@@ -53,6 +53,8 @@ function GuestbookForm() {
     });
   };
 
+  const isLoading = form.state === Form.Loading;
+
   return (
     <>
       <form onSubmit={leaveEntry}>
@@ -67,19 +69,19 @@ function GuestbookForm() {
           <TextInput
             ref={inputEl}
             aria-label="Message"
-            disabled={form.state === Form.Loading}
+            disabled={isLoading}
             placeholder="Your message..."
             id="input-message"
           />
           <Button
             aria-label="Send message"
-            disabled={form.state === Form.Loading}
-            isLoading={form.state === Form.Loading}
+            disabled={isLoading}
+            isLoading={isLoading}
             title="Send message"
             type="submit"
             variant="primary"
           >
-            {form.state === Form.Loading ? '' : 'Send'}
+            {isLoading ? '' : 'Send'}
           </Button>
         </Flex>
       </form>

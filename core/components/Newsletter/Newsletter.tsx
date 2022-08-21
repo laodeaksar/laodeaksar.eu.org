@@ -1,6 +1,3 @@
-//import toast, { Toaster } from 'react-hot-toast';
-//import { useForm, SubmitHandler } from 'react-hook-form';
-
 import { ErrorMessage, NewsletterFormContent } from './Styles';
 import { NewsletterHeader } from './Icons';
 import type { Props } from './types';
@@ -13,17 +10,11 @@ import {
   Flex,
   H3,
   List,
-  Spinner,
   Text,
   TextInput
 } from '@laodeaksarr/design-system';
 import React from 'react';
 import { ClickEvent, Form, FormState } from '~/lib/types';
-//import useSWR from 'swr';
-
-/*type Inputs = {
-  email: string;
-};*/
 
 const Newsletter = (props: Props) => {
   const { large = false } = props;
@@ -32,12 +23,25 @@ const Newsletter = (props: Props) => {
   const inputEl = React.useRef<HTMLInputElement | null>(null);
   //const { data } = useSWR<Subscribers>('/api/newsletter/subscribers', fetcher);
   //const subscriberCount = new Number(data?.count);
-   
+
   const subscribe = async (e: ClickEvent) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
-    const email = inputEl.current?.value;
+    if (inputEl === null || inputEl.current === null) {
+      setForm({ state: Form.Error });
+      return;
+    }
+
+    if (inputEl.current.value.trim().length === 0) {
+      setForm({
+        state: Form.Error,
+        message: 'This field is required'
+      });
+      return;
+    }
+
+    const email = inputEl.current.value;
     const res = await fetch(`/api/newsletter/subscribe?email=${email}`, {
       method: 'POST'
     });
@@ -51,12 +55,14 @@ const Newsletter = (props: Props) => {
       return;
     }
 
-    inputEl.current?.value === ''
+    inputEl.current.value = '';
     setForm({
       state: Form.Success,
       message: `Hooray! You're now on the list.`
     });
   };
+
+  const isLoading = form.state === Form.Loading;
 
   return (
     <Card depth={1} css={{ mx: '-$1' }}>
@@ -127,16 +133,17 @@ const Newsletter = (props: Props) => {
               type="email"
               placeholder="email@example.com"
               autoComplete="off"
-              disabled={form.state === Form.Loading}
+              disabled={isLoading}
             />
             <Button
               aria-label="Subscribe to my newsletter"
-              disabled={form.state === Form.Loading}
+              disabled={isLoading}
+              isLoading={isLoading}
               title="Subscribe to my newsletter"
               type="submit"
               variant="primary"
             >
-              {form.state === Form.Loading ? <Spinner /> : 'Send'}
+              {isLoading ? '' : 'Send'}
             </Button>
           </Flex>
         </form>
@@ -144,12 +151,11 @@ const Newsletter = (props: Props) => {
           <ErrorMessage>{form.message}</ErrorMessage>
         ) : null}
         {/*form.state === Form.Success ? (
-        <SuccessMessage>{form.message}</SuccessMessage>
-      ) : (
+        <SuccessMessage>{form.message}</SuccessMessage>) : null
+        (
           {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
           errors.email.message.includes==='already subscribe'&&*/}
       </NewsletterFormContent>
-      {/*<Toaster />*/}
     </Card>
   );
 };

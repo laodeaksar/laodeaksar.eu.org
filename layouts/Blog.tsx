@@ -1,19 +1,26 @@
-import { useEffect, useState, type PropsWithChildren, Suspense } from "react";
+import { useEffect, useState, type PropsWithChildren, Suspense } from 'react';
 
-import { Box, Flex, formatDate, Grid, Pill, Text } from "@laodeaksarr/design-system";
+import {
+  Box,
+  Flex,
+  formatDate,
+  Grid,
+  Pill,
+  Text
+} from '@laodeaksarr/design-system';
 
-import Hero from "~/components/Hero";
-import Link from "~/components/Link";
-import SEO from "~/components/Seo";
-import TableOfContent from "~/components/TableOfContent";
-import { WebmentionCount } from "~/components/Webmentions";
+import Hero from '~/components/Hero';
+import Link from '~/components/Link';
+import SEO from '~/components/Seo';
+import TableOfContent from '~/components/TableOfContent';
+import { WebmentionCount } from '~/components/Webmentions';
 
-import Layout from "~/layout";
-import Signature from "./Signature";
+import Layout from '~/layout';
+import Signature from './Signature';
 
-import config from "config/seo_meta.json";
-import generateSocialImage from "~/lib/OpenGraph";
-import { Post } from "~/lib/types";
+import config from 'config/seo_meta.json';
+import generateSocialImage from '~/lib/OpenGraph';
+import { Post } from '~/lib/types';
 
 interface WebmentionBlogDataProps {
   date: string;
@@ -50,27 +57,27 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
     title,
     readingTime,
     image,
-    // tags,
-    url,
+    tags,
+    url
   } = post;
   const postUrl = config.openGraph.url + url;
 
   const headerProps = {
     title,
     offsetHeight: 256,
-    showProgressBarOnMobile: true,
+    showProgressBarOnMobile: true
   };
 
   const [ids, setIds] = useState<Array<{ id: string; title: string }>>([]);
 
   useEffect(() => {
     setTimeout(() => {
-      const titles = document.querySelectorAll("h2");
+      const titles = document.querySelectorAll('h2');
       const idArrays = Array.prototype.slice
         .call(titles)
         .map((title: { id: any; innerText: any }) => ({
           id: title.id,
-          title: title.innerText,
+          title: title.innerText
         })) as Array<{
         id: string;
         title: string;
@@ -81,9 +88,9 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
 
   const socialImageConf = generateSocialImage({
     title,
-    underlayImage: image?.url?.slice(image.url.lastIndexOf("/") + 1),
-    cloudName: "laodeaksar",
-    imagePublicID: "og_social_large.png",
+    underlayImage: image?.url?.slice(image.url.lastIndexOf('/') + 1),
+    cloudName: 'laodeaksar',
+    imagePublicID: 'og_social_large.png'
   });
 
   // const keywords = tags.join(", ");
@@ -97,15 +104,15 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
         openGraph={{
           title: title,
           description: description,
-          type: "article",
+          type: 'article',
           images: [
             {
               url: socialImageConf,
-              width: "1200",
-              height: "630",
-              alt: title,
-            },
-          ],
+              width: '1200',
+              height: '630',
+              alt: title
+            }
+          ]
         }}
       />
       <article className="h-entry">
@@ -114,8 +121,8 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
             <Hero>
               <Box
                 css={{
-                  marginBottom: "24px",
-                  fontSize: "$2",
+                  marginBottom: '24px',
+                  fontSize: '$2'
                 }}
               >
                 <Link href="/" arrow="left" discreet>
@@ -126,11 +133,11 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
               <Hero.Title className="p-name">{title}</Hero.Title>
               <Hero.Info>
                 <Flex mb={3} wrap>
-                  {/*tags.map((text) => (
-                  <Link key={text} href={'/tags/' + text} tags discreet>
-                    {text}
-                  </Link>
-                ))*/}
+                  {tags.map((text) => (
+                    <Link key={text} href={'/tags/' + text} discreet>
+                      {text}
+                    </Link>
+                  ))}
                   <Text
                     as="p"
                     size="1"
@@ -138,25 +145,12 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
                     weight="3"
                     css={{ marginBottom: 0 }}
                   >
-                    {formatDate(date)}{" "}
-                    {/*new Date(date).toLocaleDateString("en", {
-                      month: "long",
-                      day: "2-digit",
-                      year: "numeric",
-                    })}{" "*/}
-                    / {readingTime} /{" "}
+                    {formatDate(date)} / {readingTime} /{' '}
                   </Text>
                   <WebmentionCount target={postUrl} />
                 </Flex>
-                <Flex css={{ marginLeft: "-$2" }}>
-                  <Pill variant="info">
-                    Last Updated{" "}
-                    {new Date(updated).toLocaleDateString("en", {
-                      month: "long",
-                      day: "2-digit",
-                      year: "numeric",
-                    })}
-                  </Pill>
+                <Flex css={{ marginLeft: '-$2' }}>
+                  <Pill variant="info">Last Updated {formatDate(updated)}</Pill>
                 </Flex>
               </Hero.Info>
 
@@ -165,17 +159,17 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
             <TableOfContent ids={ids} />
             <Box
               css={{
-                padding: "20px 0px",
-                gridColumn: "2",
-                color: "var(--laodeaksar-colors-typeface-secondary)",
+                padding: '20px 0px',
+                gridColumn: '2',
+                color: 'var(--laodeaksar-colors-typeface-secondary)',
 
                 h3: {
-                  marginTop: "2em",
+                  marginTop: '2em'
                 },
 
                 section: {
-                  marginTop: "5em",
-                },
+                  marginTop: '5em'
+                }
               }}
             >
               {children}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Anchor, Box, Flex, Text } from '@laodeaksarr/design-system';
+import { Anchor, Flex,formatDate, Text } from '@laodeaksarr/design-system';
 
 import {
   LikeIcon,
@@ -113,10 +113,10 @@ const Tweet = ({ tweet }: Props) => {
       {media && media?.length > 1 ? (
         <ImageGrid>
           {media.map((m: any) => (
-            <Box
+            <div
               key={m.media_key}
-              css={{
-                borderRadius: '$1',
+              style={{
+                borderRadius: 'var(--radii-1)',
                 overflow: 'hidden'
               }}
             >
@@ -127,7 +127,7 @@ const Tweet = ({ tweet }: Props) => {
                 width={m.width}
                 src={m.url}
               />
-            </Box>
+            </div>
           ))}
         </ImageGrid>
       ) : null}
@@ -157,11 +157,7 @@ const Tweet = ({ tweet }: Props) => {
           dateTime={createdAt.toISOString()}
         >
           {/* {format(createdAt, 'h:mm a - MMM d, y')} */}
-          {new Date(createdAt).toLocaleDateString('en', {
-            month: 'long',
-            day: '2-digit',
-            year: 'numeric'
-          })}
+          {formatDate(createdAt.toDateString())}
         </time>
       </Anchor>
       <Flex css={{ marginTop: '1rem' }}>
