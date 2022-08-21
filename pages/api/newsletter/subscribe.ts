@@ -1,38 +1,31 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { email } = req.body as { email: string };
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const email = searchParams.get('email');
 
   if (!email) {
-    return res.status(400).json({ error: 'Email is required' });
-  }
-
-  const existingSubscribers = await fetch(
-    'https://www.getrevue.co/api/v2/subscribers',
-    {
-      method: 'GET',
-      headers: {
-        Authorization: 'Token ' + process.env.REVUE_API_KEY,
-        'Content-Type': 'application/json'
+    return new Response(
+      JSON.stringify({
+        error: 'Email is required'
+      }),
+      {
+        status: 400,
+        headers: {
+          'content-type': 'application/json'
+        }
       }
-    }
-  );
-
-  const subscribers = await existingSubscribers.json();
-
-  if (subscribers.some((sub: { email: string }) => sub.email === email)) {
-    return res
-      .status(201)
-      .json({ error: '', message: `You're already subscribed! 😊` });
+    );
   }
 
   const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
     method: 'POST',
     headers: {
-      Authorization: 'Token ' + process.env.REVUE_API_KEY,
+      Authorization: `Token ${process.env.REVUE_API_KEY}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email })
@@ -40,11 +33,28 @@ export default async function handler(
   const data = await result.json();
 
   if (!result.ok) {
-    return res.status(500).json({ error: data.error.email[0] });
+    return new Response(
+      JSON.stringify({
+        error: data.error.email[0]
+      }),
+      {
+        status: 500,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
   }
 
-  return res.status(201).json({
-    error: '',
-    message: `Hey, ${email}, Please check your email and verify it. Can't wait to get you borded.`
-  });
+  return new Response(
+    JSON.stringify({
+      error: ''
+    }),
+    {
+      status: 201,
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+  );
 }

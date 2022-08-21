@@ -1,24 +1,36 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { type NextRequest } from 'next/server';
 
-export default async function handler(_: NextApiRequest, res: NextApiResponse) {
-  const response = await fetch(`https://www.getrevue.co/api/v2/subscribers`, {
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default async function handler(_: NextRequest) {
+  const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Token ' + process.env.REVUE_API_KEY
+      Authorization: `Token ${process.env.REVUE_API_KEY}`
     }
   });
 
-  const data = await response.json();
+  const data = await result.json();
 
-  if (!response.ok) {
-    return res.status(500).json({ error: 'Error retrieving subscribers' });
+  if (!result.ok) {
+    return new Response(
+      JSON.stringify({ error: 'Error retrieving subscribers' }),
+      {
+        status: 500,
+        headers: {
+          'content-type': 'application/json'
+        }
+      }
+    );
   }
 
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1200, stale-while-revalidate=600'
-  );
-
-  return res.status(200).json({ count: data.length });
+  return new Response(JSON.stringify({ count: data.length }), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+      'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600'
+    }
+  });
 }
