@@ -35,7 +35,6 @@ const Guestbook = ({ fallbackData }: { fallbackData: guestbook[] }) => {
           All Message
           {session && (
             <Button
-              // @ts-ignore
               css={{
                 my: 4,
                 $$background: 'transparent !important'
