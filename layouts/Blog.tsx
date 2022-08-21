@@ -134,7 +134,7 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
               <Hero.Info>
                 <Flex mb={3} wrap>
                   {tags.map((text) => (
-                    <Link key={text} href={'/tags/' + text} discreet>
+                    <Link key={text} href={'/tags/' + text} hastag discreet>
                       {text}
                     </Link>
                   ))}

@@ -1,18 +1,19 @@
 import RSS from 'rss';
+import { type NextApiResponse } from 'next';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { indexQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
 
-export async function getServerSideProps({ res }: any) {
+export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   const feed = new RSS({
-    title: 'Lee Robinson',
+    title: "Aksar La'ode",
     site_url: 'https://laodeaksar.eu.org',
     feed_url: 'https://laodeaksar.eu.org/feed.xml'
   });
 
-  const allPosts = await sanityClient.fetch(indexQuery);
-  allPosts.map((post: Post) => {
+  const allPosts = await sanityClient.fetch<Post[]>(indexQuery);
+  allPosts.map((post) => {
     feed.item({
       title: post.title,
       url: `https://laodeaksar.eu.org/blog/${post.slug}`,
