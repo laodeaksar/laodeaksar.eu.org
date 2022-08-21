@@ -21,7 +21,7 @@ function GuestbookForm() {
     if (inputEl.current.value.trim().length === 0) {
       setForm({
         state: Form.Error,
-        message: 'Something went wrong. Please try again later.'
+        message: 'This field is required'
       });
       return;
     }

@@ -64,7 +64,7 @@ export const SearchBox = styled(motion.div, {
   left: "50%",
   transform: "translateX(-50%)",
   borderRadius: "$2",
-  boxShadow: Shadows[3],
+  boxShadow: `${Shadows[3]}`,
   border: "1px solid var(--laodeaksar-border-color)",
 
   "@media (max-width: 700px)": {

@@ -9,10 +9,10 @@ export const TweetWrapper = styled('div', {
   width: '$full',
 
   border: 'solid 1px var(--laodeaksar-border-color)',
-  boxShadow: Shadows[1],
+  boxShadow: `${Shadows[1]}`,
 
   '@media (max-width: 700px)': {
-    width: '$ws',
+    width: '$w-screen',
     position: 'relative',
     left: '50%',
     right: '50%',

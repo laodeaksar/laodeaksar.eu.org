@@ -30,7 +30,7 @@ const Newsletter = (props: Props) => {
 
   const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
   const inputEl = React.useRef<HTMLInputElement | null>(null);
-  //const { data } = useSWR<Subscribers>('/api/subscribers', fetcher);
+  //const { data } = useSWR<Subscribers>('/api/newsletter/subscribers', fetcher);
   //const subscriberCount = new Number(data?.count);
    
   const subscribe = async (e: ClickEvent) => {
@@ -38,7 +38,7 @@ const Newsletter = (props: Props) => {
     setForm({ state: Form.Loading });
 
     const email = inputEl.current?.value;
-    const res = await fetch(`/api/subscribe?email=${email}`, {
+    const res = await fetch(`/api/newsletter/subscribe?email=${email}`, {
       method: 'POST'
     });
 
