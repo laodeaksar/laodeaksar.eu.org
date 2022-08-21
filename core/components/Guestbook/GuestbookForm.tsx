@@ -65,8 +65,8 @@ function GuestbookForm() {
           }}
         >
           <TextInput
-            // @ts-ignore
             ref={inputEl}
+            aria-label="Message"
             disabled={form.state === Form.Loading}
             placeholder="Your message..."
             id="input-message"

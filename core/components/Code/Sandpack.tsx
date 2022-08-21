@@ -39,8 +39,8 @@ const theme = {
   },
 
   font: {
-    body: '$display',
-    mono: '$mono',
+    body: 'var(--fonts-display)',
+    mono: 'var(--fonts-mono)',
     size: '14px',
     lineHeight: '26px'
   }
@@ -59,7 +59,7 @@ const SandpackWrapper = styled('div', {
     position: 'relative',
     marginBottom: '2.25rem',
     borderRadius: '$2',
-    shadow: Shadows[1],
+    shadow: `${Shadows[1]}`,
 
     '@media (max-width: 750px)': {
       display: 'block'
@@ -69,7 +69,8 @@ const SandpackWrapper = styled('div', {
       width: '100vw',
       left: '50%',
       right: '50%',
-      mx: '-50vw',
+      marginLeft: '-50vw',
+      marginRight: '-50vw',
       borderRadius: '0px'
     },
 
@@ -88,11 +89,11 @@ const SandpackWrapper = styled('div', {
   },
 
   '.button': {
-    bc: 'var(--laodeaksar-colors-body)!important',
+    backgroundColor: 'var(--laodeaksar-colors-body)!important',
     cursor: 'pointer !important',
 
     '&:hover': {
-      bc: 'var(--laodeaksar-colors-body)!important'
+      backgroundColor: 'var(--laodeaksar-colors-body)!important'
     }
   }
 });

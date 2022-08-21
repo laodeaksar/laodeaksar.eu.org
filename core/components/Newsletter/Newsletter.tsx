@@ -1,5 +1,5 @@
-import toast, { Toaster } from 'react-hot-toast';
-import { useForm, SubmitHandler } from 'react-hook-form';
+//import toast, { Toaster } from 'react-hot-toast';
+//import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { ErrorMessage, NewsletterFormContent } from './Styles';
 import { NewsletterHeader } from './Icons';
@@ -17,46 +17,45 @@ import {
   Text,
   TextInput
 } from '@laodeaksarr/design-system';
+import React from 'react';
+import { ClickEvent, Form, FormState } from '~/lib/types';
+//import useSWR from 'swr';
 
-type Inputs = {
+/*type Inputs = {
   email: string;
-};
+};*/
 
 const Newsletter = (props: Props) => {
   const { large = false } = props;
 
-  // const { data: subs } = useSWR<{ count: number }>('/api/newsletter/subscribers', fetcher);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting }
-  } = useForm<Inputs>();
+  const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
+  const inputEl = React.useRef<HTMLInputElement | null>(null);
+  //const { data } = useSWR<Subscribers>('/api/subscribers', fetcher);
+  //const subscriberCount = new Number(data?.count);
+   
+  const subscribe = async (e: ClickEvent) => {
+    e.preventDefault();
+    setForm({ state: Form.Loading });
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    await toast.promise(
-      fetch('/api/newsletter/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }),
-      {
-        loading: 'Posting your comment...',
-        success: 'Thank you for your comment!',
-        error: 'Something went wrong. Please try again later.'
-      },
-      {
-        style: {
-          minWidth: '200px'
-        },
-        success: {
-          duration: 5000
-        }
-      }
-    );
-    reset({ ...data });
+    const email = inputEl.current?.value;
+    const res = await fetch(`/api/subscribe?email=${email}`, {
+      method: 'POST'
+    });
+
+    const { error } = await res.json();
+    if (error) {
+      setForm({
+        state: Form.Error,
+        message: error
+      });
+      return;
+    }
+
+    inputEl.current?.value === ''
+    setForm({
+      state: Form.Success,
+      message: `Hooray! You're now on the list.`
+    });
   };
 
   return (
@@ -112,7 +111,7 @@ const Newsletter = (props: Props) => {
             <br />
           </>
         )}
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={subscribe}>
           <Flex
             alignItems="flex-start"
             gap={3}
@@ -122,35 +121,35 @@ const Newsletter = (props: Props) => {
             }}
           >
             <TextInput
-              {...register('email', {
-                required: "Don't forget to write your email",
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'invalid email address'
-                }
-              })}
+              ref={inputEl}
               aria-label="Email"
               id="email-input"
               type="email"
               placeholder="email@example.com"
               autoComplete="off"
-              disabled={isSubmitting}
+              disabled={form.state === Form.Loading}
             />
             <Button
               aria-label="Subscribe to my newsletter"
-              disabled={isSubmitting}
+              disabled={form.state === Form.Loading}
               title="Subscribe to my newsletter"
               type="submit"
               variant="primary"
             >
-              {isSubmitting ? <Spinner /> : 'Send'}
+              {form.state === Form.Loading ? <Spinner /> : 'Send'}
             </Button>
           </Flex>
         </form>
-        {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
-        {/*errors.email.message.includes==='already subscribe'&&*/}
+        {form.state === Form.Error ? (
+          <ErrorMessage>{form.message}</ErrorMessage>
+        ) : null}
+        {/*form.state === Form.Success ? (
+        <SuccessMessage>{form.message}</SuccessMessage>
+      ) : (
+          {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
+          errors.email.message.includes==='already subscribe'&&*/}
       </NewsletterFormContent>
-      <Toaster />
+      {/*<Toaster />*/}
     </Card>
   );
 };

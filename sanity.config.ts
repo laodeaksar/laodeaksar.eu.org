@@ -2,11 +2,13 @@ import { createConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { markdownSchema } from 'sanity-plugin-markdown';
 
+import { sanityConfig } from './lib/sanity-config';
+
 export default createConfig({
   name: 'default',
   title: 'laodeaksar.eu.org',
-  projectId: '1zvjuck5',
-  dataset: 'production',
+  projectId: sanityConfig.projectId,
+  dataset: sanityConfig.dataset,
   plugins: [deskTool(), markdownSchema()],
   schema: {
     types: [
