@@ -23,6 +23,7 @@ canvas {
 
 const AppCode = `import { motion } from 'framer-motion';
 import './scene.css';
+
 const WavingHand = () => (
   <motion.div
     style={{

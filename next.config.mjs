@@ -5,7 +5,7 @@ const runtimeCaching = require("next-pwa/cache");
  * @type {import('next').NextConfig}
  */
 
-module.exports = withPWA({
+const nextConfig = withPWA({
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -24,17 +24,17 @@ module.exports = withPWA({
     images: { allowFutureImage: true }
   },
   pwa: {
-    dest: "public",
+    dest: 'public',
     runtimeCaching,
     disable: process.env.NODE_ENV === 'development',
-    mode: "production",
+    mode: 'production',
     buildExcludes: [
       /middleware-manifest\.json$/,
       /middleware-runtime\.js$/,
       /middleware-runtime\.js.map$/,
       /middleware\.js$/,
-      /middleware\.js.map$/,
-    ],
+      /middleware\.js.map$/
+    ]
   },
   async rewrites() {
     return [
@@ -112,3 +112,5 @@ const securityHeaders = [
     value: 'camera=(), microphone=(), geolocation=()'
   }
 ];
+
+export default nextConfig;

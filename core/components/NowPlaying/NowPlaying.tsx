@@ -1,13 +1,10 @@
 import Image from 'next/image';
-//import useSWR from "swr";
 
 import { Flex, Text } from '@laodeaksarr/design-system';
 
 import SpotifyLogo, { Glass } from './icons';
 import { styles } from './Styles';
-//import type { Props } from "./types";
 
-//import fetcher from "~/lib/fetcher";
 import { useNowPlaying } from '~/hooks/useNowPlaying';
 
 const Bars = () => (
@@ -20,7 +17,6 @@ const Bars = () => (
 );
 
 const NowPlaying = () => {
-  // const { data: music } = useSWR<Props>('/api/currently-playing', fetcher);
   const { data /*, loading*/ } = useNowPlaying();
 
   return (
