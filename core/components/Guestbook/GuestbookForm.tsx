@@ -54,6 +54,7 @@ function GuestbookForm() {
   };
 
   const isLoading = form.state === Form.Loading;
+  const isError = form.state === Form.Error;
 
   return (
     <>
@@ -70,6 +71,7 @@ function GuestbookForm() {
             ref={inputEl}
             aria-label="Message"
             disabled={isLoading}
+            error={isError}
             placeholder="Your message..."
             id="input-message"
           />
@@ -85,7 +87,7 @@ function GuestbookForm() {
           </Button>
         </Flex>
       </form>
-      {form.state === Form.Error ? (
+      {isError ? (
         <Text
           as="p"
           size={2}
