@@ -1,9 +1,10 @@
+import type { NextPage } from 'next';
 import { Grid, H1, H3, styled } from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';
 import SEO from '~/components/Seo';
 
-const NotFoundPage = () => (
+const NotFoundPage: NextPage = () => (
   <Grid columns="medium" gapX={4}>
     <SEO title="404: Not found" />
     <Wrapper>

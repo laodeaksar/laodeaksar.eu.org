@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
-import { motion, MotionProps } from "framer-motion";
-import type { InferGetStaticPropsType } from "next";
+import { Suspense } from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { motion, MotionProps } from 'framer-motion';
+import type { NextPage } from 'next';
 
 import {
   Button,
@@ -16,47 +16,45 @@ import {
   Icon,
   VisuallyHidden,
   styled,
-  Text,
-} from "@laodeaksarr/design-system";
+  Text
+} from '@laodeaksarr/design-system';
 
-import BlogCard from "~/components/Blog";
+import BlogCard from '~/components/Blog';
 
-import Layout from "~/layout";
-import { handleArticleClicked } from "~/lib/handleArticleClick";
+import Layout from '~/layout';
 
-import { indexQuery } from "~/lib/queries";
-import { getClient } from "~/lib/sanity-server";
-import { Post } from "~/lib/types";
+import { handleArticleClicked } from '~/lib/handleArticleClick';
+import { indexQuery } from '~/lib/queries';
+import { getClient } from '~/lib/sanity-server';
+import { Post } from '~/lib/types';
 
-const Newsletter = dynamic(() => import("~/components/Newsletter"));
+const Newsletter = dynamic(() => import('~/components/Newsletter'));
 
 const WavingHand = () => (
   <Box
     as={motion.div}
     css={{
-      marginBottom: "-20px",
-      marginRight: "-45px",
-      paddingBottom: "20px",
-      paddingRight: "45px",
-      display: "inline-block",
+      marginBottom: '-20px',
+      marginRight: '-45px',
+      paddingBottom: '20px',
+      paddingRight: '45px',
+      display: 'inline-block'
     }}
     animate={{ rotate: 20 }}
     transition={{
       repeat: 7,
-      repeatType: "mirror",
+      repeatType: 'mirror',
       duration: 0.2,
       delay: 0.5,
-      ease: "easeInOut",
-      type: "tween",
+      ease: 'easeInOut',
+      type: 'tween'
     }}
   >
     👋
   </Box>
 );
 
-const IndexPage = ({
-  posts,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <Suspense fallback={null}>
       <Layout footer header headerProps={{ offsetHeight: 256 }}>
@@ -66,7 +64,7 @@ const IndexPage = ({
               Hi <WavingHand /> I&apos;m Aksar La&apos;ode, and this is my
               personal blog.
             </H1>
-            <Flex gap={4} css={{ mx: "-$3" }}>
+            <Flex gap={4} css={{ mx: '-$3' }}>
               <Link href="/about" passHref>
                 <a>
                   <Button variant="secondary" endIcon={<Icon.External />}>
@@ -108,12 +106,12 @@ const IndexPage = ({
                     <Box
                       as={motion.li}
                       css={{
-                        position: "relative",
-                        mx: "-$1",
-                        listStyle: "none",
-                        marginBottom: "calc(1.45rem / 2)",
-                        lineHeight: "1.9",
-                        letterSpacing: "0.3px",
+                        position: 'relative',
+                        mx: '-$1',
+                        listStyle: 'none',
+                        marginBottom: 'calc(1.45rem / 2)',
+                        lineHeight: '1.9',
+                        letterSpacing: '0.3px'
                       }}
                       key={post.title}
                       initial="initial"
@@ -124,55 +122,55 @@ const IndexPage = ({
                       >
                         <Glow
                           css={{
-                            background: post.colorFeatured,
+                            background: post.colorFeatured
                           }}
                           variants={{
                             hover: {
-                              opacity: 0.8,
+                              opacity: 0.8
                             },
                             initial: {
                               scale: 1.05,
-                              opacity: 0,
-                            },
+                              opacity: 0
+                            }
                           }}
                           transition={{
-                            type: "tween",
-                            ease: "easeOut",
-                            duration: 0.4,
+                            type: 'tween',
+                            ease: 'easeOut',
+                            duration: 0.4
                           }}
                         />
                         <Box
                           css={{
-                            height: "95%",
-                            width: "105%",
-                            position: "absolute",
-                            borderRadius: "$2",
-                            top: "50%",
-                            left: "50%",
-                            background: "var(--laodeaksar-colors-body)",
-                            transform: "translateY(-50%) translateX(-50%)",
-                            filter: "blur(20px)",
-                            transition: "0.5s",
+                            height: '95%',
+                            width: '105%',
+                            position: 'absolute',
+                            borderRadius: '$2',
+                            top: '50%',
+                            left: '50%',
+                            background: 'var(--laodeaksar-colors-body)',
+                            transform: 'translateY(-50%) translateX(-50%)',
+                            filter: 'blur(20px)',
+                            transition: '0.5s',
 
-                            "@media(max-width: 700px)": {
-                              display: "none",
-                            },
+                            '@media(max-width: 700px)': {
+                              display: 'none'
+                            }
                           }}
                         />
                         <Card<MotionProps>
                           as={motion.div}
                           variants={{
                             hover: {
-                              scale: 1.05,
+                              scale: 1.05
                             },
                             initial: {
-                              scale: 1,
-                            },
+                              scale: 1
+                            }
                           }}
                           transition={{
-                            type: "tween",
-                            ease: "easeOut",
-                            duration: 0.4,
+                            type: 'tween',
+                            ease: 'easeOut',
+                            duration: 0.4
                           }}
                           depth={1}
                         >
@@ -181,7 +179,7 @@ const IndexPage = ({
                               gradient
                               css={{
                                 backgroundImage: post.colorFeatured!,
-                                marginBottom: "8px",
+                                marginBottom: '8px'
                               }}
                             >
                               {post.title}
@@ -219,18 +217,18 @@ export const getStaticProps = async ({ preview = false }) => {
 export default IndexPage;
 
 const Glow = styled(motion.div, {
-  position: "absolute",
-  top: "0",
-  left: "0",
-  size: "$full",
-  WebkitFilter: "blur(15px)",
-  filter: "blur(15px)",
-  borderRadius: "$2",
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  size: '$full',
+  WebkitFilter: 'blur(15px)',
+  filter: 'blur(15px)',
+  borderRadius: '$2'
 });
 
-const ButtonCard = styled("button", {
-  width: "$full",
-  outline: "none",
-  border: "0",
-  textAlign: "left",
+const ButtonCard = styled('button', {
+  width: '$full',
+  outline: 'none',
+  border: '0',
+  textAlign: 'left'
 });

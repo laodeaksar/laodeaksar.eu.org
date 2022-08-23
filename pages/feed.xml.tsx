@@ -1,5 +1,5 @@
 import RSS from 'rss';
-import { type NextApiResponse } from 'next';
+import type { NextApiResponse, NextPage } from 'next';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { indexQuery } from '~/lib/queries';
@@ -35,6 +35,8 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   };
 }
 
-export default function RSSFeed() {
+const RSSFeed: NextPage = () => {
   return null;
-}
+};
+
+export default RSSFeed;

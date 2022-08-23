@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
 import components from '~/components/MDX/MDXComponents';
 import Tweet from '~/components/Tweet';
@@ -12,7 +12,7 @@ import { sanityClient, getClient } from '~/lib/sanity-server';
 import { mdxToHtml } from '~/lib/mdx';
 import { Post } from '~/lib/types';
 
-export default function PostPage({ post }: { post: Post }) {
+const BlogPosts: NextPage<{ post: Post }> = ({ post }) => {
   const StaticTweet = ({ id }: any) => {
     const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
@@ -31,7 +31,9 @@ export default function PostPage({ post }: { post: Post }) {
       />
     </BlogLayout>
   );
-}
+};
+
+export default BlogPosts;
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(postSlugsQuery);

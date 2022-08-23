@@ -1,12 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Image from 'next/image';
+import type { NextPage } from 'next';
 
 import {
   Box,
   css,
   Grid,
-  Spinner,
   Text,
   H1,
   Strong
@@ -128,18 +128,12 @@ export const getStaticProps = async ({ preview = false }) => {
   };
 };
 
-const About = ({ postsCount, initialAge }: any) => {
-  const [age, setAge] = useState(initialAge);
-  const ageInYears = useMemo(() => Math.floor(age / 31536000), [age]);
-  const mounted = useRef<boolean>();
-  const spinnerRef = useRef<HTMLSpanElement>(null);
-  const handleImageLoad = () => {
-    if (spinnerRef.current) {
-      spinnerRef.current.style.display = 'none';
-    }
-  };
+const About:NextPage<any> = ({ postsCount, initialAge }) => {
+  const [age, setAge] = React.useState(initialAge);
+  const ageInYears = React.useMemo(() => Math.floor(age / 31536000), [age]);
+  const mounted = React.useRef<boolean>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     mounted.current = true;
     const id = setInterval(() => {
       if (mounted.current) {
@@ -223,27 +217,11 @@ const About = ({ postsCount, initialAge }: any) => {
                       }
                     }}
                   >
-                    <Box
-                      as="span"
-                      ref={spinnerRef}
-                      css={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-5%, -5%)',
-                        size: '$full'
-                      }}
-                    >
-                      <Spinner />
-                    </Box>
                     <Image
                       priority
                       src={author}
                       alt="Me"
                       placeholder="blur"
-                      onLoadingComplete={() => {
-                        handleImageLoad();
-                      }}
                       className={styles.authorImage}
                     />
                     <figcaption

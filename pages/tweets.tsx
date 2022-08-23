@@ -1,14 +1,16 @@
-import SEO from '~/components/Seo';
-import Tweet from '~/components/Tweet';
+import type { NextPage } from 'next';
 
 import { Grid, H1 } from '@laodeaksarr/design-system';
+
+import SEO from '~/components/Seo';
+import Tweet from '~/components/Tweet';
 
 import Layout from '~/layout';
 
 import { getTweets } from '~/lib/tweets';
 import type { TransformedTweet } from '~/lib/types';
 
-const Tweets = ({ tweets }: Record<string, TransformedTweet>) => {
+const Tweets: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   return (
     <Layout footer header headerProps={{ offsetHeight: 256 }}>
       <SEO title="Tweets Page" />

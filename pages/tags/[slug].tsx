@@ -1,4 +1,4 @@
-import type { InferGetStaticPropsType } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 
 import tagColors from '~/lib/tagColor';
 
@@ -14,10 +14,10 @@ import { Post } from '~/lib/types';
 
 let year = 0;
 
-const Tag = ({
+const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
   posts = [],
   currentTag
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}) => {
   // @ts-ignore
   const { bg, name } = { ...tagColors[currentTag], ...currentTag };
   const title = `Posts list for ${currentTag} tags`;
@@ -80,14 +80,18 @@ export default Tag;
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(postSlugsQuery);
+
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 };
 
-export const getStaticProps = async ({ params, preview = false }: any) => {
-  const posts: Post[] = await getClient(preview).fetch(indexQuery);
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false
+}) => {
+  const posts = await getClient(preview).fetch<Post[]>(indexQuery);
 
   return {
     props: {

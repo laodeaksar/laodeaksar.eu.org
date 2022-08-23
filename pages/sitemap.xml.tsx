@@ -1,4 +1,4 @@
-import type { NextApiResponse } from 'next';
+import type { NextApiResponse, NextPage } from 'next';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { postSlugsQuery } from '~/lib/queries';
@@ -40,6 +40,8 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   };
 }
 
-export default function Sitemap() {
+const Sitemap: NextPage = () => {
   return null;
-}
+};
+
+export default Sitemap;

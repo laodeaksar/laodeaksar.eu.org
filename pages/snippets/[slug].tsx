@@ -1,4 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
+import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 
 import Code from '~/components/Code';
@@ -15,7 +16,7 @@ const WaveAnimationSandpack = dynamic(
   () => import('~/components/MDX/WaveAnimation/Sandpack')
 );
 
-export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
+const SnippetDetail: NextPage<{ snippet: Snippet }> = ({ snippet }) => {
   return (
     <SnippetLayout snippet={snippet}>
       <MDXRemote
@@ -29,7 +30,9 @@ export default function SnippetDetail({ snippet }: { snippet: Snippet }) {
       />
     </SnippetLayout>
   );
-}
+};
+
+export default SnippetDetail;
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(snippetSlugsQuery);

@@ -1,10 +1,7 @@
 import React from 'react';
+import type { NextPage } from 'next';
 
-import {
-  Grid,
-  H2,
-  Text,
-} from '@laodeaksarr/design-system';
+import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
 import SEO from '~/components/Seo';
 
@@ -15,7 +12,9 @@ import GuestbookComponent from '~/components/Guestbook';
 import type { GetStaticProps } from 'next';
 import type { guestbook } from '@prisma/client';
 
-export default function Guestbook({ fallbackData }: { fallbackData: guestbook[] }) {
+const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
+  fallbackData
+}) => {
   return (
     <Layout footer header headerProps={{ offsetHeight: 256 }}>
       <SEO title="Guestbook Page" />
@@ -31,7 +30,9 @@ export default function Guestbook({ fallbackData }: { fallbackData: guestbook[] 
       </Grid>
     </Layout>
   );
-}
+};
+
+export default Guestbook;
 
 export const getStaticProps: GetStaticProps = async () => {
   const entries = await prisma.guestbook.findMany({

@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
-import { AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
+import React from 'react';
+import type { NextPage } from 'next';
+import { AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
 import {
   Anchor,
@@ -31,26 +32,26 @@ import {
   Icon,
   // Shadows,
   styled,
-  useTheme,
-} from "@laodeaksarr/design-system";
-import CodeBlock from "~/components/Code/CodeBlock";
-import Glow from "~/components/Glow";
-import Logo from "~/components/Logo";
-import SEO from "~/components/Seo";
-import Tweet from "~/components/Tweet";
+  useTheme
+} from '@laodeaksarr/design-system';
+import CodeBlock from '~/components/Code/CodeBlock';
+import Glow from '~/components/Glow';
+import Logo from '~/components/Logo';
+import SEO from '~/components/Seo';
+import Tweet from '~/components/Tweet';
 
-import Layout from "~/layout";
+import Layout from '~/layout';
 
-import { getTweets } from "~/lib/tweets";
-import type { TransformedTweet } from "~/lib/types";
+import { getTweets } from '~/lib/tweets';
+import type { TransformedTweet } from '~/lib/types';
 
 const Tooltip = (props: any) => <>{props.children}</>;
 
 const SandpackExample = dynamic(
-  () => import("~/components/MDX/WaveAnimation/Sandpack")
+  () => import('~/components/MDX/WaveAnimation/Sandpack')
 );
-const Search = dynamic(() => import("~/components/Search"), {
-  ssr: false,
+const Search = dynamic(() => import('~/components/Search'), {
+  ssr: false
 });
 
 /**
@@ -61,13 +62,13 @@ const Search = dynamic(() => import("~/components/Search"), {
  * -> hsla(var(--palette-gray-03), 0.2) like code snippet background
  */
 
-export default function Design({ tweets }: Record<string, TransformedTweet>) {
+const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   const { dark } = useTheme();
-  const [showSearch, setShowSearch] = useState(false);
-  const [email, setEmail] = useState("");
-  const [rangeValue, setRangeValue] = useState(250);
+  const [showSearch, setShowSearch] = React.useState(false);
+  const [email, setEmail] = React.useState('');
+  const [rangeValue, setRangeValue] = React.useState(250);
 
-  const colorScaleNumbers = useMemo(
+  const colorScaleNumbers = React.useMemo(
     () =>
       Array.from(Array(19).keys()).map((items) => {
         const num = (items + 1) * 5;
@@ -80,7 +81,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
     []
   );
 
-  const palette = ["gray", "blue", "red", "orange", "green", "pink", "indigo"];
+  const palette = ['gray', 'blue', 'red', 'orange', 'green', 'pink', 'indigo'];
 
   return (
     <Layout footer>
@@ -90,12 +91,12 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
         gapX={4}
         gapY={10}
         all
-        css={{ paddingTop: "64px" }}
+        css={{ paddingTop: '64px' }}
       >
         <Box as="section">
           <H1
             css={{
-              marginBottom: "0px",
+              marginBottom: '0px'
             }}
           >
             Components / Design System
@@ -128,10 +129,10 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               <Box
                 as="section"
                 css={{
-                  size: "44px",
-                  borderRadius: "$round",
-                  background: "var(--laodeaksar-colors-brand)",
-                  border: "2px solid var(--laodeaksar-border-color)",
+                  size: '44px',
+                  borderRadius: '$round',
+                  background: 'var(--laodeaksar-colors-brand)',
+                  border: '2px solid var(--laodeaksar-border-color)'
                 }}
               />
             </Tooltip>
@@ -140,10 +141,10 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               <Box
                 as="section"
                 css={{
-                  size: "44px",
-                  borderRadius: "$round",
-                  background: "var(--laodeaksar-colors-background)",
-                  border: "2px solid var(--laodeaksar-border-color)",
+                  size: '44px',
+                  borderRadius: '$round',
+                  background: 'var(--laodeaksar-colors-background)',
+                  border: '2px solid var(--laodeaksar-border-color)'
                 }}
               />
             </Tooltip>
@@ -152,23 +153,23 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               <Box
                 as="section"
                 css={{
-                  size: "44px",
-                  borderRadius: "$round",
-                  background: "var(--laodeaksar-colors-foreground)",
-                  border: "2px solid var(--laodeaksar-border-color)",
+                  size: '44px',
+                  borderRadius: '$round',
+                  background: 'var(--laodeaksar-colors-foreground)',
+                  border: '2px solid var(--laodeaksar-border-color)'
                 }}
               />
             </Tooltip>
             Typeface:
-            <Grid css={{ gridTemplateColumns: "repeat(3, 44px)" }} gap={3}>
+            <Grid css={{ gridTemplateColumns: 'repeat(3, 44px)' }} gap={3}>
               <Tooltip id="typeface-primary" content="--typeface-primary">
                 <Box
                   as="section"
                   css={{
-                    size: "44px",
-                    borderRadius: "$round",
-                    background: "var(--laodeaksar-colors-typeface-primary)",
-                    border: "2px solid var(--laodeaksar-border-color)",
+                    size: '44px',
+                    borderRadius: '$round',
+                    background: 'var(--laodeaksar-colors-typeface-primary)',
+                    border: '2px solid var(--laodeaksar-border-color)'
                   }}
                 />
               </Tooltip>
@@ -176,10 +177,10 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                 <Box
                   as="section"
                   css={{
-                    size: "44px",
-                    borderRadius: "$round",
-                    background: "var(--laodeaksar-colors-typeface-secondary)",
-                    border: "2px solid var(--laodeaksar-border-color)",
+                    size: '44px',
+                    borderRadius: '$round',
+                    background: 'var(--laodeaksar-colors-typeface-secondary)',
+                    border: '2px solid var(--laodeaksar-border-color)'
                   }}
                 />
               </Tooltip>
@@ -187,10 +188,10 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                 <Box
                   as="section"
                   css={{
-                    size: "44px",
-                    borderRadius: "$round",
-                    background: "var(--laodeaksar-colors-typeface-tertiary)",
-                    border: "2px solid var(--laodeaksar-border-color)",
+                    size: '44px',
+                    borderRadius: '$round',
+                    background: 'var(--laodeaksar-colors-typeface-tertiary)',
+                    border: '2px solid var(--laodeaksar-border-color)'
                   }}
                 />
               </Tooltip>
@@ -202,15 +203,15 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
           <Grid
             gap={6}
             css={{
-              gridTemplateColumns: "repeat(auto-fill, minmax(10rem, 1fr))",
+              gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))'
             }}
           >
             {palette.map((paletteItem) => (
               <Grid
                 key={paletteItem}
                 css={{
-                  gridTemplateColumns: "repeat(auto-fill, minmax(2rem, 1fr))",
-                  marginRight: "$3",
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(2rem, 1fr))',
+                  marginRight: '$3'
                 }}
               >
                 {colorScaleNumbers.map((shade) => (
@@ -222,10 +223,10 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                     <Box
                       as="section"
                       css={{
-                        size: "44px",
-                        borderRadius: "$round",
+                        size: '44px',
+                        borderRadius: '$round',
                         background: `hsl(var(--palette-${paletteItem}-${shade}))`,
-                        border: "2px solid var(--laodeaksar-border-color)",
+                        border: '2px solid var(--laodeaksar-border-color)'
                       }}
                     />
                   </Tooltip>
@@ -236,25 +237,25 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
         </Box>
         <Box as="section" id="Cards">
           <h2>Card</h2>
-          <Grid gapY={6} css={{ width: "100%" }}>
+          <Grid gapY={6} css={{ width: '100%' }}>
             <Gradients>
               <Box>
                 <Box
                   as="p"
                   css={{
-                    color: "rgba(0, 0, 0, 0.4)",
-                    fontSize: "32px",
-                    marginBottom: "0px",
-                    lineHeight: "1rem",
+                    color: 'rgba(0, 0, 0, 0.4)',
+                    fontSize: '32px',
+                    marginBottom: '0px',
+                    lineHeight: '1rem'
                   }}
                 >
                   <Box
                     as="span"
                     css={{
-                      marginLeft: "-8px",
-                      color: "rgba(0, 0, 0, 0.4)",
-                      fontSize: "112px",
-                      fontWeight: "$3",
+                      marginLeft: '-8px',
+                      color: 'rgba(0, 0, 0, 0.4)',
+                      fontSize: '112px',
+                      fontWeight: '$3'
                     }}
                   >
                     99
@@ -264,8 +265,8 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                 <Box
                   as="p"
                   css={{
-                    color: "rgba(0, 0, 0, 0.4)",
-                    marginBottom: "0px",
+                    color: 'rgba(0, 0, 0, 0.4)',
+                    marginBottom: '0px'
                   }}
                 >
                   Blood Oxygen
@@ -293,7 +294,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                 alignItems="center"
                 justifyContent="center"
                 css={{
-                  padding: "$7",
+                  padding: '$7'
                 }}
               >
                 Card With custom Body
@@ -392,7 +393,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
                 91.83deg, hsl(var(--palette-pink-50)) -20.26%, 
                 hsl(var(--palette-blue-50)) 20.55%, 
                 hsl(var(--palette-indigo-20)) 60.81%
-              `,
+              `
             }}
           >
             Almost before we knew it, we had left the ground.
@@ -412,9 +413,9 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             size="7"
             weight="4"
             css={{
-              color: "transparent",
-              WebkitTextStrokeColor: "var(--laodeaksar-colors-brand)",
-              WebkitTextStrokeWidth: "1px",
+              color: 'transparent',
+              WebkitTextStrokeColor: 'var(--laodeaksar-colors-brand)',
+              WebkitTextStrokeWidth: '1px'
             }}
           >
             1 AU = 1,495978707x10<sup>11</sup> m
@@ -425,9 +426,9 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             size="7"
             weight="4"
             css={{
-              color: "transparent",
-              WebkitTextStrokeColor: "var(--laodeaksar-colors-danger)",
-              WebkitTextStrokeWidth: "1px",
+              color: 'transparent',
+              WebkitTextStrokeColor: 'var(--laodeaksar-colors-danger)',
+              WebkitTextStrokeWidth: '1px'
             }}
           >
             1 AU = 1,495978707x10<sup>11</sup> m
@@ -444,7 +445,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             columns={2}
             gap={4}
             css={{
-              padding: "$5 $3",
+              padding: '$5 $3'
             }}
           >
             <Card depth={0}>
@@ -480,13 +481,13 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             columns={2}
             gap={4}
             css={{
-              background: "var(--laodeaksar-colors-emphasis)",
-              padding: "$5 $3",
+              background: 'var(--laodeaksar-colors-emphasis)',
+              padding: '$5 $3'
             }}
           >
             <Card
               css={{
-                "$$shadow-color": dark ? "222deg 39% 5%" : "222deg 39% 80%",
+                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={0}
             >
@@ -498,7 +499,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             </Card>
             <Card
               css={{
-                "$$shadow-color": dark ? "222deg 39% 5%" : "222deg 39% 80%",
+                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={1}
             >
@@ -510,7 +511,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             </Card>
             <Card
               css={{
-                "$$shadow-color": dark ? "222deg 39% 5%" : "222deg 39% 80%",
+                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={2}
             >
@@ -522,7 +523,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
             </Card>
             <Card
               css={{
-                "$$shadow-color": dark ? "222deg 39% 5%" : "222deg 39% 80%",
+                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={3}
             >
@@ -567,13 +568,13 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
               alignItems="center"
               justifyContent="space-between"
               css={{
-                height: "50px",
-                width: "150px",
-                padding: "$2",
+                height: '50px',
+                width: '150px',
+                padding: '$2'
               }}
               aria-describedby="exampletooltip"
             >
-              <Icon.Twitter stroke="var(--laodeaksar-colors-typeface-tertiary)" />{" "}
+              <Icon.Twitter stroke="var(--laodeaksar-colors-typeface-tertiary)" />{' '}
               Hover Me!
             </Flex>
           </Tooltip>
@@ -682,41 +683,41 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
           </Grid>
           <Grid>
             <h1>
-              Some text then a link to my Twitter account{" "}
+              Some text then a link to my Twitter account{' '}
               <Anchor discreet favicon href="https://twitter.com/ode_aksar">
                 @ode_aksar
-              </Anchor>{" "}
+              </Anchor>{' '}
               then the rest of the sentence
             </h1>
             <p>
-              Some text then a link to my Twitter account{" "}
+              Some text then a link to my Twitter account{' '}
               <Anchor discreet favicon href="https://twitter.com/ode_aksar">
                 @ode_aksar
-              </Anchor>{" "}
+              </Anchor>{' '}
               then the rest of the sentence
             </p>
             <h2>
-              Over the past few months, I have been working a lot on{" "}
+              Over the past few months, I have been working a lot on{' '}
               <Anchor href="/design" underline>
                 Design System
-              </Anchor>{" "}
-              and one aspect of this work that I enjoyed focusing on is{" "}
+              </Anchor>{' '}
+              and one aspect of this work that I enjoyed focusing on is{' '}
               <strong>micro-interactions</strong>.
             </h2>
             <h3>
-              Over the past few months, I have been working a lot on my{" "}
+              Over the past few months, I have been working a lot on my{' '}
               <Anchor href="/design" underline>
                 Design System
-              </Anchor>{" "}
-              and one aspect of this work that I enjoyed focusing on is{" "}
+              </Anchor>{' '}
+              and one aspect of this work that I enjoyed focusing on is{' '}
               <strong>micro-interactions</strong>.
             </h3>
             <p>
-              Over the past few months, I have been working a lot on my{" "}
+              Over the past few months, I have been working a lot on my{' '}
               <Anchor discreet href="/design" underline>
                 Design System
-              </Anchor>{" "}
-              and one aspect of this work that I enjoyed focusing on is{" "}
+              </Anchor>{' '}
+              and one aspect of this work that I enjoyed focusing on is{' '}
               <strong>micro-interactions</strong>.
             </p>
           </Grid>
@@ -740,7 +741,7 @@ export default function Design({ tweets }: Record<string, TransformedTweet>) {
           <Grid
             gap={5}
             css={{
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
             }}
           >
             <TextInput
@@ -838,7 +839,7 @@ they can change the world, are the ones who do.`}
           <br />
           <Grid
             gap={3}
-            css={{ gridTemplateColumns: "repeat(2, minmax(2rem, 1fr))" }}
+            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
           >
             <Checkbox aria-label="Checkbox" id="checkbox1" label="Checkbox" />
             <Checkbox
@@ -866,7 +867,7 @@ they can change the world, are the ones who do.`}
           <br />
           <Grid
             gap={3}
-            css={{ gridTemplateColumns: "repeat(2, minmax(2rem, 1fr))" }}
+            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
           >
             <Switch aria-label="Switch" id="switch1" label="Switch" />
             <Switch aria-label="Switch" id="switch2" label="Switch" disabled />
@@ -889,7 +890,7 @@ they can change the world, are the ones who do.`}
           <br />
           <Grid
             gap={3}
-            css={{ gridTemplateColumns: "repeat(2, minmax(2rem, 1fr))" }}
+            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
           >
             <Radio.Group
               name="options"
@@ -954,7 +955,7 @@ they can change the world, are the ones who do.`}
           <br />
           <Grid
             gap={3}
-            css={{ gridTemplateColumns: "repeat(2, minmax(2rem, 1fr))" }}
+            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
           >
             <Range
               id="range-1"
@@ -1051,28 +1052,30 @@ function sayHi(name) {
       </Grid>
     </Layout>
   );
-}
+};
+
+export default Design;
 
 export async function getStaticProps() {
-  const tweets = await getTweets(["1386013361809281024"]);
+  const tweets = await getTweets(['1386013361809281024']);
 
   return { props: { tweets } };
 }
 
-const HR = styled("hr", {
-  height: "2px",
-  width: "$full",
-  background: "hsl(var(--palette-gray-20))",
-  border: "none",
-  marginBottom: "16px",
+const HR = styled('hr', {
+  height: '2px',
+  width: '$full',
+  background: 'hsl(var(--palette-gray-20))',
+  border: 'none',
+  marginBottom: '16px'
 });
 
-const Label = styled("p", {
-  marginBottom: "8px",
+const Label = styled('p', {
+  marginBottom: '8px'
 });
 
 const IconSection = () => (
-  <Flex direction="column" gap={8} alignItems="stretch" css={{ width: "100%" }}>
+  <Flex direction="column" gap={8} alignItems="stretch" css={{ width: '100%' }}>
     <Grid flow="column" gap={4}>
       <Icon.Twitter variant="info" size={5} />
       <Icon.Twitter variant="danger" size={5} />
@@ -1084,12 +1087,12 @@ const IconSection = () => (
     </Grid>
     <Box
       css={{
-        color: "hsl(var(--palette-pink-50))",
+        color: 'hsl(var(--palette-pink-50))',
 
         svg: {
-          strokeWidth: "1",
-          fill: "hsla(var(--palette-pink-50), 50%) !important",
-        },
+          strokeWidth: '1',
+          fill: 'hsla(var(--palette-pink-50), 50%) !important'
+        }
       }}
     >
       <Icon.Twitter />
