@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write pages/** core/** lib/**",
     "type-check": "tsc --noEmit",
     "sanity:start": "sanity start",
     "sanity:deploy": "sanity deploy"
@@ -15,7 +16,6 @@
     "@laodeaksarr/design-system": "^1.0.11",
     "@prisma/client": "^4.2.1",
     "@sanity/image-url": "^1.0.1",
-    "@sanity/vision": "3.0.0-dev-preview.15",
     "@sanity/webhook": "^2.0.0",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.0.0",
