@@ -19,7 +19,6 @@
     "@sanity/webhook": "^2.0.0",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.0.0",
-    "googleapis": "104.0.0",
     "lunr": "^2.3.9",
     "next": "12.2.5",
     "next-auth": "^4.10.3",
