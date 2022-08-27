@@ -41,6 +41,7 @@ export function TagList({ post }: { post: Post }) {
             as="p"
             size={4}
             weight={3}
+            truncate
             css={{
               marginBottom: 0,
               maxWidth: '10rem',
@@ -49,13 +50,13 @@ export function TagList({ post }: { post: Post }) {
                 maxWidth: '$full'
               }
             }}
-            truncate
           >
             {title}
           </Text>
           <Text
             as="p"
             size={2}
+            truncate
             css={{
               marginBottom: 0,
               maxWidth: '10rem',
@@ -64,7 +65,6 @@ export function TagList({ post }: { post: Post }) {
                 maxWidth: '$full'
               }
             }}
-            truncate
           >
             {description}
           </Text>

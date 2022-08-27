@@ -4,7 +4,7 @@ import useIsArticleRead from '~/hooks/useIsArticleRead';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 
 import { Block, Button } from './Styles';
-import { Post } from './types';
+import { Post } from '~/lib/types';
 
 export function BlogList({ post }: { post: Post }) {
   const { date, slug, title } = post;

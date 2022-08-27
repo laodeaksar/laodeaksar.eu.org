@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
-
+import React from 'react';
 import useSWR from 'swr';
 
 import fetcher from '~/lib/fetcher';
 import { Views } from '~/lib/types';
 
-type Props = {
-  slug: string;
-};
-
-export default function ViewCounter({ slug }: Props) {
+const ViewCounter = ({ slug }: { slug: string }) => {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher);
   const views = new Number(data?.total);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const registerView = () =>
       fetch(`/api/views/${slug}`, {
-        method: 'POST',
+        method: 'POST'
       });
 
     if (process.env.NODE_ENV === 'production') {
@@ -24,5 +19,7 @@ export default function ViewCounter({ slug }: Props) {
     }
   }, [slug]);
 
-  return <span>{`${views > 0 ? views.toLocaleString() : '–––'} views`}</span>;
-}
+  return <span>{`${views > 0 ? views.toLocaleString() : '---'} views`}</span>;
+};
+
+export default ViewCounter;

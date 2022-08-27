@@ -1,11 +1,4 @@
-import {
-  styled,
-  Box,
-  Grid,
-  Text,
-  EM,
-  Flex,
-} from '@laodeaksarr/design-system';
+import { styled, Box, Grid, Text, EM, Flex } from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';
 import Logo from '~/components/Logo';
@@ -26,7 +19,7 @@ const Footer = () => (
                 <Link href="/design" discreet>
                   Design
                 </Link>
-                <Link href="/feed.xml" discreet>
+                <Link href="https://laodeaksar.eu.org/feed.xml" discreet>
                   RSS
                 </Link>
               </Grid>
@@ -35,16 +28,10 @@ const Footer = () => (
           <Box>
             <Text size={1}>
               <Grid>
-                <Link
-                  discreet
-                  href="https://twitter.com/ode_aksar"
-                >
+                <Link discreet href="https://twitter.com/ode_aksar">
                   Twitter
                 </Link>
-                <Link
-                  discreet
-                  href="https://github.com/laodeaksar"
-                >
+                <Link discreet href="https://github.com/laodeaksar">
                   Github
                 </Link>
                 <Link
@@ -92,7 +79,7 @@ const Footer = () => (
               weight="3"
               css={{ margin: 0 }}
             >
-              &copy; {new Date().getFullYear()} Aksar La&apos;ode --{' '}
+              &copy; {new Date().getFullYear()} Aksar La&apos;ode ———{' '}
               <EM size={1}>Kendari</EM>
             </Text>
             <Box

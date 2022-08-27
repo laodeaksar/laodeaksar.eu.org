@@ -83,34 +83,14 @@ function GuestbookForm() {
             type="submit"
             variant="primary"
           >
-            {isLoading ? '' : 'Send'}
+            {!isLoading && 'Send'}
           </Button>
         </Flex>
       </form>
       {isError ? (
-        <Text
-          as="p"
-          size={2}
-          variant="danger"
-          css={{
-            marginTop: '$2',
-            marginBottom: 0
-          }}
-        >
-          {form.message as string}
-        </Text>
+        <Message isError>{form.message as string}</Message>
       ) : form.state === Form.Success ? (
-        <Text
-          as="p"
-          size={2}
-          variant="success"
-          css={{
-            marginTop: '$2',
-            marginBottom: 0
-          }}
-        >
-          {form?.message as string}
-        </Text>
+        <Message>{form?.message as string}</Message>
       ) : (
         <Text
           as="p"
@@ -128,3 +108,20 @@ function GuestbookForm() {
 }
 
 export default GuestbookForm;
+
+export const Message = ({
+  children,
+  isError
+}: React.PropsWithChildren<{ isError?: boolean }>) => (
+  <Text
+    as="p"
+    size={2}
+    css={{
+      marginTop: '$2',
+      marginBottom: 0
+    }}
+    variant={isError ? 'danger' : 'success'}
+  >
+    {children}
+  </Text>
+);

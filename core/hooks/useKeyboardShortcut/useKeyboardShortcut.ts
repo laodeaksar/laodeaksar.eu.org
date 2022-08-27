@@ -1,20 +1,20 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import React from 'react';
 
 import { defaultConfig, specialKeys } from './constants';
-import type { Config, EventType } from './types';
 import { extractRegulerKeys } from './utils';
+import type { Config, EventType } from './types';
 
 const useKeyboardShortcut = (
   shortcut: string,
   callback: (e: KeyboardEvent) => any,
   config?: Config
 ) => {
-  const innerConfig = useMemo(
+  const innerConfig = React.useMemo(
     () => ({ ...defaultConfig, ...(config || {}) }),
     [config]
   );
 
-  const handler = useCallback(
+  const handler = React.useCallback(
     (event: KeyboardEvent) => {
       const options = shortcut
         .replace(/ /g, '')
@@ -52,8 +52,9 @@ const useKeyboardShortcut = (
     [callback, innerConfig, shortcut]
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener(innerConfig.eventType as EventType, handler);
+
     return () => {
       document.removeEventListener(innerConfig.eventType as EventType, handler);
     };

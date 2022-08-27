@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
-import useSWR from 'swr';
 import { guestbook } from '@prisma/client';
 import { signOut, useSession } from 'next-auth/react';
+import useSWR from 'swr';
 
 import { Button, Card, Text } from '@laodeaksarr/design-system';
 
 import fetcher from '~/lib/fetcher';
+
 import GuestbookBody from './GuestbookBody';
 import GuestbookEntry from './GuestbookEntry';
 

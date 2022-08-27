@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-import tagColors from '~/lib/tagColor';
 
 import { Box, Grid, H2, Text } from '@laodeaksarr/design-system';
 
@@ -8,6 +7,8 @@ import SEO from '~/components/Seo';
 import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
+
+import tagColors from '~/lib/tagColor';
 import { getClient, sanityClient } from '~/lib/sanity-server';
 import { postSlugsQuery, indexQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';

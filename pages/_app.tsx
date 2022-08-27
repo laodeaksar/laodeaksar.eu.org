@@ -9,7 +9,7 @@ import {
 
 import { Head } from '~/components/Seo';
 
-import '~/styles/globals.css';
+import '~/styles/global.css';
 import '~/styles/font.css';
 
 const App = ({ Component, pageProps }: AppProps) => {

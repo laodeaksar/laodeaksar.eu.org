@@ -1,26 +1,26 @@
 import RSS from 'rss';
-import type { NextApiResponse, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { indexQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
 
-export async function getServerSideProps({ res }: { res: NextApiResponse }) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const feed = new RSS({
     title: "Aksar La'ode",
     site_url: 'https://laodeaksar.eu.org',
     feed_url: 'https://laodeaksar.eu.org/feed.xml'
   });
 
-  const allPosts = await sanityClient.fetch<Post[]>(indexQuery);
-  allPosts.map((post) => {
+  const allPosts = await sanityClient.fetch(indexQuery);
+  allPosts.map((post: Post) => {
     feed.item({
       title: post.title,
       url: `https://laodeaksar.eu.org/blog/${post.slug}`,
       date: post.date,
       description: post.description
     });
-  });
+  })
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader(
@@ -33,10 +33,8 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   return {
     props: {}
   };
-}
-
-const RSSFeed: NextPage = () => {
-  return null;
 };
 
-export default RSSFeed;
+export default function RSSFeed() {
+  return null;
+}

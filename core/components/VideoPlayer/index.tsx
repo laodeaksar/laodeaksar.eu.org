@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { styled, useTheme } from "@laodeaksarr/design-system";
 
 import type { VideoPlayerProps } from "./types";
@@ -8,11 +8,11 @@ const VideoPlayer = (props: VideoPlayerProps) => {
   const { autoPlay, controls, loop, muted, width, height, poster, src } = props;
 
   const { dark } = useTheme();
-  const [currentPoster, setCurrentPoster] = useState<string | undefined>(
+  const [currentPoster, setCurrentPoster] = React.useState<string | undefined>(
     undefined
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (poster) {
       if (!poster.includes(".png")) {
         setCurrentPoster(getDisplayedPoster(poster, dark));

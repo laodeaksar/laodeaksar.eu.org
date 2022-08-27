@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 const useIsArticleRead = (slug: string) => {
-  const [hasPageHydrated, setHasPageHydrated] = useState(false);
-  const [hasRead, setHasRead] = useState(true);
+  const [hasPageHydrated, setHasPageHydrated] = React.useState(false);
+  const [hasRead, setHasRead] = React.useState(true);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setHasPageHydrated(true);
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window !== 'undefined') {
-      //@ts-ignore
-      const initialState = JSON.parse(localStorage.getItem(slug)) || null;
+      const initialState =
+        JSON.parse(localStorage.getItem(slug) as string) || null;
       setHasRead(initialState?.has_read ?? false);
     }
   }, [hasPageHydrated, hasRead, slug]);

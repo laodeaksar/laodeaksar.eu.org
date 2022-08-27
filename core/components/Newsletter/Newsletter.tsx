@@ -1,6 +1,4 @@
-import { ErrorMessage, NewsletterFormContent } from './Styles';
-import { NewsletterHeader } from './Icons';
-import type { Props } from './types';
+import React from 'react';
 
 import {
   Anchor,
@@ -13,8 +11,12 @@ import {
   Text,
   TextInput
 } from '@laodeaksarr/design-system';
-import React from 'react';
+
 import { ClickEvent, Form, FormState } from '~/lib/types';
+
+import { Message, NewsletterFormContent } from './Styles';
+import { NewsletterHeader } from './Icons';
+import type { Props } from './types';
 
 const Newsletter = (props: Props) => {
   const { large = false } = props;
@@ -118,6 +120,18 @@ const Newsletter = (props: Props) => {
           </>
         )}
         <form onSubmit={subscribe}>
+          {/*<Flex gap={2}>
+            <TextInput
+              aria-label="Email"
+              id="subscribe"
+              type="email"
+              placeholder="me@laodeaksar.eu.org"
+            />
+            <Button variant="primary" glow>
+              Subscribe
+            </Button>
+          </Flex>*/}
+
           <Flex
             alignItems="flex-start"
             gap={3}
@@ -143,18 +157,15 @@ const Newsletter = (props: Props) => {
               type="submit"
               variant="primary"
             >
-              {isLoading ? '' : 'Send'}
+              {!isLoading && 'Send'}
             </Button>
           </Flex>
         </form>
         {form.state === Form.Error ? (
-          <ErrorMessage>{form.message}</ErrorMessage>
+          <Message isError>{form.message}</Message>
+        ) : form.state === Form.Success ? (
+          <Message>{form.message}</Message>
         ) : null}
-        {/*form.state === Form.Success ? (
-        <SuccessMessage>{form.message}</SuccessMessage>) : null
-        (
-          {errors && <ErrorMessage>{errors.email?.message}</ErrorMessage>}
-          errors.email.message.includes==='already subscribe'&&*/}
       </NewsletterFormContent>
     </Card>
   );

@@ -1,16 +1,17 @@
+import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import {
   Flex,
   Grid,
   Tooltip,
-  useKeyboardShortcut,
+  useKeyboardShortcut
 } from '@laodeaksarr/design-system';
 
 import Logo from '~/components/Logo';
+
 import useProgress from '~/hooks/useProgress';
 import useScrollCounter from '~/hooks/useScrollCounter';
 
@@ -43,7 +44,8 @@ const headerVariants = {
 
 const Header = (props: HeaderProps) => {
   const { title, offsetHeight = 120, showProgressBarOnMobile } = props;
-  const [showSearch, setShowSearch] = useState(false);
+  
+  const [showSearch, setShowSearch] = React.useState(false);
   const reached = useScrollCounter(offsetHeight / 2);
   const readingProgress = useProgress();
 

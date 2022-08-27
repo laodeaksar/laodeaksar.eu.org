@@ -49,7 +49,7 @@ export const getTweets = async (ids: string[]) => {
 
   return tweets.data.reduce(
     // @ts-ignore
-    (allTweets: Record<string, TransformedTweet>, tweet: TweetData) => {
+    (allTweets: Record<string, TransformedTweet>[], tweet: TweetData) => {
       const tweetWithAuthor = {
         ...tweet,
         media:
@@ -59,7 +59,6 @@ export const getTweets = async (ids: string[]) => {
         referenced_tweets: getReferencedTweets(tweet),
         author: getAuthorInfo(tweet.author_id)
       };
-      // @ts-ignore
       return [tweetWithAuthor, ...allTweets];
     },
     [] as unknown as Record<string, TransformedTweet>

@@ -13,7 +13,7 @@ import { indexQuery, snippetsQuery } from '../lib/queries';
     this.field('title');
     this.field('description');
     this.field('tags');
-    this.field('types');
+    this.field('type');
     this.ref('slug');
 
     documents.forEach(function (doc) {

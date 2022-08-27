@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+
 import { Grid, H1, H3, styled } from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';

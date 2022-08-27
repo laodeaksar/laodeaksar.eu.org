@@ -1,9 +1,8 @@
-import { MDXRemote } from 'next-mdx-remote';
-import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
+import { MDXRemote } from 'next-mdx-remote';
+import type { NextPage, GetStaticProps } from 'next';
 
 import Code from '~/components/Code';
-//import components from '~/components/MDX/MDXComponents';
 
 import SnippetLayout from '~/layouts/Snippet';
 
@@ -36,15 +35,19 @@ export default SnippetDetail;
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(snippetSlugsQuery);
+
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: 'blocking'
   };
 };
 
-export const getStaticProps = async ({ params, preview = false }: any) => {
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false
+}) => {
   const { snippet } = await getClient(preview).fetch(snippetsQuery, {
-    slug: params.slug
+    slug: params?.slug
   });
 
   if (!snippet) {

@@ -1,5 +1,3 @@
-//import { serialize } from './serialize';
-
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN || '';
@@ -13,10 +11,6 @@ const getAccessToken = async () => {
     Authorization: `Basic ${basicToken}`
   };
 
-  /*const body = serialize({
-    grant_type: 'refresh_token',
-    refresh_token: refreshToken
-  });*/
   const formData = new URLSearchParams({
     grant_type: 'refresh_token',
     refresh_token: refreshToken

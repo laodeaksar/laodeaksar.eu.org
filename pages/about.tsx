@@ -1,16 +1,9 @@
 import React from 'react';
-import { domAnimation, LazyMotion, m } from 'framer-motion';
 import Image from 'next/image';
+import { domAnimation, LazyMotion, m } from 'framer-motion';
 import type { NextPage } from 'next';
 
-import {
-  Box,
-  css,
-  Grid,
-  Text,
-  H1,
-  Strong
-} from '@laodeaksarr/design-system';
+import { Box, css, Grid, Text, H1, Strong } from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';
 import Newsletter from '~/components/Newsletter';
@@ -118,17 +111,7 @@ function getBirthdayInSecond() {
   return Math.round(((now as any) - dob.getTime()) / 1000);
 }
 
-export const getStaticProps = async ({ preview = false }) => {
-  const posts: Post[] = await getClient(preview).fetch(indexQuery);
-  return {
-    props: {
-      postsCount: posts.length,
-      initialAge: getBirthdayInSecond()
-    }
-  };
-};
-
-const About:NextPage<any> = ({ postsCount, initialAge }) => {
+const About: NextPage<any> = ({ postsCount, initialAge }) => {
   const [age, setAge] = React.useState(initialAge);
   const ageInYears = React.useMemo(() => Math.floor(age / 31536000), [age]);
   const mounted = React.useRef<boolean>();
@@ -330,3 +313,14 @@ const About:NextPage<any> = ({ postsCount, initialAge }) => {
 };
 
 export default About;
+
+export const getStaticProps = async ({ preview = false }) => {
+  const posts = await getClient(preview).fetch<Post[]>(indexQuery);
+  
+  return {
+    props: {
+      postsCount: posts.length,
+      initialAge: getBirthdayInSecond()
+    }
+  };
+};

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 import { styled } from '@laodeaksarr/design-system';
@@ -59,7 +59,7 @@ const CopyToClipboardButton = (props: { text: string; title?: string }) => {
     unchecked: { strokeWidth: 2, pathLength: 0 }
   };
 
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = React.useState(false);
   const pathLength = useMotionValue(0);
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
 
@@ -75,7 +75,7 @@ const CopyToClipboardButton = (props: { text: string; title?: string }) => {
     document.body.removeChild(el);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isChecked) {
       setTimeout(() => setIsChecked(false), 3000);
     }

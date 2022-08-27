@@ -19,14 +19,17 @@ export const NewsletterFormContent = styled(Card.Body, {
   }
 });
 
-export const ErrorMessage = ({ children }: React.PropsWithChildren) => (
+export const Message = ({
+  children,
+  isError
+}: React.PropsWithChildren<{ isError?: boolean }>) => (
   <Text
     as="p"
     css={{
       margin: '$4 0px 0px 0px',
       maxWidth: '800px !important'
     }}
-    variant="danger"
+    variant={isError ? 'danger' : 'success'}
   >
     {children}
   </Text>

@@ -1,5 +1,5 @@
-import type { Config } from './types';
 import { specialKeys } from './constants';
+import type { Config } from './types';
 
 export const extractRegulerKeys = (
   string: string,

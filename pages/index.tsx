@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { motion, MotionProps } from 'framer-motion';
 import type { NextPage } from 'next';
 
@@ -23,9 +23,9 @@ import BlogCard from '~/components/Blog';
 
 import Layout from '~/layout';
 
+import { getClient } from '~/lib/sanity-server';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { indexQuery } from '~/lib/queries';
-import { getClient } from '~/lib/sanity-server';
 import { Post } from '~/lib/types';
 
 const Newsletter = dynamic(() => import('~/components/Newsletter'));

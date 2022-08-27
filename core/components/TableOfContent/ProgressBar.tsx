@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 import { ProgressBarWrapper } from './Styles';
@@ -6,7 +6,7 @@ import { ProgressBarWrapper } from './Styles';
 import { Box } from '@laodeaksarr/design-system';
 
 const ProgressBar = ({ progress }: { progress: number }) => {
-  const [visibility, setVisibility] = useState(true);
+  const [visibility, setVisibility] = React.useState(true);
   const shouldReduceMotion = useReducedMotion();
 
   const progressBarWrapperVariants = {
@@ -18,7 +18,7 @@ const ProgressBar = ({ progress }: { progress: number }) => {
     })
   };
 
-  useEffect(
+  React.useEffect(
     () => setVisibility(progress >= 0.07 && progress <= 0.95),
     [progress]
   );

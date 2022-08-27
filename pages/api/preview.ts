@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { postBySlugQuery } from '~/lib/queries';
 import { previewClient } from '~/lib/sanity-server';
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { Flex, Text } from '@laodeaksarr/design-system';
 
-import SpotifyLogo, { Glass } from './icons';
+import { Glass, SpotifyLogo } from './icons';
 import { styles } from './Styles';
 
 import { useNowPlaying } from '~/hooks/useNowPlaying';

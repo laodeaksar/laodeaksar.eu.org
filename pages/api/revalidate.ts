@@ -1,10 +1,9 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { postUpdatedQuery } from '~/lib/queries';
 import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '~/lib/api';
-
-import type { NextApiRequest, NextApiResponse } from 'next';
 
 async function stringifyRequest(req: NextApiRequest) {
   const chunks = [];
@@ -69,6 +68,6 @@ export default async function handler(
 // Next.js will by default parse the body, which can lead to invalid signatures
 export const config = {
   api: {
-    bodyParser: false,
-  },
+    bodyParser: false
+  }
 };

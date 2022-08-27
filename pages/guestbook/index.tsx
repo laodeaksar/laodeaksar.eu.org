@@ -1,16 +1,14 @@
 import React from 'react';
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
+import type { guestbook } from '@prisma/client';
 
 import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
+import GuestbookComponent from '~/components/Guestbook';
 import SEO from '~/components/Seo';
 
-import prisma from '~/lib/prisma';
 import Layout from '~/layout';
-import GuestbookComponent from '~/components/Guestbook';
-
-import type { GetStaticProps } from 'next';
-import type { guestbook } from '@prisma/client';
+import prisma from '~/lib/prisma';
 
 const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
   fallbackData

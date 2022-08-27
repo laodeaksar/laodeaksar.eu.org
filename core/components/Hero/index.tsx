@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 import { H1, styled } from '@laodeaksarr/design-system';
@@ -60,7 +60,7 @@ const HeroImg = (props: HeroImgProps) => (
   </HeroImgWrapper>
 );
 
-class Hero extends Component<{
+class Hero extends React.Component<{
   id?: string;
   className?: string;
   children?: React.ReactNode;

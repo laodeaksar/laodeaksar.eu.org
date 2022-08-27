@@ -1,4 +1,4 @@
-import type { NextApiResponse, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 
 import { sanityClient } from '~/lib/sanity-server';
 import { postSlugsQuery } from '~/lib/queries';
@@ -20,7 +20,7 @@ const createSitemap = (
     </urlset>
 `;
 
-export async function getServerSideProps({ res }: { res: NextApiResponse }) {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const allPosts = await sanityClient.fetch<Post[]>(postSlugsQuery);
   const allPages = [
     ...allPosts.map((slug) => `blog/${slug}`),
@@ -38,10 +38,9 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   return {
     props: {}
   };
-}
+};
 
-const Sitemap: NextPage = () => {
+export default function Sitemap() {
   return null;
 };
 
-export default Sitemap;

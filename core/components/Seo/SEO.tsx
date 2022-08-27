@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { FC, Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 import config from 'config/seo_meta.json';
 
@@ -73,19 +73,20 @@ const twitterImage = ({ url }: OgImage, index: number) => {
   );
 };
 
-const SEO: FC<Props> = ({
+const SEO = ({
   title,
   description,
   robots,
   openGraph,
   date,
   children
-}) => {
+}: Props) => {
   const router = useRouter();
   const url = config.openGraph.url + router.asPath;
   const seoTitle = title
     ? `${config.titleTemplate.replace(/%s/g, title)}`
     : config.title;
+
   return (
     <Head>
       <title>{seoTitle}</title>

@@ -1,9 +1,8 @@
-import type { VFC } from 'react';
 import Script from 'next/script';
 
 import SEO from '.';
 
-const Head: VFC = () => {
+const Head = () => {
   return (
     <SEO>
       <meta name="viewport" content="width=device-width, initial-scale=1" />

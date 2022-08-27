@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Anchor, Flex,formatDate, Text } from '@laodeaksarr/design-system';
+import { Anchor, Flex, formatDate, Text } from '@laodeaksarr/design-system';
 
 import {
   LikeIcon,
@@ -50,7 +50,7 @@ const Tweet = ({ tweet }: Props) => {
     .replace('&amp;', '&');
   const quoteTweet =
     referenced_tweets &&
-    referenced_tweets.find((t: any) => t.type === 'quoted');
+    referenced_tweets.find((t) => t.type === 'quoted');
 
   return (
     <TweetWrapper>

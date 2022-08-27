@@ -1,7 +1,7 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import type { NextPage } from 'next';
 import { AnimatePresence } from 'framer-motion';
-import dynamic from 'next/dynamic';
 
 import {
   Anchor,
@@ -34,6 +34,7 @@ import {
   styled,
   useTheme
 } from '@laodeaksarr/design-system';
+
 import CodeBlock from '~/components/Code/CodeBlock';
 import Glow from '~/components/Glow';
 import Logo from '~/components/Logo';

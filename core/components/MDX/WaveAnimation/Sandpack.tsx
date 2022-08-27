@@ -45,11 +45,13 @@ const WavingHand = () => (
     👋
   </motion.div>
 );
+
 const Hi = () => (
   <h1>
     Hi <WavingHand /> !
   </h1>
 );
+
 export default Hi;`;
 
 const CSSCompositionSandpack = () => {

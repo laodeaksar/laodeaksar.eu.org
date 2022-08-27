@@ -1,6 +1,8 @@
-import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
-import { guestbook } from '@prisma/client';
 import { useSWRConfig } from 'swr';
+import { guestbook } from '@prisma/client';
+
+import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
+
 import { ClickEvent } from '~/lib/types';
 
 type GuestBookEntryProps = {

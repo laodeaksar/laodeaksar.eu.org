@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 // const isInView = (element: any, offset: number = 0) => {
 //   const rect = element.getBoundingClientRect();
@@ -33,10 +33,9 @@ const useScrollSpy = (
   }
 ): [number, Element[], number[]] => {
   const [currentActiveSectionIndex, setCurrentActiveSectionIndex] =
-    useState(-1);
-  const [currentIntersectionRatios, setCurrentIntersectionRatios] = useState<
-    number[]
-  >([]);
+    React.useState(-1);
+  const [currentIntersectionRatios, setCurrentIntersectionRatios] =
+    React.useState<number[]>([]);
 
   const rootMargin = `-${(options && options.offset) || 0}px 0px 0px 0px`;
 
@@ -46,9 +45,9 @@ const useScrollSpy = (
       ? elements.slice(0, currentActiveSectionIndex + 1)
       : [];
 
-  const observer = useRef<IntersectionObserver>();
+  const observer = React.useRef<IntersectionObserver>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (observer.current) {
       observer.current.disconnect();
     }

@@ -15,9 +15,7 @@ const SpotifyLogo = ({ colored = false }: { colored?: boolean }) => {
   );
 };
 
-export default SpotifyLogo;
-
-export const Glass = () => (
+const Glass = () => (
   <>
     <svg
       style={{
@@ -138,3 +136,5 @@ export const Glass = () => (
     </svg>
   </>
 );
+
+export { SpotifyLogo, Glass };

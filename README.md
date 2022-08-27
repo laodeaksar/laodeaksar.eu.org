@@ -7,8 +7,8 @@
 - **ORM**: [Prisma](https://prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 - **Deployment**: [Vercel](https://vercel.com)
-- **Content**: [MDX](https://github.com/mdx-js/mdx)/[contentlayer]()
-- **Styling**: [Stitches](https://stitches.dev/) by [Design System]()
+- **Content**: [MDX](https://github.com/mdx-js/mdx)/[Sanity](https://sanity.io)
+- **Styling**: [Stitches](https://stitches.dev/) by [Design System](https://github.com/laodeaksarr/design-system)
 
 ## Overview
 
@@ -27,10 +27,10 @@
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/laodeaksarr/laodeaksar.eu.org.git
-$ cd laodeaksar.eu.org
-$ yarn
-$ yarn dev
+git clone https://github.com/laodeaksarr/laodeaksar.eu.org.git
+cd laodeaksar.eu.org
+yarn
+yarn dev
 ```
 
 Create a `.env` file similar to [`.env.example`](https://github.com/laodeaksarr/laodeaksar.eu.org/blob/main/.env.example).
