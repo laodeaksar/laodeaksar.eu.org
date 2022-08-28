@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 
 import { useHasMounted } from '~/hooks/useHasMounted';
 import { Button, styled } from '@laodeaksarr/design-system';
@@ -16,15 +16,14 @@ const ButtonUp = styled(Button, {
   opacity: 0,
   transform: 'translateY(72px)',
 
-
   '@md': {
     mr: '$24',
-    mb: '$24',
+    mb: '$24'
   },
 
   '@lg': {
     mr: '$32',
-    mb: '$32',
+    mb: '$32'
   },
 
   variants: {
@@ -32,10 +31,10 @@ const ButtonUp = styled(Button, {
       true: {
         visible: 'flex',
         opacity: 1,
-        transform: 'translateY(0)',
-      },
-    },
-  },
+        transform: 'translateY(0)'
+      }
+    }
+  }
 });
 
 const scrollToTop = () => {
@@ -43,7 +42,7 @@ const scrollToTop = () => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   } catch (error) {
     window.scrollTo(0, 0);
@@ -53,22 +52,23 @@ const scrollToTop = () => {
 const SCROLL_OFFSET = 287;
 
 export const BackToTop = () => {
-  const [showButton, setShowButton] = useState(false);
+  const [showButton, setShowButton] = React.useState(false);
   const hasMounted = useHasMounted();
 
-  const checkScrollTop = useCallback(() => {
+  const checkScrollTop = React.useCallback(() => {
     if (!hasMounted) return;
     const scrolledDistance = window.scrollY || window.pageYOffset;
     const screenHeight = document.body.scrollHeight - window.screen.availHeight;
+    
     try {
       setShowButton(
         scrolledDistance / screenHeight > 0.3 &&
-          scrolledDistance < screenHeight - Math.ceil(SCROLL_OFFSET / 2.5),
+          scrolledDistance < screenHeight - Math.ceil(SCROLL_OFFSET / 2.5)
       );
     } catch (e) {}
   }, [hasMounted]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!hasMounted) return;
     window.addEventListener('scroll', checkScrollTop);
     checkScrollTop();
@@ -79,26 +79,27 @@ export const BackToTop = () => {
 
   return (
     <ButtonUp
-    title={'Scroll back to top'} 
-    variant="icon" 
-    onClick={scrollToTop} 
-    shown={showButton}
-    icon={
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        fill="none" 
-        height="24"
-        width="24"
-        viewBox="0 0 24 24" 
-        stroke="currentColor" 
-        strokeWidth={2}>
-        <path 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          d="M5 15l7-7 7 7"
-        />
-      </svg>
-    }
+      title={'Scroll back to top'}
+      variant="icon"
+      onClick={scrollToTop}
+      shown={showButton}
+      icon={
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          height="24"
+          width="24"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
+      }
     />
   );
 };

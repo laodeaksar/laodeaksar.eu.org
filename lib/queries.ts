@@ -45,7 +45,7 @@ const snippetFields = `
   language,
   date,
   description,
-  sneppetImage,
+  logo,
   "slug": slug.current,
 `;
 

@@ -8,6 +8,7 @@ import { Post } from '~/lib/types';
 
 export function BlogList({ post }: { post: Post }) {
   const { date, slug, title } = post;
+
   const [hasRead] = useIsArticleRead(slug);
 
   return (

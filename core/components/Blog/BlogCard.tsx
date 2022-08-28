@@ -1,6 +1,7 @@
 import { Box, Grid, Text } from '@laodeaksarr/design-system';
 
 import { BlogList } from './BlogList';
+
 import { Post } from '~/lib/types';
 
 let year = 0;

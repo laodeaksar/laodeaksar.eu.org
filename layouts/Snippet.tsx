@@ -1,4 +1,5 @@
-import type { PropsWithChildren } from 'react';
+import React from 'react';
+
 import {
   Box,
   Flex,
@@ -7,6 +8,7 @@ import {
   Pill,
   Text
 } from '@laodeaksarr/design-system';
+
 import Hero from '~/components/Hero';
 import SEO from '~/components/Seo';
 
@@ -16,7 +18,10 @@ import { Snippet } from '~/lib/types';
 const SnippetLayout = ({
   children,
   snippet
-}: PropsWithChildren<{ snippet: Snippet }>) => {
+}: {
+  snippet: Snippet;
+  children: React.ReactNode;
+}) => {
   const { date, title, description, language } = snippet;
 
   const headerProps = {

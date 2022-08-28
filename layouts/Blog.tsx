@@ -1,4 +1,4 @@
-import { useEffect, useState, type PropsWithChildren, Suspense } from 'react';
+import React, { Suspense } from 'react';
 
 import {
   Box,
@@ -48,7 +48,14 @@ const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
   );
 };
 
-const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
+
+const BlogLayout = ({
+  children,
+  post
+}: {
+  post: Post;
+  children: React.ReactNode;
+}) => {
   const {
     date,
     updated,
@@ -68,9 +75,11 @@ const BlogLayout = ({ children, post }: PropsWithChildren<{ post: Post }>) => {
     showProgressBarOnMobile: true
   };
 
-  const [ids, setIds] = useState<Array<{ id: string; title: string }>>([]);
+  const [ids, setIds] = React.useState<Array<{ id: string; title: string }>>(
+    []
+  );
 
-  useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       const titles = document.querySelectorAll('h2');
       const idArrays = Array.prototype.slice

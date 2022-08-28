@@ -59,13 +59,14 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
               <Box
                 as={motion.li}
                 initial="hide"
-                // @ts-ignore
                 css={
-                  currentActiveIndex === index && {
-                    a: {
-                      color: 'var(--laodeaksar-colors-brand) !important'
-                    }
-                  }
+                  currentActiveIndex === index
+                    ? {
+                        a: {
+                          color: 'var(--laodeaksar-colors-brand) !important'
+                        }
+                      }
+                    : {}
                 }
                 variants={variants}
                 animate="show"

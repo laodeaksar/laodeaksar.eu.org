@@ -7,7 +7,6 @@ export const config = {
 
 export default async function handler() {
   const response = await getNowPlaying();
-
   if (response.status === 204 || response.status > 400) {
     return buildApiResponse(200, { isPlaying: false });
   }

@@ -2,6 +2,8 @@ import Image from 'next/image';
 
 import { Anchor, Flex, formatDate, Text } from '@laodeaksarr/design-system';
 
+import type { TransformedTweet } from '~/lib/types';
+
 import {
   LikeIcon,
   ReplyIcon,
@@ -18,12 +20,11 @@ import {
   TweetWrapper,
   styles
 } from './Styles';
-import type { Props } from './types';
 
-/*
-  Note: this is heavily inspired by https://github.com/leerob/leerob.io/blob/main/components/Tweet.js
-*/
-const Tweet = ({ tweet }: Props) => {
+/**
+ * Note: this is heavily inspired by https://github.com/leerob/leerob.io/blob/main/components/Tweet.js
+ */
+const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
   if (!tweet || !tweet.author) {
     return null;
   }
@@ -38,19 +39,18 @@ const Tweet = ({ tweet }: Props) => {
     referenced_tweets
   } = tweet;
 
-  const authorURL = 'https://twitter.com/' + author.username;
-  const likeURL = 'https://twitter.com/intent/like?tweet_id=' + id;
-  const retweetURL = 'https://twitter.com/intent/retweet?tweet_id=' + id;
-  const replyURL = 'https://twitter.com/intent/tweet?in_reply_to=' + id;
-  const tweetURL = 'https://twitter.com/' + author.username + '/status/' + id;
+  const authorURL = `https://twitter.com/${author.username}`;
+  const likeURL = `https://twitter.com/intent/like?tweet_id=${id}`;
+  const retweetURL = `https://twitter.com/intent/retweet?tweet_id=${id}`;
+  const replyURL = `https://twitter.com/intent/tweet?in_reply_to=${id}`;
+  const tweetURL = `https://twitter.com/${author.username}/status/${id}`;
   const createdAt = new Date(created_at);
 
   const formattedText = text
     .replace(/https:\/\/[\n\S]+/g, '')
     .replace('&amp;', '&');
   const quoteTweet =
-    referenced_tweets &&
-    referenced_tweets.find((t) => t.type === 'quoted');
+    referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
 
   return (
     <TweetWrapper>
@@ -71,7 +71,11 @@ const Tweet = ({ tweet }: Props) => {
           rel="noopener noreferrer"
         >
           <Text
-            css={{ marginBottom: 0, lineHeight: '1.5', display: 'flex' }}
+            css={{
+              marginBottom: 0,
+              lineHeight: '1.5',
+              display: 'flex'
+            }}
             title={author.name}
             variant="primary"
             weight="4"
@@ -80,7 +84,10 @@ const Tweet = ({ tweet }: Props) => {
             {author.verified && <VerifiedIcon outline={false} variant="none" />}
           </Text>
           <Text
-            css={{ marginBottom: 0, lineHeight: 'initial' }}
+            css={{
+              marginBottom: 0,
+              lineHeight: 'initial'
+            }}
             variant="tertiary"
             title={`@${author.username}`}
             size="2"
