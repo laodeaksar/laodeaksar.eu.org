@@ -9,6 +9,7 @@ import { Button } from '../Styles';
 
 export function TagList({ post }: { post: Post }) {
   const { date, slug, title, description } = post;
+  
   const [hasRead] = useIsArticleRead(slug);
 
   return (

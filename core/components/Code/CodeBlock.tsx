@@ -156,7 +156,7 @@ const Line = styled('div', {
     borderColor: 'var(--laodeaksar-colors-brand)'
   },
 
-  '&:hover': {
+  hover: {
     bc: 'var(--laodeaksar-colors-emphasis)'
   }
 });

@@ -1,6 +1,6 @@
-//import { groq } from "next-sanity";
+// import { groq } from "next-sanity";
 
-const postFields = `
+export const postFields = `
   _id,
   title,
   subtitle,
@@ -71,3 +71,11 @@ export const snippetBySlugQuery = `
   ${snippetFields}
 }
 `;
+
+/*{
+  "ids": {
+    "updated": select(delta::operation() == "update" => [^=_id], []),
+    "created": select(delta::operation() == "create" => [^=_id], []),
+    "deleted": select(delta::operation() == "delete" => [^=_id], []),
+  }
+}*/

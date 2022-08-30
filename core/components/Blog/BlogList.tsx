@@ -1,4 +1,4 @@
-import { Flex, Pill, Text } from '@laodeaksarr/design-system';
+import { Flex, formatDate, Pill, Text } from '@laodeaksarr/design-system';
 
 import useIsArticleRead from '~/hooks/useIsArticleRead';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
@@ -25,13 +25,18 @@ export function BlogList({ post }: { post: Post }) {
             marginBottom: 0
           }}
         >
-          {new Date(date).toLocaleDateString('en', {
+          {/*new Date(date).toLocaleDateString('en', {
+            year: '2-digit',
+            month: 'short'
+          })*/}
+          {formatDate(date, {
             year: '2-digit',
             month: 'short'
           })}
         </Text>
         <Text
           as="p"
+          truncate
           css={{
             textAlign: 'left',
             marginBottom: 0,
@@ -41,7 +46,6 @@ export function BlogList({ post }: { post: Post }) {
               maxWidth: '$full'
             }
           }}
-          truncate
         >
           {title}
         </Text>

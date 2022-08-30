@@ -1,7 +1,14 @@
 import { useSWRConfig } from 'swr';
 import { guestbook } from '@prisma/client';
 
-import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
+import {
+  Box,
+  Flex,
+  Grid,
+  Button,
+  Text,
+  formatDate
+} from '@laodeaksarr/design-system';
 
 import { ClickEvent } from '~/lib/types';
 
@@ -22,7 +29,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
   const handleDelete = async (e: ClickEvent) => {
     e.preventDefault();
 
-    await fetch('/api/guestbook/' + entry.id, {
+    await fetch(`/api/guestbook/${entry.id}`, {
       method: 'DELETE'
     });
     await mutate('/api/guestbook');
@@ -38,13 +45,18 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
         }
       }}
     >
-      <Text size={4} weight={3} css={{ marginBottom: 2 }} as="p">
+      <Text as="p" size={4} weight={3} css={{ marginBottom: 2 }}>
         {entry.created_by}
       </Text>
       <Flex css={{ marginBottom: 2 }}>{entry.body}</Flex>
       <Grid gapX={2} flow="column" align="center" justify="between" mt={3}>
-        <time>
-          {new Date(entry.updated_at).toLocaleDateString('en', {
+        <time dateTime={entry.updated_at.toISOString()}>
+          {/*new Date(entry.updated_at).toLocaleDateString('en', {
+            month: 'short',
+            day: '2-digit',
+            year: 'numeric'
+          })*/}
+          {formatDate(entry.updated_at.toISOString(), {
             month: 'short',
             day: '2-digit',
             year: 'numeric'
@@ -56,7 +68,11 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
               $$background: 'transparent !important',
               $$color: 'var(--laodeaksar-colors-typeface-tertiary)',
 
-              '&:hover': {
+              hocuv: {
+                $$border: 'var(--laodeaksar-colors-danger)',
+                $$color: 'var(--laodeaksar-colors-danger)'
+              }
+              /*'&:hover': {
                 '&:not(:disabled)': {
                   $$border: 'var(--laodeaksar-colors-danger)',
                   $$color: 'var(--laodeaksar-colors-danger)'
@@ -66,7 +82,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
               '&:focus-visible': {
                 $$border: 'var(--laodeaksar-colors-danger)',
                 $$color: 'var(--laodeaksar-colors-danger)'
-              }
+              }*/
             }}
             onClick={handleDelete}
             variant="icon"

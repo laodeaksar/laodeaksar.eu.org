@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { useHasMounted } from '~/hooks/useHasMounted';
 import { Button, styled } from '@laodeaksarr/design-system';
+
+import { useHasMounted } from '~/hooks/useHasMounted';
 
 const ButtonUp = styled(Button, {
   zIndex: 2,
