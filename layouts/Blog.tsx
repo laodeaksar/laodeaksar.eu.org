@@ -19,7 +19,9 @@ import Layout from '~/layout';
 import Signature from './Signature';
 
 import config from 'config/seo_meta.json';
+import { getColor } from '~/lib/getColor';
 import generateSocialImage from '~/lib/OpenGraph';
+//import { urlForImage } from '~/lib/sanity';
 import { Post } from '~/lib/types';
 
 interface WebmentionBlogDataProps {
@@ -48,14 +50,12 @@ const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
   );
 };
 
-
 const BlogLayout = ({
   children,
   post
-}: {
+}: React.PropsWithChildren<{
   post: Post;
-  children: React.ReactNode;
-}) => {
+}>) => {
   const {
     date,
     updated,
@@ -143,7 +143,15 @@ const BlogLayout = ({
               <Hero.Info>
                 <Flex mb={3} wrap>
                   {tags.map((text) => (
-                    <Link key={text} href={'/tags/' + text} hastag discreet>
+                    <Link
+                      key={text}
+                      href={`/tags/${text}`}
+                      hastag
+                      discreet
+                      css={{
+                        linearGradient: getColor(text)
+                      }}
+                    >
                       {text}
                     </Link>
                   ))}
@@ -163,7 +171,9 @@ const BlogLayout = ({
                 </Flex>
               </Hero.Info>
 
-              {image && <Hero.Img className="u-photo" src={image.url} />}
+              {image && (
+                <Hero.Img className="u-photo" src={image.url} />
+              )}
             </Hero>
             <TableOfContent ids={ids} />
             <Box

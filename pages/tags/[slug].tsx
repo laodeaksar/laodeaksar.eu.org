@@ -8,9 +8,9 @@ import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
 
-import tagColors from '~/lib/tagColor';
+import {getColor} from '~/lib/getColor';
 import { getClient, sanityClient } from '~/lib/sanity-server';
-import { postSlugsQuery, indexQuery } from '~/lib/queries';
+import { postSlugsQuery, tagsQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
 
 let year = 0;
@@ -19,8 +19,6 @@ const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
   posts = [],
   currentTag
 }) => {
-  // @ts-ignore
-  const { bg, name } = { ...tagColors[currentTag], ...currentTag };
   const title = `Posts list for ${currentTag} tags`;
 
   return (
@@ -31,7 +29,7 @@ const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
           <H2
             gradient
             css={{
-              backgroundImage: bg!,
+              linearGradient: getColor(currentTag),
               textTransform: 'capitalize'
             }}
           >
@@ -92,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false
 }) => {
-  const posts = await getClient(preview).fetch<Post[]>(indexQuery);
+  const posts = await getClient(preview).fetch<Post[]>(tagsQuery);
 
   return {
     props: {

@@ -1,4 +1,7 @@
+import React from 'react';
+import type { NextPage } from 'next';
 import Image from 'next/image';
+import { MDXRemote } from 'next-mdx-remote';
 import { motion } from 'framer-motion';
 
 import {
@@ -15,10 +18,16 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
+import components from '~/components/MDX/MDXComponents';
 import SEO from '~/components/Seo';
 import Link from '~/components/Link';
 
 import Layout from '~/layout';
+
+import { gearQuery } from '~/lib/queries';
+import { getClient } from '~/lib/sanity-server';
+import { Gear } from '~/lib/types';
+import { mdxToHtml } from '~/lib/mdx';
 
 const Svg = styled('svg', {
   marginRight: '0.5rem',
@@ -95,7 +104,7 @@ const CategoryIcons = {
   )
 };
 
-const Uses = ({ gearByCategory }: any) => {
+const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
   const easing = [0.175, 0.85, 0.42, 0.96];
 
   return (
@@ -146,7 +155,7 @@ const Uses = ({ gearByCategory }: any) => {
                 key={category}
               >
                 <Flex css={{ marginBottom: '$3' }}>
-                  {CategoryIcons[category]}
+                  {(CategoryIcons as any)[category]}
                   <H2
                     css={{
                       fontSize: '1.875rem',
@@ -159,9 +168,23 @@ const Uses = ({ gearByCategory }: any) => {
                   </H2>
                 </Flex>
                 {category === 'Software' ? (
-                  <SoftwareItems items={items} />
+                  <SoftwareItems items={items}>
+                    <MDXRemote
+                      {...items.content}
+                      components={{
+                        ...components
+                      }}
+                    />
+                  </SoftwareItems>
                 ) : (
-                  <GeneralItems items={items} />
+                  <GeneralItems items={items}>
+                    <MDXRemote
+                      {...items.content}
+                      components={{
+                        ...components
+                      }}
+                    />
+                  </GeneralItems>
                 )}
               </Box>
             );
@@ -187,10 +210,16 @@ const Uses = ({ gearByCategory }: any) => {
 
 export default Uses;
 
-export async function getStaticProps() {
-  const gear = allGears;
+export const getStaticProps = async ({ preview = false }) => {
+  const { gear } = await getClient(preview).fetch(gearQuery);
 
-  const gearByCategory = gear?.reduce((accu, gearItem) => {
+    if (!gear) {
+      return { notFound: true };
+    }
+
+  const { html } = await mdxToHtml(gear.content);
+
+  const gearByCategory = gear?.reduce((accu: any, gearItem: any) => {
     if (accu[gearItem.category]) {
       accu[gearItem.category].items.push(gearItem);
     } else {
@@ -202,11 +231,17 @@ export async function getStaticProps() {
   }, {});
 
   return {
-    props: { gearByCategory }
+    props: {
+      gearByCategory,
+      content: html
+    }
   };
-}
+};
 
-function ProductLink({ children, href }: any) {
+function ProductLink({
+  children,
+  href
+}: React.PropsWithChildren<{ href?: string }>) {
   return (
     <Link
       style={{
@@ -223,26 +258,18 @@ function ProductLink({ children, href }: any) {
   );
 }
 
-function GeneralItems({ items }: any) {
+function GeneralItems({ items,children }: React.PropsWithChildren<{ items: Gear[] }>) {
   return (
     <Grid as="ul" gapY={3} css={{ margin: 0, padding: 0 }}>
       {items.map(
-        ({
-          id,
-          title,
-          image,
-          link,
-          affiliateLink,
-          affiliateLinkText,
-          body
-        }: any) => {
+        ({ _id, title, image, link, affiliateLink, affiliateLinkText }) => {
           return (
             <Box
               as={motion.li}
               css={{
                 listStyle: 'none'
               }}
-              key={id}
+              key={_id}
               initial="initial"
               whileHover="hover"
             >
@@ -297,7 +324,8 @@ function GeneralItems({ items }: any) {
                         }
                       }}
                     >
-                      <img src={image?.url} alt={image?.title} />
+                      <Img src={image.url} alt={image.alt} />
+                      {/*<img src={image?.url} alt={image?.title} />*/}
                       <Flex
                         justifyContent="center"
                         css={{
@@ -375,8 +403,9 @@ function GeneralItems({ items }: any) {
                           }
                         }
                       }}
-                      dangerouslySetInnerHTML={{ __html: body.html }}
-                    />
+                    >
+                      <>{children}</>
+                    </Box>
                     {link && (
                       <ProductLink href={link}>Product Details</ProductLink>
                     )}
@@ -419,17 +448,17 @@ function GeneralItems({ items }: any) {
   );
 }
 
-function SoftwareItems({ items }: any) {
+function SoftwareItems({ items,children }: React.PropsWithChildren<{ items: Gear[] }>) {
   return (
     <Grid as="ul" gap={6} css={{ margin: 0, padding: 0 }}>
-      {items?.map(({ id, title, image, link, body }: any) => {
+      {items?.map(({ _id, title, image, link }) => {
         return (
           <Box
             as={motion.li}
             css={{
               listStyle: 'none'
             }}
-            key={id}
+            key={_id}
             initial="initial"
             whileHover="hover"
           >
@@ -510,8 +539,9 @@ function SoftwareItems({ items }: any) {
                       }
                     }
                   }}
-                  dangerouslySetInnerHTML={{ __html: body.html }}
-                />
+                >
+                  <>{children}</>
+                </Box>
                 <ProductLink href={link}>Homepage</ProductLink>
               </Box>
             </Flex>

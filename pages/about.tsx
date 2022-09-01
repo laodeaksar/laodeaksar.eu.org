@@ -15,102 +15,6 @@ import { Post } from '~/lib/types';
 import { getClient } from '~/lib/sanity-server';
 import { indexQuery } from '~/lib/queries';
 
-const styles = {
-  pointsStyle: css({
-    position: 'absolute',
-    top: '0',
-    right: '-2rem',
-    display: 'none',
-    marginTop: '-1rem',
-
-    '@lg': {
-      display: 'block'
-    }
-  })(),
-  none: css({
-    flex: 'none'
-  })(),
-  authorImage: css({
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    bottom: '0',
-    left: '0',
-    objectFit: 'cover',
-    objectPosition: 'center',
-    size: '$full',
-    borderRadius: '$2',
-    boxShadow: 'var(--laodeaksar-shadow-2)',
-
-    '@lg': {
-      position: 'static',
-      height: 'auto'
-    }
-  })()
-};
-
-function PointsPattern() {
-  return (
-    <svg
-      className={styles.pointsStyle}
-      width="404"
-      height="384"
-      fill="none"
-      viewBox="0 0 404 384"
-    >
-      <defs>
-        <pattern
-          id="de316486-4a29-4312-bdfc-fbce2132a2c1"
-          x="0"
-          y="0"
-          width="20"
-          height="20"
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width="4"
-            height="4"
-            fill="var(--laodeaksar-colors-typeface-tertiary)"
-          />
-        </pattern>
-      </defs>
-      <rect
-        width="404"
-        height="384"
-        fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
-      />
-    </svg>
-  );
-}
-
-function CameraIcon() {
-  return (
-    <svg
-      className={styles.none}
-      width="18"
-      height="18"
-      xmlns="http:www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-      fill="var(--laodeaksar-colors-typeface-primary)"
-    >
-      <path
-        fillRule="evenodd"
-        d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
-        clipRule="evenodd"
-      />
-    </svg>
-  );
-}
-
-function getBirthdayInSecond() {
-  const now = new Date();
-  const dob = new Date(1995, 12, 20, 15, 30, 0);
-
-  return Math.round(((now as any) - dob.getTime()) / 1000);
-}
-
 const About: NextPage<any> = ({ postsCount, initialAge }) => {
   const [age, setAge] = React.useState(initialAge);
   const ageInYears = React.useMemo(() => Math.floor(age / 31536000), [age]);
@@ -118,11 +22,13 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
 
   React.useEffect(() => {
     mounted.current = true;
+
     const id = setInterval(() => {
       if (mounted.current) {
         setAge(getBirthdayInSecond());
       }
     }, 1000);
+    
     return () => {
       mounted.current = false;
       clearInterval(id);
@@ -324,3 +230,100 @@ export const getStaticProps = async ({ preview = false }) => {
     }
   };
 };
+
+function getBirthdayInSecond() {
+  const now = new Date();
+  const dob = new Date(1995, 12, 20, 15, 30, 0);
+
+  return Math.round(((now as any) - dob.getTime()) / 1000);
+}
+
+const styles = {
+  pointsStyle: css({
+    position: 'absolute',
+    top: '0',
+    right: '-2rem',
+    display: 'none',
+    marginTop: '-1rem',
+
+    '@lg': {
+      display: 'block'
+    }
+  })(),
+  none: css({
+    flex: 'none'
+  })(),
+  authorImage: css({
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    bottom: '0',
+    left: '0',
+    objectFit: 'cover',
+    objectPosition: 'center',
+    size: '$full',
+    borderRadius: '$2',
+    boxShadow: 'var(--laodeaksar-shadow-2)',
+
+    '@lg': {
+      position: 'static',
+      height: 'auto'
+    }
+  })()
+};
+
+function PointsPattern() {
+  return (
+    <svg
+      className={styles.pointsStyle}
+      width="404"
+      height="384"
+      fill="none"
+      viewBox="0 0 404 384"
+    >
+      <defs>
+        <pattern
+          id="de316486-4a29-4312-bdfc-fbce2132a2c1"
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            fill="var(--laodeaksar-colors-typeface-tertiary)"
+          />
+        </pattern>
+      </defs>
+      <rect
+        width="404"
+        height="384"
+        fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
+      />
+    </svg>
+  );
+}
+
+function CameraIcon() {
+  return (
+    <svg
+      className={styles.none}
+      width="18"
+      height="18"
+      xmlns="http:www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill="var(--laodeaksar-colors-typeface-primary)"
+    >
+      <path
+        fillRule="evenodd"
+        d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+

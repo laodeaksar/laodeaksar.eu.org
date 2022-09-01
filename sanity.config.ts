@@ -1,6 +1,12 @@
 import { createConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { markdownSchema } from 'sanity-plugin-markdown';
+//import { visionTool } from '@sanity/vision';
+
+/*visionTool({
+  defaultApiVersion: "2021-03-25",
+  defaultDataset: "production",
+}),*/
 
 export default createConfig({
   name: 'default',
@@ -118,6 +124,56 @@ export default createConfig({
             name: 'language',
             title: 'Language',
             type: 'string'
+          }
+        ]
+      },
+      {
+        name: 'gear',
+        type: 'document',
+        title: 'Gear',
+        fields: [
+          {
+            name: 'title',
+            title: 'Title',
+            type: 'string'
+          },
+          {
+            name: 'category',
+            title: 'Category',
+            type: 'string'
+          },
+          {
+            name: 'content',
+            title: 'Content',
+            type: 'text'
+          },
+          {
+            name: 'link',
+            title: 'Link',
+            type: 'url',
+            validation: (Rule) =>
+              Rule.uri({
+                scheme: ['http', 'https']
+              })
+          },
+          {
+            name: 'affiliateLink',
+            title: 'Affiliate Link',
+            type: 'url',
+            validation: (Rule) =>
+              Rule.uri({
+                scheme: ['http', 'https']
+              })
+          },
+          {
+            name: 'affiliateLinkText',
+            title: 'Affiliate Link Text',
+            type: 'string'
+          },
+          {
+            name: 'image',
+            title: 'Image',
+            type: 'image'
           }
         ]
       }

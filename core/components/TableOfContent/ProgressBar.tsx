@@ -6,7 +6,7 @@ import { ProgressBarWrapper } from './Styles';
 import { Box } from '@laodeaksarr/design-system';
 
 const ProgressBar = ({ progress }: { progress: number }) => {
-  const [visibility, setVisibility] = React.useState(true);
+  const [visibility, setVisibility] = React.useState<boolean>(true);
   const shouldReduceMotion = useReducedMotion();
 
   const progressBarWrapperVariants = {

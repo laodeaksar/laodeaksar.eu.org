@@ -1,45 +1,34 @@
-// import { loader } from '~/lib/next-image-loader'
-import NextImage from 'next/image';
+import React from 'react';
+import NextImage, { type ImageProps } from 'next/image';
 
-import { Box, Text } from '@laodeaksarr/design-system';
+import { Box, css, Text } from '@laodeaksarr/design-system';
 
 interface Props {
-  src: string; // | StaticImageData;
-  alt?: string;
-  className?: string;
+  figcaption?: boolean;
   title?: string;
-  height: string;
-  width: string;
-  placeholder?: 'blur' | 'empty';
-  'placeholder-data'?: string;
-  'is-remote'?: boolean | string;
+  remote?: boolean | string;
   shadow?: boolean;
   rounded?: boolean;
 }
 
 export const Image = ({
-  src,
-  alt,
-  height,
-  width,
-  className,
-  placeholder,
-  'placeholder-data': placeholderData,
+  figcaption,
   shadow,
   rounded,
-  'is-remote': isRemote
-}: Props) => {
-  const classNameList = className;
+  remote,
+  ...props
+}: ImageProps & Props) => {
+  const [loading, setLoading] = React.useState(true);
+
   return (
     <Box
       as="figure"
-      className={classNameList}
       css={{
         position: 'relative',
         padding: 0,
         mx: 0,
-        width: isRemote ? '100%' : undefined,
-        height: isRemote ? '468px' : undefined
+        width: remote ? '100%' : undefined,
+        height: remote ? '468px' : undefined
       }}
       my="6"
     >
@@ -51,35 +40,47 @@ export const Image = ({
         }}
       >
         <NextImage
-          src={src}
-          alt={alt}
-          layout={!isRemote ? 'responsive' : 'fill'}
-          width={width}
-          height={height}
-          placeholder={placeholderData ? 'blur' : placeholder}
-          blurDataURL={placeholderData ? placeholderData : undefined}
-          objectFit={isRemote ? 'cover' : undefined}
+          {...props}
+          layout={!remote ? 'responsive' : 'fill'}
+          placeholder="blur"
+          objectFit={remote ? 'cover' : undefined}
+          alt={props.alt}
+          className={`${styles.img} ${loading ? styles.imgBlur : null}`}
+          onLoadingComplete={() => setLoading(false)}
         />
-        <Text
-          as="figcaption"
-          css={{
-            fontStyle: 'italic',
-            textAlign: 'center',
-            lineHeight: '1.5',
-            mt: '$2',
-            position: isRemote ? 'absolute' : undefined,
-            bottom: isRemote ? -5 : undefined,
-            width: isRemote ? '100%' : undefined
-          }}
-          size="1"
-          variant="tertiary"
-          weight="3"
-        >
-          {alt}
-        </Text>
+        {figcaption && (
+          <Text
+            as="figcaption"
+            css={{
+              fontStyle: 'italic',
+              textAlign: 'center',
+              lineHeight: '1.5',
+              mt: '$2',
+              position: remote ? 'absolute' : undefined,
+              bottom: remote ? -5 : undefined,
+              width: remote ? '100%' : undefined
+            }}
+            size="1"
+            variant="tertiary"
+            weight="3"
+          >
+            {props.alt}
+          </Text>
+        )}
       </Box>
     </Box>
   );
 };
 
 export default Image;
+
+const styles = {
+  img: css({
+    transitionDuration: '0.5s',
+    transitionTimingFunction: 'ease-in-out'
+  })(),
+  imgBlur: css({
+    willChange: 'transform',
+    transform: 'scale(1.05)'
+  })()
+};

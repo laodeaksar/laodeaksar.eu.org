@@ -39,7 +39,7 @@ export const postBySlugQuery = `
 
 export const postUpdatedQuery = `*[_type == "post" && _id == $id].slug.current`;
 
-const snippetFields = `
+export const snippetFields = `
   _id,
   title,
   language,
@@ -72,10 +72,24 @@ export const snippetBySlugQuery = `
 }
 `;
 
-/*{
-  "ids": {
-    "updated": select(delta::operation() == "update" => [^=_id], []),
-    "created": select(delta::operation() == "create" => [^=_id], []),
-    "deleted": select(delta::operation() == "delete" => [^=_id], []),
-  }
-}*/
+export const tagsQuery = `
+*[_type == "post" && $keyword in tags[].label] {
+  ${postFields}
+}
+`;
+
+const gearFields = `
+  _id,
+  category,
+  image,
+  link,
+  affiliateLink,
+  affiliateLinkText,
+`;
+
+export const gearQuery = `
+"gear": *[_type == "gear"] | order(_updatedAt desc) [0] {
+  content,
+  ${gearFields}
+}`;
+

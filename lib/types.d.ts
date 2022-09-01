@@ -20,11 +20,24 @@ export type Post = {
   tweets: any[];
 };
 
+type GearCategory = 'Hardware' | 'Software' | 'Office' | 'Lifestyle';
+
+export type Gear = {
+  _id: string;
+  content: MDXRemoteSerializeResult;
+  title: string;
+  category: GearCategory;
+  image: any;
+  link?: string;
+  affiliateLink?: string;
+  affiliateLinkText?: string;
+};
+
 export type Snippet = {
   _id: string;
   date: string;
   language: string;
-  snippetImage: string;
+  logo: string;
   slug: string;
   content: MDXRemoteSerializeResult;
   title: string;
