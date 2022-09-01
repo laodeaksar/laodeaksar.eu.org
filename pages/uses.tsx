@@ -211,7 +211,7 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
 export default Uses;
 
 export const getStaticProps = async ({ preview = false }) => {
-  const { gear } = await getClient(preview).fetch(gearQuery);
+  const gear = await getClient(preview).fetch(gearQuery);
 
     if (!gear) {
       return { notFound: true };

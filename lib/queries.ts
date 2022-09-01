@@ -80,6 +80,7 @@ export const tagsQuery = `
 
 const gearFields = `
   _id,
+  content,
   category,
   image,
   link,
@@ -88,8 +89,7 @@ const gearFields = `
 `;
 
 export const gearQuery = `
-"gear": *[_type == "gear"] | order(_updatedAt desc) [0] {
-  content,
+*[_type == "gear"] | order(_updatedAt desc) {
   ${gearFields}
 }`;
 
