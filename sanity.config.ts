@@ -145,7 +145,7 @@ export default createConfig({
           {
             name: 'content',
             title: 'Content',
-            type: 'text'
+            type: 'markdown'
           },
           {
             name: 'link',
