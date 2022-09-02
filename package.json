@@ -19,7 +19,6 @@
     "@sanity/vision": "3.0.0-dev-preview.15",
     "@sanity/webhook": "^2.0.0",
     "algoliasearch": "^4.14.2",
-    "cloudinary": "^1.31.0",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.0.0",
     "lunr": "^2.3.9",
