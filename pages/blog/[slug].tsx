@@ -12,7 +12,7 @@ import { sanityClient, getClient } from '~/lib/sanity-server';
 import { mdxToHtml } from '~/lib/mdx';
 import { Post } from '~/lib/types';
 
-const BlogPosts: NextPage<{ post: Post }> = ({ post }) => {
+const PostDetail: NextPage<{ post: Post }> = ({ post }) => {
   const StaticTweet = ({ id }: any) => {
     const tweet = post.tweets.find((tweet) => tweet.id === id);
     return <Tweet {...tweet} />;
@@ -33,7 +33,7 @@ const BlogPosts: NextPage<{ post: Post }> = ({ post }) => {
   );
 };
 
-export default BlogPosts;
+export default PostDetail;
 
 export const getStaticPaths = async () => {
   const paths = await sanityClient.fetch(postSlugsQuery);

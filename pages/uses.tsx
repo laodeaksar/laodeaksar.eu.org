@@ -1,7 +1,6 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { MDXRemote } from 'next-mdx-remote';
 import { motion } from 'framer-motion';
 
 import {
@@ -18,16 +17,13 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
-import components from '~/components/MDX/MDXComponents';
 import SEO from '~/components/Seo';
 import Link from '~/components/Link';
 
 import Layout from '~/layout';
 
-import { gearQuery } from '~/lib/queries';
-import { getClient } from '~/lib/sanity-server';
 import { Gear } from '~/lib/types';
-import { mdxToHtml } from '~/lib/mdx';
+import ContentfulGears from '~/lib/contentful';
 
 const Svg = styled('svg', {
   marginRight: '0.5rem',
@@ -168,6 +164,11 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
                   </H2>
                 </Flex>
                 {category === 'Software' ? (
+                  <SoftwareItems items={items} />
+                ) : (
+                  <GeneralItems items={items} />
+                )}
+                {/*category === 'Software' ? (
                   <SoftwareItems items={items}>
                     <MDXRemote
                       {...items.content}
@@ -185,7 +186,7 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
                       }}
                     />
                   </GeneralItems>
-                )}
+                    )*/}
               </Box>
             );
           })}
@@ -210,10 +211,8 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
 
 export default Uses;
 
-export const getStaticProps = async ({ preview = false }) => {
-  const { gear } = await getClient(preview).fetch(gearQuery);
-
-  const { html } = await mdxToHtml(gear.content);
+export const getStaticProps = async () => {
+  const gear = await ContentfulGears.getAll();
 
   const gearByCategory = gear?.reduce((accu: any, gearItem: any) => {
     if (accu[gearItem.category]) {
@@ -228,8 +227,7 @@ export const getStaticProps = async ({ preview = false }) => {
 
   return {
     props: {
-      gearByCategory,
-      content: html
+      gearByCategory
     }
   };
 };
@@ -254,18 +252,26 @@ function ProductLink({
   );
 }
 
-function GeneralItems({ items,children }: React.PropsWithChildren<{ items: Gear[] }>) {
+function GeneralItems({ items }: { items: Gear[] }) {
   return (
     <Grid as="ul" gapY={3} css={{ margin: 0, padding: 0 }}>
       {items.map(
-        ({ _id, title, image, link, affiliateLink, affiliateLinkText }) => {
+        ({
+          id,
+          description,
+          title,
+          image,
+          link,
+          affiliateLink,
+          affiliateLinkText
+        }) => {
           return (
             <Box
               as={motion.li}
               css={{
                 listStyle: 'none'
               }}
-              key={_id}
+              key={id}
               initial="initial"
               whileHover="hover"
             >
@@ -320,8 +326,7 @@ function GeneralItems({ items,children }: React.PropsWithChildren<{ items: Gear[
                         }
                       }}
                     >
-                      <Img src={image.url} alt={image.alt} />
-                      {/*<img src={image?.url} alt={image?.title} />*/}
+                      <Img src={image?.url} alt={image?.title} layout="fill" />
                       <Flex
                         justifyContent="center"
                         css={{
@@ -400,7 +405,7 @@ function GeneralItems({ items,children }: React.PropsWithChildren<{ items: Gear[
                         }
                       }}
                     >
-                      <>{children}</>
+                      {description}
                     </Box>
                     {link && (
                       <ProductLink href={link}>Product Details</ProductLink>
@@ -444,17 +449,17 @@ function GeneralItems({ items,children }: React.PropsWithChildren<{ items: Gear[
   );
 }
 
-function SoftwareItems({ items,children }: React.PropsWithChildren<{ items: Gear[] }>) {
+function SoftwareItems({ items }: { items: Gear[] }) {
   return (
     <Grid as="ul" gap={6} css={{ margin: 0, padding: 0 }}>
-      {items?.map(({ _id, title, image, link }) => {
+      {items?.map(({ id, description, title, image, link }) => {
         return (
           <Box
             as={motion.li}
             css={{
               listStyle: 'none'
             }}
-            key={_id}
+            key={id}
             initial="initial"
             whileHover="hover"
           >
@@ -536,7 +541,7 @@ function SoftwareItems({ items,children }: React.PropsWithChildren<{ items: Gear
                     }
                   }}
                 >
-                  <>{children}</>
+                  {description}
                 </Box>
                 <ProductLink href={link}>Homepage</ProductLink>
               </Box>

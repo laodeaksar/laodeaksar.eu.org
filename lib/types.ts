@@ -23,11 +23,15 @@ export type Post = {
 type GearCategory = 'Hardware' | 'Software' | 'Office' | 'Lifestyle';
 
 export type Gear = {
-  _id: string;
-  content: MDXRemoteSerializeResult;
+  id: string;
+  // content: MDXRemoteSerializeResult;
+  description: any;
   title: string;
   category: GearCategory;
-  image: any;
+  image: {
+    url: string;
+    title: string;
+  };
   link?: string;
   affiliateLink?: string;
   affiliateLinkText?: string;

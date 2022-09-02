@@ -6,9 +6,9 @@ import Code from '~/components/Code';
 
 import SnippetLayout from '~/layouts/Snippet';
 
+import { mdxToHtml } from '~/lib/mdx';
 import { snippetsQuery, snippetSlugsQuery } from '~/lib/queries';
 import { sanityClient, getClient } from '~/lib/sanity-server';
-import { mdxToHtml } from '~/lib/mdx';
 import { Snippet } from '~/lib/types';
 
 const WaveAnimationSandpack = dynamic(

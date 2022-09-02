@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
 
-
 import { Box, Grid, H2, Text } from '@laodeaksarr/design-system';
 
 import SEO from '~/components/Seo';
@@ -8,7 +7,7 @@ import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
 
-import {getColor} from '~/lib/getColor';
+import { getColor } from '~/lib/getColor';
 import { getClient, sanityClient } from '~/lib/sanity-server';
 import { postSlugsQuery, tagsQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
@@ -90,7 +89,7 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false
 }) => {
-  const posts = await getClient(preview).fetch<Post[]>(tagsQuery,{
+  const posts = await getClient(preview).fetch<Post[]>(tagsQuery, {
     keyword: params?.slug
   });
 

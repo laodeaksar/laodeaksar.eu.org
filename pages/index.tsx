@@ -211,7 +211,10 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
 
 export const getStaticProps = async ({ preview = false }) => {
   const posts = await getClient(preview).fetch<Post[]>(indexQuery);
-  return { props: { posts } };
+
+  return {
+    props: { posts }
+  };
 };
 
 export default IndexPage;

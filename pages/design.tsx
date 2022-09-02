@@ -21,7 +21,7 @@ import {
   Switch,
   TextInput,
   TextArea,
-  // Tooltip,
+  Tooltip,
   Card,
   Text,
   EM,
@@ -46,7 +46,7 @@ import Layout from '~/layout';
 import { getTweets } from '~/lib/tweets';
 import type { TransformedTweet } from '~/lib/types';
 
-const Tooltip = (props: any) => <>{props.children}</>;
+// const Tooltip = (props: any) => <>{props.children}</>;
 
 const SandpackExample = dynamic(
   () => import('~/components/MDX/WaveAnimation/Sandpack')
@@ -95,13 +95,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
         css={{ paddingTop: '64px' }}
       >
         <Box as="section">
-          <H1
-            css={{
-              marginBottom: '0px'
-            }}
-          >
-            Components / Design System
-          </H1>
+          <H1 css={{ marginBottom: '0px' }}>Components / Design System</H1>
           <HR />
           <Flex justifyContent="space-between">
             <Pill variant="warning">Work In Progress</Pill>
@@ -294,9 +288,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
               <Flex
                 alignItems="center"
                 justifyContent="center"
-                css={{
-                  padding: '$7'
-                }}
+                css={{ padding: '$7' }}
               >
                 Card With custom Body
               </Flex>
@@ -488,7 +480,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
           >
             <Card
               css={{
-                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
+                '--shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={0}
             >
@@ -500,7 +492,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
             </Card>
             <Card
               css={{
-                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
+                '--shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={1}
             >
@@ -512,7 +504,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
             </Card>
             <Card
               css={{
-                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
+                '--shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={2}
             >
@@ -524,7 +516,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
             </Card>
             <Card
               css={{
-                '$$shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
+                '--shadow-color': dark ? '222deg 39% 5%' : '222deg 39% 80%'
               }}
               depth={3}
             >
@@ -1060,7 +1052,9 @@ export default Design;
 export async function getStaticProps() {
   const tweets = await getTweets(['1386013361809281024']);
 
-  return { props: { tweets } };
+  return {
+    props: { tweets }
+  };
 }
 
 const HR = styled('hr', {

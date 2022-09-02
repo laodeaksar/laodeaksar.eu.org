@@ -12,7 +12,7 @@ import { indexQuery } from '~/lib/queries';
 import { getClient } from '~/lib/sanity-server';
 import { Post } from '~/lib/types';
 
-const BlogPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
+const PostPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <Layout footer header headerProps={{ offsetHeight: 256 }}>
       <SEO title="Blog Page" />
@@ -36,4 +36,4 @@ export const getStaticProps = async ({ preview = false }) => {
   };
 };
 
-export default BlogPage;
+export default PostPage;
