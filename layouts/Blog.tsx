@@ -21,7 +21,7 @@ import Signature from './Signature';
 import config from 'config/seo_meta.json';
 import { getColor } from '~/lib/getColor';
 import generateSocialImage from '~/lib/OpenGraph';
-//import { urlForImage } from '~/lib/sanity';
+import { urlForImage } from '~/lib/sanity';
 import { Post } from '~/lib/types';
 
 interface WebmentionBlogDataProps {
@@ -172,7 +172,7 @@ const BlogLayout = ({
               </Hero.Info>
 
               {image && (
-                <Hero.Img className="u-photo" src={image.url} />
+                <Hero.Img className="u-photo" src={urlForImage(image)} />
               )}
             </Hero>
             <TableOfContent ids={ids} />

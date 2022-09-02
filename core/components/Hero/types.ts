@@ -1,4 +1,5 @@
+
 export interface HeroImgProps {
-  src: string;
+  src: any;
   className: string;
 }

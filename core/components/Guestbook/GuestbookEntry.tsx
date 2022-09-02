@@ -1,14 +1,7 @@
 import { useSWRConfig } from 'swr';
 import { guestbook } from '@prisma/client';
 
-import {
-  Box,
-  Flex,
-  Grid,
-  Button,
-  Text,
-  formatDate
-} from '@laodeaksarr/design-system';
+import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
 
 import { ClickEvent } from '~/lib/types';
 
@@ -51,12 +44,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
       <Flex css={{ marginBottom: 2 }}>{entry.body}</Flex>
       <Grid gapX={2} flow="column" align="center" justify="between" mt={3}>
         <time dateTime={entry.updated_at.toISOString()}>
-          {/*new Date(entry.updated_at).toLocaleDateString('en', {
-            month: 'short',
-            day: '2-digit',
-            year: 'numeric'
-          })*/}
-          {formatDate(entry.updated_at.toISOString(), {
+          {new Date(entry.updated_at).toLocaleDateString('en', {
             month: 'short',
             day: '2-digit',
             year: 'numeric'

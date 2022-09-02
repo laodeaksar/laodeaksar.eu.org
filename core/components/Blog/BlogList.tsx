@@ -1,10 +1,11 @@
-import { Flex, formatDate, Pill, Text } from '@laodeaksarr/design-system';
+import { Flex, Pill, Text } from '@laodeaksarr/design-system';
 
 import useIsArticleRead from '~/hooks/useIsArticleRead';
+
 import { handleArticleClicked } from '~/lib/handleArticleClick';
+import { Post } from '~/lib/types';
 
 import { Block, Button } from './Styles';
-import { Post } from '~/lib/types';
 
 export function BlogList({ post }: { post: Post }) {
   const { date, slug, title } = post;
@@ -25,11 +26,7 @@ export function BlogList({ post }: { post: Post }) {
             marginBottom: 0
           }}
         >
-          {/*new Date(date).toLocaleDateString('en', {
-            year: '2-digit',
-            month: 'short'
-          })*/}
-          {formatDate(date, {
+          {new Date(date).toLocaleDateString('en', {
             year: '2-digit',
             month: 'short'
           })}

@@ -38,7 +38,7 @@ const HeroImgWrapper = styled('div', {
 
   '@media (max-width: 700px)': {
     borderRadius: '0px',
-    width: '$ws',
+    width: '$w-screen',
     height: '250px',
     left: '50%',
     right: '50%',
@@ -46,19 +46,23 @@ const HeroImgWrapper = styled('div', {
   }
 });
 
-const HeroImg = (props: HeroImgProps) => (
-  <HeroImgWrapper>
-    <Image
-      className={props.className}
-      src={props.src}
-      alt="cover"
-      layout="fill"
-      objectFit="cover"
-      /** loader={loader} */
-      priority
-    />
-  </HeroImgWrapper>
-);
+const HeroImg = (props: HeroImgProps) => {
+  const { src, className } = props;
+
+  return (
+    <HeroImgWrapper>
+      <Image
+        className={className}
+        src={src}
+        alt="cover"
+        layout="fill"
+        objectFit="cover"
+        /** loader={loader} */
+        priority
+      />
+    </HeroImgWrapper>
+  );
+};
 
 class Hero extends React.Component<{
   id?: string;

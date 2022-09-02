@@ -89,7 +89,9 @@ const gearFields = `
 `;
 
 export const gearQuery = `
-*[_type == "gear"] | order(_updatedAt desc) {
-  ${gearFields}
+{
+  "gear": *[_type == "gear"] | order(_updatedAt desc) [0] {
+    ${gearFields}
+  }
 }`;
 

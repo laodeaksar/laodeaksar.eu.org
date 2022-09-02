@@ -52,7 +52,7 @@ export default createConfig({
           {
             name: 'cover',
             title: 'Cover',
-            type: 'image'
+            type: 'image',
           },
           {
             name: 'date',
@@ -151,19 +151,11 @@ export default createConfig({
             name: 'link',
             title: 'Link',
             type: 'url',
-            validation: (Rule) =>
-              Rule.uri({
-                scheme: ['http', 'https']
-              })
           },
           {
             name: 'affiliateLink',
             title: 'Affiliate Link',
             type: 'url',
-            validation: (Rule) =>
-              Rule.uri({
-                scheme: ['http', 'https']
-              })
           },
           {
             name: 'affiliateLinkText',
@@ -172,8 +164,28 @@ export default createConfig({
           },
           {
             name: 'image',
-            title: 'Image',
-            type: 'image'
+            title: 'Image URL',
+            type: 'image',
+          }
+        ]
+      },
+      {
+        name: 'tag',
+        type: 'document',
+        title: 'Tag',
+        fields: [
+          {
+            name: 'name',
+            title: 'Name',
+            type: 'string'
+          },
+          {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'name'
+            }
           }
         ]
       }

@@ -90,7 +90,9 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false
 }) => {
-  const posts = await getClient(preview).fetch<Post[]>(tagsQuery);
+  const posts = await getClient(preview).fetch<Post[]>(tagsQuery,{
+    keyword: params?.slug
+  });
 
   return {
     props: {
