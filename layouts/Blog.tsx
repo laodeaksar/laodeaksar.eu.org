@@ -13,8 +13,8 @@ import Hero from '~/components/Hero';
 import Link from '~/components/Link';
 import TableOfContent from '~/components/TableOfContent';
 import { WebmentionCount } from '~/components/Webmentions';
-import siteMetadata from '~/components/Seo/siteMetadata';
 
+import siteMetadata from '~/layout/siteMetadata';
 import Layout from '~/layout';
 import Signature from './Signature';
 
