@@ -1,5 +1,6 @@
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
+import { BackToTop } from '~/components/Blog/BackToTop';
 
 import { Wrapper } from './Styles';
 import type { LayoutProps } from './types';
@@ -12,6 +13,7 @@ const Layout = (props: LayoutProps) => {
       {header && <Header {...headerProps} />}
       {children}
       {footer && <Footer />}
+      <BackToTop />
     </Wrapper>
   );
 };

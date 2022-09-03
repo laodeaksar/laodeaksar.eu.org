@@ -19,7 +19,7 @@ import Layout from '~/layout';
 import Signature from './Signature';
 
 import config from 'config/seo_meta.json';
-import { getColor } from '~/lib/getColor';
+//import { getColor } from '~/lib/getColor';
 import generateSocialImage from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity';
 import { Post } from '~/lib/types';
@@ -53,9 +53,7 @@ const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
 const BlogLayout = ({
   children,
   post
-}: React.PropsWithChildren<{
-  post: Post;
-}>) => {
+}: React.PropsWithChildren<{ post: Post }>) => {
   const {
     date,
     updated,
@@ -95,11 +93,9 @@ const BlogLayout = ({
     }, 500);
   }, [slug]);
 
-  const socialImageConf = generateSocialImage({
+  const socialImage = generateSocialImage({
     title,
-    underlayImage: image?.url?.slice(image.url.lastIndexOf('/') + 1),
-    cloudName: 'laodeaksar',
-    imagePublicID: 'og_social_large.png'
+    underlayImage: image?.url
   });
 
   // const keywords = tags.join(", ");
@@ -114,14 +110,12 @@ const BlogLayout = ({
           title: title,
           description: description,
           type: 'article',
-          images: [
-            {
-              url: socialImageConf,
-              width: '1200',
-              height: '630',
-              alt: title
-            }
-          ]
+          images: {
+            url: socialImage,
+            width: '1200',
+            height: '630',
+            alt: title
+          }
         }}
       />
       <article className="h-entry">
@@ -142,17 +136,17 @@ const BlogLayout = ({
               <Hero.Title className="p-name">{title}</Hero.Title>
               <Hero.Info>
                 <Flex mb={3} wrap>
-                  {tags.map((text) => (
+                  {tags.map((tag) => (
                     <Link
-                      key={text}
-                      href={`/tags/${text}`}
+                      key={tag.name}
+                      href={`/tags/${tag.slug}`}
                       hastag
                       discreet
-                      css={{
-                        linearGradient: getColor(text)
-                      }}
+                      /*css={{
+                        linearGradient: getColor(tag.name)
+                      }}*/
                     >
-                      {text}
+                      {tag.name}
                     </Link>
                   ))}
                   <Text

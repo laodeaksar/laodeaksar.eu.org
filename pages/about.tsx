@@ -1,13 +1,20 @@
 import React from 'react';
-import Image from 'next/image';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import type { NextPage } from 'next';
 
-import { Box, css, Grid, Text, H1, Strong } from '@laodeaksarr/design-system';
+import {
+  Box,
+  Grid,
+  Text,
+  H1,
+  Strong,
+  styled
+} from '@laodeaksarr/design-system';
 
 import Link from '~/components/Link';
 import Newsletter from '~/components/Newsletter';
 import SEO from '~/components/Seo';
+import Image from '~/components/MDX/Image';
 
 import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
@@ -28,7 +35,7 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
         setAge(getBirthdayInSecond());
       }
     }, 1000);
-    
+
     return () => {
       mounted.current = false;
       clearInterval(id);
@@ -106,13 +113,7 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
                       }
                     }}
                   >
-                    <Image
-                      priority
-                      src={author}
-                      alt="Me"
-                      placeholder="blur"
-                      className={styles.authorImage}
-                    />
+                    <AuthorImage src={author} alt="Me" priority />
                     <figcaption
                       style={{
                         display: 'flex',
@@ -222,7 +223,7 @@ export default About;
 
 export const getStaticProps = async ({ preview = false }) => {
   const posts = await getClient(preview).fetch<Post[]>(indexQuery);
-  
+
   return {
     props: {
       postsCount: posts.length,
@@ -238,49 +239,43 @@ function getBirthdayInSecond() {
   return Math.round(((now as any) - dob.getTime()) / 1000);
 }
 
-const styles = {
-  pointsStyle: css({
-    position: 'absolute',
-    top: '0',
-    right: '-2rem',
-    display: 'none',
-    marginTop: '-1rem',
+const Patern = styled('svg', {
+  position: 'absolute',
+  top: '0',
+  right: '-2rem',
+  display: 'none',
+  marginTop: '-1rem',
 
-    '@lg': {
-      display: 'block'
-    }
-  })(),
-  none: css({
-    flex: 'none'
-  })(),
-  authorImage: css({
-    position: 'absolute',
-    top: '0',
-    right: '0',
-    bottom: '0',
-    left: '0',
-    objectFit: 'cover',
-    objectPosition: 'center',
-    size: '$full',
-    borderRadius: '$2',
-    boxShadow: 'var(--laodeaksar-shadow-2)',
+  '@lg': {
+    display: 'block'
+  }
+});
 
-    '@lg': {
-      position: 'static',
-      height: 'auto'
-    }
-  })()
-};
+const Camera = styled('svg', {
+  flex: 'none'
+});
+
+const AuthorImage = styled(Image, {
+  position: 'absolute',
+  top: '0',
+  right: '0',
+  bottom: '0',
+  left: '0',
+  objectFit: 'cover',
+  objectPosition: 'center',
+  size: '$full',
+  borderRadius: '$2',
+  boxShadow: 'var(--laodeaksar-shadow-2)',
+
+  '@lg': {
+    position: 'static',
+    height: 'auto'
+  }
+});
 
 function PointsPattern() {
   return (
-    <svg
-      className={styles.pointsStyle}
-      width="404"
-      height="384"
-      fill="none"
-      viewBox="0 0 404 384"
-    >
+    <Patern width="404" height="384" fill="none" viewBox="0 0 404 384">
       <defs>
         <pattern
           id="de316486-4a29-4312-bdfc-fbce2132a2c1"
@@ -304,14 +299,13 @@ function PointsPattern() {
         height="384"
         fill="url(#de316486-4a29-4312-bdfc-fbce2132a2c1)"
       />
-    </svg>
+    </Patern>
   );
 }
 
 function CameraIcon() {
   return (
-    <svg
-      className={styles.none}
+    <Camera
       width="18"
       height="18"
       xmlns="http:www.w3.org/2000/svg"
@@ -323,7 +317,6 @@ function CameraIcon() {
         d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
         clipRule="evenodd"
       />
-    </svg>
+    </Camera>
   );
 }
-

@@ -1,7 +1,8 @@
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { styled } from '@laodeaksarr/design-system';
+
+import Image from '~/components/MDX/Image';
 
 import type { RepliesProps, Reply } from './types';
 
@@ -11,6 +12,7 @@ const Replies = ({ replies }: RepliesProps) => {
     .reduce((acc: Record<string, Reply>, item: Reply) => {
       if (item.data?.author?.url && !acc[item.data.author.url]) {
         acc[item.data.author.url] = item;
+
         return acc;
       }
 

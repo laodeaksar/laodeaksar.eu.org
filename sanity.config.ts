@@ -52,7 +52,7 @@ export default createConfig({
           {
             name: 'cover',
             title: 'Cover',
-            type: 'image',
+            type: 'image'
           },
           {
             name: 'date',
@@ -78,7 +78,12 @@ export default createConfig({
             name: 'tags',
             title: 'Tags',
             type: 'array',
-            of: [{ type: 'string' }]
+            of: [
+              {
+                type: 'reference',
+                to: [{ type: 'tag' }]
+              }
+            ]
           },
           {
             name: 'updated',
@@ -124,48 +129,6 @@ export default createConfig({
             name: 'language',
             title: 'Language',
             type: 'string'
-          }
-        ]
-      },
-      {
-        name: 'gear',
-        type: 'document',
-        title: 'Gear',
-        fields: [
-          {
-            name: 'title',
-            title: 'Title',
-            type: 'string'
-          },
-          {
-            name: 'category',
-            title: 'Category',
-            type: 'string'
-          },
-          {
-            name: 'content',
-            title: 'Content',
-            type: 'markdown'
-          },
-          {
-            name: 'link',
-            title: 'Link',
-            type: 'url',
-          },
-          {
-            name: 'affiliateLink',
-            title: 'Affiliate Link',
-            type: 'url',
-          },
-          {
-            name: 'affiliateLinkText',
-            title: 'Affiliate Link Text',
-            type: 'string'
-          },
-          {
-            name: 'image',
-            title: 'Image URL',
-            type: 'image',
           }
         ]
       },

@@ -1,17 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Fragment, ReactNode } from 'react';
 
 import config from 'config/seo_meta.json';
-
-const baseUrl = 'https://laodeaksar.eu.org';
-
-interface OgImage {
-  url?: string;
-  width?: string;
-  height?: string;
-  alt?: string;
-}
 
 interface Props {
   title?: string;
@@ -25,53 +15,10 @@ interface Props {
     description?: string;
     site_name?: string;
     url?: string;
-    images?: OgImage[];
+    images?: { url?: string; width?: string; height?: string; alt?: string };
   };
-  children?: ReactNode;
+  children?: React.ReactNode;
 }
-
-const ogImage = ({ url, width, height, alt }: OgImage, index: number) => {
-  const imgUrl = baseUrl ? new URL(url!, baseUrl).toString() : url;
-
-  return (
-    <Fragment key={`og:image:${index}`}>
-      <meta
-        key={`og:image:url:${index}`}
-        property="og:image"
-        content={imgUrl}
-      />
-      <meta
-        key={`og:image:width:${index}`}
-        property="og:image:width"
-        content={width}
-      />
-      <meta
-        key={`og:image:height:${index}`}
-        property="og:image:height"
-        content={height}
-      />
-      <meta
-        key={`og:image:alt:${index}`}
-        property="og:image:alt"
-        content={alt}
-      />
-    </Fragment>
-  );
-};
-
-const twitterImage = ({ url }: OgImage, index: number) => {
-  const imgUrl = baseUrl ? new URL(url!, baseUrl).toString() : url;
-
-  return (
-    <Fragment key={`twitter:image:${index}`}>
-      <meta
-        key={`twitter:image:url:${index}`}
-        property="twitter:image"
-        content={imgUrl}
-      />
-    </Fragment>
-  );
-};
 
 const SEO = ({
   title,
@@ -127,9 +74,6 @@ const SEO = ({
       {openGraph?.locale && (
         <meta key="og:locale" property="og:locale" content={openGraph.locale} />
       )}
-      {openGraph?.images?.length
-        ? openGraph.images.map((img, index) => ogImage(img, index))
-        : ogImage(config.openGraph.images[0], 0)}
       {config.twitter.cardType && (
         <meta
           key="twitter:card"
@@ -157,9 +101,40 @@ const SEO = ({
         name="twitter:description"
         content={description || config.description}
       />
-      {openGraph?.images?.length
-        ? openGraph.images.map((img, index) => twitterImage(img, index))
-        : twitterImage(config.openGraph.images[0], 0)}
+      {openGraph?.images && (
+        <>
+          <meta
+            key="og:image:url"
+            property="og:image"
+            content={openGraph?.images?.url}
+          />
+          <meta
+            key="og:image:url"
+            property="og:image:secure_url"
+            content={openGraph?.images?.url}
+          />
+          <meta
+            key="og:image:width"
+            property="og:image:width"
+            content={openGraph?.images?.width}
+          />
+          <meta
+            key="og:image:height"
+            property="og:image:height"
+            content={openGraph.images.height}
+          />
+          <meta
+            key="og:image:alt"
+            property="og:image:alt"
+            content={openGraph.images.alt}
+          />
+          <meta
+            key="twitter:image:url"
+            property="twitter:image"
+            content={openGraph.images.url}
+          />
+        </>
+      )}
       <link rel="canonical" href={url} />
       <meta key="robots" name="robots" content={robots ?? 'follow, index'} />
       <meta

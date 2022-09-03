@@ -2,8 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
 
-import Link from '~/components/Link';
 import { Text } from '@laodeaksarr/design-system';
+
+import Link from '~/components/Link';
 
 import type { Props, Reply } from './types';
 

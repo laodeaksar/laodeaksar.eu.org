@@ -21,6 +21,7 @@ import type { Props } from './types';
 const Newsletter = (props: Props) => {
   const { large = false } = props;
 
+  const [email, setEmail] = React.useState('');
   const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
   const inputEl = React.useRef<HTMLInputElement | null>(null);
   //const { data } = useSWR<Subscribers>('/api/newsletter/subscribers', fetcher);
@@ -147,6 +148,8 @@ const Newsletter = (props: Props) => {
               type="email"
               placeholder="email@example.com"
               autoComplete="off"
+              onChange={(e) => setEmail(e.currentTarget.value)}
+              value={email}
               disabled={isLoading}
             />
             <Button

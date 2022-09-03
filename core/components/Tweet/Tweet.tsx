@@ -1,6 +1,7 @@
-import Image from 'next/image';
+import { Flex, formatDate, Text } from '@laodeaksarr/design-system';
 
-import { Anchor, Flex, formatDate, Text } from '@laodeaksarr/design-system';
+import Image from '~/components/MDX/Image';
+import Link from '~/components/Link';
 
 import type { TransformedTweet } from '~/lib/types';
 
@@ -71,14 +72,14 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
           rel="noopener noreferrer"
         >
           <Text
+            title={author.name}
+            variant="primary"
+            weight="4"
             css={{
               marginBottom: 0,
               lineHeight: '1.5',
               display: 'flex'
             }}
-            title={author.name}
-            variant="primary"
-            weight="4"
           >
             {author.name}
             {author.verified && <VerifiedIcon outline={false} variant="none" />}
@@ -95,25 +96,23 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
             @{author.username}
           </Text>
         </Name>
-        <Anchor
+        <Link
+          href={authorURL}
+          aria-label={`@${author.username}'s Twitter profile`}
           style={{
             marginLeft: 'auto'
           }}
-          href={authorURL}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`@${author.username}'s Twitter profile`}
         >
           <TwitterLogo outline={false} variant="none" />
-        </Anchor>
+        </Link>
       </Flex>
       <Text
         as="p"
+        variant="primary"
         css={{
           my: '1rem',
           whiteSpace: 'pre-wrap'
         }}
-        variant="primary"
       >
         {formattedText}
       </Text>
@@ -153,12 +152,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
         </SingleImageWrapper>
       ) : null}
       {quoteTweet && <Tweet tweet={{ ...quoteTweet }} />}
-      <Anchor
-        discreet
-        href={tweetURL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link href={tweetURL} discreet>
         <time
           title={`Time Posted: ${createdAt.toUTCString()}`}
           dateTime={createdAt.toISOString()}
@@ -166,17 +160,17 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
           {/* {format(createdAt, 'h:mm a - MMM d, y')} */}
           {formatDate(createdAt.toDateString())}
         </time>
-      </Anchor>
+      </Link>
       <Flex css={{ marginTop: '1rem' }}>
         <ActionIcons
+          href={replyURL}
+          target="_blank"
+          rel="noopener noreferrer"
           css={{
             '&:hover': {
               color: 'var(--laodeaksar-colors-brand)'
             }
           }}
-          href={replyURL}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <ReplyIcon outline={false} variant="none" />
           <span>
@@ -186,14 +180,14 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
           </span>
         </ActionIcons>
         <ActionIcons
+          href={retweetURL}
+          target="_blank"
+          rel="noopener noreferrer"
           css={{
             '&:hover': {
               color: 'hsla(var(--palette-green-45))'
             }
           }}
-          href={retweetURL}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <RetweetIcon outline={false} variant="none" />
           <span>
@@ -203,14 +197,14 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
           </span>
         </ActionIcons>
         <ActionIcons
+          href={likeURL}
+          target="_blank"
+          rel="noopener noreferrer"
           css={{
             '&:hover': {
               color: 'var(--laodeaksar-colors-danger)'
             }
           }}
-          href={likeURL}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <LikeIcon outline={false} variant="none" />
           <span>

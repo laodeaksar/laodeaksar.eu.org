@@ -9,11 +9,11 @@ const Glow = (props: PropsWithChildren) => {
 
   return (
     <Box
+      {...rest}
       css={{
         position: 'relative',
         maxWidth: '$max'
       }}
-      {...rest}
     >
       <StyledGlow />
       {children}

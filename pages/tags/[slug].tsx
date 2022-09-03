@@ -9,7 +9,7 @@ import Layout from '~/layout';
 
 import { getColor } from '~/lib/getColor';
 import { getClient, sanityClient } from '~/lib/sanity-server';
-import { postSlugsQuery, tagsQuery } from '~/lib/queries';
+import { tagSlugsQuery, tagsQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
 
 let year = 0;
@@ -77,7 +77,7 @@ const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
 export default Tag;
 
 export const getStaticPaths = async () => {
-  const paths = await sanityClient.fetch(postSlugsQuery);
+  const paths = await sanityClient.fetch(tagSlugsQuery);
 
   return {
     paths: paths.map((slug: string) => ({ params: { slug } })),
@@ -89,14 +89,20 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false
 }) => {
-  const posts = await getClient(preview).fetch<Post[]>(tagsQuery, {
-    keyword: params?.slug
+  const tag = await getClient(preview).fetch(tagsQuery, {
+    slug: params?.slug
   });
+
+  if (!tag) {
+    return { notFound: true };
+  }
+
+  const { posts, name } = tag;
 
   return {
     props: {
       posts,
-      currentTag: params?.slug as string
+      currentTag: name
     }
   };
 };

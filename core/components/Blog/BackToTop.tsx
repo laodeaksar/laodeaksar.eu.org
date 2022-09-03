@@ -73,6 +73,7 @@ export const BackToTop = () => {
     if (!hasMounted) return;
     window.addEventListener('scroll', checkScrollTop);
     checkScrollTop();
+    
     return () => {
       window.removeEventListener('scroll', checkScrollTop);
     };

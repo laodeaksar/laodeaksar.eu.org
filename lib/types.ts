@@ -15,23 +15,17 @@ export type Post = {
   cover?: string;
   readingTime: string;
   image: any;
-  tags: string[];
+  tags: any[];
   url: any;
   tweets: any[];
 };
 
-type GearCategory = 'Hardware' | 'Software' | 'Office' | 'Lifestyle';
-
 export type Gear = {
   id: string;
-  // content: MDXRemoteSerializeResult;
   description: any;
   title: string;
-  category: GearCategory;
-  image: {
-    url: string;
-    title: string;
-  };
+  category: 'Hardware' | 'Software' | 'Office' | 'Lifestyle';
+  image: any;
   link?: string;
   affiliateLink?: string;
   affiliateLinkText?: string;

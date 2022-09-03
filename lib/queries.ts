@@ -10,7 +10,10 @@ export const postFields = `
   featured,
   colorFeatured,
   cover,
-  "tags": tags,
+  "tags": tags[]->{
+    name,
+    "slug": slug.current,
+  },
   "slug": slug.current,
 `;
 
@@ -72,26 +75,14 @@ export const snippetBySlugQuery = `
 }
 `;
 
+export const tagSlugsQuery = `
+*[_type == "tag" && defined(slug.current)][].slug.current
+`;
+
 export const tagsQuery = `
-*[_type == "post" && $keyword in tags[].label] {
-  ${postFields}
-}
-`;
-
-const gearFields = `
-  _id,
-  content,
-  category,
-  image,
-  link,
-  affiliateLink,
-  affiliateLinkText,
-`;
-
-export const gearQuery = `
-{
-  "gear": *[_type == "gear"] | order(_updatedAt desc) [0] {
-    ${gearFields}
+*[_type == "tag"] && slug.current == $slug][0] {
+  name,
+  "posts": *[_type=='post' && references(^._id)] | order(date desc, _updatedAt desc) { 
+    ${postFields}
   }
 }`;
-
