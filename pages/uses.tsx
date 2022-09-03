@@ -98,25 +98,6 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
                     ) : (
                       <GeneralItems items={items} />
                     )}
-                    {/*category === 'Software' ? (
-                  <SoftwareItems items={items}>
-                    <MDXRemote
-                      {...items.description}
-                      components={{
-                        ...components
-                      }}
-                    />
-                  </SoftwareItems>
-                ) : (
-                  <GeneralItems items={items}>
-                    <MDXRemote
-                      {...items.description}
-                      components={{
-                        ...components
-                      }}
-                    />
-                  </GeneralItems>
-                    )*/}
                   </Box>
                 );
               }
