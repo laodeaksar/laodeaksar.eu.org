@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 
 import { Grid, H1 } from '@laodeaksarr/design-system';
 
-import SEO from '~/components/Seo';
 import Tweet from '~/components/Tweet';
 
 import Layout from '~/layout';
@@ -12,8 +11,12 @@ import type { TransformedTweet } from '~/lib/types';
 
 const Tweets: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   return (
-    <Layout footer header headerProps={{ offsetHeight: 256 }}>
-      <SEO title="Tweets Page" />
+    <Layout
+      footer
+      header
+      title="Tweets Page"
+      headerProps={{ offsetHeight: 256 }}
+    >
       <Grid columns="medium" gapX={4} gapY={12} all>
         <div>
           <>

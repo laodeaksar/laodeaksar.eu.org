@@ -11,14 +11,13 @@ import {
 
 import Hero from '~/components/Hero';
 import Link from '~/components/Link';
-import SEO from '~/components/Seo';
 import TableOfContent from '~/components/TableOfContent';
 import { WebmentionCount } from '~/components/Webmentions';
+import siteMetadata from '~/components/Seo/siteMetadata';
 
 import Layout from '~/layout';
 import Signature from './Signature';
 
-import config from 'config/seo_meta.json';
 //import { getColor } from '~/lib/getColor';
 import generateSocialImage from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity';
@@ -65,7 +64,7 @@ const BlogLayout = ({
     tags,
     url
   } = post;
-  const postUrl = config.openGraph.url + url;
+  const postUrl = `${siteMetadata.siteUrl}${url}`
 
   const headerProps = {
     title,
@@ -101,23 +100,16 @@ const BlogLayout = ({
   // const keywords = tags.join(", ");
 
   return (
-    <Layout footer header headerProps={headerProps}>
-      <SEO
-        title={title}
-        description={description}
-        date={new Date(date).toISOString()}
-        openGraph={{
-          title: title,
-          description: description,
-          type: 'article',
-          images: {
-            url: socialImage,
-            width: '1200',
-            height: '630',
-            alt: title
-          }
-        }}
-      />
+    <Layout
+      footer
+      header
+      title={title}
+      description={description}
+      date={new Date(date).toISOString()}
+      imageUrl={socialImage}
+      type="article"
+      headerProps={headerProps}
+    >
       <article className="h-entry">
         <Suspense fallback={false}>
           <Grid columns="small" gapX={4}>

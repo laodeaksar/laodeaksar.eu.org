@@ -10,7 +10,6 @@ import {
 } from '@laodeaksarr/design-system';
 
 import Hero from '~/components/Hero';
-import SEO from '~/components/Seo';
 
 import Layout from '~/layout';
 import { Snippet } from '~/lib/types';
@@ -18,10 +17,7 @@ import { Snippet } from '~/lib/types';
 const SnippetLayout = ({
   children,
   snippet
-}: {
-  snippet: Snippet;
-  children: React.ReactNode;
-}) => {
+}: React.PropsWithChildren<{ snippet: Snippet }>) => {
   const { date, title, description, language } = snippet;
 
   const headerProps = {
@@ -30,8 +26,13 @@ const SnippetLayout = ({
   };
 
   return (
-    <Layout header headerProps={headerProps}>
-      <SEO title={title} date={date} description={description} />
+    <Layout
+      header
+      title={title}
+      date={new Date(date).toISOString()}
+      description={description}
+      headerProps={headerProps}
+    >
       <article className="h-entry">
         <Grid columns="medium" gapX={4} all>
           <Hero>

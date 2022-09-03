@@ -16,7 +16,6 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
-import SEO from '~/components/Seo';
 import Link from '~/components/Link';
 import Image from '~/components/MDX/Image';
 
@@ -30,8 +29,12 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
 
   return (
     <Suspense fallback={null}>
-      <Layout footer header headerProps={{ offsetHeight: 256 }}>
-        <SEO title="Uses Page" />
+      <Layout
+        footer
+        header
+        title="Uses Page"
+        headerProps={{ offsetHeight: 256 }}
+      >
         <Grid columns="medium" gapX={4} gapY={12} all>
           <Box
             as={motion.div}

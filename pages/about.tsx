@@ -13,7 +13,6 @@ import {
 
 import Link from '~/components/Link';
 import Newsletter from '~/components/Newsletter';
-import SEO from '~/components/Seo';
 import Image from '~/components/MDX/Image';
 
 import Layout from '~/layout';
@@ -45,8 +44,12 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
   const easing = [0.175, 0.85, 0.42, 0.96];
 
   return (
-    <Layout footer header headerProps={{ offsetHeight: 256 }}>
-      <SEO title="About Me Page" />
+    <Layout
+      footer
+      header
+      title="About Me Page"
+      headerProps={{ offsetHeight: 256 }}
+    >
       <Grid columns="medium" gapX={4} gapY={12} all>
         <LazyMotion features={domAnimation}>
           <Box pb={10} mx="auto" css={{ position: 'relative' }}>

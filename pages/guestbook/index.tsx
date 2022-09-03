@@ -5,7 +5,6 @@ import type { guestbook } from '@prisma/client';
 import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
 import GuestbookComponent from '~/components/Guestbook';
-import SEO from '~/components/Seo';
 
 import Layout from '~/layout';
 import prisma from '~/lib/prisma';
@@ -14,8 +13,12 @@ const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
   fallbackData
 }) => {
   return (
-    <Layout footer header headerProps={{ offsetHeight: 256 }}>
-      <SEO title="Guestbook Page" />
+    <Layout
+      footer
+      header
+      title="Guestbook Page"
+      headerProps={{ offsetHeight: 256 }}
+    >
       <Grid columns="medium" gapX={4} gapY={12} all>
         <div>
           <H2>Guestbook</H2>

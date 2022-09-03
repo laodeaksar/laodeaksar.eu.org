@@ -38,7 +38,6 @@ import {
 import CodeBlock from '~/components/Code/CodeBlock';
 import Glow from '~/components/Glow';
 import Logo from '~/components/Logo';
-import SEO from '~/components/Seo';
 import Tweet from '~/components/Tweet';
 
 import Layout from '~/layout';
@@ -85,8 +84,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   const palette = ['gray', 'blue', 'red', 'orange', 'green', 'pink', 'indigo'];
 
   return (
-    <Layout footer>
-      <SEO title="Design Page" />
+    <Layout footer title="Design Page">
       <Grid
         columns="medium"
         gapX={4}

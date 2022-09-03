@@ -2,7 +2,6 @@ import type { GetStaticProps, NextPage } from 'next';
 
 import { Box, Grid, H2, Text } from '@laodeaksarr/design-system';
 
-import SEO from '~/components/Seo';
 import { TagList } from '~/components/Blog/Tags';
 
 import Layout from '~/layout';
@@ -21,8 +20,7 @@ const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
   const title = `Posts list for ${currentTag} tags`;
 
   return (
-    <Layout footer header headerProps={{ offsetHeight: 200 }}>
-      <SEO title={title} />
+    <Layout footer header title={title} headerProps={{ offsetHeight: 200 }}>
       <Grid columns="medium" gapX={4} gapY={12} all>
         <Box as="section">
           <H2

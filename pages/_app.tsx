@@ -7,8 +7,6 @@ import {
   Tooltip
 } from '@laodeaksarr/design-system';
 
-import { Head } from '~/components/Seo';
-
 import '~/styles/global.css';
 import '~/styles/font.css';
 
@@ -17,7 +15,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ThemeProvider>
-      <Head />
       <SessionProvider session={pageProps.session}>
         <Tooltip.Provider>
           <Component {...pageProps} />
