@@ -1,59 +1,47 @@
-export default function generateSocialImage({
-  title,
-  underlayImage = ''
-}: any): string {
-  const image = {
-    width: 1200,
-    height: 630
-  };
-  // configure social media image dimensions, quality, and format
-  const imageConfig = [
-    `w_${image.width}`,
-    `h_${image.height}`,
-    'c_fill',
-    'q_auto',
-    'f_auto'
-  ].join(',');
-
-  const underlayConfig = [
-    `w_580`,
-    `h_${image.height}`,
-    `c_fill`,
-    `u_${underlayImage}/fl_layer_apply`,
-    `g_east`
-  ];
-
-  // configure the title text
-  const titleConfig = [
-    `w_630`,
-    `h_450`,
-    'c_fit',
-    'g_west',
-    `co_rgb:ffffff`,
-    `x_45`,
-    `y_-40`,
-    `l_text:ibmplexsansbold.ttf_60:${cleanText(title)}`
-  ].join(',');
-
-  // combine all the pieces required to generate a Cloudinary URL
-  const urlParts = [
-    'https://res.cloudinary.com',
-    'laodeaksar',
-    'image',
-    'upload',
-    imageConfig,
-    underlayConfig,
-    titleConfig,
-    'og_social_large.png'
-  ];
-
-  // remove any falsy sections of the URL (e.g. an undefined version)
-  const validParts = urlParts.filter(Boolean);
-
-  // join all the parts into a valid URL to the generated image
-  return validParts.join('/');
-}
-
-function cleanText(text: string) {
+/*function cleanText(text: string) {
   return encodeURIComponent(text).replace(/%(23|2C|2F|3F|5C)/g, '%25$1');
-}
+}*/
+
+const e = (str: string) => encodeURIComponent(encodeURIComponent(str));
+
+export const createOgImage = ({
+  title,
+  meta /*, underlay*/
+}: {
+  title: string;
+  meta: string /*, underlay: string*/;
+}) =>
+  [
+    // ACCOUNT PREFIX
+    `https://res.cloudinary.com/laodeaksar/image/upload`,
+    // Composed Image Transformations
+    `w_1200,h_630,c_fill,q_auto,f_auto`,
+
+    // UNDERLAY
+    //`w_580,h_630,c_fill`,
+    // Positioning
+    //`u_${underlay}/fl_layer_apply, g_east`,
+
+    // TITLE
+    // Karla google font in light rose
+    `l_text:Karla_72_bold:${e(title)},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_180`,
+
+    // META
+    // Karla, but smaller
+    `l_text:Karla_48:${e(meta)},co_rgb:ffe4e680,c_fit,w_1400`,
+    // Positioning
+    `fl_layer_apply,g_south_west,x_100,y_100`,
+
+    // PROFILE IMAGE
+    // dynamically fetched from my twitter profile
+    `l_twitter_name:ode_aksar`,
+    // Transformations
+    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
+    // Positioning
+    `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+
+    // BG
+    `og_social_large.png`
+  ].join('/');

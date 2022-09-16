@@ -77,7 +77,6 @@ function GuestbookForm() {
           />
           <Button
             aria-label="Send message"
-            disabled={isLoading}
             isLoading={isLoading}
             title="Send message"
             type="submit"

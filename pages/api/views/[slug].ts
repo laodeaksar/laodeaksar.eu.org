@@ -7,7 +7,7 @@ import {
   ServerError
 } from '~/lib/api';
 import prisma from '~/lib/prisma';
-import { previewClient } from '~/lib/sanity-server';
+import { getClient } from '~/lib/sanity-server';
 import { postBySlugQuery } from '~/lib/queries';
 
 export default async function handler(
@@ -25,33 +25,43 @@ export default async function handler(
       return BadRequest(res, 'Invalid slug');
     }
 
-    const post = await previewClient.fetch(postBySlugQuery, {
+    if (req.method === 'GET') {
+      const views = await prisma.views.findUnique({
+        where: {
+          slug
+        }
+      });
+
+      if (!views) {
+        return res.status(404).json({ message: 'Post not found' });
+      }
+
+      return res.status(200).json({ total: views.count.toString() });
+    }
+
+    const post = await getClient(req.preview ?? false).fetch(postBySlugQuery, {
       slug
     });
 
     if (!post) {
-      return res.status(401).json({ message: 'Invalid slug' });
+      return BadRequest(res, 'Post not found');
     }
 
-    if (req.method === 'POST') {
-      const newOrUpdatedViews = await prisma.views.upsert({
-        where: { slug },
-        create: { slug },
-        update: { count: { increment: 1 } }
-      });
+    const newOrUpdatedViews = await prisma.views.upsert({
+      where: { slug },
+      create: {
+        slug
+      },
+      update: {
+        count: {
+          increment: 1
+        }
+      }
+    });
 
-      return res.status(200).json({
-        total: newOrUpdatedViews.count.toString()
-      });
-    }
-
-    if (req.method === 'GET') {
-      const views = await prisma.views.findUnique({
-        where: { slug }
-      });
-
-      return res.status(200).json({ total: views?.count.toString() });
-    }
+    return res.status(200).json({
+      total: newOrUpdatedViews.count.toString()
+    });
   } catch (e) {
     return ServerError(res, e);
   }
