@@ -138,7 +138,8 @@ const Sandpack = (props: SandpackProps) => {
     vue: '',
     vue3: '',
     svelte: '',
-    solid: ''
+    solid: '',
+    'test-ts': ''
   };
 
   return (
