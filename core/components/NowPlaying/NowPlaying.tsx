@@ -5,7 +5,7 @@ import { Flex, Skeleton, Text } from '@laodeaksarr/design-system';
 import { Glass, SpotifyLogo } from './icons';
 import { styles } from './Styles';
 
-import { useNowPlaying } from '~/hooks/useNowPlaying';
+import { useNowPlaying } from '~/theme/hooks/useNowPlaying';
 
 const Bars = () => (
   <Flex className={styles.bars}>
