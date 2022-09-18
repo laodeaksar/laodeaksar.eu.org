@@ -43,7 +43,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
       </Text>
       <Flex css={{ marginBottom: 2 }}>{entry.body}</Flex>
       <Grid gapX={2} flow="column" align="center" justify="between" mt={3}>
-        <time dateTime={entry.updated_at.toISOString()}>
+        <time>
           {new Date(entry.updated_at).toLocaleDateString('en', {
             month: 'short',
             day: '2-digit',
