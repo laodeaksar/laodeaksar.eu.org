@@ -2,10 +2,10 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 import { Anchor, Box } from '@laodeaksarr/design-system';
 
-import useProgress from '~/hooks/useProgress';
-import useScrollSpy from '~/hooks/useScrollSpy';
+import useProgress from '~/theme/hooks/useProgress';
+import useScrollSpy from '~/theme/hooks/useScrollSpy';
 
-import { ProgressBar } from '.';
+import ProgressBar from './ProgressBar';
 import { Wrapper } from './Styles';
 import type { TableOfContentProps } from './types';
 
@@ -52,7 +52,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
   return (
     <Wrapper hidden={!shouldShowTableOfContent}>
       <ProgressBar progress={readingProgress} />
-      {ids.length > 0 ? (
+      {ids.length > 0 && (
         <ul>
           {ids.map((item, index) => {
             return (
@@ -87,7 +87,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
             );
           })}
         </ul>
-      ) : null}
+      )}
     </Wrapper>
   );
 };

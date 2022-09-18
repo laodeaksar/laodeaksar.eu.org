@@ -2,7 +2,6 @@ import React from 'react';
 import Image from '../MDX/Image';
 
 import { H1, styled } from '@laodeaksarr/design-system';
-// import { loader } from '~/lib/next-image-loader'
 
 import { HeroImgProps } from './types';
 
@@ -46,18 +45,23 @@ const HeroImgWrapper = styled('div', {
   }
 });
 
-const HeroImg = (props: HeroImgProps) => (
-  <HeroImgWrapper>
-    <Image
-      src={props.src}
-      alt="cover"
-      className={props.className}
-      layout="fill"
-      objectFit="cover"
-      priority
-    />
-  </HeroImgWrapper>
-);
+const HeroImg = (props: HeroImgProps) => {
+  const { src, className } = props;
+
+  return (
+    <HeroImgWrapper>
+      <Image
+        {...props}
+        src={src}
+        alt="cover"
+        className={className}
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
+    </HeroImgWrapper>
+  );
+};
 
 class Hero extends React.Component<{
   id?: string;

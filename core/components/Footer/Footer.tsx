@@ -1,8 +1,8 @@
 import { styled, Box, Grid, Text, EM, Flex } from '@laodeaksarr/design-system';
 
-import Link from '~/components/Link';
-import Logo from '~/components/Logo';
-import NowPlaying from '~/components/NowPlaying';
+import Link from '~/theme/components/Link';
+import Logo from '~/theme/components/Logo';
+import NowPlaying from '~/theme/components/NowPlaying';
 
 const Footer = () => (
   <FooterBlock>

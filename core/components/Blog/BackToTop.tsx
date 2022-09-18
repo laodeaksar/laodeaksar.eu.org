@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button, styled } from '@laodeaksarr/design-system';
 
-import { useHasMounted } from '~/hooks/useHasMounted';
+import { useHasMounted } from '~/theme/hooks/useHasMounted';
 
 const ButtonUp = styled(Button, {
   zIndex: 2,

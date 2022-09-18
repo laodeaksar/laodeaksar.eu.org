@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { styled } from '@laodeaksarr/design-system';
 
-import Image from '~/components/MDX/Image';
+import Image from '~/theme/components/MDX/Image';
 
 import type { RepliesProps, Reply } from './types';
 

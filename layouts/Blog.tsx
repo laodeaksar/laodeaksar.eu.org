@@ -9,16 +9,15 @@ import {
   Text
 } from '@laodeaksarr/design-system';
 
-import Hero from '~/components/Hero';
-import Link from '~/components/Link';
-import TableOfContent from '~/components/TableOfContent';
-import { WebmentionCount } from '~/components/Webmentions';
+import Hero from '~/theme/components/Hero';
+import Link from '~/theme/components/Link';
+import TableOfContent from '~/theme/components/TableOfContent';
+import { WebmentionCount } from '~/theme/components/Webmentions';
+import siteMetadata from '~/theme/layout/siteMetadata';
+import Layout from '~/theme/layout';
 
-import siteMetadata from '~/layout/siteMetadata';
-import Layout from '~/layout';
 import Signature from './Signature';
 
-//import { getColor } from '~/lib/getColor';
 import { createOgImage } from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity';
 import { Post } from '~/lib/types';
@@ -128,17 +127,14 @@ const BlogLayout = ({
               <Hero.Title className="p-name">{title}</Hero.Title>
               <Hero.Info>
                 <Flex mb={3} wrap>
-                  {tags.map((tag) => (
+                  {tags.map((text, id) => (
                     <Link
-                      key={tag.name}
-                      href={`/tags/${tag.slug}`}
+                      key={id}
+                      href={`/tags/${text}`}
                       hastag
                       discreet
-                      /*css={{
-                        linearGradient: getColor(tag.name)
-                      }}*/
                     >
-                      {tag.name}
+                      {text}
                     </Link>
                   ))}
                   <Text

@@ -11,11 +11,11 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
-import Link from '~/components/Link';
-import Newsletter from '~/components/Newsletter';
-import Image from '~/components/MDX/Image';
+import Link from '~/theme/components/Link';
+import Newsletter from '~/theme/components/Newsletter';
+import Image from '~/theme/components/MDX/Image';
+import Layout from '~/theme/layout';
 
-import Layout from '~/layout';
 import author from '../public/static/images/me.jpg';
 import { Post } from '~/lib/types';
 import { getClient } from '~/lib/sanity-server';

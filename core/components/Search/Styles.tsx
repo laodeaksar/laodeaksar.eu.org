@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { Shadows, styled, Text } from "@laodeaksarr/design-system";
+import { styled, Text } from "@laodeaksarr/design-system";
 import { HEIGHT, MAX_HEIGHT } from "./constants";
 
 export const Result = styled(motion.li, {
@@ -64,7 +64,7 @@ export const SearchBox = styled(motion.div, {
   left: "50%",
   transform: "translateX(-50%)",
   borderRadius: "$2",
-  boxShadow: `${Shadows[3]}`,
+  boxShadow: '$3',
   border: "1px solid var(--laodeaksar-border-color)",
 
   "@media (max-width: 700px)": {

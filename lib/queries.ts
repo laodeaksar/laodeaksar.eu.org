@@ -10,10 +10,7 @@ export const postFields = `
   featured,
   colorFeatured,
   cover,
-  "tags": tags[]->{
-    name,
-    "slug": slug.current,
-  },
+  "tags": tags[],
   "slug": slug.current,
 `;
 
@@ -74,15 +71,3 @@ export const snippetBySlugQuery = `
   ${snippetFields}
 }
 `;
-
-export const tagSlugsQuery = `
-*[_type == "tag" && defined(slug.current)][].slug.current
-`;
-
-export const tagsQuery = `
-*[_type == "tag"] && slug.current == $slug][0] {
-  name,
-  "posts": *[_type=='post' && references(^._id)] | order(date desc, _updatedAt desc) { 
-    ${postFields}
-  }
-}`;

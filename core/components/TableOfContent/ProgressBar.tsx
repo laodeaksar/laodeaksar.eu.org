@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { Box } from '@laodeaksarr/design-system';
 
 import { ProgressBarWrapper } from './Styles';
-
-import { Box } from '@laodeaksarr/design-system';
 
 const ProgressBar = ({ progress }: { progress: number }) => {
   const [visibility, setVisibility] = React.useState<boolean>(true);

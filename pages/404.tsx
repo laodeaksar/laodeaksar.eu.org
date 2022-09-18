@@ -2,9 +2,8 @@ import type { NextPage } from 'next';
 
 import { Grid, H1, H3, styled } from '@laodeaksarr/design-system';
 
-import Link from '~/components/Link';
-
-import Layout from '~/layout';
+import Link from '~/theme/components/Link';
+import Layout from '~/theme/layout';
 
 const NotFoundPage: NextPage = () => (
   <Layout title="404: Not found">

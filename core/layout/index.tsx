@@ -2,14 +2,14 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// import Footer from '~/components/Footer';
-import Header from '~/components/Header';
+// import Footer from '~/theme/components/Footer';
+import Header from '~/theme/components/Header';
 import siteMetadata from './siteMetadata';
 
 import { Wrapper } from './Styles';
 import type { LayoutProps } from './types';
 
-const Footer = dynamic(() => import('~/components/Footer'), {
+const Footer = dynamic(() => import('~/theme/components/Footer'), {
   ssr: false,
   suspense: true
 });

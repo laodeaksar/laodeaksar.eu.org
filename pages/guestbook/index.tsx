@@ -4,9 +4,9 @@ import type { guestbook } from '@prisma/client';
 
 import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
-import GuestbookComponent from '~/components/Guestbook';
+import GuestbookComponent from '~/theme/components/Guestbook';
+import Layout from '~/theme/layout';
 
-import Layout from '~/layout';
 import prisma from '~/lib/prisma';
 
 const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({

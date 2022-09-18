@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
 
 import { Anchor, CSS, type AnchorProps } from '@laodeaksarr/design-system';
+
 import trackEvent from '~/lib/tracking';
 
 type Props = {

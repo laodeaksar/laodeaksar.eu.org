@@ -65,7 +65,7 @@ const Guestbook = ({ fallbackData }: { fallbackData: guestbook[] }) => {
           )}
         </Card.Header>
         <Card.Body>
-          <Suspense>
+          <Suspense fallback={null}>
             {entries &&
               entries.map((entry) => (
                 <GuestbookEntry

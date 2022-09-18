@@ -2,9 +2,8 @@ import type { NextPage } from 'next';
 
 import { Grid, H1 } from '@laodeaksarr/design-system';
 
-import Tweet from '~/components/Tweet';
-
-import Layout from '~/layout';
+import Tweet from '~/theme/components/Tweet';
+import Layout from '~/theme/layout';
 
 import { getTweets } from '~/lib/tweets';
 import type { TransformedTweet } from '~/lib/types';

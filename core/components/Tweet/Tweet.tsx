@@ -1,7 +1,7 @@
 import { Flex, formatDate, Text } from '@laodeaksarr/design-system';
 
-import Image from '~/components/MDX/Image';
-import Link from '~/components/Link';
+import Image from '~/theme/components/MDX/Image';
+import Link from '~/theme/components/Link';
 
 import type { TransformedTweet } from '~/lib/types';
 

@@ -1,4 +1,4 @@
-import { css, Shadows, styled } from '@laodeaksarr/design-system';
+import { css, styled } from '@laodeaksarr/design-system';
 
 export const TweetWrapper = styled('div', {
   color: 'var(--laodeaksar-colors-typeface-primary)',
@@ -9,7 +9,7 @@ export const TweetWrapper = styled('div', {
   width: '$full',
 
   border: 'solid 1px var(--laodeaksar-border-color)',
-  boxShadow: `${Shadows[1]}`,
+  boxShadow: '$1',
 
   '@media (max-width: 700px)': {
     width: '$w-screen',

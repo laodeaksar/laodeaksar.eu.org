@@ -16,10 +16,9 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
-import Link from '~/components/Link';
-import Image from '~/components/MDX/Image';
-
-import Layout from '~/layout';
+import Link from '~/theme/components/Link';
+import Image from '~/theme/components/MDX/Image';
+import Layout from '~/theme/layout';
 
 import { Gear } from '~/lib/types';
 import ContentfulGears from '~/lib/contentful';

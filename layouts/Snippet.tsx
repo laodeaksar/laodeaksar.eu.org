@@ -9,9 +9,9 @@ import {
   Text
 } from '@laodeaksarr/design-system';
 
-import Hero from '~/components/Hero';
+import Hero from '~/theme/components/Hero';
+import Layout from '~/theme/layout';
 
-import Layout from '~/layout';
 import { Snippet } from '~/lib/types';
 
 const SnippetLayout = ({

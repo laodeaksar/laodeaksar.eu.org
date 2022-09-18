@@ -1,6 +1,6 @@
 import { Flex, Pill, Text } from '@laodeaksarr/design-system';
 
-import useIsArticleRead from '~/hooks/useIsArticleRead';
+import useIsArticleRead from '~/theme/hooks/useIsArticleRead';
 
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { Post } from '~/lib/types';

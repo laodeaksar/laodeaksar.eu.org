@@ -2,21 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": [
+      "~/theme/*": [
         "core/*"
       ],
-      "~/layouts/*": [
-        "layouts/*"
+      "~/*": [
+        "*"
       ],
-      "~/lib/*": [
-        "lib/*"
-      ],
-      "~/styles/*": [
-        "styles/*"
-      ],
-      "~/types/*": [
-        "types/*"
-      ]
     },
     "target": "es5",
     "module": "commonjs",

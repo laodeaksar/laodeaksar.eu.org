@@ -19,16 +19,15 @@ import {
   Text
 } from '@laodeaksarr/design-system';
 
-import BlogCard from '~/components/Blog';
-
-import Layout from '~/layout';
+import BlogCard from '~/theme/components/Blog';
+import Layout from '~/theme/layout';
 
 import { getClient } from '~/lib/sanity-server';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { indexQuery } from '~/lib/queries';
 import { Post } from '~/lib/types';
 
-const Newsletter = dynamic(() => import('~/components/Newsletter'));
+const Newsletter = dynamic(() => import('~/theme/components/Newsletter'));
 
 const WavingHand = () => (
   <Box

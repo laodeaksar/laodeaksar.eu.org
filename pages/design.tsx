@@ -35,12 +35,11 @@ import {
   useTheme
 } from '@laodeaksarr/design-system';
 
-import CodeBlock from '~/components/Code/CodeBlock';
-import Glow from '~/components/Glow';
-import Logo from '~/components/Logo';
-import Tweet from '~/components/Tweet';
-
-import Layout from '~/layout';
+import CodeBlock from '~/theme/components/Code/CodeBlock';
+import Glow from '~/theme/components/Glow';
+import Logo from '~/theme/components/Logo';
+import Tweet from '~/theme/components/Tweet';
+import Layout from '~/theme/layout';
 
 import { getTweets } from '~/lib/tweets';
 import type { TransformedTweet } from '~/lib/types';
@@ -48,9 +47,9 @@ import type { TransformedTweet } from '~/lib/types';
 // const Tooltip = (props: any) => <>{props.children}</>;
 
 const SandpackExample = dynamic(
-  () => import('~/components/MDX/WaveAnimation/Sandpack')
+  () => import('~/theme/components/MDX/WaveAnimation/Sandpack')
 );
-const Search = dynamic(() => import('~/components/Search'), {
+const Search = dynamic(() => import('~/theme/components/Search'), {
   ssr: false
 });
 

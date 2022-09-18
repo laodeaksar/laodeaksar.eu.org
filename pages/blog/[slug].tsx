@@ -1,8 +1,8 @@
 import { MDXRemote } from 'next-mdx-remote';
 import type { GetStaticProps, NextPage } from 'next';
 
-import components from '~/components/MDX/MDXComponents';
-import Tweet from '~/components/Tweet';
+import components from '~/theme/components/MDX/MDXComponents';
+import Tweet from '~/theme/components/Tweet';
 
 import BlogLayout from '~/layouts/Blog';
 
