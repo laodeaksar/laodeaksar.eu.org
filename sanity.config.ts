@@ -78,12 +78,7 @@ export default createConfig({
             name: 'tags',
             title: 'Tags',
             type: 'array',
-            of: [
-              {
-                type: 'reference',
-                to: [{ type: 'tag' }]
-              }
-            ]
+            of: [{ type: 'string' }]
           },
           {
             name: 'updated',
@@ -129,26 +124,6 @@ export default createConfig({
             name: 'language',
             title: 'Language',
             type: 'string'
-          }
-        ]
-      },
-      {
-        name: 'tag',
-        type: 'document',
-        title: 'Tag',
-        fields: [
-          {
-            name: 'name',
-            title: 'Name',
-            type: 'string'
-          },
-          {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-              source: 'name'
-            }
           }
         ]
       }

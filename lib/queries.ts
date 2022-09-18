@@ -10,7 +10,7 @@ export const postFields = `
   featured,
   colorFeatured,
   cover,
-  "tags": tags[],
+  "tags": tags,
   "slug": slug.current,
 `;
 
