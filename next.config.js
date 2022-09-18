@@ -4,7 +4,6 @@ const runtimeCaching = require("next-pwa/cache");
 /** @type {import('next').NextConfig}*/
 
 module.exports = withPWA({
-  swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: [
@@ -14,25 +13,16 @@ module.exports = withPWA({
       'images.ctfassets.net',
       'cdn.sanity.io'
     ],
-    formats: ['image/avif', 'image/webp']
   },
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-    images: { allowFutureImage: true }
   },
   pwa: {
     dest: 'public',
     runtimeCaching,
     disable: process.env.NODE_ENV === 'development',
-    mode: 'production',
-    buildExcludes: [
-      /middleware-manifest\.json$/,
-      /middleware-runtime\.js$/,
-      /middleware-runtime\.js.map$/,
-      /middleware\.js$/,
-      /middleware\.js.map$/
-    ]
+    mode: 'production'
   },
   async rewrites() {
     return [
