@@ -1,9 +1,6 @@
-const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
-
 /** @type {import('next').NextConfig}*/
 
-module.exports = withPWA({
+module.exports = {
   reactStrictMode: true,
   images: {
     domains: [
@@ -17,12 +14,6 @@ module.exports = withPWA({
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
-  },
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
-    disable: process.env.NODE_ENV === 'development',
-    mode: 'production'
   },
   async rewrites() {
     return [
@@ -44,7 +35,7 @@ module.exports = withPWA({
       }
     ];
   }
-});
+};
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
