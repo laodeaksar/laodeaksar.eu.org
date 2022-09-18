@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import algoliasearch from 'algoliasearch';
 import indexer from 'sanity-algolia';
 
-import { postFields, snippetFields } from '~/lib/queries';
-import { sanityClient } from '~/lib/sanity-server';
+import { postFields, snippetFields } from '~/lib/sanity/queries';
+import { sanityClient } from '~/lib/sanity/sanity-server';
 
 const algolia = algoliasearch(
   process.env.ALGOLIA_APPLICATION_ID as string,

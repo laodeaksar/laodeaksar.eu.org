@@ -7,8 +7,8 @@ import {
   ServerError
 } from '~/lib/api';
 import prisma from '~/lib/prisma';
-import { getClient } from '~/lib/sanity-server';
-import { postBySlugQuery } from '~/lib/queries';
+import { getClient } from '~/lib/sanity/sanity-server';
+import { postBySlugQuery } from '~/lib/sanity/queries';
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,9 +1,8 @@
+import React from 'react';
 import { useSWRConfig } from 'swr';
 import { guestbook } from '@prisma/client';
 
 import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
-
-import { ClickEvent } from '~/lib/types';
 
 type GuestBookEntryProps = {
   entry: guestbook;
@@ -19,7 +18,7 @@ type GuestBookEntryProps = {
 function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
   const { mutate } = useSWRConfig();
 
-  const handleDelete = async (e: ClickEvent) => {
+  const handleDelete = async (e: React.FormEvent) => {
     e.preventDefault();
 
     await fetch(`/api/guestbook/${entry.id}`, {

@@ -19,7 +19,7 @@ import Layout from '~/theme/layout';
 import Signature from './Signature';
 
 import { createOgImage } from '~/lib/OpenGraph';
-import { urlForImage } from '~/lib/sanity';
+import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
 
 interface WebmentionBlogDataProps {

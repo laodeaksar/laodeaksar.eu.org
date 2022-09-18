@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook';
 
-import { sanityClient } from '~/lib/sanity-server';
-import { postUpdatedQuery } from '~/lib/queries';
+import { sanityClient } from '~/lib/sanity/sanity-server';
+import { postUpdatedQuery } from '~/lib/sanity/queries';
 import { BadRequest, isValidHttpMethod, MethodNotAllowed } from '~/lib/api';
 
 async function stringifyRequest(req: NextApiRequest) {

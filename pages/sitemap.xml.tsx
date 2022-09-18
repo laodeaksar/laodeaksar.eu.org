@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next';
 
-import { sanityClient } from '~/lib/sanity-server';
-import { postSlugsQuery } from '~/lib/queries';
+import { sanityClient } from '~/lib/sanity/sanity-server';
+import { postSlugsQuery } from '~/lib/sanity/queries';
 import type { Post } from '~/lib/types';
 
 const createSitemap = (

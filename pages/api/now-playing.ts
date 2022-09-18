@@ -1,24 +1,26 @@
-import { getNowPlaying, validateTrack, type TrackData } from "~/lib/spotify";
-import { buildApiResponse } from "~/lib/response";
+import { getNowPlaying, validateTrack, type TrackData } from '~/lib/spotify';
+import { buildApiResponse } from '~/lib/api';
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: 'experimental-edge'
 };
 
 export default async function handler() {
   const response = await getNowPlaying();
+
   if (response.status === 204 || response.status > 400) {
     return buildApiResponse(200, { isPlaying: false });
   }
 
   const song = await response.json();
+
   if (song.item === null) {
     return buildApiResponse(200, { isPlaying: false });
   }
 
   const isPlaying = song.is_playing;
   const title = song.item.name;
-  const artist = song.item.artists.map(({ name }: any) => name).join(", ");
+  const artist = song.item.artists.map(({ name }: any) => name).join(', ');
   const album = song.item.album.name;
   const preAlbumImage = song.item.album.images.pop();
   const albumImage = song.item.album.images.pop() || preAlbumImage;
@@ -30,13 +32,14 @@ export default async function handler() {
     album,
     url,
     image: albumImage,
-    isPlaying,
+    isPlaying
   };
 
   if (validateTrack(track)) {
     return buildApiResponse(200, track, {
-      "cache-control": "public, s-maxage=60, stale-while-revalidate=30",
+      'cache-control': 'public, s-maxage=60, stale-while-revalidate=30'
     });
   }
+
   return buildApiResponse(200, { isPlaying: false });
 }

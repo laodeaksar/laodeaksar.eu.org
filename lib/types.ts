@@ -130,6 +130,20 @@ export interface TransformedTweet extends TweetData {
   referenced_tweets: TransformedTweet[];
 }
 
-export type ClickEvent = {
-  preventDefault: () => void;
+export type Comment = {
+  id: string;
+  parentId: string;
+  user:
+    | {
+        name?: string | null | undefined;
+        email?: string | null | undefined;
+        image?: string | null | undefined;
+      }
+    | undefined;
+  created_at: string
+  body: string
+};
+
+export type CommentWithChildren = Comment & {
+  children: CommentWithChildren[];
 };

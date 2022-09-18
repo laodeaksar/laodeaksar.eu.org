@@ -18,8 +18,8 @@ import Layout from '~/theme/layout';
 
 import author from '../public/static/images/me.jpg';
 import { Post } from '~/lib/types';
-import { getClient } from '~/lib/sanity-server';
-import { indexQuery } from '~/lib/queries';
+import { getClient } from '~/lib/sanity/sanity-server';
+import { indexQuery } from '~/lib/sanity/queries';
 
 const About: NextPage<any> = ({ postsCount, initialAge }) => {
   const [age, setAge] = React.useState(initialAge);

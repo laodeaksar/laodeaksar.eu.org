@@ -1,4 +1,5 @@
 import { type NextRequest } from 'next/server';
+import { buildApiResponse } from '~/lib/api';
 
 export const config = {
   runtime: 'experimental-edge'
@@ -9,7 +10,9 @@ export default async function handler(req: NextRequest) {
   const email = searchParams.get('email');
 
   if (!email) {
-    return new Response(
+    return buildApiResponse(400, { error: 'Email is required' });
+
+    /*return new Response(
       JSON.stringify({
         error: 'Email is required'
       }),
@@ -19,7 +22,7 @@ export default async function handler(req: NextRequest) {
           'content-type': 'application/json'
         }
       }
-    );
+    );*/
   }
 
   const result = await fetch('https://www.getrevue.co/api/v2/subscribers', {
@@ -30,10 +33,13 @@ export default async function handler(req: NextRequest) {
     },
     body: JSON.stringify({ email })
   });
+  
   const data = await result.json();
 
   if (!result.ok) {
-    return new Response(
+    return buildApiResponse(500, { error: data.error.email[0] });
+
+    /*return new Response(
       JSON.stringify({
         error: data.error.email[0]
       }),
@@ -43,10 +49,12 @@ export default async function handler(req: NextRequest) {
           'content-type': 'application/json'
         }
       }
-    );
+    );*/
   }
 
-  return new Response(
+  return buildApiResponse(201, { error: '' });
+
+  /*return new Response(
     JSON.stringify({
       error: ''
     }),
@@ -56,5 +64,5 @@ export default async function handler(req: NextRequest) {
         'content-type': 'application/json'
       }
     }
-  );
+  );*/
 }

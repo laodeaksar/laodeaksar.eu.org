@@ -7,8 +7,8 @@ import Tweet from '~/theme/components/Tweet';
 import BlogLayout from '~/layouts/Blog';
 
 import { getTweets } from '~/lib/tweets';
-import { postQuery, postSlugsQuery } from '~/lib/queries';
-import { sanityClient, getClient } from '~/lib/sanity-server';
+import { postQuery, postSlugsQuery } from '~/lib/sanity/queries';
+import { sanityClient, getClient } from '~/lib/sanity/sanity-server';
 import { mdxToHtml } from '~/lib/mdx';
 import { Post } from '~/lib/types';
 

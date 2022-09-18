@@ -22,9 +22,9 @@ import {
 import BlogCard from '~/theme/components/Blog';
 import Layout from '~/theme/layout';
 
-import { getClient } from '~/lib/sanity-server';
+import { getClient } from '~/lib/sanity/sanity-server';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
-import { indexQuery } from '~/lib/queries';
+import { indexQuery } from '~/lib/sanity/queries';
 import { Post } from '~/lib/types';
 
 const Newsletter = dynamic(() => import('~/theme/components/Newsletter'));

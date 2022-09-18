@@ -112,7 +112,7 @@ const Pre = styled('pre', {
   fontSize: '$1',
   lineHeight: '26px',
 
-  '.token.parameter, .token.imports, .token.plain, .token.comment, .token.prolog, .token.doctype, .token.cdata':
+  '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog, .token.doctype, .token.cdata':
     {
       color: 'var(--token-comment)'
     },
