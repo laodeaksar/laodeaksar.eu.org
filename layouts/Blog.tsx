@@ -19,7 +19,7 @@ import Layout from '~/layout';
 import Signature from './Signature';
 
 //import { getColor } from '~/lib/getColor';
-import generateSocialImage from '~/lib/OpenGraph';
+import { createOgImage } from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity';
 import { Post } from '~/lib/types';
 
@@ -92,9 +92,9 @@ const BlogLayout = ({
     }, 500);
   }, [slug]);
 
-  const socialImage = generateSocialImage({
+  const socialImage = createOgImage({
     title,
-    underlayImage: image?.url
+    meta: description
   });
 
   // const keywords = tags.join(", ");
