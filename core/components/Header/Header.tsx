@@ -43,7 +43,7 @@ const headerVariants = {
 
 const Header = (props: HeaderProps) => {
   const { title, offsetHeight = 120, showProgressBarOnMobile } = props;
-  
+
   const [showSearch, setShowSearch] = React.useState(false);
   const reached = useScrollCounter(offsetHeight / 2);
   const readingProgress = useProgress();

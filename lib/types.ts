@@ -140,8 +140,8 @@ export type Comment = {
         image?: string | null | undefined;
       }
     | undefined;
-  created_at: string
-  body: string
+  created_at: string;
+  body: string;
 };
 
 export type CommentWithChildren = Comment & {

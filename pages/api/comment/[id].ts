@@ -1,7 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
 
 import prisma from '~/lib/prisma';
+import { authOptions } from '../auth/[...nextauth]';
 import {
   BadRequest,
   isValidHttpMethod,
@@ -9,7 +9,7 @@ import {
   Unauthorized
 } from '~/lib/api';
 
-import { authOptions } from './auth/[...nextauth]';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   req: NextApiRequest,
@@ -20,13 +20,13 @@ export default async function handler(
   }
 
   const session = await unstable_getServerSession(req, res, authOptions);
-  const { id, parentId } = req.query;
+  const { id } = req.query;
 
   if (!id || !Number(id)) {
     return BadRequest(res, 'Invalid id');
   }
 
-  const entry = await prisma.guestbook.findUnique({
+  const entry = await prisma.comment.findUnique({
     where: {
       id: Number(id)
     }
@@ -40,6 +40,7 @@ export default async function handler(
     return res.json({
       id: entry.id.toString(),
       body: entry.body,
+      parentId: entry.id,
       created_by: entry.created_by,
       updated_at: entry.updated_at
     });
@@ -50,13 +51,11 @@ export default async function handler(
   }
 
   if (req.method === 'DELETE') {
-    await prisma.guestbook.delete({
+    await prisma.comment.delete({
       where: {
         id: Number(id)
       }
     });
-
-    await res.revalidate('/guestbook');
 
     return res.status(200).json({ message: `Deleted entry ${id}` });
   }
@@ -71,7 +70,7 @@ export default async function handler(
 
   const body = req.body.body.slice(0, 500);
 
-  await prisma.guestbook.update({
+  await prisma.comment.update({
     where: {
       id: Number(id)
     },
@@ -81,32 +80,8 @@ export default async function handler(
     }
   });
 
-  await res.revalidate('/guestbook');
-
   return res.status(201).json({
     ...entry,
     body
   });
-
-
-  try {
-    const comment = await prisma.comment.create({
-      data: {
-        body,
-        ...(parentId && {
-          parent: {
-            connect: {
-              id: parentId
-            }
-          }
-        })
-      }
-    });
-
-    return comment;
-  } catch (e) {
-    console.log(e);
-
-    throw new Error();
-  }
 }

@@ -5,7 +5,7 @@ const siteMetadata = {
   description:
     "Hi I'm Aksar, and this is my blog. Here, I share through my writing my experience as a frontend engineer.",
   language: 'en-us',
-  siteUrl: "https://laodeaksar.eu.org",
+  siteUrl: 'https://laodeaksar.eu.org',
   siteRepo: 'https://github.com/laodeaksarr/laodeaksar.eu.org',
   //   siteLogo: "/static/images/bundle_logo.svg",
   avatarImage:
@@ -20,7 +20,7 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/ode_aksar/',
   newsletter: 'https://www.getrevue.co/profile/laodeaksar',
   resume: '/static/laodeaksar_resume.pdf',
-  snippets:'',
+  snippets: '',
   carbonCode: '',
   carbonPlacement: '',
   locale: 'en-US',

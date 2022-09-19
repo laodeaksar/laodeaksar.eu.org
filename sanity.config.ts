@@ -5,11 +5,10 @@ import { markdownSchema } from 'sanity-plugin-markdown';
 
 /**
  * visionTool({
- * defaultApiVersion: "2021-03-25",
- * defaultDataset: "production",
+ *   defaultApiVersion: "2021-03-25",
+ *   defaultDataset: "production",
  * }),
  **/
-
 export default createConfig({
   name: 'default',
   title: 'laodeaksar.eu.org',

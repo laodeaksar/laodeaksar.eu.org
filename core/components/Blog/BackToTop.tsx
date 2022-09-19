@@ -60,7 +60,7 @@ export const BackToTop = () => {
     if (!hasMounted) return;
     const scrolledDistance = window.scrollY || window.pageYOffset;
     const screenHeight = document.body.scrollHeight - window.screen.availHeight;
-    
+
     try {
       setShowButton(
         scrolledDistance / screenHeight > 0.3 &&
@@ -73,7 +73,7 @@ export const BackToTop = () => {
     if (!hasMounted) return;
     window.addEventListener('scroll', checkScrollTop);
     checkScrollTop();
-    
+
     return () => {
       window.removeEventListener('scroll', checkScrollTop);
     };

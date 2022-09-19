@@ -19,7 +19,7 @@ function getReplyCount(count: number) {
 
 function CommentActions({
   commentId,
-  replyCount,
+  replyCount
 }: {
   commentId: string;
   replyCount: number;

@@ -42,5 +42,4 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
 export default function Sitemap() {
   return null;
-};
-
+}

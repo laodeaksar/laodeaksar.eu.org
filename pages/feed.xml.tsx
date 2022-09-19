@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       date: post.date,
       description: post.description
     });
-  })
+  });
 
   res.setHeader('Content-Type', 'text/xml');
   res.setHeader(

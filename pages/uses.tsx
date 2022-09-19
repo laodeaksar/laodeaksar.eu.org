@@ -12,7 +12,6 @@ import {
   Text,
   H1,
   H2,
-  Shadows,
   styled
 } from '@laodeaksarr/design-system';
 
@@ -22,6 +21,7 @@ import Layout from '~/theme/layout';
 
 import { Gear } from '~/lib/types';
 import ContentfulGears from '~/lib/contentful';
+import { GeneralItems } from './GeneralItems';
 
 const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
   const easing = [0.175, 0.85, 0.42, 0.96];
@@ -68,39 +68,37 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
               to make my life easier.
             </Text>
 
-            {Object?.entries(gearByCategory).map(
-              ([category, { items }]: any) => {
-                return (
-                  <Box
-                    css={{
-                      position: 'relative',
-                      marginTop: 0,
-                      marginBottom: '1rem'
-                    }}
-                    key={category}
-                  >
-                    <Flex css={{ marginBottom: '$3' }}>
-                      {(CategoryIcons as any)[category]}
-                      <H2
-                        css={{
-                          fontSize: '1.875rem',
-                          margin: 0,
-                          padding: 0,
-                          transform: 'translateY(3.5px)'
-                        }}
-                      >
-                        {category}
-                      </H2>
-                    </Flex>
-                    {category === 'Software' ? (
-                      <SoftwareItems items={items} />
-                    ) : (
-                      <GeneralItems items={items} />
-                    )}
-                  </Box>
-                );
-              }
-            )}
+            {Object?.entries(gearByCategory).map(([category, { items }]) => {
+              return (
+                <Box
+                  css={{
+                    position: 'relative',
+                    marginTop: 0,
+                    marginBottom: '1rem'
+                  }}
+                  key={category}
+                >
+                  <Flex css={{ marginBottom: '$3' }}>
+                    {(CategoryIcons as any)[category]}
+                    <H2
+                      css={{
+                        fontSize: '1.875rem',
+                        margin: 0,
+                        padding: 0,
+                        transform: 'translateY(3.5px)'
+                      }}
+                    >
+                      {category}
+                    </H2>
+                  </Flex>
+                  {category === 'Software' ? (
+                    <SoftwareItems items={items} />
+                  ) : (
+                    <GeneralItems items={items} />
+                  )}
+                </Box>
+              );
+            })}
 
             <Callout variant="info">
               <Text
@@ -149,7 +147,7 @@ export const getStaticProps = async () => {
   };
 };
 
-function ProductLink({
+export function ProductLink({
   children,
   href
 }: React.PropsWithChildren<{ href?: string }>) {
@@ -476,7 +474,7 @@ const Svg = styled('svg', {
   height: '2rem'
 });
 
-const Img = styled(Image, {
+export const Img = styled(Image, {
   display: 'flex',
   justifyContent: 'center',
   borderRadius: '6px'

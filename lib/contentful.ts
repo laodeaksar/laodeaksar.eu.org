@@ -12,8 +12,7 @@ class ContentfulApi {
     variables = {},
     options = defaultOptions
   ) {
-    const fetchUrl =
-      `https://graphql.contentful.com/content/v1/spaces/${spaceId}`;
+    const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${spaceId}`;
 
     const token = options.preview ? previewToken : accessToken;
 

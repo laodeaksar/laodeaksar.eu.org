@@ -46,7 +46,7 @@ const MDXComponents = {
     return <List variant="unordered" {...props} />;
   },
   VideoPlayer,
-  Tabs,
+  Tabs
 };
 
 export default MDXComponents;

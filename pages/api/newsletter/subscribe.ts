@@ -33,7 +33,7 @@ export default async function handler(req: NextRequest) {
     },
     body: JSON.stringify({ email })
   });
-  
+
   const data = await result.json();
 
   if (!result.ok) {

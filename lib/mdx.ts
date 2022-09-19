@@ -1,8 +1,8 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
-import { remarkFigure } from "./remark/remark-figure";
+import { remarkFigure } from './remark/remark-figure';
 import { remarkMeta } from './remark/remark-meta';
-import { remarkSectionize } from "./remark/remark-sectionize-fork";
+import { remarkSectionize } from './remark/remark-sectionize-fork';
 import remarkSlug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
 import remarkAutolinkHeading from 'remark-autolink-headings';
@@ -32,4 +32,3 @@ export async function mdxToHtml(source: string) {
     readingTime: readingTime(source).text
   };
 }
-

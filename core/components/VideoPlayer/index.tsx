@@ -1,8 +1,8 @@
-import React from "react";
-import { styled, useTheme } from "@laodeaksarr/design-system";
+import React from 'react';
+import { styled, useTheme } from '@laodeaksarr/design-system';
 
-import type { VideoPlayerProps } from "./types";
-import { getDisplayedPoster } from "./utils";
+import type { VideoPlayerProps } from './types';
+import { getDisplayedPoster } from './utils';
 
 const VideoPlayer = (props: VideoPlayerProps) => {
   const { autoPlay, controls, loop, muted, width, height, poster, src } = props;
@@ -14,7 +14,7 @@ const VideoPlayer = (props: VideoPlayerProps) => {
 
   React.useEffect(() => {
     if (poster) {
-      if (!poster.includes(".png")) {
+      if (!poster.includes('.png')) {
         setCurrentPoster(getDisplayedPoster(poster, dark));
       } else {
         setCurrentPoster(poster);
@@ -41,15 +41,15 @@ const VideoPlayer = (props: VideoPlayerProps) => {
 
 export default VideoPlayer;
 
-const Wrapper = styled("div", {
-  marginBottom: "32px",
-  display: "flex",
+const Wrapper = styled('div', {
+  marginBottom: '32px',
+  display: 'flex',
 
   video: {
-    margin: "0 auto",
-    background: "var(--laodeaksar-colors-emphasis)",
-    maxWidth: "$full",
-    height: "auto",
+    margin: '0 auto',
+    background: 'var(--laodeaksar-colors-emphasis)',
+    maxWidth: '$full',
+    height: 'auto'
     // aspectRatio: '16 / 9'
-  },
+  }
 });

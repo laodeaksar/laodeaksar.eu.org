@@ -1,4 +1,4 @@
-import type { Comment, CommentWithChildren } from "./types";
+import type { Comment, CommentWithChildren } from './types';
 
 function formComments(comments: Comment[]) {
   const map = new Map();

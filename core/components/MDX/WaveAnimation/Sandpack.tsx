@@ -62,16 +62,16 @@ const CSSCompositionSandpack = () => {
       autorun
       template="react"
       dependencies={{
-        'framer-motion': '6.2.4',
+        'framer-motion': '6.2.4'
       }}
       files={{
         '/App.js': {
-          code: AppCode,
+          code: AppCode
         },
         '/scene.css': {
           code: dark ? SceneCSSDark : SceneCSSLight,
-          hidden: true,
-        },
+          hidden: true
+        }
       }}
     />
   );

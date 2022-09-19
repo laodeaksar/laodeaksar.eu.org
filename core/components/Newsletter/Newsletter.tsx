@@ -12,7 +12,7 @@ import {
   TextInput
 } from '@laodeaksarr/design-system';
 
-import { ClickEvent, Form, FormState } from '~/lib/types';
+import { Form, FormState } from '~/lib/types';
 
 import { Message, NewsletterFormContent } from './Styles';
 import { NewsletterHeader } from './Icons';
@@ -27,7 +27,7 @@ const Newsletter = (props: Props) => {
   //const { data } = useSWR<Subscribers>('/api/newsletter/subscribers', fetcher);
   //const subscriberCount = new Number(data?.count);
 
-  const subscribe = async (e: ClickEvent) => {
+  const subscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
@@ -121,18 +121,6 @@ const Newsletter = (props: Props) => {
           </>
         )}
         <form onSubmit={subscribe}>
-          {/*<Flex gap={2}>
-            <TextInput
-              aria-label="Email"
-              id="subscribe"
-              type="email"
-              placeholder="me@laodeaksar.eu.org"
-            />
-            <Button variant="primary" glow>
-              Subscribe
-            </Button>
-          </Flex>*/}
-
           <Flex
             alignItems="flex-start"
             gap={3}
@@ -154,13 +142,12 @@ const Newsletter = (props: Props) => {
             />
             <Button
               aria-label="Subscribe to my newsletter"
-              disabled={isLoading}
               isLoading={isLoading}
               title="Subscribe to my newsletter"
               type="submit"
               variant="primary"
             >
-              {!isLoading && 'Send'}
+              Send
             </Button>
           </Flex>
         </form>
