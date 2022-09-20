@@ -6,7 +6,7 @@ import {
   SandpackPredefinedTemplate
 } from '@codesandbox/sandpack-react';
 
-import { styled } from '@laodeaksarr/design-system';
+import { Shadows, styled } from '@laodeaksarr/design-system';
 
 import setupFiles from './SandpackSetupFiles';
 
@@ -60,7 +60,7 @@ const SandpackWrapper = styled('div', {
     position: 'relative',
     marginBottom: '2.25rem',
     borderRadius: '$2',
-    shadow: '$shadows$1',
+    shadow: Shadows[1],
 
     '@media (max-width: 750px)': {
       display: 'block'

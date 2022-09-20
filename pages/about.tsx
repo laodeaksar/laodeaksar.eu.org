@@ -11,17 +11,50 @@ import {
   styled
 } from '@laodeaksarr/design-system';
 
-import Link from '~/theme/components/Link';
-import Newsletter from '~/theme/components/Newsletter';
-import Image from '~/theme/components/MDX/Image';
-import Layout from '~/theme/layout';
+import Link from '@/components/Link';
+import Newsletter from '@/components/Newsletter';
+import Image from '@/components/MDX/Image';
+import Layout from '@/layout';
 
 import author from '../public/static/images/me.jpg';
 import { Post } from '~/lib/types';
 import { getClient } from '~/lib/sanity/sanity-server';
 import { indexQuery } from '~/lib/sanity/queries';
 
-const About: NextPage<any> = ({ postsCount, initialAge }) => {
+type Props = {
+  postsCount: number;
+  initialAge: number;
+};
+
+const easing = [0.175, 0.85, 0.42, 0.96];
+
+const titleVariant = {
+  exit: {
+    x: -100,
+    opacity: 0,
+    transition: { duration: 0.4, ease: easing }
+  },
+  enter: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.1, duration: 0.5, ease: easing }
+  }
+};
+
+const subtitleVariant = {
+  exit: {
+    x: 150,
+    opacity: 0,
+    transition: { duration: 0.4, ease: easing }
+  },
+  enter: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: easing }
+  }
+};
+
+const About: NextPage<Props> = ({ postsCount, initialAge }) => {
   const [age, setAge] = React.useState(initialAge);
   const ageInYears = React.useMemo(() => Math.floor(age / 31536000), [age]);
   const mounted = React.useRef<boolean>();
@@ -41,8 +74,6 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
     };
   }, []);
 
-  const easing = [0.175, 0.85, 0.42, 0.96];
-
   return (
     <Layout
       footer
@@ -53,20 +84,7 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
       <Grid columns="medium" gapX={4} gapY={12} all>
         <LazyMotion features={domAnimation}>
           <Box pb={10} mx="auto" css={{ position: 'relative' }}>
-            <m.div
-              variants={{
-                exit: {
-                  x: -100,
-                  opacity: 0,
-                  transition: { duration: 0.4, ease: easing }
-                },
-                enter: {
-                  x: 0,
-                  opacity: 1,
-                  transition: { delay: 0.1, duration: 0.5, ease: easing }
-                }
-              }}
-            >
+            <m.div variants={titleVariant}>
               <H1 css={{ marginBottom: '2rem' }}>Aksar La&apos;ode</H1>
             </m.div>
             <Box
@@ -143,20 +161,7 @@ const About: NextPage<any> = ({ postsCount, initialAge }) => {
                   </m.figure>
                 </Box>
               </Box>
-              <m.div
-                variants={{
-                  exit: {
-                    x: 150,
-                    opacity: 0,
-                    transition: { duration: 0.4, ease: easing }
-                  },
-                  enter: {
-                    x: 0,
-                    opacity: 1,
-                    transition: { duration: 0.5, ease: easing }
-                  }
-                }}
-              >
+              <m.div variants={subtitleVariant}>
                 <div>
                   <Text as="p" css={{ marginBottom: '$2' }}>
                     Hey thanks for visiting my blog and wanting to get to know
@@ -236,10 +241,10 @@ export const getStaticProps = async ({ preview = false }) => {
 };
 
 function getBirthdayInSecond() {
-  const now = new Date();
+  const now = new Date() as any;
   const dob = new Date(1995, 12, 20, 15, 30, 0);
 
-  return Math.round(((now as any) - dob.getTime()) / 1000);
+  return Math.round((now - dob.getTime()) / 1000);
 }
 
 const Patern = styled('svg', {

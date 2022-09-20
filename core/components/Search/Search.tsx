@@ -12,8 +12,8 @@ import {
   useTheme
 } from '@laodeaksarr/design-system';
 
-import useBodyScrollLock from '~/theme/hooks/useBodyScrollLock';
-import { useIndexItem } from '~/theme/hooks/useIndexItem';
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
+import { useIndexItem } from '@/hooks/useIndexItem';
 
 import { CommandCenterStatic } from './CommandCenterStatic';
 import { HEIGHT, MAX_HEIGHT } from './constants';

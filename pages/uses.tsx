@@ -9,12 +9,14 @@ import {
   Grid,
   Text,
   H1,
-  H2,
+  H2
 } from '@laodeaksarr/design-system';
 
-import { GeneralItems } from '@/components/pages/uses/GeneralItems';
-import { SoftwareItems } from '@/components/pages/uses/SoftwareItems';
-import { CategoryIcons } from '@/components/pages/uses/CategoryIcons';
+import {
+  CategoryIcons,
+  GeneralItems,
+  SoftwareItems
+} from '@/components/screens/uses';
 import Link from '@/components/Link';
 import Layout from '@/layout';
 
@@ -36,8 +38,8 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
           <Box
             as={motion.div}
             css={{
-              marginTop: 'calc(3rem * calc(1 - 0))',
-              marginBottom: 'calc(3rem * 0)',
+              marginTop: '3rem',
+              marginBottom: '0',
 
               '@md': {
                 px: '1rem'
@@ -127,16 +129,22 @@ export default Uses;
 export const getStaticProps = async () => {
   const gear = await ContentfulGears.getAll();
 
-  const gearByCategory = gear?.reduce((accu: any, gearItem: any) => {
-    if (accu[gearItem.category]) {
-      accu[gearItem.category].items.push(gearItem);
-    } else {
-      accu[gearItem.category] = {
-        items: [gearItem]
-      };
-    }
-    return accu;
-  }, {});
+  const gearByCategory = gear.reduce(
+    (
+      accu: { [x: string]: { items: any[] } },
+      gearItem: { category: string | number }
+    ) => {
+      if (accu[gearItem.category]) {
+        accu[gearItem.category].items.push(gearItem);
+      } else {
+        accu[gearItem.category] = {
+          items: [gearItem]
+        };
+      }
+      return accu;
+    },
+    {}
+  );
 
   return {
     props: {

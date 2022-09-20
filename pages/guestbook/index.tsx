@@ -4,8 +4,8 @@ import type { guestbook } from '@prisma/client';
 
 import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
-import GuestbookComponent from '~/theme/components/Guestbook';
-import Layout from '~/theme/layout';
+import GuestbookComponent from '@/components/screens/guestbook';
+import Layout from '@/layout';
 
 import prisma from '~/lib/prisma';
 

@@ -9,12 +9,12 @@ import {
   Text
 } from '@laodeaksarr/design-system';
 
-import Hero from '~/theme/components/Hero';
-import Link from '~/theme/components/Link';
-import TableOfContent from '~/theme/components/TableOfContent';
-import { WebmentionCount } from '~/theme/components/Webmentions';
-import siteMetadata from '~/theme/layout/siteMetadata';
-import Layout from '~/theme/layout';
+import Hero from '@/components/Hero';
+import Link from '@/components/Link';
+import TableOfContent from '@/components/TableOfContent';
+import { WebmentionCount } from '@/components/Webmentions';
+import siteMetadata from '@/layout/siteMetadata';
+import Layout from '@/layout';
 
 import Signature from './Signature';
 
@@ -63,7 +63,7 @@ const BlogLayout = ({
     tags,
     url
   } = post;
-  const postUrl = `${siteMetadata.siteUrl}${url}`
+  const postUrl = `${siteMetadata.siteUrl}${url}`;
 
   const headerProps = {
     title,
@@ -128,12 +128,7 @@ const BlogLayout = ({
               <Hero.Info>
                 <Flex mb={3} wrap>
                   {tags.map((text, id) => (
-                    <Link
-                      key={id}
-                      href={`/tags/${text}`}
-                      hastag
-                      discreet
-                    >
+                    <Link key={id} href={`/tags/${text}`} hastag discreet>
                       {text}
                     </Link>
                   ))}

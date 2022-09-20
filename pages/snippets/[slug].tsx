@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { MDXRemote } from 'next-mdx-remote';
 import type { NextPage, GetStaticProps } from 'next';
 
-import Code from '~/theme/components/Code';
+import Code from '@/components/Code';
 
 import SnippetLayout from '~/layouts/Snippet';
 
@@ -12,7 +12,7 @@ import { sanityClient, getClient } from '~/lib/sanity/sanity-server';
 import { Snippet } from '~/lib/types';
 
 const WaveAnimationSandpack = dynamic(
-  () => import('~/theme/components/MDX/WaveAnimation/Sandpack')
+  () => import('@/components/MDX/WaveAnimation/Sandpack')
 );
 
 const SnippetDetail: NextPage<{ snippet: Snippet }> = ({ snippet }) => {

@@ -14,20 +14,19 @@ import {
   H2,
   H3,
   Icon,
-  VisuallyHidden,
   styled,
   Text
 } from '@laodeaksarr/design-system';
 
-import BlogCard from '~/theme/components/Blog';
-import Layout from '~/theme/layout';
+import BlogCard from '@/components/screens/blog';
+import Layout from '@/layout';
 
 import { getClient } from '~/lib/sanity/sanity-server';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { indexQuery } from '~/lib/sanity/queries';
 import { Post } from '~/lib/types';
 
-const Newsletter = dynamic(() => import('~/theme/components/Newsletter'));
+const Newsletter = dynamic(() => import('@/components/Newsletter'));
 
 const WavingHand = () => (
   <Box
@@ -65,14 +64,9 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
             </H1>
             <Flex gap={4} css={{ mx: '-$3' }}>
               <Link href="/about" passHref>
-                <a>
-                  <Button variant="secondary" endIcon={<Icon.External />}>
-                    About me
-                  </Button>
-                  <VisuallyHidden as="p">
-                    Link redirects to /about
-                  </VisuallyHidden>
-                </a>
+                <Button variant="secondary" endIcon={<Icon.External />}>
+                  About me
+                </Button>
               </Link>
               <a
                 href="https://twitter.com/ode_aksar"
@@ -83,10 +77,6 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
                 <Button variant="secondary" endIcon={<Icon.Twitter />}>
                   @ode_aksar
                 </Button>
-                <VisuallyHidden as="p">
-                  Link redirects to my Twitter profile page
-                  https://twitter.com/ode_aksar.
-                </VisuallyHidden>
               </a>
             </Flex>
           </Box>

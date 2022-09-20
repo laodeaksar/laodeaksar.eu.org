@@ -13,8 +13,8 @@ import {
   Strong,
   Tabs
 } from '@laodeaksarr/design-system';
-import Code from '~/theme/components/Code';
-import VideoPlayer from '~/theme/components/VideoPlayer';
+import Code from '@/components/Code';
+import VideoPlayer from '@/components/VideoPlayer';
 
 // MDX only components Image,
 import Image from './Image';

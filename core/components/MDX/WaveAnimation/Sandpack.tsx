@@ -1,24 +1,24 @@
 import { useTheme } from '@laodeaksarr/design-system';
-import Sandpack from '~/theme/components/Code/Sandpack';
+import Sandpack from '@/components/Code/Sandpack';
 
 const SceneCSSDark = `
 html {
-    background: #20222B;
-    color: white;
+  background: #20222B;
+  color: white;
 }
 canvas {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }`;
 
 const SceneCSSLight = `
 html {
-    background: #F7F7FB;
-    color: black;
+  background: #F7F7FB;
+  color: black;
 }
 canvas {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }`;
 
 const AppCode = `import { motion } from 'framer-motion';

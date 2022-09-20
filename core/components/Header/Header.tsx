@@ -10,9 +10,9 @@ import {
   useKeyboardShortcut
 } from '@laodeaksarr/design-system';
 
-import Logo from '~/theme/components/Logo';
-import useProgress from '~/theme/hooks/useProgress';
-import useScrollCounter from '~/theme/hooks/useScrollCounter';
+import Logo from '@/components/Logo';
+import useProgress from '@/hooks/useProgress';
+import useScrollCounter from '@/hooks/useScrollCounter';
 
 import {
   fixTruncate,

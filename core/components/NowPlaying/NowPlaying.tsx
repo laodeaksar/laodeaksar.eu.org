@@ -1,36 +1,41 @@
-import Image from 'next/image';
-
-import { Flex, Skeleton, Text } from '@laodeaksarr/design-system';
+import { Flex, Skeleton } from '@laodeaksarr/design-system';
 
 import { Glass, SpotifyLogo } from './icons';
-import { styles } from './Styles';
+import {
+  AnchorStyled,
+  ArtistStyled,
+  BarsStyled,
+  CoverStyled,
+  TitleStyled,
+  WrapperStyled
+} from './Styles';
 
-import { useNowPlaying } from '~/theme/hooks/useNowPlaying';
+import { useNowPlaying } from '@/hooks/useNowPlaying';
+import Image from '../MDX/Image';
 
 const Bars = () => (
-  <Flex className={styles.bars}>
+  <BarsStyled>
     <span />
     <span />
     <span />
     <span />
-  </Flex>
+  </BarsStyled>
 );
 
 const NowPlaying = () => {
   const { data, loading } = useNowPlaying();
 
   return (
-    <a
+    <AnchorStyled
       href={data?.isPlaying ? data.url : undefined}
-      className={styles.outer}
       target="_blank"
       rel="noreferrer"
     >
       <Glass />
-      <Flex className={styles.inner} gap={0}>
+      <WrapperStyled justifyContent="space-between" gap={0}>
         <Flex gap={3}>
           <Skeleton visible={loading} circle>
-            <Flex className={styles.cover} justifyContent="center">
+            <CoverStyled justifyContent="center">
               {data?.isPlaying ? (
                 <Image
                   unoptimized
@@ -41,45 +46,59 @@ const NowPlaying = () => {
               ) : (
                 <SpotifyLogo />
               )}
-            </Flex>
+            </CoverStyled>
           </Skeleton>
           <Flex direction="column" alignItems="start" gap={0}>
             <Skeleton visible={loading} circle>
-              <Text
+              <TitleStyled
                 as="p"
                 size={2}
                 weight={4}
                 variant="secondary"
                 truncate
-                className={styles.title}
               >
                 {data?.isPlaying ? data.title : 'Spotify'}
-              </Text>
+              </TitleStyled>
             </Skeleton>
             {data?.isPlaying ? (
               <Skeleton visible={loading} circle>
-                <Text
+                <ArtistStyled
                   size={1}
                   variant="tertiary"
                   truncate
-                  className={styles.artist + ' artists'}
+                  css={{
+                    '&:hover': {
+                      display: 'none'
+                    }
+                  }}
                 >
                   {data.artist}
-                </Text>
-                <Text size={1} className={styles.artist + ' play'}>
+                </ArtistStyled>
+                <ArtistStyled
+                  size={1}
+                  css={{
+                    display: 'none',
+                    opacity: 1,
+                    color: 'var(--laodeaksar-colors-success)',
+
+                    '&:hover': {
+                      display: 'block'
+                    }
+                  }}
+                >
                   Play on Spotify
-                </Text>
+                </ArtistStyled>
               </Skeleton>
             ) : (
-              <Text size={1} variant="tertiary" className={styles.artist}>
+              <ArtistStyled size={1} variant="tertiary">
                 {data ? 'Not Playing' : 'Loading...'}
-              </Text>
+              </ArtistStyled>
             )}
           </Flex>
         </Flex>
         {data?.isPlaying && <Bars />}
-      </Flex>
-    </a>
+      </WrapperStyled>
+    </AnchorStyled>
   );
 };
 

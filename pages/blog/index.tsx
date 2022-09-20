@@ -3,8 +3,8 @@ import type { NextPage } from 'next';
 
 import { Box, Grid, H2 } from '@laodeaksarr/design-system';
 
-import BlogCard from '~/theme/components/Blog';
-import Layout from '~/theme/layout';
+import BlogCard from '@/components/screens/blog';
+import Layout from '@/layout';
 
 import { indexQuery } from '~/lib/sanity/queries';
 import { getClient } from '~/lib/sanity/sanity-server';

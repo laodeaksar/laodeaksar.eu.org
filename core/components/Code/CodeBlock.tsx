@@ -2,7 +2,7 @@ import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
 
 import { Card, styled } from '@laodeaksarr/design-system';
 
-import { CopyToClipboardButton } from '~/theme/components/Buttons';
+import { CopyToClipboardButton } from '@/components/Buttons';
 
 import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
@@ -112,7 +112,7 @@ const Pre = styled('pre', {
   fontSize: '$1',
   lineHeight: '26px',
 
-  '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog, .token.doctype, .token.cdata':
+  '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
     {
       color: 'var(--token-comment)'
     },
@@ -121,12 +121,12 @@ const Pre = styled('pre', {
     color: 'var(--token-punctuation)'
   },
 
-  '.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted':
+  '.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted':
     {
       color: 'var(--token-symbol)'
     },
 
-  '.token.selector, .token.attr-name, .token.char, .token.builtin, .token.number, .token.string, .token.inserted':
+  '.token.selector,.token.attr-name,.token.char,.token.builtin,.token.number,.token.string,.token.inserted':
     {
       color: 'var(--token-selector)'
     },

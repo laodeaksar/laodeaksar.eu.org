@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 
-import Link from '~/theme/components/Link';
+import Link from '@/components/Link';
 
 import { Box, Icon, VisuallyHidden } from '@laodeaksarr/design-system';
 

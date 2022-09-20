@@ -2,8 +2,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 import { Anchor, Box } from '@laodeaksarr/design-system';
 
-import useProgress from '~/theme/hooks/useProgress';
-import useScrollSpy from '~/theme/hooks/useScrollSpy';
+import useProgress from '@/hooks/useProgress';
+import useScrollSpy from '@/hooks/useScrollSpy';
 
 import ProgressBar from './ProgressBar';
 import { Wrapper } from './Styles';

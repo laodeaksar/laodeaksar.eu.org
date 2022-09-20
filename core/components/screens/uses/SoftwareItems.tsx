@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Anchor, Box, Flex, Grid, H2 } from '@laodeaksarr/design-system';
+import { Box, Flex, Grid, H2 } from '@laodeaksarr/design-system';
+
+import Link from '@/components/Link';
 
 import { Gear } from '~/lib/types';
 
@@ -38,7 +40,7 @@ export function SoftwareItems({ items }: { items: Gear[] }) {
                 }
               }}
             >
-              <Anchor href={link}>
+              <Link href={link}>
                 <Flex
                   justifyContent="center"
                   alignItems="start"
@@ -57,7 +59,7 @@ export function SoftwareItems({ items }: { items: Gear[] }) {
                 >
                   <Img src={image?.url} alt={image?.title} layout="fill" />
                 </Flex>
-              </Anchor>
+              </Link>
               <Box css={{ marginTop: 0, marginBottom: '1rem' }}>
                 <H2 css={{ marginBottom: 0 }}>{title}</H2>
                 <Box

@@ -94,7 +94,7 @@ export function GeneralItems({ items }: { items: Gear[] }) {
                           transition: 'transform 0.3s',
                           transform: 'translateY(100%)',
                           bc: 'var(--laodeaksar-colors-foreground)',
-                          boxShadow: `${Shadows[1]}`,
+                          boxShadow: Shadows[1],
                           width: '$full',
 
                           '&:hover': {

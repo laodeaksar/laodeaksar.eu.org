@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 
 import { Text } from '@laodeaksarr/design-system';
 
-import Link from '~/theme/components/Link';
+import Link from '@/components/Link';
 
 import type { Props, Reply } from './types';
 

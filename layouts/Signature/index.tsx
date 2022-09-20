@@ -1,11 +1,11 @@
 import dynamic from 'next/dynamic';
 
-import Link from '~/theme/components/Link';
-import { WebmentionReplies } from '~/theme/components/Webmentions';
+import Link from '@/components/Link';
+import { WebmentionReplies } from '@/components/Webmentions';
 
 import { styled, Text } from '@laodeaksarr/design-system';
 
-const Newsletter = dynamic(() => import('~/theme/components/Newsletter'));
+const Newsletter = dynamic(() => import('@/components/Newsletter'));
 
 const Signature = ({ title, url }: { title: string; url: string }) => {
   return (
