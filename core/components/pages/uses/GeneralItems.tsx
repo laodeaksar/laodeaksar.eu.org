@@ -1,9 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Box, Flex, Grid, Text, H2, Shadows } from '@laodeaksarr/design-system';
-import Link from '~/theme/components/Link';
+
+import Link from '@/components/Link';
+
 import { Gear } from '~/lib/types';
-import { Img, ProductLink } from './uses';
+
+import { Img } from './styles';
+import { ProductLink } from './ProductLink';
 
 export function GeneralItems({ items }: { items: Gear[] }) {
   return (
