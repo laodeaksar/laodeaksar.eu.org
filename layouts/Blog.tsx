@@ -12,8 +12,8 @@ import {
 import Hero from '@/components/Hero';
 import Link from '@/components/Link';
 import TableOfContent from '@/components/TableOfContent';
-import { WebmentionCount } from '@/components/Webmentions';
 import siteMetadata from '@/layout/siteMetadata';
+import { WebmentionCount } from '@/components/Webmentions';
 import Layout from '@/layout';
 
 import Signature from './Signature';

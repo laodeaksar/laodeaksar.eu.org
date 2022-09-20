@@ -1,9 +1,8 @@
 import dynamic from 'next/dynamic';
+import { styled, Text } from '@laodeaksarr/design-system';
 
 import Link from '@/components/Link';
 import { WebmentionReplies } from '@/components/Webmentions';
-
-import { styled, Text } from '@laodeaksarr/design-system';
 
 const Newsletter = dynamic(() => import('@/components/Newsletter'));
 

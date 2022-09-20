@@ -35,9 +35,6 @@ export const getTopTracks = async () => {
   };
 
   return await fetch(url, { headers });
-
-  //if (response.status === 200) return <Record<string, any>>response.json();
-  //return null;
 };
 
 export const getNowPlaying = async () => {
@@ -50,9 +47,6 @@ export const getNowPlaying = async () => {
   };
 
   return await fetch(url, { headers });
-
-  //if (response.status === 200) return <Record<string, any>>response.json();
-  //return null;
 };
 
 const forbiddenKeywords = ['netflix', 'disney', 'musical'];
