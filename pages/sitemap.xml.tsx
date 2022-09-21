@@ -5,14 +5,14 @@ import { postSlugsQuery } from '~/lib/sanity/queries';
 import type { Post } from '~/lib/types';
 
 const createSitemap = (
-  slugs: string[]
+  pages: string[]
 ) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        ${slugs
-          .map((slug) => {
+        ${pages
+          .map(page => {
             return `
                 <url>
-                    <loc>${`https://laodeaksar.eu.org/${slug}`}</loc>
+                    <loc>${`https://laodeaksar.eu.org/${page}`}</loc>
                 </url>
             `;
           })
@@ -23,7 +23,7 @@ const createSitemap = (
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const allPosts = await sanityClient.fetch<Post[]>(postSlugsQuery);
   const allPages = [
-    ...allPosts.map((slug) => `blog/${slug}`),
+    ...allPosts.map(slug => `blog/${slug}`),
     ...['', 'about', 'blog', 'tweets', 'uses']
   ];
 
