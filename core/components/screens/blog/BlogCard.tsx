@@ -8,7 +8,7 @@ let year = 0;
 
 const BlogCard = ({ posts }: { posts: Post[] }) => (
   <Grid as="ul" css={{ margin: 0, padding: 0 }} gapY={1}>
-    {posts.map((post) => {
+    {posts.map(post => {
       const currentYear = new Date(post.date).getFullYear();
       let printYear: boolean;
 

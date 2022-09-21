@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { styled, Text } from '@laodeaksarr/design-system';
+
 import { HEIGHT, MAX_HEIGHT } from './constants';
 
 export const Result = styled(motion.li, {

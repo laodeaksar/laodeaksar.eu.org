@@ -6,7 +6,7 @@ import Link from '@/components/Link';
 
 import { Gear } from '~/lib/types';
 
-import { Img } from './styles';
+import { Img } from './Styles';
 import { ProductLink } from './ProductLink';
 
 export function SoftwareItems({ items }: { items: Gear[] }) {

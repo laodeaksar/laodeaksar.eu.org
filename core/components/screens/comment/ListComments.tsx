@@ -64,7 +64,7 @@ function Comment({ comment }: { comment: CommentWithChildren }) {
 function ListComment({ comments }: { comments: CommentWithChildren[] }) {
   return (
     <Box>
-      {comments?.map((comment) => (
+      {comments?.map(comment => (
         <Comment key={comment.id} comment={comment} />
       ))}
     </Box>

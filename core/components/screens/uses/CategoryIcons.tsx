@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Svg } from './styles';
+import { Svg } from './Styles';
 
 export const CategoryIcons = {
   Hardware: (

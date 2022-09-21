@@ -3,7 +3,8 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Button, Tooltip, useTheme } from '@laodeaksarr/design-system';
 
 const LightDarkSwitcher = () => {
-  const theme = useTheme();
+  const { dark, toggleDark } = useTheme();
+  //const theme = useTheme();
   const duration = 0.7;
 
   const moonVariants = {
@@ -24,26 +25,29 @@ const LightDarkSwitcher = () => {
     }
   };
 
-  const isChecked = theme.dark;
+  //const isChecked = theme.dark;
 
-  const scaleMoon = useMotionValue(isChecked ? 1 : 0);
-  const scaleSun = useMotionValue(isChecked ? 0 : 1);
+  const scaleMoon = useMotionValue(dark ? 1 : 0);
+  //const scaleMoon = useMotionValue(isChecked ? 1 : 0);
+  const scaleSun = useMotionValue(dark ? 0 : 1);
+  //const scaleSun = useMotionValue(isChecked ? 0 : 1);
   const pathLengthMoon = useTransform(scaleMoon, [0.6, 1], [0, 1]);
   const pathLengthSun = useTransform(scaleSun, [0.6, 1], [0, 1]);
 
   return (
     <Tooltip
       id="lightDarkSwitcherTooltip"
-      content={isChecked ? 'Activate light mode' : 'Activate dark mode'}
+      content={dark ? 'Activate light mode' : 'Activate dark mode'}
       visuallyHiddenText="Toggles between light and dark mode."
     >
       <Button
         as={motion.button}
         variant="icon"
         aria-describedby="lightDarkSwitcherTooltip"
-        onClick={theme.toggleDark}
+        onClick={toggleDark}
+        //onClick={theme.toggleDark}
         initial={false}
-        animate={isChecked ? 'checked' : 'unchecked'}
+        animate={dark ? 'checked' : 'unchecked'}
         transition={{ duration }}
         icon={
           <motion.svg
@@ -60,7 +64,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -73,7 +77,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -86,7 +90,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -99,7 +103,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -112,7 +116,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -125,7 +129,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -138,7 +142,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -151,7 +155,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -164,7 +168,7 @@ const LightDarkSwitcher = () => {
               strokeLinecap="round"
               strokeLinejoin="round"
               variants={sunVariants}
-              custom={isChecked}
+              custom={dark}
               transition={{ duration }}
               style={{
                 pathLength: pathLengthSun,
@@ -178,7 +182,7 @@ const LightDarkSwitcher = () => {
               strokeLinejoin="round"
               transition={{ duration }}
               variants={moonVariants}
-              custom={isChecked}
+              custom={dark}
               style={{
                 pathLength: pathLengthMoon,
                 scale: scaleMoon

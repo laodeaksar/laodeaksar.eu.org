@@ -1,3 +1,6 @@
 export interface TableOfContentProps {
-  ids: Array<{ id: string; title: string }>;
+  ids: Array<{
+    id: string;
+    title: string;
+  }>;
 }

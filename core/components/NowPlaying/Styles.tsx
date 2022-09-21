@@ -1,4 +1,4 @@
-import { Flex, keyframes, styled,Text } from '@laodeaksarr/design-system';
+import { Flex, keyframes, styled, Text } from '@laodeaksarr/design-system';
 
 const bounceBar = keyframes({
   '0%': {
@@ -13,6 +13,19 @@ const bounceBar = keyframes({
   '100%': {
     transform: 'scaleY(0.5)'
   }
+});
+
+export const AnchorStyled = styled('a', {
+  textDecoration: 'none',
+  position: 'relative',
+  display: 'block',
+  width: 'fit-content'
+});
+
+export const ArtistStyled = styled(Text, {
+  lineHeight: '1.375 !important',
+  maxWidth: '18ch',
+  margin: '0 !important'
 });
 
 export const BarsStyled = styled(Flex, {
@@ -30,18 +43,21 @@ export const BarsStyled = styled(Flex, {
       animationTimingFunction: 'cubic-bezier(.77,.7,.14,1)',
       animationDuration: '.75s'
     },
+
     '&:nth-child(2)': {
       height: 16,
       animationDelay: '.15s',
       animationTimingFunction: 'cubic-bezier(.97,.04,.4,.66)',
       animationDuration: '.775s'
     },
+
     '&:nth-child(3)': {
       height: 12,
       animationDelay: '.05s',
       animationTimingFunction: 'cubic-bezier(.65,.18,.14,1)',
       animationDuration: '.7s'
     },
+
     '&:nth-child(4)': {
       height: 14,
       animationDelay: '.2s',
@@ -49,19 +65,6 @@ export const BarsStyled = styled(Flex, {
       animationDuration: '.73s'
     }
   }
-});
-
-export const AnchorStyled = styled('a', {
-  textDecoration: 'none',
-  position: 'relative',
-  display: 'block',
-  width: 'fit-content'
-});
-
-export const ArtistStyled = styled(Text, {
-  lineHeight: '1.375 !important',
-  maxWidth: '18ch',
-  margin: '0 !important'
 });
 
 export const CoverStyled = styled(Flex, {

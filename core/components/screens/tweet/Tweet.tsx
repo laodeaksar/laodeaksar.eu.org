@@ -51,7 +51,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
     .replace(/https:\/\/[\n\S]+/g, '')
     .replace('&amp;', '&');
   const quoteTweet =
-    referenced_tweets && referenced_tweets.find((t) => t.type === 'quoted');
+    referenced_tweets && referenced_tweets.find(t => t.type === 'quoted');
 
   return (
     <TweetWrapper>
@@ -118,7 +118,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
       </Text>
       {media && media?.length > 1 ? (
         <ImageGrid>
-          {media.map((m: any) => (
+          {media.map(m => (
             <div
               key={m.media_key}
               style={{
@@ -139,7 +139,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
       ) : null}
       {media && media?.length === 1 ? (
         <SingleImageWrapper>
-          {media.map((m: any) => (
+          {media.map(m => (
             <Image
               key={m.media_key}
               alt={text}

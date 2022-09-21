@@ -113,7 +113,13 @@ const Newsletter = (props: Props) => {
           </>
         ) : (
           <>
-            <Text as="p" css={{ marginBottom: 0 }} variant="secondary">
+            <Text
+              as="p"
+              css={{
+                marginBottom: 0
+              }}
+              variant="secondary"
+            >
               Get email from me about my ideas, frontend development resources
               and tips as well as exclusive previews of upcoming articles.
             </Text>
@@ -136,7 +142,7 @@ const Newsletter = (props: Props) => {
               type="email"
               placeholder="email@example.com"
               autoComplete="off"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={e => setEmail(e.currentTarget.value)}
               value={email}
               disabled={isLoading}
             />
@@ -147,7 +153,7 @@ const Newsletter = (props: Props) => {
               type="submit"
               variant="primary"
             >
-              Send
+              {isLoading ? 'Sending...' : 'Send'}
             </Button>
           </Flex>
         </form>

@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@laodeaksarr/design-system';
+import { Flex } from '@laodeaksarr/design-system';
 
 import { Glass, SpotifyLogo } from './icons';
 import {
@@ -23,7 +23,7 @@ const Bars = () => (
 );
 
 const NowPlaying = () => {
-  const { data, loading } = useNowPlaying();
+  const { data } = useNowPlaying();
 
   return (
     <AnchorStyled
@@ -34,34 +34,30 @@ const NowPlaying = () => {
       <Glass />
       <WrapperStyled justifyContent="space-between" gap={0}>
         <Flex gap={3}>
-          <Skeleton visible={loading} circle>
-            <CoverStyled justifyContent="center">
-              {data?.isPlaying ? (
-                <Image
-                  unoptimized
-                  src={data.image?.url || ''}
-                  alt={[data.title] + ' Cover Album'}
-                  layout="fill"
-                />
-              ) : (
-                <SpotifyLogo />
-              )}
-            </CoverStyled>
-          </Skeleton>
-          <Flex direction="column" alignItems="start" gap={0}>
-            <Skeleton visible={loading} circle>
-              <TitleStyled
-                as="p"
-                size={2}
-                weight={4}
-                variant="secondary"
-                truncate
-              >
-                {data?.isPlaying ? data.title : 'Spotify'}
-              </TitleStyled>
-            </Skeleton>
+          <CoverStyled justifyContent="center">
             {data?.isPlaying ? (
-              <Skeleton visible={loading} circle>
+              <Image
+                unoptimized
+                src={data.image?.url || ''}
+                alt={[data.title] + ' Cover Album'}
+                layout="fill"
+              />
+            ) : (
+              <SpotifyLogo />
+            )}
+          </CoverStyled>
+          <Flex direction="column" alignItems="start" gap={0}>
+            <TitleStyled
+              as="p"
+              size={2}
+              weight={4}
+              variant="secondary"
+              truncate
+            >
+              {data?.isPlaying ? data.title : 'Spotify'}
+            </TitleStyled>
+            {data?.isPlaying ? (
+              <>
                 <ArtistStyled
                   size={1}
                   variant="tertiary"
@@ -88,7 +84,7 @@ const NowPlaying = () => {
                 >
                   Play on Spotify
                 </ArtistStyled>
-              </Skeleton>
+              </>
             ) : (
               <ArtistStyled size={1} variant="tertiary">
                 {data ? 'Not Playing' : 'Loading...'}

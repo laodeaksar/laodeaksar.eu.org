@@ -2,7 +2,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 import { Text } from '@laodeaksarr/design-system';
 
-import { fixTruncate, HeaderTitleWrapper } from './Styles';
+import { HeaderTitleWrapper } from './Styles';
 import type { HeaderTitleProps } from './types';
 
 const titleVariants = {
@@ -28,7 +28,13 @@ export const HeaderTitle = (props: HeaderTitleProps) => {
   const titleOpacity = useTransform(titleY, [10, 0], [0, 1]);
 
   return (
-    <HeaderTitleWrapper className={fixTruncate}>
+    <HeaderTitleWrapper
+      //className={fixTruncate}
+      css={{
+        flex: 1,
+        minWidth: 0
+      }}
+    >
       <Text
         as={motion.span}
         size={4}
@@ -43,7 +49,7 @@ export const HeaderTitle = (props: HeaderTitleProps) => {
       >
         <a
           href="#top"
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}

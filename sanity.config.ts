@@ -1,14 +1,7 @@
 import { createConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import { markdownSchema } from 'sanity-plugin-markdown';
-//import { visionTool } from '@sanity/vision';
 
-/**
- * visionTool({
- *   defaultApiVersion: "2021-03-25",
- *   defaultDataset: "production",
- * }),
- **/
 export default createConfig({
   name: 'default',
   title: 'laodeaksar.eu.org',

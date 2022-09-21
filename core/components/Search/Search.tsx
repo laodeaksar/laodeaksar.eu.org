@@ -116,8 +116,8 @@ const Search = (props: Props) => {
     if (debouncedSearchQuery && debouncedSearchQuery !== '') {
       const searchEndpoint = `/api/search?q=${debouncedSearchQuery.toLowerCase()}`;
       fetch(searchEndpoint)
-        .then((res) => res.json())
-        .then((res) => {
+        .then(res => res.json())
+        .then(res => {
           setResults(res.results);
           setLoading(false);
         });
@@ -186,7 +186,7 @@ const Search = (props: Props) => {
             }}
           >
             <FormWrapper ref={SearchRef}>
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={e => e.preventDefault()}>
                 <input
                   ref={inputRef}
                   autoComplete="off"
@@ -194,7 +194,7 @@ const Search = (props: Props) => {
                   placeholder="Type keywords to search blog posts..."
                   id="search-input"
                   name="search"
-                  onChange={(e) => {
+                  onChange={e => {
                     setSearchQuery(e.target.value);
                   }}
                   value={searchQuery}

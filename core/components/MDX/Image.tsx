@@ -15,7 +15,6 @@ export const Image = (props: Props) => {
       {...props}
       src={props.src}
       placeholder="blur"
-      // className={`${styles.img} ${loading ? styles.imgBlur : null}`}
       imgBlur={loading}
       onLoadingComplete={() => setLoading(false)}
     />
@@ -23,17 +22,6 @@ export const Image = (props: Props) => {
 };
 
 export default Image;
-
-/*const styles = {
-  img: css({
-    transitionDuration: '0.5s',
-    transitionTimingFunction: 'ease-in-out'
-  })(),
-  imgBlur: css({
-    willChange: 'transform',
-    transform: 'scale(1.05)'
-  })()
-};*/
 
 const Img = styled(NextImage, {
   transitionDuration: '0.5s',

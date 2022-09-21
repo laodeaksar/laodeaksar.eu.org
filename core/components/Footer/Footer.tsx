@@ -19,7 +19,10 @@ const Footer = () => (
                 <Link href="/design" discreet>
                   Design
                 </Link>
-                <Link href="https://laodeaksar.eu.org/feed.xml" discreet>
+                <Link href="/tweets" discreet>
+                  Tweets
+                </Link>
+                <Link href="/feed.xml" discreet>
                   RSS
                 </Link>
               </Grid>
@@ -79,7 +82,7 @@ const Footer = () => (
               weight="3"
               css={{ margin: 0 }}
             >
-              &copy; {new Date().getFullYear()} Aksar La&apos;ode ———{' '}
+              &copy; {new Date().getFullYear()} Aksar La&apos;ode ---{' '}
               <EM size={1}>Kendari</EM>
             </Text>
             <Box
