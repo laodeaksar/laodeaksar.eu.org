@@ -81,7 +81,7 @@ const About: NextPage<Props> = ({ postsCount, initialAge }) => {
       title="About Me Page"
       headerProps={{ offsetHeight: 256 }}
     >
-      <Grid columns="medium" gapX={4} gapY={12} all>
+      <Grid columns="medium" gapX={4} gapY={12} directAll>
         <LazyMotion features={domAnimation}>
           <Box pb={10} mx="auto" css={{ position: 'relative' }}>
             <m.div variants={titleVariant}>

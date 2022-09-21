@@ -16,7 +16,7 @@ const Tweets: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
       title="Tweets Page"
       headerProps={{ offsetHeight: 256 }}
     >
-      <Grid columns="medium" gapX={4} gapY={12} all>
+      <Grid columns="medium" gapX={4} gapY={12} directAll>
         <div>
           <>
             <H1>Tweets</H1>

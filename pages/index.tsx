@@ -56,7 +56,7 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
   return (
     <Suspense fallback={null}>
       <Layout footer header headerProps={{ offsetHeight: 256 }}>
-        <Grid columns="medium" gapX={4} gapY={12} all>
+        <Grid columns="medium" gapX={4} gapY={12} directAll>
           <Box>
             <H1>
               Hi <WavingHand /> I&apos;m Aksar La&apos;ode, and this is my

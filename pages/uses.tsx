@@ -34,7 +34,7 @@ const Uses: NextPage<{ gearByCategory: Gear }> = ({ gearByCategory }) => {
         title="Uses Page"
         headerProps={{ offsetHeight: 256 }}
       >
-        <Grid columns="medium" gapX={4} gapY={12} all>
+        <Grid columns="medium" gapX={4} gapY={12} directAll>
           <Box
             as={motion.div}
             css={{

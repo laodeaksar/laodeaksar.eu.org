@@ -19,7 +19,7 @@ const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
       title="Guestbook Page"
       headerProps={{ offsetHeight: 256 }}
     >
-      <Grid columns="medium" gapX={4} gapY={12} all>
+      <Grid columns="medium" gapX={4} gapY={12} directAll>
         <div>
           <H2>Guestbook</H2>
           <Text as="p">

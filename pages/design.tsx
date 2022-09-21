@@ -88,7 +88,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
         columns="medium"
         gapX={4}
         gapY={10}
-        all
+        directAll
         css={{ paddingTop: '64px' }}
       >
         <Box as="section">

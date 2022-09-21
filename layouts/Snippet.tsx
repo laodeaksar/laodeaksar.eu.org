@@ -34,7 +34,7 @@ const SnippetLayout = ({
       headerProps={headerProps}
     >
       <article className="h-entry">
-        <Grid columns="medium" gapX={4} all>
+        <Grid columns="medium" gapX={4} directAll>
           <Hero>
             <Hero.Title className="p-name">{title}</Hero.Title>
             <Hero.Info>

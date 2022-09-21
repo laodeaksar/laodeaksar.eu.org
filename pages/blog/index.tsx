@@ -19,7 +19,7 @@ const PostPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
         title="Blog Page"
         headerProps={{ offsetHeight: 256 }}
       >
-        <Grid columns="medium" gapX={4} gapY={12} all>
+        <Grid columns="medium" gapX={4} gapY={12} directAll>
           <Box as="section">
             <H2>All articles</H2>
             <BlogCard posts={posts} />

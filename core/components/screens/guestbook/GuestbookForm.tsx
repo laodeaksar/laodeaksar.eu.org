@@ -2,14 +2,14 @@ import React from 'react';
 import { useSWRConfig } from 'swr';
 
 import { Button, Flex, Text, TextInput } from '@laodeaksarr/design-system';
-import { ClickEvent, Form, FormState } from '~/lib/types';
+import { Form, FormState } from '~/lib/types';
 
 function GuestbookForm() {
   const { mutate } = useSWRConfig();
   const [form, setForm] = React.useState<FormState>({ state: Form.Initial });
   const inputEl = React.useRef<HTMLInputElement | null>(null);
 
-  const leaveEntry = async (e: ClickEvent) => {
+  const leaveEntry = async (e: React.FormEvent) => {
     e.preventDefault();
     setForm({ state: Form.Loading });
 
@@ -82,7 +82,7 @@ function GuestbookForm() {
             type="submit"
             variant="primary"
           >
-            {!isLoading && 'Send'}
+            {isLoading ? 'Sending...' : 'Send'}
           </Button>
         </Flex>
       </form>
