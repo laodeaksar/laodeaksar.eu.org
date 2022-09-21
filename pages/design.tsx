@@ -69,7 +69,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
 
   const colorScaleNumbers = React.useMemo(
     () =>
-      Array.from(Array(19).keys()).map((items) => {
+      Array.from(Array(19).keys()).map(items => {
         const num = (items + 1) * 5;
         if (num === 5) {
           return `0${num}`;
@@ -198,7 +198,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
               gridTemplateColumns: 'repeat(auto-fill, minmax(10rem, 1fr))'
             }}
           >
-            {palette.map((paletteItem) => (
+            {palette.map(paletteItem => (
               <Grid
                 key={paletteItem}
                 css={{
@@ -206,7 +206,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
                   marginRight: '$3'
                 }}
               >
-                {colorScaleNumbers.map((shade) => (
+                {colorScaleNumbers.map(shade => (
                   <Tooltip
                     id={`${paletteItem}-${shade}`}
                     key={`${paletteItem}-${shade}`}
@@ -720,7 +720,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
               id="subscribe"
               type="email"
               placeholder="me@laodeaksar.eu.org"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={e => setEmail(e.currentTarget.value)}
               value={email}
             />
             <Button variant="primary" glow>
@@ -755,7 +755,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
               id="email-input"
               type="email"
               placeholder="me@laodeaksar.eu.org"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={e => setEmail(e.currentTarget.value)}
               value={email}
               autoComplete="off"
             />
@@ -765,7 +765,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
               type="email"
               disabled
               placeholder="me@laodeaksar.eu.org"
-              onChange={(e) => setEmail(e.currentTarget.value)}
+              onChange={e => setEmail(e.currentTarget.value)}
               value="me@laodeaksar.eu.org"
             />
             <TextInput
@@ -954,7 +954,7 @@ they can change the world, are the ones who do.`}
               value={rangeValue}
               min={0}
               max={500}
-              onChange={(value) => setRangeValue(value)}
+              onChange={value => setRangeValue(value)}
             />
             <Range
               id="range-2"
