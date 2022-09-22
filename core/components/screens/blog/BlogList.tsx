@@ -47,7 +47,7 @@ export function BlogList({ post }: { post: Post }) {
           {title}
         </Text>
         {hasRead && (
-          <Flex ml="auto">
+          <Flex css={{ ml: "auto" }}>
             <Pill variant="success" css={{ marginRight: '$3' }}>
               read
             </Pill>

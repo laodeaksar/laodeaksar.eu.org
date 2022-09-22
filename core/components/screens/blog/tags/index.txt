@@ -72,7 +72,7 @@ export function TagList({ post }: { post: Post }) {
           </Text>
         </Flex>
         {hasRead && (
-          <Flex ml="auto" mr={3}>
+          <Flex css={{ ml: "auto", mr: '$3' }}>
             <Pill variant="success">read</Pill>
           </Flex>
         )}
