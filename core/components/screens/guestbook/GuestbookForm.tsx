@@ -71,7 +71,6 @@ function GuestbookForm() {
             ref={inputEl}
             aria-label="Message"
             disabled={isLoading}
-            error={isError}
             placeholder="Your message..."
             id="input-message"
           />
