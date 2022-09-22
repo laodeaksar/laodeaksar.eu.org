@@ -83,7 +83,7 @@ const About: NextPage<Props> = ({ postsCount, initialAge }) => {
     >
       <Grid columns="medium" gapX={4} gapY={12} directAll>
         <LazyMotion features={domAnimation}>
-          <Box mx="auto" css={{ position: 'relative', pb: '$10' }}>
+          <Box css={{ position: 'relative', pb: '$10', mx: 'auto' }}>
             <m.div variants={titleVariant}>
               <H1 css={{ marginBottom: '2rem' }}>Aksar La&apos;ode</H1>
             </m.div>
@@ -110,10 +110,10 @@ const About: NextPage<Props> = ({ postsCount, initialAge }) => {
               >
                 <PointsPattern />
                 <Box
-                  mx="auto"
                   css={{
                     position: 'relative',
                     fontSize: '1rem',
+                    mx: 'auto',
 
                     '@lg': {
                       maxWidth: 'none'
