@@ -1,13 +1,13 @@
+import React from 'react';
 import { Button, Icon } from '@laodeaksarr/design-system';
 import { signIn } from 'next-auth/react';
-import { ClickEvent } from '~/lib/types';
 
 function LogInWithGithub() {
   return (
     // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a
       href="/api/auth/signin/github"
-      onClick={(e: ClickEvent) => {
+      onClick={(e: React.FormEvent) => {
         e.preventDefault();
         signIn('github');
       }}
