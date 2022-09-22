@@ -70,7 +70,7 @@ const Newsletter = (props: Props) => {
   return (
     <Card depth={1} css={{ mx: '-$1' }}>
       {large && (
-        <Flex justifyContent="center" pt={8}>
+        <Flex justifyContent="center" css={{ pt: '$8' }}>
           <NewsletterHeader />
         </Flex>
       )}
