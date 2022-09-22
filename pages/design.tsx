@@ -18,6 +18,7 @@ import {
   Pill,
   Radio,
   Range,
+  Rangev2,
   Switch,
   TextInput,
   TextArea,
@@ -66,6 +67,7 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   const [showSearch, setShowSearch] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [rangeValue, setRangeValue] = React.useState(250);
+  const [rangeValue2, setRangeValue2] = React.useState<number[]>([250]);
 
   const colorScaleNumbers = React.useMemo(
     () =>
@@ -964,6 +966,30 @@ they can change the world, are the ones who do.`}
               min={0}
               max={500}
               onChange={() => {}}
+              disabled
+            />
+          </Grid>
+          <br />
+          <Grid
+            gap={3}
+            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
+          >
+            <Rangev2
+              aria-label="Range"
+              label="Range"
+              name="Range"
+              value={rangeValue2}
+              max={500}
+              onValueChange={value => setRangeValue2(value)}
+            />
+            <Rangev2
+              id="range-2"
+              aria-label="Range"
+              label="Range"
+              name="Range"
+              defaultValue={[250]}
+              max={500}
+              onValueChange={() => {}}
               disabled
             />
           </Grid>
