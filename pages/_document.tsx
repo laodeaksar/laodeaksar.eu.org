@@ -31,17 +31,17 @@ export default class Document extends NextDocument {
             dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
         </Head>
-        <body className="laodeaksar-light">
+        <body className="light">
           <script
-            key="laodeaksar-theme"
+            key="theme"
             dangerouslySetInnerHTML={{
               __html: `(function () {
                 try {
                   var mode = localStorage.getItem('mode')
                   var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true
-                  if (!mode && supportDarkMode) document.body.classList.add('laodeaksar-dark')
+                  if (!mode && supportDarkMode) document.body.classList.add('dark')
                   if (!mode) return
-                  document.body.classList.add('laodeaksar-' + mode)
+                  document.body.classList.add(mode)
                 } catch (e) {}
               })()`
             }}
@@ -53,3 +53,8 @@ export default class Document extends NextDocument {
     );
   }
 }
+
+/**
+ * if (!mode && supportDarkMode) document.body.classList.add('laodeaksar-dark')
+ * document.body.classList.add('laodeaksar-' + mode)
+ **/
