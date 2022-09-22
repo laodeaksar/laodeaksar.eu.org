@@ -41,7 +41,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
         {entry.created_by}
       </Text>
       <Flex css={{ marginBottom: 2 }}>{entry.body}</Flex>
-      <Grid gapX={2} flow="column" align="center" justify="between" mt={3}>
+      <Grid gapX={2} flow="column" align="center" justify="between" css={{ mt: '$3' }}>
         <time>
           {new Date(entry.updated_at).toLocaleDateString('en', {
             month: 'short',

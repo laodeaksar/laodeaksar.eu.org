@@ -126,7 +126,7 @@ const BlogLayout = ({
 
               <Hero.Title className="p-name">{title}</Hero.Title>
               <Hero.Info>
-                <Flex mb={3} wrap>
+                <Flex css={{ mb: '$3' }} wrap>
                   {tags.map((text, id) => (
                     <Link key={id} href={`/tags/${text}`} hastag discreet>
                       {text}

@@ -83,7 +83,7 @@ const About: NextPage<Props> = ({ postsCount, initialAge }) => {
     >
       <Grid columns="medium" gapX={4} gapY={12} directAll>
         <LazyMotion features={domAnimation}>
-          <Box pb={10} mx="auto" css={{ position: 'relative' }}>
+          <Box mx="auto" css={{ position: 'relative', pb: '$10' }}>
             <m.div variants={titleVariant}>
               <H1 css={{ marginBottom: '2rem' }}>Aksar La&apos;ode</H1>
             </m.div>
