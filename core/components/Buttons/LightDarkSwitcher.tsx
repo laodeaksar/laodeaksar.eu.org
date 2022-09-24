@@ -4,7 +4,6 @@ import { Button, Tooltip, useTheme } from '@laodeaksarr/design-system';
 
 const LightDarkSwitcher = () => {
   const { dark, toggleDark } = useTheme();
-  //const theme = useTheme();
   const duration = 0.7;
 
   const moonVariants = {
@@ -25,12 +24,8 @@ const LightDarkSwitcher = () => {
     }
   };
 
-  //const isChecked = theme.dark;
-
   const scaleMoon = useMotionValue(dark ? 1 : 0);
-  //const scaleMoon = useMotionValue(isChecked ? 1 : 0);
   const scaleSun = useMotionValue(dark ? 0 : 1);
-  //const scaleSun = useMotionValue(isChecked ? 0 : 1);
   const pathLengthMoon = useTransform(scaleMoon, [0.6, 1], [0, 1]);
   const pathLengthSun = useTransform(scaleSun, [0.6, 1], [0, 1]);
 
@@ -45,7 +40,6 @@ const LightDarkSwitcher = () => {
         variant="icon"
         aria-describedby="lightDarkSwitcherTooltip"
         onClick={toggleDark}
-        //onClick={theme.toggleDark}
         initial={false}
         animate={dark ? 'checked' : 'unchecked'}
         transition={{ duration }}
