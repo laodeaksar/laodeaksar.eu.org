@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-
 import { styled } from '@laodeaksarr/design-system';
 
 import Image from '@/components/MDX/Image';

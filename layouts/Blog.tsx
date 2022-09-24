@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-
 import {
   Box,
   Flex,

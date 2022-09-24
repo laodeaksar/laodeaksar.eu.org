@@ -15,20 +15,20 @@ const bounceBar = keyframes({
   }
 });
 
-export const AnchorStyled = styled('a', {
+export const Anchor = styled('a', {
   textDecoration: 'none',
   position: 'relative',
   display: 'block',
   width: 'fit-content'
 });
 
-export const ArtistStyled = styled(Text, {
+export const Artist = styled(Text, {
   lineHeight: '1.375 !important',
   maxWidth: '18ch',
   margin: '0 !important'
 });
 
-export const BarsStyled = styled(Flex, {
+export const Bars = styled(Flex, {
   gap: '1px !important',
 
   span: {
@@ -67,7 +67,7 @@ export const BarsStyled = styled(Flex, {
   }
 });
 
-export const CoverStyled = styled(Flex, {
+export const Cover = styled(Flex, {
   color: 'var(--laodeaksar-colors-success)',
   opacity: 0.75,
   position: 'relative',
@@ -77,13 +77,13 @@ export const CoverStyled = styled(Flex, {
   flexShrink: 0
 });
 
-export const TitleStyled = styled(Text, {
+export const Title = styled(Text, {
   lineHeight: '1.375 !important',
   maxWidth: '15ch',
   margin: '0 !important'
 });
 
-export const WrapperStyled = styled(Flex, {
+export const Wrapper = styled(Flex, {
   inset: 0,
   position: 'absolute',
   pl: '$3',

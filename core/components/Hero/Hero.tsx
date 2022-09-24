@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from '../MDX/Image';
-
 import { H1, styled } from '@laodeaksarr/design-system';
 
 const HeroInfo = styled('div', {

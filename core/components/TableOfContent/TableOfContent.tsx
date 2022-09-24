@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from 'framer-motion';
-
 import { Anchor, Box } from '@laodeaksarr/design-system';
 
 import useProgress from '@/hooks/useProgress';

@@ -1,5 +1,4 @@
 import Link from '@/components/Link';
-
 import { Box, Icon } from '@laodeaksarr/design-system';
 
 import { MAX_HEIGHT } from './constants';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSWRConfig } from 'swr';
 import { useRouter } from 'next/router';
-
 import { Box, Button, TextArea } from '@laodeaksarr/design-system';
 
 import { Form, FormState } from '~/lib/types';

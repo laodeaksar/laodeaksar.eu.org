@@ -55,11 +55,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
               $$background: 'transparent !important',
               $$color: 'var(--laodeaksar-colors-typeface-tertiary)',
 
-              hocuv: {
-                $$border: 'var(--laodeaksar-colors-danger)',
-                $$color: 'var(--laodeaksar-colors-danger)'
-              }
-              /*'&:hover': {
+              '&:hover': {
                 '&:not(:disabled)': {
                   $$border: 'var(--laodeaksar-colors-danger)',
                   $$color: 'var(--laodeaksar-colors-danger)'
@@ -69,7 +65,7 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
               '&:focus-visible': {
                 $$border: 'var(--laodeaksar-colors-danger)',
                 $$color: 'var(--laodeaksar-colors-danger)'
-              }*/
+              }
             }}
             onClick={handleDelete}
             variant="icon"

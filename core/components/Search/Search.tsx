@@ -3,7 +3,6 @@ import FocusTrap from 'focus-trap-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { createPortal } from 'react-dom';
-
 import {
   Flex,
   Icon,

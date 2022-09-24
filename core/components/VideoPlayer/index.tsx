@@ -50,6 +50,5 @@ const Wrapper = styled('div', {
     background: 'var(--laodeaksar-colors-emphasis)',
     maxWidth: '$full',
     height: 'auto'
-    // aspectRatio: '16 / 9'
   }
 });

@@ -1,40 +1,33 @@
 import { Flex } from '@laodeaksarr/design-system';
 
 import { Glass, SpotifyLogo } from './icons';
-import {
-  AnchorStyled,
-  ArtistStyled,
-  BarsStyled,
-  CoverStyled,
-  TitleStyled,
-  WrapperStyled
-} from './Styles';
+import * as Styled from './Styles';
 
 import { useNowPlaying } from '@/hooks/useNowPlaying';
 import Image from '../MDX/Image';
 
 const Bars = () => (
-  <BarsStyled>
+  <Styled.Bars>
     <span />
     <span />
     <span />
     <span />
-  </BarsStyled>
+  </Styled.Bars>
 );
 
 const NowPlaying = () => {
   const { data } = useNowPlaying();
 
   return (
-    <AnchorStyled
+    <Styled.Anchor
       href={data?.isPlaying ? data.url : undefined}
       target="_blank"
       rel="noreferrer"
     >
       <Glass />
-      <WrapperStyled justifyContent="space-between" gap={0}>
+      <Styled.Wrapper justifyContent="space-between" gap={0}>
         <Flex gap={3}>
-          <CoverStyled justifyContent="center">
+          <Styled.Cover justifyContent="center">
             {data?.isPlaying ? (
               <Image
                 unoptimized
@@ -45,9 +38,9 @@ const NowPlaying = () => {
             ) : (
               <SpotifyLogo />
             )}
-          </CoverStyled>
+          </Styled.Cover>
           <Flex direction="column" alignItems="start" gap={0}>
-            <TitleStyled
+            <Styled.Title
               as="p"
               size={2}
               weight={4}
@@ -55,10 +48,10 @@ const NowPlaying = () => {
               truncate
             >
               {data?.isPlaying ? data.title : 'Spotify'}
-            </TitleStyled>
+            </Styled.Title>
             {data?.isPlaying ? (
               <>
-                <ArtistStyled
+                <Styled.Artist
                   size={1}
                   variant="tertiary"
                   truncate
@@ -69,8 +62,8 @@ const NowPlaying = () => {
                   }}
                 >
                   {data.artist}
-                </ArtistStyled>
-                <ArtistStyled
+                </Styled.Artist>
+                <Styled.Artist
                   size={1}
                   css={{
                     display: 'none',
@@ -83,18 +76,18 @@ const NowPlaying = () => {
                   }}
                 >
                   Play on Spotify
-                </ArtistStyled>
+                </Styled.Artist>
               </>
             ) : (
-              <ArtistStyled size={1} variant="tertiary">
+              <Styled.Artist size={1} variant="tertiary">
                 {data ? 'Not Playing' : 'Loading...'}
-              </ArtistStyled>
+              </Styled.Artist>
             )}
           </Flex>
         </Flex>
         {data?.isPlaying && <Bars />}
-      </WrapperStyled>
-    </AnchorStyled>
+      </Styled.Wrapper>
+    </Styled.Anchor>
   );
 };
 

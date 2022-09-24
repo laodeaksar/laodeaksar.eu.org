@@ -1,7 +1,6 @@
 import React from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import type { NextPage } from 'next';
-
 import {
   Box,
   Grid,

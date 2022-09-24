@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { motion, MotionProps } from 'framer-motion';
 import type { NextPage } from 'next';
-
 import {
   Button,
   Box,

@@ -1,5 +1,4 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-
 import { Button, Tooltip, useTheme } from '@laodeaksarr/design-system';
 
 const LightDarkSwitcher = () => {

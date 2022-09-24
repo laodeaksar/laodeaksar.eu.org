@@ -1,7 +1,5 @@
-import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import type { guestbook } from '@prisma/client';
-
 import { Grid, H2, Text } from '@laodeaksarr/design-system';
 
 import GuestbookComponent from '@/components/screens/guestbook';

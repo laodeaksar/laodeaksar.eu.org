@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatePresence } from 'framer-motion';
-
 import {
   Flex,
   Grid,

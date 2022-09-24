@@ -2,7 +2,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import type { NextPage } from 'next';
 import { AnimatePresence } from 'framer-motion';
-
 import {
   Anchor,
   Blockquote,

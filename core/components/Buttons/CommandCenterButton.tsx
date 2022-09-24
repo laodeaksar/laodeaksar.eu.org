@@ -1,5 +1,4 @@
 import { motion, MotionProps, useMotionValue } from 'framer-motion';
-
 import { Button, Tooltip } from '@laodeaksarr/design-system';
 
 interface Props {

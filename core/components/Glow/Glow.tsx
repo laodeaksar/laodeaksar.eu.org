@@ -1,5 +1,4 @@
 import type { PropsWithChildren } from 'react';
-
 import { Box } from '@laodeaksarr/design-system';
 
 import { StyledGlow } from './Styles';
