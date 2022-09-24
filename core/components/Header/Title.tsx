@@ -22,14 +22,12 @@ const titleVariants = {
   }
 };
 
-export const HeaderTitle = (props: HeaderTitleProps) => {
-  const { text } = props;
+export const HeaderTitle = ({ text }: HeaderTitleProps) => {
   const titleY = useMotionValue(0);
   const titleOpacity = useTransform(titleY, [10, 0], [0, 1]);
 
   return (
     <HeaderTitleWrapper
-      //className={fixTruncate}
       css={{
         flex: 1,
         minWidth: 0

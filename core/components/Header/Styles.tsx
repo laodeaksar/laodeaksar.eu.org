@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-import { css, Flex, styled } from '@laodeaksarr/design-system';
+import { Flex, styled } from '@laodeaksarr/design-system';
 
 export const HeaderWrapper = styled(motion.header, {
   position: 'fixed',
@@ -55,8 +55,3 @@ export const HeaderPadding = styled(motion.header, {
 export const HeaderContent = styled(Flex, {
   gridColumn: 2
 });
-
-export const fixTruncate = css({
-  flex: 1,
-  minWidth: 0
-})();

@@ -15,7 +15,6 @@ import useProgress from '@/hooks/useProgress';
 import useScrollCounter from '@/hooks/useScrollCounter';
 
 import {
-  //fixTruncate,
   HeaderContent,
   HeaderPadding,
   HeaderProgressBar,
@@ -80,14 +79,12 @@ const Header = (props: HeaderProps) => {
           <HeaderContent
             alignItems="center"
             justifyContent="space-between"
-            //className={fixTruncate}
             css={{
               flex: 1,
               minWidth: 0
             }}
           >
             <Flex
-              //className={fixTruncate}
               css={{
                 flex: 1,
                 minWidth: 0
