@@ -88,9 +88,9 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
             <H2>Featured</H2>
             <Grid as="ul" css={{ mx: 0, padding: 0 }} gapY={4}>
               {posts
-                .filter((post) => post.featured)
+                .filter(post => post.featured)
                 .slice(0, 3)
-                .map((post) => {
+                .map(post => {
                   return (
                     <Box
                       as={motion.li}
@@ -128,24 +128,7 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
                             duration: 0.4
                           }}
                         />
-                        <Box
-                          css={{
-                            height: '95%',
-                            width: '105%',
-                            position: 'absolute',
-                            borderRadius: '$2',
-                            top: '50%',
-                            left: '50%',
-                            background: 'var(--laodeaksar-colors-body)',
-                            transform: 'translateY(-50%) translateX(-50%)',
-                            filter: 'blur(20px)',
-                            transition: '0.5s',
-
-                            '@media(max-width: 700px)': {
-                              display: 'none'
-                            }
-                          }}
-                        />
+                        <Overlay />
                         <Card<MotionProps>
                           as={motion.div}
                           variants={{
@@ -216,6 +199,23 @@ const Glow = styled(motion.div, {
   WebkitFilter: 'blur(15px)',
   filter: 'blur(15px)',
   borderRadius: '$2'
+});
+
+const Overlay = styled(Box, {
+  height: '95%',
+  width: '105%',
+  position: 'absolute',
+  borderRadius: '$2',
+  top: '50%',
+  left: '50%',
+  background: 'var(--laodeaksar-colors-body)',
+  transform: 'translateY(-50%) translateX(-50%)',
+  filter: 'blur(20px)',
+  transition: '0.5s',
+
+  '@media(max-width: 700px)': {
+    display: 'none'
+  }
 });
 
 const ButtonCard = styled('button', {
