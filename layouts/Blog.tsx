@@ -1,25 +1,18 @@
-import React, { Suspense } from 'react';
-import {
-  Box,
-  Flex,
-  formatDate,
-  Grid,
-  Pill,
-  Text
-} from '@laodeaksarr/design-system';
+import React, { Suspense } from "react";
+import { Box, Flex, Grid, Pill, Text } from "@laodeaksarr/design-system";
 
-import Hero from '@/components/Hero';
-import Link from '@/components/Link';
-import TableOfContent from '@/components/TableOfContent';
-import siteMetadata from '@/layout/siteMetadata';
-import { WebmentionCount } from '@/components/Webmentions';
-import Layout from '@/layout';
+import Hero from "@/components/Hero";
+import Link from "@/components/Link";
+import TableOfContent from "@/components/TableOfContent";
+import siteMetadata from "@/layout/siteMetadata";
+import { WebmentionCount } from "@/components/Webmentions";
+import Layout from "@/layout";
 
-import Signature from './Signature';
+import Signature from "./Signature";
 
-import { createOgImage } from '~/lib/OpenGraph';
-import { urlForImage } from '~/lib/sanity/sanity';
-import { Post } from '~/lib/types';
+import { createOgImage } from "~/lib/OpenGraph";
+import { urlForImage } from "~/lib/sanity/sanity";
+import { Post } from "~/lib/types";
 
 interface WebmentionBlogDataProps {
   date: string;
@@ -49,7 +42,7 @@ const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
 
 const BlogLayout = ({
   children,
-  post
+  post,
 }: React.PropsWithChildren<{ post: Post }>) => {
   const {
     date,
@@ -60,14 +53,14 @@ const BlogLayout = ({
     readingTime,
     image,
     tags,
-    url
+    url,
   } = post;
   const postUrl = `${siteMetadata.siteUrl}${url}`;
 
   const headerProps = {
     title,
     offsetHeight: 256,
-    showProgressBarOnMobile: true
+    showProgressBarOnMobile: true,
   };
 
   const [ids, setIds] = React.useState<Array<{ id: string; title: string }>>(
@@ -76,12 +69,12 @@ const BlogLayout = ({
 
   React.useEffect(() => {
     setTimeout(() => {
-      const titles = document.querySelectorAll('h2');
+      const titles = document.querySelectorAll("h2");
       const idArrays = Array.prototype.slice
         .call(titles)
         .map((title: { id: any; innerText: any }) => ({
           id: title.id,
-          title: title.innerText
+          title: title.innerText,
         })) as Array<{
         id: string;
         title: string;
@@ -92,7 +85,7 @@ const BlogLayout = ({
 
   const socialImage = createOgImage({
     title,
-    meta: description
+    meta: description,
   });
 
   // const keywords = tags.join(", ");
@@ -114,8 +107,8 @@ const BlogLayout = ({
             <Hero>
               <Box
                 css={{
-                  marginBottom: '24px',
-                  fontSize: '$2'
+                  marginBottom: "24px",
+                  fontSize: "$2",
                 }}
               >
                 <Link href="/" arrow="left" discreet>
@@ -125,7 +118,7 @@ const BlogLayout = ({
 
               <Hero.Title className="p-name">{title}</Hero.Title>
               <Hero.Info>
-                <Flex css={{ mb: '$3' }} wrap>
+                <Flex css={{ mb: "$3" }} wrap>
                   {tags.map((text, id) => (
                     <Link key={id} href={`/tags/${text}`} hastag discreet>
                       {text}
@@ -138,12 +131,24 @@ const BlogLayout = ({
                     weight="3"
                     css={{ marginBottom: 0 }}
                   >
-                    {formatDate(date)} / {readingTime} /{' '}
+                    {new Date(date).toLocaleDateString("en", {
+                      month: "short",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}{" "}
+                    / {readingTime} /{" "}
                   </Text>
                   <WebmentionCount target={postUrl} />
                 </Flex>
-                <Flex css={{ marginLeft: '-$2' }}>
-                  <Pill variant="info">Last Updated {formatDate(updated)}</Pill>
+                <Flex css={{ marginLeft: "-$2" }}>
+                  <Pill variant="info">
+                    Last Updated{" "}
+                    {new Date(updated).toLocaleDateString("en", {
+                      month: "short",
+                      day: "2-digit",
+                      year: "numeric",
+                    })}
+                  </Pill>
                 </Flex>
               </Hero.Info>
 
@@ -154,17 +159,17 @@ const BlogLayout = ({
             <TableOfContent ids={ids} />
             <Box
               css={{
-                padding: '20px 0px',
-                gridColumn: '2',
-                color: 'var(--laodeaksar-colors-typeface-secondary)',
+                padding: "20px 0px",
+                gridColumn: "2",
+                color: "var(--laodeaksar-colors-typeface-secondary)",
 
                 h3: {
-                  marginTop: '2em'
+                  marginTop: "2em",
                 },
 
                 section: {
-                  marginTop: '5em'
-                }
+                  marginTop: "5em",
+                },
               }}
             >
               {children}

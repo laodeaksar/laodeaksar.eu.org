@@ -1,27 +1,20 @@
-import React from 'react';
-import {
-  Box,
-  Flex,
-  formatDate,
-  Grid,
-  Pill,
-  Text
-} from '@laodeaksarr/design-system';
+import React from "react";
+import { Box, Flex, Grid, Pill, Text } from "@laodeaksarr/design-system";
 
-import Hero from '@/components/Hero';
-import Layout from '@/layout';
+import Hero from "@/components/Hero";
+import Layout from "@/layout";
 
-import { Snippet } from '~/lib/types';
+import { Snippet } from "~/lib/types";
 
 const SnippetLayout = ({
   children,
-  snippet
+  snippet,
 }: React.PropsWithChildren<{ snippet: Snippet }>) => {
   const { date, title, description, language } = snippet;
 
   const headerProps = {
     title,
-    offsetHeight: 200
+    offsetHeight: 200,
   };
 
   return (
@@ -45,7 +38,12 @@ const SnippetLayout = ({
                   weight="3"
                   css={{ marginBottom: 0 }}
                 >
-                  Created {formatDate(date)}
+                  Created{" "}
+                  {new Date(date).toLocaleDateString("en", {
+                    month: "short",
+                    day: "2-digit",
+                    year: "numeric",
+                  })}
                 </Text>
                 <Pill variant="info">{language?.toUpperCase()}</Pill>
               </Flex>
@@ -53,17 +51,17 @@ const SnippetLayout = ({
           </Hero>
           <Box
             css={{
-              padding: '20px 0px',
-              gridColumn: '2',
-              color: 'var(--laodeaksar-colors-typeface-secondary)',
+              padding: "20px 0px",
+              gridColumn: "2",
+              color: "var(--laodeaksar-colors-typeface-secondary)",
 
               h2: {
-                marginTop: '2em'
+                marginTop: "2em",
               },
 
               h3: {
-                marginTop: '2em'
-              }
+                marginTop: "2em",
+              },
             }}
           >
             {children}

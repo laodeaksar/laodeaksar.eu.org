@@ -1,4 +1,4 @@
-import { Flex, formatDate, Text } from '@laodeaksarr/design-system';
+import { Flex, Text } from '@laodeaksarr/design-system';
 
 import Image from '@/components/MDX/Image';
 import Link from '@/components/Link';
@@ -158,7 +158,11 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
           dateTime={createdAt.toISOString()}
         >
           {/* {format(createdAt, 'h:mm a - MMM d, y')} */}
-          {formatDate(createdAt.toDateString())}
+          {new Date(createdAt).toLocaleDateString('en', {
+            month: 'short',
+            day: '2-digit',
+            year: 'numeric'
+          })}
         </time>
       </Link>
       <Flex css={{ marginTop: '1rem' }}>
