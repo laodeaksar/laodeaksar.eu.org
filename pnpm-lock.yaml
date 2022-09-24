@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@codesandbox/sandpack-react': ^1.8.0
-  '@laodeaksarr/design-system': ^1.0.19
+  '@laodeaksarr/design-system': ^1.0.20
   '@prisma/client': ^4.3.1
   '@sanity/image-url': ^1.0.1
   '@sanity/vision': 3.0.0-dev-preview.17
@@ -48,7 +48,7 @@ specifiers:
 
 dependencies:
   '@codesandbox/sandpack-react': 1.8.0_biqbaboplfbrettd7655fr4n2y
-  '@laodeaksarr/design-system': 1.0.19_zippkqyyhjilrd4a43sx373tey
+  '@laodeaksarr/design-system': 1.0.20_zippkqyyhjilrd4a43sx373tey
   '@prisma/client': 4.3.1_prisma@4.3.1
   '@sanity/image-url': 1.0.1
   '@sanity/vision': 3.0.0-dev-preview.17_2qpntmkb2tecmgal3aq2m37jiu
@@ -955,8 +955,8 @@ packages:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: false
 
-  /@laodeaksarr/design-system/1.0.19_zippkqyyhjilrd4a43sx373tey:
-    resolution: {integrity: sha512-9ddhDZf2SWPy82fdj1pbBNv0sxFJ1x41hCJLYrgZ0leAJXNCKMdF8M+oVd1zvZK/1Rnsy/7tuZdf3hmUCFzPaQ==}
+  /@laodeaksarr/design-system/1.0.20_zippkqyyhjilrd4a43sx373tey:
+    resolution: {integrity: sha512-0GTfU2pwUuvkr5L19C3+MQhntFTSL7nefV+yF5vz3VU1jIOaf9aOmJF5N3Wu0MxKcCmwYaxZbn0p3VsWApim5w==}
     peerDependencies:
       framer-motion: ^7.0.0
       react: ^18.2.0

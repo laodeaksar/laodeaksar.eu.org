@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^1.8.0",
-    "@laodeaksarr/design-system": "^1.0.19",
+    "@laodeaksarr/design-system": "^1.0.20",
     "@prisma/client": "^4.3.1",
     "@sanity/image-url": "^1.0.1",
     "@sanity/vision": "3.0.0-dev-preview.17",
