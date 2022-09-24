@@ -78,7 +78,7 @@ const NowPlaying = () => {
                     color: 'var(--laodeaksar-colors-success)',
 
                     '&:hover': {
-                      display: 'inline-flex'
+                      display: 'flex !important'
                     }
                   }}
                 >
