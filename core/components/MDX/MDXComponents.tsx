@@ -30,6 +30,7 @@ const MDXComponents = {
   em: EM,
   h2: H2,
   h3: H3,
+  img: Image,
   Image,
   code: InlineCode,
   li: List.Item,

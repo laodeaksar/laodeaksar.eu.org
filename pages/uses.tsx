@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import type { NextPage } from 'next';
 import { motion } from 'framer-motion';
 
