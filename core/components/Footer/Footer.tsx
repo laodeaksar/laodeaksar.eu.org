@@ -1,4 +1,4 @@
-import { styled, Box, Grid, Text, EM, Flex } from '@laodeaksarr/design-system';
+import { styled, Box, Grid, Text, EM, Flex } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';

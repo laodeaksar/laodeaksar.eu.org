@@ -5,11 +5,7 @@ import type { AppType } from 'next/app';
 import type { Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 
-import {
-  globalStyles,
-  ThemeProvider,
-  Tooltip
-} from '@laodeaksarr/design-system';
+import { globalStyles, ThemeProvider, Tooltip } from '@bahutara/design-system';
 
 const App: AppType<{ session: Session }> = ({
   Component,

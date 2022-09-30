@@ -1,4 +1,4 @@
-import { styled } from '@laodeaksarr/design-system';
+import { styled } from '@bahutara/design-system';
 
 export const Wrapper = styled('main', {
   background: 'var(--laodeaksar-colors-body)',

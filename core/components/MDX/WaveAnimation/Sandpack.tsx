@@ -1,4 +1,4 @@
-import { useTheme } from '@laodeaksarr/design-system';
+import { useTheme } from '@bahutara/design-system';
 import Sandpack from '@/components/Code/Sandpack';
 
 const SceneCSSDark = `

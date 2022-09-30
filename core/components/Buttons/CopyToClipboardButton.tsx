@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { styled } from '@laodeaksarr/design-system';
+import { styled } from '@bahutara/design-system';
 
 const CopyButton = styled('button', {
   background: 'transparent',

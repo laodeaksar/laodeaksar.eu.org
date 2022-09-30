@@ -1,4 +1,4 @@
-import { keyframes, styled } from '@laodeaksarr/design-system';
+import { keyframes, styled } from '@bahutara/design-system';
 
 const pulse = keyframes({
   '0%': {

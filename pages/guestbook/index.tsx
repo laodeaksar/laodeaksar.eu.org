@@ -1,6 +1,6 @@
 import type { GetStaticProps, NextPage } from 'next';
 import type { guestbook } from '@prisma/client';
-import { Grid, H2, Text } from '@laodeaksarr/design-system';
+import { Grid, H2, Text } from '@bahutara/design-system';
 
 import GuestbookComponent from '@/components/screens/guestbook';
 import Layout from '@/layout';
@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   });
 
-  const fallbackData = entries.map((entry) => ({
+  const fallbackData = entries.map(entry => ({
     id: entry.id.toString(),
     body: entry.body,
     created_by: entry.created_by.toString(),

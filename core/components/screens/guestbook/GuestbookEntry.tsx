@@ -2,7 +2,7 @@ import React from 'react';
 import { useSWRConfig } from 'swr';
 import { guestbook } from '@prisma/client';
 
-import { Box, Flex, Grid, Button, Text } from '@laodeaksarr/design-system';
+import { Box, Flex, Grid, Button, Text } from '@bahutara/design-system';
 
 type GuestBookEntryProps = {
   entry: guestbook;
@@ -41,7 +41,13 @@ function GuestbookEntry({ entry, user }: GuestBookEntryProps) {
         {entry.created_by}
       </Text>
       <Flex css={{ marginBottom: 2 }}>{entry.body}</Flex>
-      <Grid gapX={2} flow="column" align="center" justify="between" css={{ mt: '$3' }}>
+      <Grid
+        gapX={2}
+        flow="column"
+        align="center"
+        justify="between"
+        css={{ mt: '$3' }}
+      >
         <time>
           {new Date(entry.updated_at).toLocaleDateString('en', {
             month: 'short',

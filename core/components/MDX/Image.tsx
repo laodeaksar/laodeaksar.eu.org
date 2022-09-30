@@ -1,6 +1,6 @@
 import React from 'react';
 import NextImage, { type ImageProps } from 'next/image';
-import { styled } from '@laodeaksarr/design-system';
+import { styled } from '@bahutara/design-system';
 
 interface Props extends Omit<ImageProps, 'src'> {
   src: any;

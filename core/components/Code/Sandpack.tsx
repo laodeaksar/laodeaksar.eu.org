@@ -5,7 +5,7 @@ import {
   SandpackLayout,
   SandpackPredefinedTemplate
 } from '@codesandbox/sandpack-react';
-import { Shadows, styled } from '@laodeaksarr/design-system';
+import { Shadows, styled } from '@bahutara/design-system';
 
 import setupFiles from './SandpackSetupFiles';
 

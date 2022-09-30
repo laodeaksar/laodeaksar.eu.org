@@ -12,7 +12,7 @@ import {
   H3,
   Strong,
   Tabs
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 import Code from '@/components/Code';
 import VideoPlayer from '@/components/VideoPlayer';
 

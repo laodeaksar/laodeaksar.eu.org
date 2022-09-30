@@ -1,5 +1,5 @@
 import Link from '@/components/Link';
-import { Box, Icon } from '@laodeaksarr/design-system';
+import { Box, Icon } from '@bahutara/design-system';
 
 import { MAX_HEIGHT } from './constants';
 import { Separator, Item, KBD } from './Styles';

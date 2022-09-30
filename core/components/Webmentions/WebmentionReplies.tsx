@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import dynamic from 'next/dynamic';
-import { Text } from '@laodeaksarr/design-system';
+import { Text } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 
@@ -22,7 +22,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
     () =>
       fetch(
         `https://webmention.io/api/mentions?page=${page}&per-page=${perPage}&target=${url}`
-      ).then((response) => (response.json ? response.json() : response)),
+      ).then(response => (response.json ? response.json() : response)),
     [page, url]
   );
   // const incrementPage = () => setPage((previousPage) => previousPage + 1);
@@ -38,7 +38,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
   //       .then(incrementPage);
 
   useEffect(() => {
-    getMentions().then((newReplies) => {
+    getMentions().then(newReplies => {
       setReplies(newReplies.links);
       setFetchState('done');
     });
@@ -50,8 +50,8 @@ const WebmentionReplies = ({ title, url }: Props) => {
 
   const distinctFans = new Set(
     replies
-      .filter((reply) => reply.data.author)
-      .map((reply) => reply.data.author.url)
+      .filter(reply => reply.data.author)
+      .map(reply => reply.data.author.url)
   );
 
   const heightRow = 77;

@@ -9,7 +9,7 @@ import {
   Text,
   H1,
   H2
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import {
   CategoryIcons,

@@ -1,5 +1,5 @@
 import { motion, MotionProps, useMotionValue } from 'framer-motion';
-import { Button, Tooltip } from '@laodeaksarr/design-system';
+import { Button, Tooltip } from '@bahutara/design-system';
 
 interface Props {
   onClick: () => void;

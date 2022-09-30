@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../MDX/Image';
-import { H1, styled } from '@laodeaksarr/design-system';
+import { H1, styled } from '@bahutara/design-system';
 
 const HeroInfo = styled('div', {
   marginBottom: '2.25rem'

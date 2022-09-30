@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import type { NextPage } from 'next';
-import { Box, Grid, H2 } from '@laodeaksarr/design-system';
+import { Box, Grid, H2 } from '@bahutara/design-system';
 
 import BlogCard from '@/components/screens/blog';
 import Layout from '@/layout';

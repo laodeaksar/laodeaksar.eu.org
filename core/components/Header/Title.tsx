@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Text } from '@laodeaksarr/design-system';
+import { Text } from '@bahutara/design-system';
 
 import { HeaderTitleWrapper } from './Styles';
 import type { HeaderTitleProps } from './types';

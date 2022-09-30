@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, styled, Text } from '@laodeaksarr/design-system';
+import { Card, styled, Text } from '@bahutara/design-system';
 
 export const NewsletterFormContent = styled(Card.Body, {
   variants: {

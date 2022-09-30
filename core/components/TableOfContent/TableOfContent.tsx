@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { Anchor, Box } from '@laodeaksarr/design-system';
+import { Anchor, Box } from '@bahutara/design-system';
 
 import useProgress from '@/hooks/useProgress';
 import useScrollSpy from '@/hooks/useScrollSpy';
@@ -43,7 +43,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
 
   const [currentActiveIndex] = useScrollSpy(
     ids.map(
-      (item) => document.querySelector(`section[id="${item.id}-section"]`)!
+      item => document.querySelector(`section[id="${item.id}-section"]`)!
     ),
     { offset: OFFSET }
   );
@@ -76,7 +76,7 @@ const TableOfContent = ({ ids }: TableOfContentProps) => {
                 <Anchor
                   discreet
                   href={`#${item.id}`}
-                  onClick={(event) =>
+                  onClick={event =>
                     handleLinkClick(event, `${item.id}-section`)
                   }
                 >

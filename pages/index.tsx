@@ -15,7 +15,7 @@ import {
   Icon,
   styled,
   Text
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import BlogCard from '@/components/screens/blog';
 import Layout from '@/layout';

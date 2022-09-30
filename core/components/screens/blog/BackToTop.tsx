@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, styled } from '@laodeaksarr/design-system';
+import { Button, styled } from '@bahutara/design-system';
 
 import { useHasMounted } from '@/hooks/useHasMounted';
 

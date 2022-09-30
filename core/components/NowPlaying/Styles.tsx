@@ -1,4 +1,4 @@
-import { Flex, keyframes, styled, Text } from '@laodeaksarr/design-system';
+import { Flex, keyframes, styled, Text } from '@bahutara/design-system';
 
 const bounceBar = keyframes({
   '0%': {

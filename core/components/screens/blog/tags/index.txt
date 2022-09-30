@@ -1,4 +1,4 @@
-import { Flex, Pill, Text, styled } from '@laodeaksarr/design-system';
+import { Flex, Pill, Text, styled } from '@bahutara/design-system';
 
 import useIsArticleRead from '@/hooks/useIsArticleRead';
 

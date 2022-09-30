@@ -7,7 +7,7 @@ import {
   Grid,
   Tooltip,
   useKeyboardShortcut
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import Logo from '@/components/Logo';
 import useProgress from '@/hooks/useProgress';

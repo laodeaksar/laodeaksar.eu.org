@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Card, Text } from '@laodeaksarr/design-system';
+import { Box, Button, Card, Text } from '@bahutara/design-system';
 
 import type { CommentWithChildren } from '~/lib/types';
 
