@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { styled } from '@laodeaksarr/design-system';
+import { styled } from '@bahutara/design-system';
 
 import Image from '@/components/MDX/Image';
 
@@ -7,7 +7,7 @@ import type { RepliesProps, Reply } from './types';
 
 const Replies = ({ replies }: RepliesProps) => {
   const sanitizedReplies = replies
-    .filter((reply) => reply.data.url.includes('https://twitter.com'))
+    .filter(reply => reply.data.url.includes('https://twitter.com'))
     .reduce((acc: Record<string, Reply>, item: Reply) => {
       if (item.data?.author?.url && !acc[item.data.author.url]) {
         acc[item.data.author.url] = item;
@@ -42,8 +42,8 @@ const Replies = ({ replies }: RepliesProps) => {
           }}
         >
           {Object.values(sanitizedReplies)
-            .filter((link) => link.data.author)
-            .map((link) => (
+            .filter(link => link.data.author)
+            .map(link => (
               <Head
                 key={link.id}
                 data-tip={link.activity.sentence}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, useTheme } from '@laodeaksarr/design-system';
+import { styled, useTheme } from '@bahutara/design-system';
 
 import type { VideoPlayerProps } from './types';
 import { getDisplayedPoster } from './utils';

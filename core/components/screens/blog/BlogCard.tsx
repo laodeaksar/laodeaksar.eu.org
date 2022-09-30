@@ -1,4 +1,4 @@
-import { Box, Grid, Text } from '@laodeaksarr/design-system';
+import { Box, Grid, Text } from '@bahutara/design-system';
 
 import { BlogList } from './BlogList';
 

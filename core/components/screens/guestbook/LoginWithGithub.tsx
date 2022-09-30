@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon } from '@laodeaksarr/design-system';
+import { Button, Icon } from '@bahutara/design-system';
 import { signIn } from 'next-auth/react';
 
 function LogInWithGithub() {

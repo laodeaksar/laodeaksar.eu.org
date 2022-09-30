@@ -1,4 +1,4 @@
-import { Flex, Text } from '@laodeaksarr/design-system';
+import { Flex, Text } from '@bahutara/design-system';
 
 import Image from '@/components/MDX/Image';
 import Link from '@/components/Link';

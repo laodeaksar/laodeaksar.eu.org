@@ -1,6 +1,6 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
-import { getCssText } from '@laodeaksarr/design-system';
+import { getCssText } from '@bahutara/design-system';
 
 export default class Document extends NextDocument {
   render() {

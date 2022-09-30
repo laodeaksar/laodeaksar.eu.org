@@ -1,5 +1,5 @@
 import Highlight, { defaultProps, Prism } from 'prism-react-renderer';
-import { Card, styled } from '@laodeaksarr/design-system';
+import { Card, styled } from '@bahutara/design-system';
 
 import { CopyToClipboardButton } from '@/components/Buttons';
 

@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { Button, Tooltip, useTheme } from '@laodeaksarr/design-system';
+import { Button, Tooltip, useTheme } from '@bahutara/design-system';
 
 const LightDarkSwitcher = () => {
   const { dark, toggleDark } = useTheme();

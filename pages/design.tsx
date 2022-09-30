@@ -33,7 +33,7 @@ import {
   // Shadows,
   styled,
   useTheme
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import CodeBlock from '@/components/Code/CodeBlock';
 import Glow from '@/components/Glow';

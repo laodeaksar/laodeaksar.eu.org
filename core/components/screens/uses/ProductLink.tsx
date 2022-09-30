@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '@laodeaksarr/design-system';
+import { Icon } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 

@@ -1,4 +1,4 @@
-import { Flex, Pill, Text } from '@laodeaksarr/design-system';
+import { Flex, Pill, Text } from '@bahutara/design-system';
 
 import useIsArticleRead from '@/hooks/useIsArticleRead';
 
@@ -47,7 +47,7 @@ export function BlogList({ post }: { post: Post }) {
           {title}
         </Text>
         {hasRead && (
-          <Flex css={{ ml: "auto" }}>
+          <Flex css={{ ml: 'auto' }}>
             <Pill variant="success" css={{ marginRight: '$3' }}>
               read
             </Pill>

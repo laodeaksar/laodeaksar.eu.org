@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Box, Flex, Grid, H2 } from '@laodeaksarr/design-system';
+import { Box, Flex, Grid, H2 } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 

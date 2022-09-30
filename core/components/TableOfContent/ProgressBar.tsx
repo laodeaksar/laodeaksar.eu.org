@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Box } from '@laodeaksarr/design-system';
+import { Box } from '@bahutara/design-system';
 
 import { ProgressBarWrapper } from './Styles';
 

@@ -1,4 +1,4 @@
-import { styled } from '@laodeaksarr/design-system';
+import { styled } from '@bahutara/design-system';
 
 import Image from '@/components/MDX/Image';
 

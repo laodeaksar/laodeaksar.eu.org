@@ -1,4 +1,4 @@
-import { Flex } from '@laodeaksarr/design-system';
+import { Flex } from '@bahutara/design-system';
 
 import { Glass, SpotifyLogo } from './icons';
 import * as Styled from './Styles';

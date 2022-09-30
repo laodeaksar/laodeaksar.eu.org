@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { Box } from '@laodeaksarr/design-system';
+import { Box } from '@bahutara/design-system';
 
 import { Comment } from '~/lib/types';
 import fetcher from '~/lib/fetcher';

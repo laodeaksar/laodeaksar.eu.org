@@ -9,7 +9,7 @@ import {
   List,
   Text,
   TextInput
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import { Form, FormState } from '~/lib/types';
 

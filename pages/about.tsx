@@ -1,14 +1,7 @@
 import React from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
 import type { NextPage } from 'next';
-import {
-  Box,
-  Grid,
-  Text,
-  H1,
-  Strong,
-  styled
-} from '@laodeaksarr/design-system';
+import { Box, Grid, Text, H1, Strong, styled } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 import Newsletter from '@/components/Newsletter';

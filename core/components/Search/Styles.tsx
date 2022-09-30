@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { styled, Text } from '@laodeaksarr/design-system';
+import { styled, Text } from '@bahutara/design-system';
 
 import { HEIGHT, MAX_HEIGHT } from './constants';
 

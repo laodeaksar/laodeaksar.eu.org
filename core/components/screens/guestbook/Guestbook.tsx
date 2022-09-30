@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { guestbook } from '@prisma/client';
 import { signOut, useSession } from 'next-auth/react';
 import useSWR from 'swr';
-import { Button, Card, Text } from '@laodeaksarr/design-system';
+import { Button, Card, Text } from '@bahutara/design-system';
 
 import fetcher from '~/lib/fetcher';
 
@@ -66,7 +66,7 @@ const Guestbook = ({ fallbackData }: { fallbackData: guestbook[] }) => {
         <Card.Body>
           <Suspense fallback={null}>
             {entries &&
-              entries.map((entry) => (
+              entries.map(entry => (
                 <GuestbookEntry
                   key={entry.id.toString()}
                   entry={entry}

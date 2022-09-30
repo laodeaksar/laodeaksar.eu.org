@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Flex, Grid, Text } from '@laodeaksarr/design-system';
+import { Flex, Grid, Text } from '@bahutara/design-system';
 
 const initialCounts = {
   count: 0,
@@ -13,7 +13,7 @@ const initialCounts = {
 
 const fetchCounts = async (target: string) =>
   fetch('https://webmention.io/api/count.json?target=' + target).then(
-    (response) => (response.json ? response.json() : response)
+    response => (response.json ? response.json() : response)
   );
 
 const WebmentionCount = ({ target }: { target: string }) => {

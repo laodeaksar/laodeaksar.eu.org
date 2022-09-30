@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Flex, styled } from '@laodeaksarr/design-system';
+import { Flex, styled } from '@bahutara/design-system';
 
 export const HeaderWrapper = styled(motion.header, {
   position: 'fixed',

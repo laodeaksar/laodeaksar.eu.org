@@ -1,4 +1,4 @@
-import { Spinner } from '@laodeaksarr/design-system';
+import { Spinner } from '@bahutara/design-system';
 
 import GuestbookForm from './GuestbookForm';
 import LogInWithGithub from './LoginWithGithub';

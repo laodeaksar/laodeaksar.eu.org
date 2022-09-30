@@ -9,7 +9,7 @@ import {
   Label,
   useDebouncedValue,
   useTheme
-} from '@laodeaksarr/design-system';
+} from '@bahutara/design-system';
 
 import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 import { useIndexItem } from '@/hooks/useIndexItem';

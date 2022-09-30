@@ -1,4 +1,4 @@
-import { css, styled } from '@laodeaksarr/design-system';
+import { css, styled } from '@bahutara/design-system';
 
 export const TweetWrapper = styled('div', {
   color: 'var(--laodeaksar-colors-typeface-primary)',

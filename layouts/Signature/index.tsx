@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { styled, Text } from '@laodeaksarr/design-system';
+import { styled, Text } from '@bahutara/design-system';
 
 import Link from '@/components/Link';
 import { WebmentionReplies } from '@/components/Webmentions';
