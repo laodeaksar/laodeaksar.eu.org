@@ -18,33 +18,39 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLines = {} } = props;
 
-  const isDiff = language.startsWith('diff-');
+  const deleted = { label: '-' };
+  const added = { label: '+' };
 
-  //let code = codeString;
+  let diff = language as any;
+  const isDiff = diff.startsWith('diff-');
+
+  let highlightLine = highlightLines as any;
+
+  let code = codeString as any;
   if (isDiff) {
-    //code = []
-    //language = language.substr(5);
-    codeString.split('\n').map(line => {
+    code = [];
+    diff = diff.substr(5);
+    highlightLine = codeString.split('\n').map(line => {
       if (line.startsWith('+')) {
-        highlightLines[line].label === '+';
-        //code.push(line.substr(1));
+        highlightLine[line] === added;
+        code.push(line.substr(1));
         return 'inserted';
       }
       if (line.startsWith('-')) {
-        highlightLines[line].label === '-';
-        //code.push(line.substr(1));
+        highlightLine[line] === deleted;
+        code.push(line.substr(1));
         return 'deleted';
       }
-      //code.push(line);
+      code.push(line);
     });
-    //code = code.join('\n');
+    code = code.join('\n');
   }
 
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={codeString}
+      code={code}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
@@ -64,7 +70,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
               // const shouldHighlight = lineNumber in highlightLines[lineNumber];
               const { className: lineClassName, lineProps } = getLineProps({
                 className:
-                  highlightLines && highlightLines[lineNumber]
+                  highlightLine && highlightLine[lineNumber]
                     ? 'highlight-line'
                     : '',
                 key: index,
@@ -74,7 +80,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
               return (
                 <Line {...lineProps} key={index} className={lineClassName}>
                   <LineNo>
-                    {highlightLines[lineNumber]?.label || lineNumber}
+                    {highlightLine[lineNumber]?.label || lineNumber}
                   </LineNo>
                   <LineContent>
                     {line.map((token, key) => (
