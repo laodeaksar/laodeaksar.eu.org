@@ -18,39 +18,24 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLines = {} } = props;
 
-  const deleted = { label: '-' };
-  const added = { label: '+' };
+  const isDiff = language.includes('diff');
 
-  let diff = language as any;
-  const isDiff = diff.startsWith('diff-');
-
-  let highlightLine = highlightLines as any;
-
-  let code = codeString as any;
   if (isDiff) {
-    code = [];
-    diff = diff.substr(5);
-    highlightLine = codeString.split('\n').map(line => {
+    codeString.split('\n').map(line => {
       if (line.startsWith('+')) {
-        highlightLine[line] === added;
-        code.push(line.substr(1));
-        return 'inserted';
+        highlightLines[line].label === '+'
       }
       if (line.startsWith('-')) {
-        highlightLine[line] === deleted;
-        code.push(line.substr(1));
-        return 'deleted';
+        highlightLines[line].label === '-';
       }
-      code.push(line);
     });
-    code = code.join('\n');
   }
 
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={code}
+      code={codeString}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
@@ -70,7 +55,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
               // const shouldHighlight = lineNumber in highlightLines[lineNumber];
               const { className: lineClassName, lineProps } = getLineProps({
                 className:
-                  highlightLine && highlightLine[lineNumber]
+                  highlightLines && highlightLines[lineNumber]
                     ? 'highlight-line'
                     : '',
                 key: index,
@@ -80,7 +65,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
               return (
                 <Line {...lineProps} key={index} className={lineClassName}>
                   <LineNo>
-                    {highlightLine[lineNumber]?.label || lineNumber}
+                    {highlightLines[lineNumber]?.label || lineNumber}
                   </LineNo>
                   <LineContent>
                     {line.map((token, key) => (
