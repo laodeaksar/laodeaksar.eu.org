@@ -19,7 +19,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
   let diffLang = language as any;
-  const isDiff = diffLang.includes('diff');
+  const isDiff = diffLang.startsWith('diff-');
 
   let highlightLines = highlightLine as any;
 
@@ -52,20 +52,12 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
           {tokens.map((line, index) => {
-            /*if (
-                index === tokens.length - 1 &&
-                line.length === 1 &&
-                line[0].content === '\n'
-              ) {
-                return null;
-              }*/
-
             const lineNumber = index + 1;
 
             const { className: lineClassName } = getLineProps({
               className:
                 highlightLines && highlightLines(lineNumber)
-                  ? /*shouldHighlight*/ 'highlight-line'
+                  ? 'highlight-line'
                   : '',
               key: index,
               line
@@ -74,7 +66,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
             return (
               <Line key={index} className={lineClassName}>
                 <LineNo>
-                  {/*highlightLines[lineNumber]?.label ||*/ lineNumber}
+                  {lineNumber}
                 </LineNo>
                 <LineContent>
                   {line.map((token, key) => (
@@ -194,6 +186,19 @@ const Pre = styled('pre', {
   '.token.entity': {
     cursor: 'help'
   },
+  '.diff-highlight > code .token.deleted:not(.prefix), pre > code.diff-highlight .token.deleted:not(.prefix)':
+    {
+      backgroundColor: 'rgba(255, 0, 0, .1)',
+      color: 'inherit',
+      display: 'block'
+    },
+
+  '.diff-highlight > code .token.inserted:not(.prefix),pre > code.diff-highlight .token.inserted:not(.prefix)':
+    {
+      backgroundColor: 'rgba(0, 255, 128, .1)',
+      color: 'inherit',
+      display: 'block'
+    },
 
   '.inserted': {
     backgroundColor: 'rgba(45, 212, 191, 0.15)',
