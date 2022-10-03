@@ -39,9 +39,12 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
               }
 
               const lineNumber = index + 1;
-              const shouldHighlight = lineNumber in highlightLines[lineNumber];
+              // const shouldHighlight = lineNumber in highlightLines[lineNumber];
               const { className: lineClassName, lineProps } = getLineProps({
-                className: shouldHighlight ? 'highlight-line' : '',
+                className:
+                  highlightLines && highlightLines[lineNumber]
+                    ? 'highlight-line'
+                    : '',
                 key: index,
                 line
               });
@@ -70,7 +73,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring , highlightLines } = props;
+  const { codeString, language, metastring, highlightLines } = props;
 
   //const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
@@ -125,23 +128,23 @@ const Pre = styled('pre', {
   lineHeight: '26px',
 
   '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
-    {
-      color: 'var(--token-comment)'
-    },
+  {
+    color: 'var(--token-comment)'
+  },
 
   '.token.punctuation': {
     color: 'var(--token-punctuation)'
   },
 
   '.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted':
-    {
-      color: 'var(--token-symbol)'
-    },
+  {
+    color: 'var(--token-symbol)'
+  },
 
   '.token.selector,.token.attr-name,.token.char,.token.builtin,.token.number,.token.string,.token.inserted':
-    {
-      color: 'var(--token-selector)'
-    },
+  {
+    color: 'var(--token-selector)'
+  },
 
   '.token.operator,.token.entity,.token.url,.language-css .style': {
     color: 'var(--token-operator)'
