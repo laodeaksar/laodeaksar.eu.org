@@ -46,7 +46,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={codeString}
+      code={code}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
