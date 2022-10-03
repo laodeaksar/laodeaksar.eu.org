@@ -3,7 +3,7 @@ import { Card, styled } from '@bahutara/design-system';
 
 import { CopyToClipboardButton } from '@/components/Buttons';
 
-import { calculateLinesToHighlight, hasTitle } from './utils';
+import { /*calculateLinesToHighlight,*/ hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
 
 // @ts-ignore
@@ -16,7 +16,7 @@ require('prismjs/components/prism-swift');
 require('prismjs/components/prism-glsl');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
-  const { codeString, language, highlightLine } = props;
+  const { codeString, language, highlightLines = {} } = props;
 
   return (
     <Highlight
@@ -28,45 +28,49 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          {tokens.map((line, index) => {
-            if (
-              index === tokens.length - 1 &&
-              line.length === 1 &&
-              line[0].content === '\n'
-            ) {
-              return null;
-            }
-
-            let lineNumber = (index + 1) as any;
-
-            codeString.split('\n').map(line=>{
-              if (line.startsWith('+')) {
-                lineNumber = '+'
+          {tokens
+            .map((line, index) => {
+              if (
+                index === tokens.length - 1 &&
+                line.length === 1 &&
+                line[0].content === '\n'
+              ) {
+                return null;
               }
-            })
-            const { className: lineClassName } = getLineProps({
-              className:
-                highlightLine && highlightLine(lineNumber)
-                  ? 'highlight-line'
-                  : '',
-              key: index,
-              line
-            });
 
-            return (
-              <Line key={index} className={lineClassName}>
-                <LineNo>{lineNumber}</LineNo>
-                <LineContent>
-                  {line.map((token, key) => (
-                    <span
-                      key={`${index}.${key}`}
-                      {...getTokenProps({ key, token })}
-                    />
-                  ))}
-                </LineContent>
-              </Line>
-            );
-          })}
+              const lineNumber = index + 1;
+
+              codeString.split('\n').map(line => {
+                if (line.startsWith('+')) {
+                  highlightLines[line]?.label === '+';
+                }
+              });
+              const shouldHighlight = lineNumber in highlightLines;
+              const { className: lineClassName, lineProps } = getLineProps({
+                className:
+                  //highlightLines && highlightLines[lineNumber]
+                  shouldHighlight ? 'highlight-line' : '',
+                key: index,
+                line
+              });
+
+              return (
+                <Line {...lineProps} key={index} className={lineClassName}>
+                  <LineNo>
+                    {highlightLines[lineNumber]?.label || lineNumber}
+                  </LineNo>
+                  <LineContent>
+                    {line.map((token, key) => (
+                      <span
+                        key={`${index}.${key}`}
+                        {...getTokenProps({ key, token })}
+                      />
+                    ))}
+                  </LineContent>
+                </Line>
+              );
+            })
+            .filter(Boolean)}
         </Pre>
       )}
     </Highlight>
@@ -74,9 +78,9 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring } = props;
+  const { codeString, language, metastring, highlightLines } = props;
 
-  const highlightLineFn = calculateLinesToHighlight(metastring);
+  //const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
 
   return (
@@ -109,7 +113,7 @@ const CodeBlock = (props: CodeBlockProps) => {
       <HighlightedCodeText
         codeString={codeString}
         language={language}
-        highlightLine={highlightLineFn}
+        highlightLines={highlightLines}
       />
     </Card>
   );
