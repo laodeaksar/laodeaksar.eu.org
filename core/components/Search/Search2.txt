@@ -1,0 +1,197 @@
+import React from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import {
+  Flex,
+  Icon,
+  Label,
+  useTheme
+} from '@bahutara/design-system';
+
+import useBodyScrollLock from '@/hooks/useBodyScrollLock';
+
+import { CommandCenterStatic } from './CommandCenterStatic';
+import { HEIGHT, MAX_HEIGHT } from './constants';
+import {
+  Overlay,
+  SearchBox,
+  FormWrapper,
+  SearchResults,
+  Result
+} from './Styles2';
+
+import {
+  KBarAnimator,
+  KBarPortal,
+  KBarPositioner,
+  KBarProvider,
+  KBarResults,
+  KBarSearch,
+  Action,
+  useMatches
+} from 'kbar';
+import { AnimatePresence } from 'framer-motion';
+
+import { indexQuery } from '~/lib/sanity/queries';
+import { getClient } from '~/lib/sanity/sanity-server';
+import { Post } from '~/lib/types';
+
+interface Props {
+  onClose: () => void;
+}
+
+const Search = (props: Props) => {
+  const { onClose } = props;
+
+  const [loading, setLoading] = React.useState(true);
+  const { results, rootActionId } = useMatches();
+
+  useBodyScrollLock();
+  const router = useRouter();
+
+  const { dark } = useTheme();
+
+  React.useEffect(()=>{
+  const allPosts = await getClient(preview).fetch<Post[]>(indexQuery);
+  },[])
+
+  const actions = React.useMemo(() => {
+    let actions: Action[] = []
+    let id = 1
+    const mapPosts = (posts: Blog[]) => {
+      actions.push({
+        id: 'PostsAction',
+        name: 'Search Posts...',
+        keywords: 'Contentlayer Blog Post List',
+        shortcut: [],
+        //icon: <FileText width={16} height={16} />,
+      })
+      id++
+      for (const post of posts) {
+        actions.push({
+          id: ('blog-' + id).toString(),
+          name: post.title ,
+          keywords: post?.summary || '',
+          //icon: <FileText width={16} height={16} />,
+          parent: 'PostsAction',
+          //subtitle:  format(parseISO(post.publishedAt), 'MMMM dd, yyyy')|| '',
+          perform: () => router.push('/blog/' + post?.slug),
+        })
+        id++
+      }
+    }
+    return mapPosts
+    return actions
+  },[router])
+
+  /*return (
+    <AnimatePresence>
+<KBarProvider
+      actions={actions}
+      options={{
+        enableHistory: true
+      }}
+    >
+      <Overlay
+          initial={{
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
+          }}
+          animate={{
+            backgroundColor: dark
+              ? 'rgba(0,0,0,0.8)'
+              : 'rgba(241, 243, 247, 0.8)'
+          }}
+          exit={{
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
+          }}
+          // transition={{ duration: 0.4 }}
+          onClick={clickOutside}
+          aria-label="search"
+          // The dialog container element has aria-modal set to true.
+          aria-modal="true"
+          tabIndex={-1}
+          // All elements required to operate the dialog are descendants of the element that has role dialog.
+          role="dialog"
+        >
+          <SearchBox
+            initial={{ scale: 0.8, opacity: 0, x: '-50%' }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{
+              scale: 0.5,
+              opacity: 0,
+              transition: { duration: 0.15, delay: 0.1 }
+            }}
+            transition={{
+              ease: 'easeOut',
+              duration: 0.2
+            }}
+          >
+            <FormWrapper ref={SearchRef}>
+              <KBarSearch/>
+                <Label
+                  style={{
+                    width: '120px'
+                  }}
+                >
+                  {debouncedSearchQuery !== '' && !loading
+                    ? `${results.length} results`
+                    : null}
+                </Label>
+            </FormWrapper>
+            {results !== '' ? (
+              <SearchResults
+                style={{
+                  height:
+                    results.length * HEIGHT >= MAX_HEIGHT
+                      ? MAX_HEIGHT
+                      : results.length * HEIGHT,
+                  transition: 'height 0.4s ease-out',
+                  willChange: 'height'
+                }}
+              >
+                {results.map((result, index) => (
+                  <Result
+                    key={result.slug}
+                    id={result.slug}
+                    selected={selectedResult === result}
+                    onPointerEnter={() => handlePointer(index)}
+                  >
+                    <Link
+                      href={`/${
+                        result.type === 'snippet' ? 'snippets' : 'blog'
+                      }/${result.slug}`}
+                    >
+                      <a onClick={() => setTimeout(onClose, 600)}>
+                        {result.title}
+                      </a>
+                    </Link>
+                    <Flex
+                      alignItems="center"
+                      justifyContent="center"
+                      css={{
+                        marginLeft: '$4',
+                        size: '35px',
+                        backgroundColor: 'var(--laodeaksar-colors-emphasis)',
+                        borderRadius: '$1',
+
+                        path: {
+                          stroke: 'var(--laodeaksar-colors-brand)'
+                        }
+                      }}
+                    >
+                      <Icon.Enter size={4} />
+                    </Flex>
+                  </Result>
+                ))}
+              </SearchResults>
+            ) : (
+              <CommandCenterStatic />
+            )}
+          </SearchBox>
+        </Overlay>
+      </KBarProvider>
+    </AnimatePresence>,
+  );*/
+};
+
+export { Search };
