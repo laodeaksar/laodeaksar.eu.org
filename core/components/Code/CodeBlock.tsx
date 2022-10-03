@@ -18,6 +18,28 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLines = {} } = props;
 
+  const isDiff = language.startsWith('diff-');
+
+  //let code = codeString;
+  if (isDiff) {
+    //code = []
+    //language = language.substr(5);
+    codeString.split('\n').map(line => {
+      if (line.startsWith('+')) {
+        highlightLines[line].label === '+';
+        //code.push(line.substr(1));
+        return 'inserted';
+      }
+      if (line.startsWith('-')) {
+        highlightLines[line].label === '-';
+        //code.push(line.substr(1));
+        return 'deleted';
+      }
+      //code.push(line);
+    });
+    //code = code.join('\n');
+  }
+
   return (
     <Highlight
       {...defaultProps}
@@ -128,23 +150,23 @@ const Pre = styled('pre', {
   lineHeight: '26px',
 
   '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
-  {
-    color: 'var(--token-comment)'
-  },
+    {
+      color: 'var(--token-comment)'
+    },
 
   '.token.punctuation': {
     color: 'var(--token-punctuation)'
   },
 
   '.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted':
-  {
-    color: 'var(--token-symbol)'
-  },
+    {
+      color: 'var(--token-symbol)'
+    },
 
   '.token.selector,.token.attr-name,.token.char,.token.builtin,.token.number,.token.string,.token.inserted':
-  {
-    color: 'var(--token-selector)'
-  },
+    {
+      color: 'var(--token-selector)'
+    },
 
   '.token.operator,.token.entity,.token.url,.language-css .style': {
     color: 'var(--token-operator)'
