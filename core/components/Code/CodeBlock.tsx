@@ -135,6 +135,27 @@ const Pre = styled('pre', {
   fontSize: '$1',
   lineHeight: '26px',
 
+  .inserted {
+  backgroundColor: 'rgba(45, 212, 191, 0.15)',
+  margin: '0 -12px',
+  padding: '0 12px',
+  display: 'block',
+  minWidth: 'calc(100% + 24px)',
+},
+.inserted:before {
+  content: '"+"',
+},
+'.deleted': {
+  backgroundColor: 'rgba(244, 63, 94, 0.15)',
+  margin: '0 -12px',
+  padding: '0 12px',
+  display: 'block',
+  minWidth: 'calc(100% + 24px)',
+},
+'.deleted:before': {
+  content: '"-"'
+},
+
   '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
     {
       color: 'var(--token-comment)'
