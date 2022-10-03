@@ -1,4 +1,7 @@
 {
     "workbench.colorTheme": "Hack The Box",
     "typescript.tsdk": "node_modules/typescript/lib",
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ],
 }
