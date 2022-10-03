@@ -18,51 +18,38 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
-  let diffLang = language.substring(9);
-
-  const isDiff = diffLang.startsWith('diff-');
-
-  let highlightStyle = highlightLine as any;
-
-  let code = codeString as any;
-  if (isDiff) {
-    code = [];
-    diffLang = diffLang.substr(5);
-    highlightStyle = codeString.split('\n').map(line => {
-      if (line.startsWith('+')) {
-        code.push(line.substr(1));
-        return 'inserted';
-      }
-      if (line.startsWith('-')) {
-        code.push(line.substr(1));
-        return 'deleted';
-      }
-      code.push(line);
-    });
-    code = code.join('\n');
-  }
-
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={code}
+      code={codeString}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          {tokens.map((line, i) => {
-            const { className: lineClassName } = getLineProps({
-              className:
-                highlightStyle && highlightStyle(i) ? 'highlight-line' : '',
-              key: i,
+          {tokens.map((line, index) => {
+            if (
+              index === tokens.length - 1 &&
+              line.length === 1 &&
+              line[0].content === '\n'
+            ) {
+              return null;
+            }
+            
+            const lineNumber = index + 1;
+            const shouldHighlight = lineNumber in highlightLine[lineNumber];
+            const { className: lineClassName, lineProps } = getLineProps({
+              className: shouldHighlight ? 'highlight-line' : '',
+              key: index,
               line
             });
 
             return (
-              <Line key={i} className={lineClassName}>
-                <LineNo>{i + 1}</LineNo>
+              <Line {...lineProps} key={i} className={lineClassName}>
+                <LineNo>
+                  {highlightLine[lineNumber]?.label || lineNumber}
+                </LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span
@@ -134,27 +121,6 @@ const Pre = styled('pre', {
   fontFamily: '$mono',
   fontSize: '$1',
   lineHeight: '26px',
-
-  .inserted {
-  backgroundColor: 'rgba(45, 212, 191, 0.15)',
-  margin: '0 -12px',
-  padding: '0 12px',
-  display: 'block',
-  minWidth: 'calc(100% + 24px)',
-},
-.inserted:before {
-  content: '"+"',
-},
-'.deleted': {
-  backgroundColor: 'rgba(244, 63, 94, 0.15)',
-  margin: '0 -12px',
-  padding: '0 12px',
-  display: 'block',
-  minWidth: 'calc(100% + 24px)',
-},
-'.deleted:before': {
-  content: '"-"'
-},
 
   '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
     {
