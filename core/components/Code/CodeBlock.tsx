@@ -46,14 +46,14 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
             });
 
             return (
-              <Line {...lineProps} key={i} className={lineClassName}>
+              <Line {...lineProps} key={index} className={lineClassName}>
                 <LineNo>
                   {highlightLine[lineNumber]?.label || lineNumber}
                 </LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span
-                      key={`${i}.${key}`}
+                      key={`${index}.${key}`}
                       {...getTokenProps({ key, token })}
                     />
                   ))}
