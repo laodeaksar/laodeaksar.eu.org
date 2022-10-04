@@ -69,7 +69,7 @@ const Search = (props: Props) => {
       if (debouncedSearchQuery !== '') {
         switch (event.key) {
           case 'Enter':
-            const href = selectedResult.slug;
+            const href = `/blog/${selectedResult.slug}`
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
             break;
@@ -217,7 +217,7 @@ const Search = (props: Props) => {
                     selected={selectedResult === result}
                     onPointerEnter={() => handlePointer(index)}
                   >
-                    <Link href={result.slug}>
+                    <Link href={`/blog/${result.slug}`}>
                       <a onClick={() => setTimeout(onClose, 600)}>
                         {result.title}
                       </a>
@@ -228,6 +228,7 @@ const Search = (props: Props) => {
                       css={{
                         marginLeft: '$4',
                         size: '35px',
+                        padding: '9px',
                         backgroundColor: 'var(--laodeaksar-colors-emphasis)',
                         borderRadius: '$1',
 
