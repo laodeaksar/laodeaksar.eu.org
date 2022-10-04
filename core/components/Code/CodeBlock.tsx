@@ -18,7 +18,7 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
-  const isDiff = language.startsWith("diff-")
+  /*const isDiff = language.startsWith("diff-")
 
   if (isDiff) {
     codeString.split('\n').map(line => {
@@ -29,7 +29,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
         return 'deleted';
       }
     });
-  }
+  }*/
 
   return (
     <Highlight
@@ -55,9 +55,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
             return (
               <Line key={index} className={lineClassName}>
-                <LineNo>
-                  {lineNumber}
-                </LineNo>
+                <LineNo>{lineNumber}</LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span
@@ -188,9 +186,9 @@ const Pre = styled('pre', {
       backgroundColor: 'rgba(0, 255, 128, .1)',
       color: 'inherit',
       display: 'block'
-    },
+    }
 
-  '.inserted': {
+  /*'.inserted': {
     backgroundColor: 'rgba(45, 212, 191, 0.15)',
     margin: '0 -12px',
     padding: '0 12px',
@@ -209,7 +207,7 @@ const Pre = styled('pre', {
   },
   '.deleted:before': {
     content: '"-"'
-  }
+  }*/
 });
 
 const Line = styled('div', {
