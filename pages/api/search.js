@@ -7,6 +7,9 @@ const searchEndpoint = async (req, res) => {
   const allPost = await getClient(req.preview ?? false).fetch(indexQuery);
   const allSnippet = await getClient(req.preview ?? false).fetch(snippetsQuery);
 
+  console.log('post:', allPost);
+  console.log('snippet:', allSnippet);
+
   const documents = [...allPost, ...allSnippet];
 
   const idx = lunr(function () {
@@ -21,12 +24,16 @@ const searchEndpoint = async (req, res) => {
     }, this);
   });
 
+  console.log('idx:', idx);
+
   const index = lunr.Index.load(idx);
 
   const store = documents.reduce((acc, { slug, subtitle, title, type }) => {
     acc[slug] = { title, subtitle, slug, type };
     return acc;
   }, {});
+
+  console.log('store', store);
 
   const refs = index.search(req.query.q);
   const results = refs.map(({ ref }) => store[ref]);
