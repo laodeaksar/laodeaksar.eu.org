@@ -12,12 +12,11 @@
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
-    "@bahutara/design-system": "^0.0.2",
+    "@bahutara/design-system": "^0.0.4",
     "@codesandbox/sandpack-react": "^1.8.1",
     "@prisma/client": "^4.3.1",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^2.0.0",
-    "algoliasearch": "^4.14.2",
     "focus-trap-react": "^9.0.2",
     "framer-motion": "^7.3.6",
     "lunr": "^2.3.9",
@@ -32,7 +31,6 @@
     "react-intersection-observer": "^8.33.1",
     "remark-gfm": "^3.0.1",
     "sanity": "3.0.0-dev-preview.17",
-    "sanity-algolia": "^1.0.2",
     "sanity-plugin-markdown": "^3.0.0-v3-studio.1",
     "styled-components": "^5.3.5",
     "swr": "^1.3.0"

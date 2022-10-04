@@ -18,6 +18,19 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
+  const isDiff = language.startsWith("diff-")
+
+  if (isDiff) {
+    codeString.split('\n').map(line => {
+      if (line.startsWith('+')) {
+        return 'inserted';
+      }
+      if (line.startsWith('-')) {
+        return 'deleted';
+      }
+    });
+  }
+
   return (
     <Highlight
       {...defaultProps}
@@ -28,21 +41,27 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
-          {tokens.map((line, i) => {
+          {tokens.map((line, index) => {
+            const lineNumber = index + 1;
+
             const { className: lineClassName } = getLineProps({
               className:
-                highlightLine && highlightLine(i) ? 'highlight-line' : '',
-              key: i,
+                highlightLine && highlightLine(lineNumber)
+                  ? 'highlight-line'
+                  : '',
+              key: index,
               line
             });
 
             return (
-              <Line key={i} className={lineClassName}>
-                <LineNo>{i + 1}</LineNo>
+              <Line key={index} className={lineClassName}>
+                <LineNo>
+                  {lineNumber}
+                </LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span
-                      key={`${i}.${key}`}
+                      key={`${index}.${key}`}
                       {...getTokenProps({ key, token })}
                     />
                   ))}
@@ -57,7 +76,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring } = props;
+  const { codeString, language, metastring /*, highlightLines */ } = props;
 
   const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
@@ -156,6 +175,40 @@ const Pre = styled('pre', {
 
   '.token.entity': {
     cursor: 'help'
+  },
+  '.diff-highlight > code .token.deleted:not(.prefix), pre > code.diff-highlight .token.deleted:not(.prefix)':
+    {
+      backgroundColor: 'rgba(255, 0, 0, .1)',
+      color: 'inherit',
+      display: 'block'
+    },
+
+  '.diff-highlight > code .token.inserted:not(.prefix),pre > code.diff-highlight .token.inserted:not(.prefix)':
+    {
+      backgroundColor: 'rgba(0, 255, 128, .1)',
+      color: 'inherit',
+      display: 'block'
+    },
+
+  '.inserted': {
+    backgroundColor: 'rgba(45, 212, 191, 0.15)',
+    margin: '0 -12px',
+    padding: '0 12px',
+    display: 'block',
+    minWidth: 'calc(100% + 24px)'
+  },
+  '.inserted:before': {
+    content: '"+"'
+  },
+  '.deleted': {
+    backgroundColor: 'rgba(244, 63, 94, 0.15)',
+    margin: '0 -12px',
+    padding: '0 12px',
+    display: 'block',
+    minWidth: 'calc(100% + 24px)'
+  },
+  '.deleted:before': {
+    content: '"-"'
   }
 });
 
