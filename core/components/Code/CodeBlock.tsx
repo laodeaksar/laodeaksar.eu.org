@@ -23,8 +23,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   let code = codeString as any
   if (isDiff) {
     code = []
-    codeString.split('\n').map(line => {
-      //codeString.split('').map(line=>{
+    codeString.trim().split('\n').map(line => {
       if (line.startsWith('+')) {
         code.push(line.substring(1))
         return 'inserted';
