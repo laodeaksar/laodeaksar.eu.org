@@ -20,23 +20,29 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
   const isDiff = language.startsWith("diff-")
 
+  let code = codeString as any
   if (isDiff) {
+    code = []
     codeString.split('\n').map(line => {
+      //codeString.split('').map(line=>{
       if (line.startsWith('+')) {
-        line.replace('+', '')
+        code.push(line.substring(1))
         return 'inserted';
       }
       if (line.startsWith('-')) {
+        code.push(line.substring(1))
         return 'deleted';
       }
+      code.push(line)
     });
+    code.join('\n')
   }
 
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={codeString}
+      code={code}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
