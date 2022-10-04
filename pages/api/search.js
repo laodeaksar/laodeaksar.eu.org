@@ -1,7 +1,6 @@
 import lunr from 'lunr';
-//import search from '../../cache/search.json';
 import { indexQuery } from '~/lib/sanity/queries';
-import { snippetsQuery, snippetSlugsQuery } from '~/lib/sanity/queries';
+import { snippetsQuery } from '~/lib/sanity/queries';
 import { getClient } from '~/lib/sanity/sanity-server';
 
 const searchEndpoint = async (req, res) => {
@@ -10,7 +9,7 @@ const searchEndpoint = async (req, res) => {
 
   const documents = [...allPost, ...allSnippet];
 
-  const index = lunr(function () {
+  const idx = lunr(function () {
     this.field('title');
     this.field('subtitle');
     this.field('keywords');
@@ -22,13 +21,12 @@ const searchEndpoint = async (req, res) => {
     }, this);
   });
 
+  const index = lunr.Index.load(idx);
+
   const store = documents.reduce((acc, { slug, subtitle, title, type }) => {
     acc[slug] = { title, subtitle, slug, type };
     return acc;
   }, {});
-
-  //const index = lunr.Index.load(search.index);
-  //const store = search.store;
 
   const refs = index.search(req.query.q);
   const results = refs.map(({ ref }) => store[ref]);

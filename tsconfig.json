@@ -37,7 +37,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.tsx", "pages/api/search.js",
   ],
   "exclude": [
     "node_modules",
