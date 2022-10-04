@@ -1,16 +1,13 @@
 import lunr from 'lunr';
 import { indexQuery } from '~/lib/sanity/queries';
-import { snippetsQuery } from '~/lib/sanity/queries';
 import { getClient } from '~/lib/sanity/sanity-server';
 
 const searchEndpoint = async (req, res) => {
-  const allPost = await getClient(req.preview ?? false).fetch(indexQuery);
-  const allSnippet = await getClient(req.preview ?? false).fetch(snippetsQuery);
+  const documents = await getClient(req.preview ?? false).fetch(indexQuery);
 
-  console.log('post:', allPost);
-  console.log('snippet:', allSnippet);
+  console.log('post:', documents);
 
-  const documents = [...allPost, ...allSnippet];
+  //const documents = [allPost];
 
   const idx = lunr(function () {
     this.field('title');

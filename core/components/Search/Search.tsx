@@ -25,7 +25,6 @@ import {
 } from './Styles';
 
 type Result = {
-  type: 'snippet' | 'blog';
   slug: string;
   title: string;
 };
@@ -70,9 +69,7 @@ const Search = (props: Props) => {
       if (debouncedSearchQuery !== '') {
         switch (event.key) {
           case 'Enter':
-            const href = `/${
-              selectedResult.type === 'snippet' ? 'snippets' : 'blog'
-            }/${selectedResult.slug}/`;
+            const href = selectedResult.slug;
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
             break;
@@ -102,10 +99,6 @@ const Search = (props: Props) => {
     if (inputRef && inputRef.current) {
       inputRef.current.focus();
     }
-
-    // toggleLockScroll();
-
-    // return () => toggleLockScroll();
   }, []);
 
   /** Query */
@@ -162,13 +155,10 @@ const Search = (props: Props) => {
           exit={{
             backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
           }}
-          // transition={{ duration: 0.4 }}
           onClick={clickOutside}
           aria-label="search"
-          // The dialog container element has aria-modal set to true.
           aria-modal="true"
           tabIndex={-1}
-          // All elements required to operate the dialog are descendants of the element that has role dialog.
           role="dialog"
         >
           <SearchBox
@@ -227,11 +217,7 @@ const Search = (props: Props) => {
                     selected={selectedResult === result}
                     onPointerEnter={() => handlePointer(index)}
                   >
-                    <Link
-                      href={`/${
-                        result.type === 'snippet' ? 'snippets' : 'blog'
-                      }/${result.slug}`}
-                    >
+                    <Link href={result.slug}>
                       <a onClick={() => setTimeout(onClose, 600)}>
                         {result.title}
                       </a>
