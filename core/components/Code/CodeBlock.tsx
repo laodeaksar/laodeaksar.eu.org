@@ -23,8 +23,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   let code = codeString as any
   if (isDiff) {
     code = []
-    codeString.split('\n').map(line => {
-      //codeString.split('').map(line=>{
+    codeString.trim().split('\n').map(line => {
       if (line.startsWith('+')) {
         code.push(line.substring(1))
         return 'inserted';
@@ -181,37 +180,27 @@ const Pre = styled('pre', {
   '.token.entity': {
     cursor: 'help'
   },
-  /*'.diff-highlight > code .token.deleted:not(.prefix), pre > code.diff-highlight .token.deleted:not(.prefix)':
-    {
-      backgroundColor: 'rgba(255, 0, 0, .1)',
-      color: 'inherit',
-      display: 'block'
-    },
-
-  '.diff-highlight > code .token.inserted:not(.prefix),pre > code.diff-highlight .token.inserted:not(.prefix)':
-    {
-      backgroundColor: 'rgba(0, 255, 128, .1)',
-      color: 'inherit',
-      display: 'block'
-    }*/
 
   '.inserted': {
-    backgroundColor: 'rgba(45, 212, 191, 0.15)',
+    backgroundColor: 'var(--laodeaksar-colors-success)',
     margin: '0 -12px',
     padding: '0 12px',
     display: 'block',
-    minWidth: 'calc(100% + 24px)'
+    minWidth: 'calc($full + 24px)'
   },
+
   '.inserted:before': {
     content: '"+"'
   },
+
   '.deleted': {
-    backgroundColor: 'rgba(244, 63, 94, 0.15)',
+    backgroundColor: 'var(--laodeaksar-colors-warning)',
     margin: '0 -12px',
     padding: '0 12px',
     display: 'block',
-    minWidth: 'calc(100% + 24px)'
+    minWidth: 'calc($full + 24px)'
   },
+
   '.deleted:before': {
     content: '"-"'
   }
