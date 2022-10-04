@@ -1,6 +1,8 @@
 import React from 'react';
+import FocusTrap from 'focus-trap-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { createPortal } from 'react-dom';
 import {
   Flex,
   Icon,
@@ -12,87 +14,60 @@ import useBodyScrollLock from '@/hooks/useBodyScrollLock';
 
 import { CommandCenterStatic } from './CommandCenterStatic';
 import { HEIGHT, MAX_HEIGHT } from './constants';
+import InputBox from "./InputBox";
 import {
   Overlay,
   SearchBox,
   FormWrapper,
   SearchResults,
   Result
-} from './Styles2';
+} from './Styles';
+import { InstantSearch } from 'react-instantsearch-dom';
+import algoliasearch from 'algoliasearch';
 
-import {
-  KBarAnimator,
-  KBarPortal,
-  KBarPositioner,
-  KBarProvider,
-  KBarResults,
-  KBarSearch,
-  Action,
-  useMatches
-} from 'kbar';
-import { AnimatePresence } from 'framer-motion';
-
-import { indexQuery } from '~/lib/sanity/queries';
-import { getClient } from '~/lib/sanity/sanity-server';
-import { Post } from '~/lib/types';
+type Result = {
+  type: 'snippet' | 'blog';
+  slug: string;
+  title: string;
+};
 
 interface Props {
   onClose: () => void;
 }
 
+const getClient = algoliasearch(
+  process.env.ALGOLIA_APPLICATION_ID as string,
+  process.env.ALGOLIA_ADMIN_KEY as string
+);
+
 const Search = (props: Props) => {
   const { onClose } = props;
 
-  const [loading, setLoading] = React.useState(true);
-  const { results, rootActionId } = useMatches();
+  const [results, setResults] = React.useState<Result[]>([]);
 
   useBodyScrollLock();
   const router = useRouter();
 
+  const SearchRef = React.useRef<HTMLDivElement>(null);
+
+  const clickOutside = (e: React.BaseSyntheticEvent) => {
+    if (
+      SearchRef &&
+      SearchRef.current &&
+      SearchRef.current.contains(e.target)
+    ) {
+      return null;
+    }
+
+    return onClose();
+  };
+
   const { dark } = useTheme();
 
-  React.useEffect(()=>{
-  const allPosts = await getClient(preview).fetch<Post[]>(indexQuery);
-  },[])
-
-  const actions = React.useMemo(() => {
-    let actions: Action[] = []
-    let id = 1
-    const mapPosts = (posts: Blog[]) => {
-      actions.push({
-        id: 'PostsAction',
-        name: 'Search Posts...',
-        keywords: 'Contentlayer Blog Post List',
-        shortcut: [],
-        //icon: <FileText width={16} height={16} />,
-      })
-      id++
-      for (const post of posts) {
-        actions.push({
-          id: ('blog-' + id).toString(),
-          name: post.title ,
-          keywords: post?.summary || '',
-          //icon: <FileText width={16} height={16} />,
-          parent: 'PostsAction',
-          //subtitle:  format(parseISO(post.publishedAt), 'MMMM dd, yyyy')|| '',
-          perform: () => router.push('/blog/' + post?.slug),
-        })
-        id++
-      }
-    }
-    return mapPosts
-    return actions
-  },[router])
-
-  /*return (
-    <AnimatePresence>
-<KBarProvider
-      actions={actions}
-      options={{
-        enableHistory: true
-      }}
-    >
-      <Overlay
+  return createPortal(
+    <FocusTrap>
+      <aside>
+        <Overlay
           initial={{
             backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)'
           }}
@@ -126,72 +101,76 @@ const Search = (props: Props) => {
               duration: 0.2
             }}
           >
-            <FormWrapper ref={SearchRef}>
-              <KBarSearch/>
-                <Label
+            <InstantSearch searchClient={getClient} indexName="laodeaksar">
+              <FormWrapper ref={SearchRef}>
+                  <InputBox />
+                  <Label
+                    style={{
+                      width: '120px'
+                    }}
+                  >
+                    test
+                    {/*debouncedSearchQuery !== '' && !loading
+                      ? `${results.length} results`
+                  : null*/}
+                  </Label>
+              </FormWrapper>
+              {debouncedSearchQuery !== '' ? (
+                <SearchResults
                   style={{
-                    width: '120px'
+                    height:
+                      results.length * HEIGHT >= MAX_HEIGHT
+                        ? MAX_HEIGHT
+                        : results.length * HEIGHT,
+                    transition: 'height 0.4s ease-out',
+                    willChange: 'height'
                   }}
                 >
-                  {debouncedSearchQuery !== '' && !loading
-                    ? `${results.length} results`
-                    : null}
-                </Label>
-            </FormWrapper>
-            {results !== '' ? (
-              <SearchResults
-                style={{
-                  height:
-                    results.length * HEIGHT >= MAX_HEIGHT
-                      ? MAX_HEIGHT
-                      : results.length * HEIGHT,
-                  transition: 'height 0.4s ease-out',
-                  willChange: 'height'
-                }}
-              >
-                {results.map((result, index) => (
-                  <Result
-                    key={result.slug}
-                    id={result.slug}
-                    selected={selectedResult === result}
-                    onPointerEnter={() => handlePointer(index)}
-                  >
-                    <Link
-                      href={`/${
-                        result.type === 'snippet' ? 'snippets' : 'blog'
-                      }/${result.slug}`}
+                  {results.map((result, index) => (
+                    <Result
+                      key={result.slug}
+                      id={result.slug}
+                      selected={selectedResult === result}
+                      onPointerEnter={() => handlePointer(index)}
                     >
-                      <a onClick={() => setTimeout(onClose, 600)}>
-                        {result.title}
-                      </a>
-                    </Link>
-                    <Flex
-                      alignItems="center"
-                      justifyContent="center"
-                      css={{
-                        marginLeft: '$4',
-                        size: '35px',
-                        backgroundColor: 'var(--laodeaksar-colors-emphasis)',
-                        borderRadius: '$1',
+                      <Link
+                        href={`/${
+                          result.type === 'snippet' ? 'snippets' : 'blog'
+                        }/${result.slug}`}
+                      >
+                        <a onClick={() => setTimeout(onClose, 600)}>
+                          {result.title}
+                        </a>
+                      </Link>
+                      <Flex
+                        alignItems="center"
+                        justifyContent="center"
+                        css={{
+                          marginLeft: '$4',
+                          size: '35px',
+                          backgroundColor: 'var(--laodeaksar-colors-emphasis)',
+                          borderRadius: '$1',
 
-                        path: {
-                          stroke: 'var(--laodeaksar-colors-brand)'
-                        }
-                      }}
-                    >
-                      <Icon.Enter size={4} />
-                    </Flex>
-                  </Result>
-                ))}
-              </SearchResults>
-            ) : (
-              <CommandCenterStatic />
-            )}
+                          path: {
+                            stroke: 'var(--laodeaksar-colors-brand)'
+                          }
+                        }}
+                      >
+                        <Icon.Enter size={4} />
+                      </Flex>
+                    </Result>
+                  ))}
+                </SearchResults>
+              ) : (
+                <CommandCenterStatic />
+              )}
+            </InstantSearch>
           </SearchBox>
         </Overlay>
-      </KBarProvider>
-    </AnimatePresence>,
-  );*/
+      </aside>
+    </FocusTrap>,
+    document.body
+  );
 };
 
 export { Search };
