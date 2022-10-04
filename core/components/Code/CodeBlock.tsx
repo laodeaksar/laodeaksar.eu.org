@@ -3,7 +3,7 @@ import { Card, styled } from '@bahutara/design-system';
 
 import { CopyToClipboardButton } from '@/components/Buttons';
 
-import { /*calculateLinesToHighlight,*/ hasTitle } from './utils';
+import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
 
 // @ts-ignore
@@ -16,17 +16,14 @@ require('prismjs/components/prism-swift');
 require('prismjs/components/prism-glsl');
 
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
-  const { codeString, language, highlightLines = {}, trim } = props;
-
-  const code =
-    trim && typeof codeString === 'string' ? codeString.trim() : codeString;
+  const { codeString, language, highlightLine } = props;
 
   const isDiff = language.startsWith('diff-');
 
   if (isDiff) {
-    code.split('\n').map(line => {
+    codeString.split('\n').map(line => {
       if (line.startsWith('+')) {
-        return 'inserted';
+        return line.substring(1);
       }
       if (line.startsWith('-')) {
         return 'deleted';
@@ -38,7 +35,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={code}
+      code={codeString}
       // @ts-ignore let glsl be a valid language
       language={language}
     >
@@ -57,7 +54,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
             const { className: lineClassName, lineProps } = getLineProps({
               className:
-                highlightLines && highlightLines[lineNumber]
+                highlightLine && highlightLine(lineNumber)
                   ? 'highlight-line'
                   : '',
               key: index,
@@ -66,9 +63,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
             return (
               <Line {...lineProps} key={index} className={lineClassName}>
-                <LineNo>
-                  {highlightLines[lineNumber]?.label || lineNumber}
-                </LineNo>
+                <LineNo>{lineNumber}</LineNo>
                 <LineContent>
                   {line.map((token, key) => (
                     <span
@@ -87,9 +82,9 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring, highlightLines } = props;
+  const { codeString, language, metastring } = props;
 
-  //const highlightLineFn = calculateLinesToHighlight(metastring);
+  const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
 
   return (
@@ -122,7 +117,7 @@ const CodeBlock = (props: CodeBlockProps) => {
       <HighlightedCodeText
         codeString={codeString}
         language={language}
-        highlightLines={highlightLines}
+        highlightLine={highlightLineFn}
       />
     </Card>
   );
@@ -188,28 +183,27 @@ const Pre = styled('pre', {
     cursor: 'help'
   },
 
-  '.inserted': {
-    backgroundColor: 'var(--laodeaksar-colors-success)',
-    margin: '0 -12px',
-    padding: '0 12px',
-    display: 'block',
-    minWidth: 'calc($full + 24px)'
+  '.token.deleted': {
+    backgroundColor: 'hsl(350deg 100% 88% / 47%)',
+    color: 'var(--laodeaksar-colors-danger)',
+    padding: '5px'
   },
 
-  '.inserted:before': {
-    content: '"+"'
+  '.token.inserted': {
+    backgroundColor: 'hsl(120deg 73% 75% / 35%)',
+    color: 'var(--laodeaksar-colors-success)',
   },
 
-  '.deleted': {
-    backgroundColor: 'var(--laodeaksar-colors-warning)',
-    margin: '0 -12px',
-    padding: '0 12px',
-    display: 'block',
-    minWidth: 'calc($full + 24px)'
+  /* Make the + and - characters unselectable for copy/paste */
+  '.token.prefix.unchanged, .token.prefix.inserted,.token.prefix.deleted': {
+    us: 'none',
   },
 
-  '.deleted:before': {
-    content: '"-"'
+  /* Optional: full-width background color */
+  '.token.inserted:not(.prefix),.token.deleted:not(.prefix)': {
+    width: '$full',
+    display: 'inline-flex',
+    position: 'absolute',
   }
 });
 
