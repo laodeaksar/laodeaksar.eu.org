@@ -34,7 +34,7 @@ export default async function handler(
         }
       });
       return res.status(200).json(
-        comments.map((comment) => ({
+        comments.map(comment => ({
           id: comment.id.toString(),
           post: comment.post,
           body: comment.body,
@@ -53,7 +53,7 @@ export default async function handler(
     });
 
     return res.status(200).json(
-      entries.map((entry) => ({
+      entries.map(entry => ({
         id: entry.id.toString(),
         body: entry.body,
         email: session?.user?.email === entry.email ? entry.email : null,

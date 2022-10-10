@@ -5,7 +5,7 @@ const searchEndpoint = async (req, res) => {
   const query = `
   *[_type == "post"] | order(date desc, _updatedAt desc) {
     title, description, "slug": slug.current
-  }`;  
+  }`;
 
   const documents = await getClient(req.preview ?? false).fetch(query);
 

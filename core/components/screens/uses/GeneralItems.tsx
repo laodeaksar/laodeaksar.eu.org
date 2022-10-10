@@ -93,7 +93,8 @@ export function GeneralItems({ items }: { items: Gear[] }) {
                           right: '0',
                           transition: 'transform 0.3s',
                           transform: 'translateY(100%)',
-                          backgroundColor: 'var(--laodeaksar-colors-foreground)',
+                          backgroundColor:
+                            'var(--laodeaksar-colors-foreground)',
                           boxShadow: Shadows[1],
                           width: '$full',
 

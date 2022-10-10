@@ -69,7 +69,7 @@ const Search = (props: Props) => {
       if (debouncedSearchQuery !== '') {
         switch (event.key) {
           case 'Enter':
-            const href = `/blog/${selectedResult.slug}`
+            const href = `/blog/${selectedResult.slug}`;
             router.push(href).then(() => window.scrollTo(0, 0));
             setTimeout(onClose, 600);
             break;

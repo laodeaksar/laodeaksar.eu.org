@@ -53,13 +53,13 @@ const useScrollSpy = (
     }
 
     observer.current = new IntersectionObserver(
-      (entries) => {
+      entries => {
         // find the index of the section that is currently intersecting
-        const indexOfSectionToHighlight = entries.findIndex((entry) => {
+        const indexOfSectionToHighlight = entries.findIndex(entry => {
           return entry.intersectionRatio > 0;
         });
 
-        const intersectionRatios = entries.map((entry) => {
+        const intersectionRatios = entries.map(entry => {
           return entry.intersectionRatio;
         });
 
@@ -77,7 +77,7 @@ const useScrollSpy = (
     const { current: currentObserver } = observer;
 
     // observe all the elements passed as argument of the hook
-    elements.forEach((element) =>
+    elements.forEach(element =>
       element ? currentObserver.observe(element) : null
     );
 

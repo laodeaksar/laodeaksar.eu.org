@@ -27,17 +27,17 @@ export function useIndexItem<T>(
   React.useEffect(() => {
     itemsRef.current = items;
 
-    setIndex((index) => clamp(index, 0, Math.max(items.length - 1, 0)));
+    setIndex(index => clamp(index, 0, Math.max(items.length - 1, 0)));
   }, [items]);
 
   const previousItem = React.useCallback((nudge: number = 1) => {
-    setIndex((index) =>
+    setIndex(index =>
       wrap(index - nudge, 0, Math.max(itemsRef.current.length, 0))
     );
   }, []);
 
   const nextItem = React.useCallback((nudge: number = 1) => {
-    setIndex((index) =>
+    setIndex(index =>
       wrap(index + nudge, 0, Math.max(itemsRef.current.length, 0))
     );
   }, []);

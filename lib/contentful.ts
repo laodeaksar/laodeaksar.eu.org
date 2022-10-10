@@ -28,7 +28,7 @@ class ContentfulApi {
     };
 
     try {
-      const data = await fetch(fetchUrl, fetchOptions).then((response) =>
+      const data = await fetch(fetchUrl, fetchOptions).then(response =>
         response.json()
       );
       return data;

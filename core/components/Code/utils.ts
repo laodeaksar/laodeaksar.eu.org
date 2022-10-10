@@ -33,7 +33,7 @@ export const calculateLinesToHighlight = (metastring: string | null) => {
   } else {
     const lineNumbers = RE.exec(metastring)![1]
       .split(',')
-      .map((v) => v.split('-').map((val) => parseInt(val, 10)));
+      .map(v => v.split('-').map(val => parseInt(val, 10)));
     return (index: number) => {
       const lineNumber = index + 1;
       const inRange = lineNumbers.some(([start, end]) =>

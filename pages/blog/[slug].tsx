@@ -14,7 +14,7 @@ import { Post } from '~/lib/types';
 
 const PostDetail: NextPage<{ post: Post }> = ({ post }) => {
   const StaticTweet = ({ id }: any) => {
-    const tweet = post.tweets.find((tweet) => tweet.id === id);
+    const tweet = post.tweets.find(tweet => tweet.id === id);
     return <Tweet {...tweet} />;
   };
 

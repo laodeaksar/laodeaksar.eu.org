@@ -69,7 +69,7 @@ export interface TrackData extends TopTrackData {
 
 export const validateTrack = (track: TopTrackData): boolean => {
   return !forbiddenKeywords.some(
-    (it) =>
+    it =>
       track?.title?.toLowerCase().includes(it) ||
       track?.album?.toLowerCase().includes(it)
   );
