@@ -20,7 +20,7 @@ export default async function handler(
   }
 
   const session = await unstable_getServerSession(req, res, authOptions);
-  const { id } = req.query;
+  const { id } = req.query as any;
 
   if (!id || !Number(id)) {
     return BadRequest(res, 'Invalid id');
@@ -28,7 +28,7 @@ export default async function handler(
 
   const entry = await prisma.comment.findUnique({
     where: {
-      id: Number(id)
+      id
     }
   });
 
@@ -53,7 +53,7 @@ export default async function handler(
   if (req.method === 'DELETE') {
     await prisma.comment.delete({
       where: {
-        id: Number(id)
+        id
       }
     });
 
@@ -72,7 +72,7 @@ export default async function handler(
 
   await prisma.comment.update({
     where: {
-      id: Number(id)
+      id
     },
     data: {
       body,
