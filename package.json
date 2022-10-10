@@ -56,5 +56,10 @@
     "unist-util-find-after": "^4.0.0",
     "unist-util-visit": "^4.1.1",
     "unist-util-visit-parents": "^5.1.1"
+  },
+  "nextBundleAnalysis": {
+    "budget": 143360,
+    "budgetPercentIncreaseRed": 20,
+    "showDetails": true
   }
 }
