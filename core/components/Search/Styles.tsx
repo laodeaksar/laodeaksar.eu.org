@@ -30,7 +30,7 @@ export const Result = styled(motion.li, {
   variants: {
     selected: {
       true: {
-        bc: 'var(--laodeaksar-colors-foreground)',
+        backgroundColor: 'var(--laodeaksar-colors-foreground)',
 
         a: {
           color: 'var(--laodeaksar-colors-brand)'
@@ -187,10 +187,10 @@ export const Item = styled('li', {
   },
 
   '&:hover': {
-    bc: 'var(--laodeaksar-colors-emphasis)',
+    backgroundColor: 'var(--laodeaksar-colors-emphasis)',
 
     '&[data-nohover]': {
-      bc: 'inherit'
+      backgroundColor: 'inherit'
     },
 
     a: {
@@ -207,7 +207,7 @@ export const Separator = styled('li', {
   height: '30px',
   width: '$full',
   fontSize: '$1',
-  bc: 'var(--laodeaksar-colors-foreground)',
+  backgroundColor: 'var(--laodeaksar-colors-foreground)',
   color: 'var(--laodeaksar-colors-typeface-tertiary)',
   fontWeight: '$3',
   display: 'flex',

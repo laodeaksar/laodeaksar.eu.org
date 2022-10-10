@@ -37,7 +37,7 @@ const ProgressBar = ({ progress }: { progress: number }) => {
           scaleY: progress,
           width: '2px',
           height: '$full',
-          bc: 'var(--laodeaksar-colors-typeface-tertiary)'
+          backgroundColor: 'var(--laodeaksar-colors-typeface-tertiary)'
         }}
         data-testprogress={progress}
       />

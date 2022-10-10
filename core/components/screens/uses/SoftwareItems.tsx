@@ -49,11 +49,11 @@ export function SoftwareItems({ items }: { items: Gear[] }) {
                     flex: 'none',
                     padding: '1rem',
                     borderRadius: '6px',
-                    bc: 'var(--laodeaksar-colors-foreground)',
+                    backgroundColor: 'var(--laodeaksar-colors-foreground)',
                     size: '6rem',
 
                     '&:hover': {
-                      bc: 'var(--laodeaksar-colors-emphasis)'
+                      backgroundColor: 'var(--laodeaksar-colors-emphasis)'
                     }
                   }}
                 >

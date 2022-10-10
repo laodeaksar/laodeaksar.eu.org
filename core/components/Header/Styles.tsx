@@ -39,7 +39,7 @@ export const HeaderProgressBar = styled(motion.div, {
   bottom: '0px',
   transformOrigin: 'left',
   height: '2px',
-  bc: 'var(--laodeaksar-colors-typeface-tertiary)',
+  backgroundColor: 'var(--laodeaksar-colors-typeface-tertiary)',
   width: '$full'
 });
 

@@ -7,7 +7,7 @@ import { Separator, Item, KBD } from './Styles';
 const CommandCenterStatic = () => (
   <Box
     css={{
-      bc: 'var(--laodeaksar-colors-body)',
+      backgroundColor: 'var(--laodeaksar-colors-body)',
       maxHeight: `${MAX_HEIGHT}px`,
       overflowY: 'scroll'
     }}

@@ -74,12 +74,12 @@ export function GeneralItems({ items }: { items: Gear[] }) {
                         overflow: 'hidden',
                         padding: '1rem',
                         borderRadius: '6px',
-                        bc: 'var(--laodeaksar-colors-foreground)',
+                        backgroundColor: 'var(--laodeaksar-colors-foreground)',
                         transition: 'background-color 0.3s',
                         height: '$full',
 
                         '&:hover': {
-                          bc: 'var(--laodeaksar-colors-emphasis)'
+                          backgroundColor: 'var(--laodeaksar-colors-emphasis)'
                         }
                       }}
                     >
@@ -93,7 +93,7 @@ export function GeneralItems({ items }: { items: Gear[] }) {
                           right: '0',
                           transition: 'transform 0.3s',
                           transform: 'translateY(100%)',
-                          bc: 'var(--laodeaksar-colors-foreground)',
+                          backgroundColor: 'var(--laodeaksar-colors-foreground)',
                           boxShadow: Shadows[1],
                           width: '$full',
 

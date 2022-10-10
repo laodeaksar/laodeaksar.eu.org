@@ -13,7 +13,7 @@ export const Block = styled('div', {
   marginLeft: '-10px',
   height: '60px',
   boxShadow: 'none',
-  bc: '$$background',
+  backgroundColor: '$$background',
   color: '$$color',
   transition: 'background-color 0.25s, box-shadow 0.25s, color 0.25s',
 

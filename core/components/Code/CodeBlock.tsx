@@ -3,7 +3,7 @@ import { Card, styled } from '@bahutara/design-system';
 
 import { CopyToClipboardButton } from '@/components/Buttons';
 
-import { calculateLinesToHighlight, hasTitle } from './utils';
+import { /*calculateLinesToHighlight,*/ hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
 
 // @ts-ignore
@@ -18,26 +18,43 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
-  const isDiff = language.startsWith('diff-');
+  let diffLang = language as any;
+  const isDiff = diffLang.includes('diff');
+
+  let highlightLines = highlightLine;
+  let code = codeString;
 
   if (isDiff) {
-    codeString.split('\n').map(line => {
+    //@ts-ignore
+    code = [];
+    diffLang = diffLang.substring(4);
+    highlightLines = codeString.split('\n').map(line => {
       if (line.startsWith('+')) {
-        return line.substring(1);
+        //@ts-ignore
+        code.push(line.substring(1));
+        return 'inserted';
       }
       if (line.startsWith('-')) {
+        //@ts-ignore
+        code.push(line.substring(1));
         return 'deleted';
       }
+      //@ts-ignore
+      code.push(line);
     });
+    //@ts-ignore
+    code.join('\n');
   }
+
+  console.log(code);
 
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={codeString}
+      code={code}
       // @ts-ignore let glsl be a valid language
-      language={language}
+      language={diffLang}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
@@ -54,7 +71,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
             const { className: lineClassName, lineProps } = getLineProps({
               className:
-                highlightLine && highlightLine(lineNumber)
+                highlightLines && highlightLines[lineNumber]
                   ? 'highlight-line'
                   : '',
               key: index,
@@ -82,9 +99,9 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring } = props;
+  const { codeString, language, metastring, highlightLine } = props;
 
-  const highlightLineFn = calculateLinesToHighlight(metastring);
+  //const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
 
   return (
@@ -107,7 +124,7 @@ const CodeBlock = (props: CodeBlockProps) => {
         <Card.Header
           css={{
             padding: '0px 16px',
-            bc: 'var(--code-snippet-background)'
+            backgroundColor: 'var(--code-snippet-background)'
           }}
         >
           <CodeSnippetTitle>{title}</CodeSnippetTitle>
@@ -117,7 +134,7 @@ const CodeBlock = (props: CodeBlockProps) => {
       <HighlightedCodeText
         codeString={codeString}
         language={language}
-        highlightLine={highlightLineFn}
+        highlightLine={highlightLine}
       />
     </Card>
   );
@@ -131,7 +148,7 @@ const Pre = styled('pre', {
   padding: '8px 0px',
   overflow: 'auto',
   bbr: '$2',
-  bc: 'var(--code-snippet-background)',
+  backgroundColor: 'var(--code-snippet-background)',
   fontFamily: '$mono',
   fontSize: '$1',
   lineHeight: '26px',
@@ -185,25 +202,24 @@ const Pre = styled('pre', {
 
   '.token.deleted': {
     backgroundColor: 'hsl(350deg 100% 88% / 47%)',
-    color: 'var(--laodeaksar-colors-danger)',
-    padding: '5px'
+    color: 'var(--laodeaksar-colors-danger)'
   },
 
   '.token.inserted': {
     backgroundColor: 'hsl(120deg 73% 75% / 35%)',
-    color: 'var(--laodeaksar-colors-success)',
+    color: 'var(--laodeaksar-colors-success)'
   },
 
   /* Make the + and - characters unselectable for copy/paste */
   '.token.prefix.unchanged, .token.prefix.inserted,.token.prefix.deleted': {
-    us: 'none',
+    us: 'none'
   },
 
   /* Optional: full-width background color */
   '.token.inserted:not(.prefix),.token.deleted:not(.prefix)': {
     width: '$full',
     display: 'inline-flex',
-    position: 'absolute',
+    position: 'absolute'
   }
 });
 
@@ -218,8 +234,16 @@ const Line = styled('div', {
     borderColor: 'var(--laodeaksar-colors-brand)'
   },
 
+  '.inserted': {
+    backgroundColor: 'red',
+
+    ':before': {
+      content: '"+"'
+    }
+  },
+
   hover: {
-    bc: 'var(--laodeaksar-colors-emphasis)'
+    backgroundColor: 'var(--laodeaksar-colors-emphasis)'
   }
 });
 

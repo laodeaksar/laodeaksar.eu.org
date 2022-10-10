@@ -3,7 +3,7 @@ import { css, styled } from '@bahutara/design-system';
 export const TweetWrapper = styled('div', {
   color: 'var(--laodeaksar-colors-typeface-primary)',
   borderRadius: '$2',
-  bc: 'var(--laodeaksar-card-background-color)',
+  backgroundColor: 'var(--laodeaksar-card-background-color)',
   padding: '1rem 1.5rem',
   marginBottom: '2rem',
   width: '$full',
