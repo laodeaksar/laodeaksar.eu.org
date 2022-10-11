@@ -151,7 +151,7 @@ const BlogLayout = ({
                     })}
                   </Pill>
                 </Flex>
-                <ViewCounter/>
+                <ViewCounter slug={slug} />
               </Hero.Info>
 
               {image && (
