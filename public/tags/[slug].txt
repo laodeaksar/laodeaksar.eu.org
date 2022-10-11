@@ -25,7 +25,7 @@ const Tag: NextPage<{ posts: Post[]; currentTag?: string }> = ({
           <H2
             gradient
             css={{
-              linearGradient: getColor(currentTag),
+              backgroundImage: `linear-gradient(${getColor(currentTag)}),
               textTransform: 'capitalize'
             }}
           >

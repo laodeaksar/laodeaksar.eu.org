@@ -18,12 +18,10 @@ export interface CodeBlockProps {
   language: Language;
   metastring: string | null;
   children?: React.ReactNode;
-  highlightLine?: any;
 }
 
 export interface HighlightedCodeTextProps {
   codeString: string;
   language: Language | 'glsl';
-  //highlightLine?: (index: number) => boolean;
-  highlightLine?: any;
+  highlightLine?: (index: number) => boolean;
 }

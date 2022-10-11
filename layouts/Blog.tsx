@@ -13,6 +13,7 @@ import Signature from './Signature';
 import { createOgImage } from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
+import ViewCounter from '@/components/screens/blog/ViewCounter';
 
 interface WebmentionBlogDataProps {
   date: string;
@@ -150,6 +151,7 @@ const BlogLayout = ({
                     })}
                   </Pill>
                 </Flex>
+                <ViewCounter/>
               </Hero.Info>
 
               {image && (

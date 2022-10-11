@@ -25,15 +25,11 @@ const pulse = keyframes({
 
 export const StyledGlow = styled('div', {
   animation: `2.7s ease-in-out 0s infinite normal both running ${pulse}`,
-  linearGradient: `91.83deg,
-    hsl(var(--palette-pink-50)) 2.26%,
-    hsl(var(--palette-indigo-30)) 145.81%
-  `,
-  /*background: `linear-gradient(
+  backgroundImage: `linear-gradient(
     91.83deg,
     hsl(var(--palette-pink-50)) 2.26%,
     hsl(var(--palette-indigo-30)) 145.81%
-  )`,*/
+  )`,
   filter: 'blur(1px)',
   borderRadius: '$2',
   position: 'absolute',

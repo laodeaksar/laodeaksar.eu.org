@@ -3,7 +3,7 @@ import { Card, styled } from '@bahutara/design-system';
 
 import { CopyToClipboardButton } from '@/components/Buttons';
 
-import { /*calculateLinesToHighlight,*/ hasTitle } from './utils';
+import { calculateLinesToHighlight, hasTitle } from './utils';
 import type { CodeBlockProps, HighlightedCodeTextProps } from './types';
 
 // @ts-ignore
@@ -18,43 +18,13 @@ require('prismjs/components/prism-glsl');
 export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
   const { codeString, language, highlightLine } = props;
 
-  let diffLang = language as any;
-  const isDiff = diffLang.includes('diff');
-
-  let highlightLines = highlightLine;
-  let code = codeString;
-
-  if (isDiff) {
-    //@ts-ignore
-    code = [];
-    diffLang = diffLang.substring(4);
-    highlightLines = codeString.split('\n').map(line => {
-      if (line.startsWith('+')) {
-        //@ts-ignore
-        code.push(line.substring(1));
-        return 'inserted';
-      }
-      if (line.startsWith('-')) {
-        //@ts-ignore
-        code.push(line.substring(1));
-        return 'deleted';
-      }
-      //@ts-ignore
-      code.push(line);
-    });
-    //@ts-ignore
-    code.join('\n');
-  }
-
-  console.log(code);
-
   return (
     <Highlight
       {...defaultProps}
       theme={{ plain: {}, styles: [] }}
-      code={code}
+      code={codeString}
       // @ts-ignore let glsl be a valid language
-      language={diffLang}
+      language={language}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
@@ -71,7 +41,7 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 
             const { className: lineClassName, lineProps } = getLineProps({
               className:
-                highlightLines && highlightLines[lineNumber]
+                highlightLine && highlightLine(lineNumber)
                   ? 'highlight-line'
                   : '',
               key: index,
@@ -99,9 +69,9 @@ export const HighlightedCodeText = (props: HighlightedCodeTextProps) => {
 };
 
 const CodeBlock = (props: CodeBlockProps) => {
-  const { codeString, language, metastring, highlightLine } = props;
+  const { codeString, language, metastring } = props;
 
-  //const highlightLineFn = calculateLinesToHighlight(metastring);
+  const highlightLineFn = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
 
   return (
@@ -134,7 +104,7 @@ const CodeBlock = (props: CodeBlockProps) => {
       <HighlightedCodeText
         codeString={codeString}
         language={language}
-        highlightLine={highlightLine}
+        highlightLine={highlightLineFn}
       />
     </Card>
   );
@@ -232,14 +202,6 @@ const Line = styled('div', {
   '&.highlight-line': {
     background: 'var(--laodeaksar-colors-emphasis)',
     borderColor: 'var(--laodeaksar-colors-brand)'
-  },
-
-  '.inserted': {
-    backgroundColor: 'red',
-
-    ':before': {
-      content: '"+"'
-    }
   },
 
   hover: {

@@ -380,11 +380,11 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
             size="3"
             gradient
             css={{
-              linearGradient: `
+              backgroundImage: `linear-gradient(
                 91.83deg, hsl(var(--palette-pink-50)) -20.26%, 
                 hsl(var(--palette-blue-50)) 20.55%, 
                 hsl(var(--palette-indigo-20)) 60.81%
-              `
+              )`
             }}
           >
             Almost before we knew it, we had left the ground.
