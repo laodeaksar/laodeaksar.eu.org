@@ -6,8 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write pages/** core/** lib/**",
-    "format:check": "prettier --check pages/** core/** lib/**",
+    "format": "prettier --write **/*.ts*",
+    "format:check": "prettier --check **/*.ts*",
     "type-check": "tsc --noEmit",
     "sanity:start": "sanity start",
     "sanity:deploy": "sanity deploy"
