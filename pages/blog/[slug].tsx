@@ -58,13 +58,16 @@ export const getStaticProps: GetStaticProps = async ({
   const { html, tweetIDs, readingTime } = await mdxToHtml(post.content);
   const tweets = await getTweets(tweetIDs);
 
+  const ogImage = `/api/og?title=${post.title}&date=${post.date}&readTime=${readingTime}`
+
   return {
     props: {
       post: {
         ...post,
         content: html,
         tweets,
-        readingTime
+        readingTime,
+        ogImage
       }
     }
   };
