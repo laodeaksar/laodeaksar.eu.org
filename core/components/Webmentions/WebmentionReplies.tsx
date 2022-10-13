@@ -16,7 +16,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
 
   const [replies, setReplies] = useState<Reply[]>([]);
   const perPage = 500;
-  const text = title + ' by @ode_aksar ' + url;
+  const text = `${title} by @ode_aksar ${url}`;
 
   const getMentions = useCallback(
     () =>
@@ -79,7 +79,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
           data-splitbee-event="External Link"
           data-splitbee-event-destination="twitter"
           underline
-          href={'https://twitter.com/intent/tweet?text=' + encodeURI(text)}
+          href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
         >
           Tweet about this post
         </Link>{' '}
@@ -88,7 +88,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
           data-splitbee-event="External Link"
           data-splitbee-event-destination="twitter"
           underline
-          href={'https://mobile.twitter.com/search?q=' + url}
+          href={`https://mobile.twitter.com/search?q=${url}`}
         >
           click here to leave a comment
         </Link>{' '}
