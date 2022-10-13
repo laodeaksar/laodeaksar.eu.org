@@ -72,8 +72,7 @@ const BlogLayout = ({
     }, 500);
   }, [slug]);
 
-  // const keywords = tags.join(", ");
-  const ogImage = `/api/og?title=${title}&date=${new Date(
+  const ogImage = `https://laodeaksar.eu.org/api/og?title=${title}&date=${new Date(
     date
   ).toLocaleDateString()}&readTime=${readingTime}`;
 
