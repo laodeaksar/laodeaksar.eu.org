@@ -84,6 +84,7 @@ const BlogLayout = ({
   }, [slug]);
 
   // const keywords = tags.join(", ");
+  const ogImage = `/api/og?title=${title}&date=${new Date(date).toLocaleDateString()}&readTime=${readingTime}`;
 
   return (
     <Layout
@@ -92,7 +93,7 @@ const BlogLayout = ({
       title={title}
       description={description}
       date={new Date(date).toISOString()}
-      imageUrl={post.ogImage}
+      imageUrl={ogImage}
       type="article"
       headerProps={headerProps}
     >

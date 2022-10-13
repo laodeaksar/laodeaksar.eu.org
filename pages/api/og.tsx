@@ -20,13 +20,18 @@ export default async function handler(req: NextRequest) {
       : new Date().toLocaleDateString();
     const readTime = hasReadTime ? searchParams.get('readTime') : '7 min read';
 
+    const subtitle = `${date} — ${readTime}`;
+
     return new ImageResponse(
       (
         <div
           style={{
             display: 'flex',
+            color: '#000',
+            width: '100%',
+            height: '100%',
             padding: 60,
-            backgroundImage: `linear-gradient(${query.bgOverlay}, ${query.bgOverlay}), url(${query.bgImage})`,
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9)`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
           }}
@@ -48,7 +53,7 @@ export default async function handler(req: NextRequest) {
                 flex: '1 0 50%'
               }}
             >
-              <div
+              <span
                 style={{
                   fontFamily: 'IBM Plex Mono',
                   fontSize: 16,
@@ -57,11 +62,9 @@ export default async function handler(req: NextRequest) {
                   marginBottom: 3
                 }}
               >
-                {date}
-                {' — '}
-                {readTime}
-              </div>
-              <div
+                {subtitle}
+              </span>
+              <span
                 style={{
                   fontFamily: 'Inter',
                   fontSize: 40,
@@ -70,8 +73,8 @@ export default async function handler(req: NextRequest) {
                 }}
               >
                 {title}
-              </div>
-              <div
+              </span>
+              <span
                 style={{
                   fontFamily: 'IBM Plex Mono',
                   fontSize: 16,
@@ -80,8 +83,8 @@ export default async function handler(req: NextRequest) {
                   marginTop: 'auto'
                 }}
               >
-                {query.domain}
-              </div>
+                laodeaksar.eu.org
+              </span>
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,11 +125,3 @@ export default async function handler(req: NextRequest) {
     });
   }
 }
-
-const query = {
-  color: '#000',
-  bgImage:
-    'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9',
-  bgOverlay: 'rgba(255,255,255,0.7)',
-  domain: 'laodeaksar.eu.org'
-};
