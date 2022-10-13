@@ -1,5 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
+import { Text } from '@bahutara/design-system';
 
 import fetcher from '~/lib/fetcher';
 import { Views } from '~/lib/types';
@@ -19,7 +20,11 @@ const ViewCounter = ({ slug }: { slug: string }) => {
     }
   }, [slug]);
 
-  return <span>{`${views > 0 ? views.toLocaleString() : '---'} views`}</span>;
+  return (
+    <Text as="p" size="1" weight="3" variant="info" css={{ marginBottom: 0 }}>
+      {`${views > 0 ? views.toLocaleString() : '---'} views`}
+    </Text>
+  );
 };
 
 export default ViewCounter;
