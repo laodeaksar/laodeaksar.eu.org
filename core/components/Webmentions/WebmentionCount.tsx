@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Flex, Grid, Text } from '@bahutara/design-system';
+import ViewCounter from '../screens/blog/ViewCounter';
 
 const initialCounts = {
   count: 0,
@@ -12,11 +13,17 @@ const initialCounts = {
 };
 
 const fetchCounts = async (target: string) =>
-  fetch('https://webmention.io/api/count.json?target=' + target).then(
+  fetch(`https://webmention.io/api/count.json?target=${target}`).then(
     response => (response.json ? response.json() : response)
   );
 
-const WebmentionCount = ({ target }: { target: string }) => {
+const WebmentionCount = ({
+  target,
+  slug
+}: {
+  target: string;
+  slug: string;
+}) => {
   const [counts, setCounts] = useState(initialCounts);
 
   useEffect(() => {
@@ -67,6 +74,7 @@ const WebmentionCount = ({ target }: { target: string }) => {
             ).toLocaleString() || 0}
             {' Mentions'}
           </Text>
+          <ViewCounter slug={slug} />
         </Grid>
       )}
     </Flex>

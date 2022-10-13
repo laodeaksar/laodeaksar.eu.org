@@ -4,7 +4,6 @@ import { Box, Flex, Grid, Pill, Text } from '@bahutara/design-system';
 import Hero from '@/components/Hero';
 import Link from '@/components/Link';
 import TableOfContent from '@/components/TableOfContent';
-import siteMetadata from '@/layout/siteMetadata';
 import { WebmentionCount } from '@/components/Webmentions';
 import Layout from '@/layout';
 
@@ -12,7 +11,6 @@ import Signature from './Signature';
 
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
-import ViewCounter from '@/components/screens/blog/ViewCounter';
 
 interface WebmentionBlogDataProps {
   date: string;
@@ -44,18 +42,9 @@ const BlogLayout = ({
   children,
   post
 }: React.PropsWithChildren<{ post: Post }>) => {
-  const {
-    date,
-    updated,
-    slug,
-    description,
-    title,
-    readingTime,
-    image,
-    tags,
-    url
-  } = post;
-  const postUrl = `${siteMetadata.siteUrl}/${url}`;
+  const { date, updated, slug, description, title, readingTime, image, tags } =
+    post;
+  const postUrl = `https://laodeaksar.eu.org/blog/${slug}`;
 
   const headerProps = {
     title,
@@ -136,7 +125,7 @@ const BlogLayout = ({
                     })}{' '}
                     / {readingTime} /{' '}
                   </Text>
-                  <WebmentionCount target={postUrl} />
+                  <WebmentionCount target={postUrl} slug={slug} />
                 </Flex>
                 <Flex css={{ marginLeft: '-$2' }}>
                   <Pill variant="info">
@@ -148,7 +137,6 @@ const BlogLayout = ({
                     })}
                   </Pill>
                 </Flex>
-                <ViewCounter slug={slug} />
               </Hero.Info>
 
               {image && (
