@@ -17,6 +17,12 @@
 }
 
 @font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  src: url(/fonts/ibm-plex-mono.ttf) format('ttf');
+}
+
+@font-face {
   font-family: 'Fira Code';
   font-style: normal;
   font-weight: 100 900;

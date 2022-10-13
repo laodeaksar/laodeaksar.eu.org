@@ -8,25 +8,8 @@ export const config = {
   runtime: 'experimental-edge'
 };
 
-const fontIBM = fetch(
-  new URL(
-    'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400',
-    import.meta.url
-  )
-).then(res => res.arrayBuffer());
-
-const fontInter = fetch(
-  new URL(
-    'https://fonts.googleapis.com/css2?family=Inter:wght@800',
-    import.meta.url
-  )
-).then(res => res.arrayBuffer());
-
 export default async function handler(req: NextRequest) {
   try {
-    const ibm = await fontIBM;
-    const inter = await fontInter;
-
     const { searchParams } = new URL(req.url);
 
     const hasTitle = searchParams.has('title');
@@ -80,7 +63,7 @@ export default async function handler(req: NextRequest) {
               </Text>
               <Text
                 css={{
-                  fontFamily: 'Inter',
+                  fontFamily: '$display',
                   fontSize: 40,
                   fontWeight: 800,
                   lineHeight: 1.4
@@ -90,7 +73,7 @@ export default async function handler(req: NextRequest) {
               </Text>
               <Text
                 css={{
-                  fontFamily: 'IBM Plex Mono',
+                  fontFamily: '$mono',
                   fontSize: 16,
                   fontWeight: 400,
                   opacity: 0.7,
@@ -106,19 +89,7 @@ export default async function handler(req: NextRequest) {
       ),
       {
         width: 1200,
-        height: 630,
-        fonts: [
-          {
-            name: 'IBM Plex Mono',
-            data: ibm,
-            style: 'normal'
-          },
-          {
-            name: 'Inter',
-            data: inter,
-            style: 'normal'
-          }
-        ]
+        height: 630
       }
     );
   } catch (e) {
