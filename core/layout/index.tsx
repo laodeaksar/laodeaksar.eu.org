@@ -8,6 +8,8 @@ import siteMetadata from './siteMetadata';
 
 import { Wrapper } from './Styles';
 import type { LayoutProps } from './types';
+import React from 'react';
+import { useTheme } from '@bahutara/design-system';
 
 const Footer = dynamic(() => import('@/components/Footer'), {
   ssr: false,
@@ -17,6 +19,10 @@ const Footer = dynamic(() => import('@/components/Footer'), {
 const Layout = (props: LayoutProps) => {
   const { children, header, footer, headerProps, ...customMeta } = props;
   const router = useRouter();
+  const { dark } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
 
   const meta = {
     title: siteMetadata.title,
@@ -47,6 +53,9 @@ const Layout = (props: LayoutProps) => {
           content="/static/favicons/mstile-144x144.png"
         />
         <meta name="theme-color" content="#ffffff" />
+        {mounted && (
+          <meta name="theme-color" content={dark ? '#222222' : '#f9fafb'} />
+        )}
         <link
           rel="apple-touch-icon"
           sizes="180x180"
