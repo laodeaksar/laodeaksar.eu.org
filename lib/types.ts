@@ -18,6 +18,7 @@ export type Post = {
   tags: any[];
   url: any;
   tweets: any[];
+  ogImage: any;
 };
 
 export type Gear = {

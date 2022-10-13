@@ -10,7 +10,6 @@ import Layout from '@/layout';
 
 import Signature from './Signature';
 
-import { createOgImage } from '~/lib/OpenGraph';
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
 import ViewCounter from '@/components/screens/blog/ViewCounter';
@@ -84,11 +83,6 @@ const BlogLayout = ({
     }, 500);
   }, [slug]);
 
-  const socialImage = createOgImage({
-    title,
-    meta: description
-  });
-
   // const keywords = tags.join(", ");
 
   return (
@@ -98,7 +92,7 @@ const BlogLayout = ({
       title={title}
       description={description}
       date={new Date(date).toISOString()}
-      imageUrl={socialImage}
+      imageUrl={post.ogImage}
       type="article"
       headerProps={headerProps}
     >
