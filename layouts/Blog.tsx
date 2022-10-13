@@ -55,7 +55,7 @@ const BlogLayout = ({
     tags,
     url
   } = post;
-  const postUrl = `${siteMetadata.siteUrl}${url}`;
+  const postUrl = `${siteMetadata.siteUrl}/${url}`;
 
   const headerProps = {
     title,
@@ -84,7 +84,9 @@ const BlogLayout = ({
   }, [slug]);
 
   // const keywords = tags.join(", ");
-  const ogImage = `/api/og?title=${title}&date=${new Date(date).toLocaleDateString()}&readTime=${readingTime}`;
+  const ogImage = `/api/og?title=${title}&date=${new Date(
+    date
+  ).toLocaleDateString()}&readTime=${readingTime}`;
 
   return (
     <Layout
