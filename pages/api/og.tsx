@@ -6,10 +6,10 @@ export const config = {
 };
 
 const fontIbm = fetch(
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'
+  new URL('../../assets/IBMPlexMono.woff', import.meta.url)
 ).then(res => res.arrayBuffer());
 const fontInter = fetch(
-  'https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap'
+  new URL('../../assets/Inter.woff', import.meta.url)
 ).then(res => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
