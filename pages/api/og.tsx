@@ -40,7 +40,7 @@ export default async function handler(req: NextRequest) {
           }}
         >
           <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@800&display=swap"
             rel="stylesheet"
           />
           <div
