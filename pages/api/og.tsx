@@ -55,7 +55,7 @@ export default async function handler(req: NextRequest) {
                 flex: '1 0 50%'
               }}
             >
-              <span
+              <div
                 style={{
                   fontFamily: '"IBM Plex Mono"',
                   fontSize: 16,
@@ -65,8 +65,8 @@ export default async function handler(req: NextRequest) {
                 }}
               >
                 {subtitle}
-              </span>
-              <span
+              </div>
+              <div
                 style={{
                   fontFamily: '"Inter"',
                   fontSize: 40,
@@ -75,8 +75,8 @@ export default async function handler(req: NextRequest) {
                 }}
               >
                 {title}
-              </span>
-              <span
+              </div>
+              <div
                 style={{
                   fontFamily: '"IBM Plex Mono"',
                   fontSize: 16,
@@ -86,7 +86,7 @@ export default async function handler(req: NextRequest) {
                 }}
               >
                 laodeaksar.eu.org
-              </span>
+              </div>
             </div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
