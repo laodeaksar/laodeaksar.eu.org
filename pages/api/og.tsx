@@ -11,7 +11,7 @@ export default async function handler(req: NextRequest) {
 
     const hasTitle = searchParams.has('title');
     const date = searchParams.get('date') ?? new Date().toLocaleDateString();
-    const readTime = searchParams.get('readTime') ?? '7 min read';
+    const readTime = searchParams.get('readingTime') ?? '7 min read';
     const title = hasTitle
       ? searchParams.get('title')?.slice(0, 100)
       : "Aksar La'ode";

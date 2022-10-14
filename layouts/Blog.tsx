@@ -74,7 +74,7 @@ const BlogLayout = ({
 
   const ogImage = `https://laodeaksar.eu.org/api/og?title=${title}&date=${new Date(
     date
-  ).toLocaleDateString()}&readTime=${readingTime}`;
+  ).toLocaleDateString()}&readingTime=${readingTime}`;
 
   return (
     <Layout
