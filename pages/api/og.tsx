@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -38,6 +39,10 @@ export default async function handler(req: NextRequest) {
             backgroundRepeat: 'no-repeat'
           }}
         >
+          <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@800&display=swap"
+            rel="stylesheet"
+          />
           <div
             style={{
               display: 'flex',
