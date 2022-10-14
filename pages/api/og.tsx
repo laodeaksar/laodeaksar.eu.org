@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
@@ -6,13 +5,17 @@ export const config = {
   runtime: 'experimental-edge'
 };
 
-const font = fetch(
-  new URL('../../assets/ibm-plex-mono.ttf', import.meta.url)
+const fontIbm = fetch(
+  'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap'
+).then(res => res.arrayBuffer());
+const fontInter = fetch(
+  'https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap'
 ).then(res => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
   try {
-    const fontData = await font;
+    const ibm = await fontIbm;
+    const inter = await fontInter;
 
     const { searchParams } = new URL(req.url);
 
@@ -39,10 +42,6 @@ export default async function handler(req: NextRequest) {
             backgroundRepeat: 'no-repeat'
           }}
         >
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inter:wght@800&display=swap"
-            rel="stylesheet"
-          />
           <div
             style={{
               display: 'flex',
@@ -127,7 +126,14 @@ export default async function handler(req: NextRequest) {
         fonts: [
           {
             name: 'IBM Plex Mono',
-            data: fontData,
+            data: ibm,
+            weight: 400,
+            style: 'normal'
+          },
+          {
+            name: 'Inter',
+            data: inter,
+            weight: 800,
             style: 'normal'
           }
         ]
