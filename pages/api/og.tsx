@@ -57,7 +57,7 @@ export default async function handler(req: NextRequest) {
             >
               <span
                 style={{
-                  fontFamily: 'IBM Plex Mono',
+                  fontFamily: '"IBM Plex Mono"',
                   fontSize: 16,
                   fontWeight: 400,
                   opacity: 0.7,
@@ -68,7 +68,7 @@ export default async function handler(req: NextRequest) {
               </span>
               <span
                 style={{
-                  fontFamily: 'Inter',
+                  fontFamily: '"Inter"',
                   fontSize: 40,
                   fontWeight: 800,
                   lineHeight: 1.4
@@ -78,7 +78,7 @@ export default async function handler(req: NextRequest) {
               </span>
               <span
                 style={{
-                  fontFamily: 'IBM Plex Mono',
+                  fontFamily: '"IBM Plex Mono"',
                   fontSize: 16,
                   fontWeight: 400,
                   opacity: 0.7,
