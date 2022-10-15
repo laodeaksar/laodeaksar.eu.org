@@ -51,16 +51,6 @@ const Header = (props: HeaderProps) => {
 
   return (
     <>
-      {/** Do not delete the following! Needed for Webmention.io */}
-      <a
-        className="hidden h-card"
-        aria-label="Follow me on Twitter"
-        title="Follow me on Twitter"
-        rel="me"
-        href="https://twitter.com/ode_aksar"
-      >
-        @ode_aksar
-      </a>
       <AnimatePresence>
         {showSearch && <Search onClose={() => setShowSearch(false)} />}
       </AnimatePresence>
