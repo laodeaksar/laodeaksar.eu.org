@@ -36,7 +36,7 @@ export default async function handler(
         return res.status(404).json({ message: 'Post not found' });
       }
 
-      return res.status(200).json({ views: postMeta.views ?? 0 });
+      return res.status(200).json(postMeta.views || 1);
     }
 
     const post = await getClient(req.preview ?? false).fetch(postBySlugQuery, {
@@ -49,19 +49,11 @@ export default async function handler(
 
     const postMeta = await prisma.post.upsert({
       where: { slug },
-      create: {
-        slug,
-        likes: 0,
-        views: 1
-      },
-      update: {
-        views: {
-          increment: 1
-        }
-      }
-    });
+      create: { slug, views: 1 },
+      update: { views: { increment: 1 } }
+    });    
 
-    return res.status(200).json({ views: postMeta?.views ?? 0 });
+    return res.status(200).json(postMeta?.views || 1);
   } catch (e) {
     return ServerError(res, e);
   }
