@@ -3,11 +3,7 @@ import { Flex, Grid, Spinner, Text } from '@bahutara/design-system';
 import { usePostViews } from '@/hooks/usePostViews';
 
 const Count = ({ slug }: { slug: string }) => {
-  const {
-    views: data,
-    /*isLoading: viewsIsLoading,
-    isError: viewsIsError*/
-  } = usePostViews(slug);
+  const { data } = usePostViews(slug);
 
   /*const {
     likes,
@@ -26,14 +22,19 @@ const Count = ({ slug }: { slug: string }) => {
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
         >
-          {/*viewsIsError || viewsIsLoading ? (
-            <Spinner variant="primary" />
-          ) : (
-            <>{views?.total?.toLocaleString()}</>
-          )}{' '*/}
           {views ?? <Spinner />} views
         </Text>
         <span>&bull;</span>
+        <Text
+          as="p"
+          size="1"
+          weight="3"
+          variant="info"
+          css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
+        >
+          {views ?? <Spinner />} views
+        </Text>
+
         {/*{likesIsError || likesIsLoading ? (
           <LoadingDots />
         ) : (

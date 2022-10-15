@@ -6,7 +6,7 @@ interface Total {
 }
 
 interface PostViewsData {
-  views?: Total | null;
+  data?: Total | null;
   isLoading: boolean;
   isError?: boolean;
 }
@@ -26,7 +26,7 @@ export const usePostViews = (slug: string): PostViewsData => {
   }, [slug]);
 
   return {
-    views: data,
+    data,
     isLoading,
     isError
   };
