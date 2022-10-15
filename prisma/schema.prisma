@@ -31,6 +31,12 @@ model post {
   created_at DateTime @default(now()) @db.DateTime(6)
 }
 
+model Session {
+  id        String   @id
+  likes     Int      @default(1)
+  created_at DateTime @default(now())
+}
+
 model Comment {
   id    String @id @default(cuid())
   post  String @db.VarChar(256)

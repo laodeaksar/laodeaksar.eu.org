@@ -1,23 +1,23 @@
 import React from 'react';
 import { Flex, Grid, Spinner, Text } from '@bahutara/design-system';
 
-import { usePostView } from '@/hooks/usePostViews';
+import useSWR from 'swr';
+import fetcher from '~/lib/fetcher';
 
 const Count = ({ slug }: { slug: string }) => {
-  const { views, increment: incrementViews } = usePostView(slug);
-  /*const {
-    likes,
-    isLoading: likesIsLoading,
-    isError: likesIsError,
-  } = usePostLikes(slug, {
-    refreshInterval: shouldPoll ? interval : 0,
-  })*/
+  const { data } = useSWR<number>(`/api/views/${slug}`, fetcher);
+  const views = new Number(data);
 
   React.useEffect(() => {
-    if (slug) {
-      incrementViews();
+    const registerView = () =>
+      fetch(`/api/views/${slug}`, {
+        method: 'POST'
+      });
+
+    if (process.env.NODE_ENV === 'production') {
+      registerView();
     }
-  }, [incrementViews, slug]);
+  }, [slug]);
 
   return (
     <Flex>
@@ -29,7 +29,7 @@ const Count = ({ slug }: { slug: string }) => {
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
         >
-          {views ?? <Spinner />} views
+          {`${views.toLocaleString() ?? <Spinner />} views`}
         </Text>
         <span>&bull;</span>
         {/*{likesIsError || likesIsLoading ? (
