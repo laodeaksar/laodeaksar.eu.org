@@ -1,11 +1,9 @@
 import React from 'react';
 import { Flex, Grid, Spinner, Text } from '@bahutara/design-system';
 
-import { usePostView, usePostViews } from '@/hooks/usePostViews';
+import { usePostView } from '@/hooks/usePostViews';
 
 const Count = ({ slug }: { slug: string }) => {
-  const { data } = usePostViews(slug);
-
   const { views, increment: incrementViews } = usePostView(slug);
   /*const {
     likes,
@@ -24,8 +22,6 @@ const Count = ({ slug }: { slug: string }) => {
   return (
     <Flex>
       <Grid gapX={2} flow="column" align="center">
-        {data?.toLocaleString() ?? <Spinner />} views
-        <span>&bull;</span>
         <Text
           as="p"
           size="1"
@@ -33,8 +29,9 @@ const Count = ({ slug }: { slug: string }) => {
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
         >
-          {views?.toLocaleString() ?? <Spinner />} views
+          {views ?? <Spinner />} views
         </Text>
+        <span>&bull;</span>
         {/*{likesIsError || likesIsLoading ? (
           <LoadingDots />
         ) : (

@@ -47,7 +47,7 @@ async function updatePostViews(slug: string): Promise<number> {
 
 export const usePostView = (slug: string) => {
   const { data: views } = useSWR<number>(
-    ['/api/views', slug],
+    slug ? `${slug}/views` : null,
     () => getPostViews(slug),
     {
       revalidateOnFocus: false
