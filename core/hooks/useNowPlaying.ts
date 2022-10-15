@@ -5,25 +5,25 @@ import { useRequest } from './useRequest';
 
 interface NowPlayingData {
   data?: TrackData | null;
-  loading: boolean;
-  error?: string | Error | null;
+  isLoading: boolean;
+  isError?: boolean;
 }
 
 export const useNowPlaying = (): NowPlayingData => {
-  const { data, loading, error } = useRequest<TrackData>('/api/now-playing');
+  const { data, isLoading, isError } = useRequest<TrackData>('/api/now-playing');
   /* const {
     data: activity,
-    loading: activityLoading,
-    error: activityError,
+    isLoading: activityLoading,
+    isError: activityError,
   } = useActivity();
   return {
     data: { ...data, ...activity?.spotify } as TrackData,
-    loading: !!(loading || activityLoading),
-    error: error || activityError,
+    isLoading: !!(isLoading || activityLoading),
+    isError: isError || activityError,
   }; */
   return {
     data: { ...data },
-    loading,
-    error
+    isLoading,
+    isError
   };
 };
