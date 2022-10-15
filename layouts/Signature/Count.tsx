@@ -28,15 +28,6 @@ const Count = ({ slug }: { slug: string }) => {
 
   return (
     <Grid gapX={2} flow="column" align="center">
-      <Text
-        as="p"
-        size="1"
-        weight="3"
-        variant="info"
-        css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
-      >
-        {`${views?.toLocaleString() ?? <Spinner />} views`}
-      </Text>
       <InlineMetric stat={views} loading={isError || isLoading} text="views" />
       <span>&bull;</span>
       {/*{likesIsError || likesIsLoading ? (
@@ -60,7 +51,7 @@ const InlineMetric = ({
   loading: boolean;
   text: string;
 }) => (
-  <Flex alignItems="center" css={{ gap: '$2' }}>
+  <Flex alignItems="center" css={{ gap: '$1' }}>
     {loading && <Spinner />}
     <Text as="p" size="1" weight="3" variant="info" css={{ marginBottom: 0 }}>
       {stat?.toLocaleString()}
