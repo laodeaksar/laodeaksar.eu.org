@@ -36,7 +36,7 @@ export default async function handler(
         return res.status(404).json({ message: 'Post not found' });
       }
 
-      return res.status(200).json({ total: postViews.views.toString() });
+      return res.status(200).json(postViews.views.toString());
     }
 
     const post = await getClient(req.preview ?? false).fetch(postBySlugQuery, {
@@ -53,7 +53,7 @@ export default async function handler(
       update: { views: { increment: 1 } }
     });
 
-    return res.status(200).json({ total: newOrUpdatedViews.views.toString() });
+    return res.status(200).json(newOrUpdatedViews.views.toString());
   } catch (e) {
     return ServerError(res, e);
   }
