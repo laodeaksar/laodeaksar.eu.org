@@ -15,15 +15,7 @@ const Count = ({ slug }: { slug: string }) => {
   return (
     <Flex>
       <Grid gapX={2} flow="column" align="center">
-        <Text
-          as="p"
-          size="1"
-          weight="3"
-          variant="info"
-          css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
-        >
-          {views ?? <Spinner />} views
-        </Text>
+        {views ?? <Spinner />} views
         <span>&bull;</span>
         <Text
           as="p"
