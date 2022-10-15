@@ -135,8 +135,8 @@ const BlogLayout = ({
               {children}
             </Box>
           </Grid>
-          <Signature url={postUrl} />
         </Suspense>
+        <Signature url={postUrl} />
       </article>
     </Layout>
   );
