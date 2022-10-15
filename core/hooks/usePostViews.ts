@@ -1,47 +1,33 @@
-import useSWR, { SWRConfiguration } from "swr"
+import React from 'react';
+import { useRequest } from './useRequest';
 
-const API_URL = `/api/views`
-
-async function getPostViews(slug: string): Promise<number> {
-  const res = await fetch(API_URL + `/${slug}`)
-  if (!res.ok) {
-    throw new Error("An error occurred while fetching the data.")
-  }
-  return res.json()
+interface Total {
+  total: number;
 }
 
-async function updatePostViews(slug: string): Promise<number> {
-  const res = await fetch(API_URL + `/${slug}`, { method: "POST" })
-  if (!res.ok) {
-    throw new Error("An error occurred while posting the data.")
-  }
-  return res.json()
+interface PostViewsData {
+  views?: Total | null;
+  isLoading: boolean;
+  isError?: boolean;
 }
 
-export const usePostViews = (slug: string, config?: SWRConfiguration) => {
-  const {
-    data: views,
-    error,
-    mutate,
-  } = useSWR<number>([API_URL, slug], () => getPostViews(slug), {
-    dedupingInterval: 60000,
-    ...config,
-  })
+export const usePostViews = (slug: string): PostViewsData => {
+  const { data, isLoading, isError } = useRequest<Total>(`/api/views/${slug}`);
 
-  const increment = () => {
-    mutate(
-      updatePostViews(slug).catch((e) => {
-        console.log(e)
+  React.useEffect(() => {
+    const registerView = () =>
+      fetch(`/api/views/${slug}`, {
+        method: 'POST'
+      });
 
-        return 0
-      }),
-    )
-  }
+    if (process.env.NODE_ENV === 'production') {
+      registerView();
+    }
+  }, [slug]);
 
   return {
-    views,
-    isLoading: !error && !views,
-    isError: !!error,
-    increment,
-  }
-}
+    views: data,
+    isLoading,
+    isError
+  };
+};

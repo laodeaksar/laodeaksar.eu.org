@@ -5,8 +5,8 @@ import fetcher from '~/lib/fetcher';
 
 interface SwrData<T = unknown> {
   data?: T | null;
-  loading: boolean;
-  error?: string | Error | null;
+  isLoading: boolean;
+  isError?: boolean;
   mutate?: (
     data?: T | Promise<T> | MutatorCallback<T>,
     shouldRevalidate?: boolean
@@ -18,8 +18,8 @@ export const useRequest = <T>(url: string): SwrData<T> => {
 
   return {
     data,
-    error,
+    isError: !!error,
     mutate,
-    loading: !data && !error
+    isLoading: !data && !error
   };
 };
