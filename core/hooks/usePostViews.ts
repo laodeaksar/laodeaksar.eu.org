@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRequest } from './useRequest';
-import useSWR, { SWRConfiguration } from "swr"
-
+import { useCallback } from 'react';
+import useSWR, { mutate } from 'swr';
 
 interface PostViewsData {
   data?: number | null;
@@ -30,48 +30,33 @@ export const usePostViews = (slug: string): PostViewsData => {
   };
 };
 
-const API_URL = `/api/views`
+//const API_URL = '/api/views';
 
 async function getPostViews(slug: string): Promise<number> {
-  const res = await fetch(API_URL + `/${slug}`)
-  if (!res.ok) {
-    throw new Error("An error occurred while fetching the data.")
-  }
-  return res.json()
+  const res = await fetch(`/api/views/${slug}`);
+  return res.json();
 }
 
 async function updatePostViews(slug: string): Promise<number> {
-  const res = await fetch(API_URL + `/${slug}`, { method: "POST" })
-  if (!res.ok) {
-    throw new Error("An error occurred while posting the data.")
-  }
-  return res.json()
+  const res = await fetch(`/api/views/${slug}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+  });
+  return await res.json();
 }
 
-export const usePostView = (slug: string, config?: SWRConfiguration) => {
-  const {
-    data: views,
-    error,
-    mutate,
-  } = useSWR<number>([API_URL, slug], () => getPostViews(slug), {
-    dedupingInterval: 60000,
-    ...config,
-  })
+export const usePostView = (slug: string) => {
+  const { data: views } = useSWR<number>(
+    ['/api/views', slug],
+    () => getPostViews(slug),
+    {
+      revalidateOnFocus: false
+    }
+  );
 
-  const increment = () => {
-    mutate(
-      updatePostViews(slug).catch((e) => {
-        console.log(e)
+  const increment = useCallback(() => {
+    mutate(`${slug}/views`, updatePostViews(slug));
+  }, [slug]);
 
-        return 0
-      }),
-    )
-  }
-
-  return {
-    views,
-    isLoading: !error && !views,
-    isError: !!error,
-    increment,
-  }
-}
+  return { views, increment };
+};

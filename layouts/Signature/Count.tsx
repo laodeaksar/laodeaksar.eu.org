@@ -1,26 +1,12 @@
+import React from 'react';
 import { Flex, Grid, Spinner, Text } from '@bahutara/design-system';
 
 import { usePostView, usePostViews } from '@/hooks/usePostViews';
-import React from 'react';
-import { usePollIfInView } from '@/hooks/usePollIfInView';
 
 const Count = ({ slug }: { slug: string }) => {
   const { data } = usePostViews(slug);
 
-  const interval = 5000;
-  const { shouldPoll, intersectionRef } = usePollIfInView(interval);
-
-  const {
-    views,
-    //isLoading: viewsIsLoading,
-    //isError: viewsIsError,
-    increment: incrementViews
-  } = usePostView(slug, {
-    revalidateOnMount: false,
-    refreshInterval: shouldPoll ? interval : 0,
-    dedupingInterval: interval
-  });
-
+  const { views, increment: incrementViews } = usePostView(slug);
   /*const {
     likes,
     isLoading: likesIsLoading,
@@ -30,8 +16,10 @@ const Count = ({ slug }: { slug: string }) => {
   })*/
 
   React.useEffect(() => {
-    incrementViews();
-  }, [incrementViews]);
+    if (slug) {
+      incrementViews();
+    }
+  }, [incrementViews, slug]);
 
   return (
     <Flex>
@@ -44,9 +32,8 @@ const Count = ({ slug }: { slug: string }) => {
           weight="3"
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
-          ref={intersectionRef}
         >
-          {views ?? <Spinner />} views
+          {views?.toLocaleString() ?? <Spinner />} views
         </Text>
         {/*{likesIsError || likesIsLoading ? (
           <LoadingDots />
