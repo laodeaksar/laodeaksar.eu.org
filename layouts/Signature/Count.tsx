@@ -16,7 +16,6 @@ const Count = ({ slug }: { slug: string }) => {
   } = usePostLikes(slug)*/
   const views = data?.total?.toLocaleString()
 
-  const
   return (
     <Flex>
       <Grid gapX={2} flow="column" align="center">
