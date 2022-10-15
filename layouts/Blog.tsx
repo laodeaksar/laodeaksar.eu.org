@@ -39,9 +39,9 @@ const BlogLayout = ({
           id: title.id,
           title: title.innerText
         })) as Array<{
-        id: string;
-        title: string;
-      }>;
+          id: string;
+          title: string;
+        }>;
       setIds(idArrays);
     }, 500);
   }, [slug]);
@@ -62,61 +62,61 @@ const BlogLayout = ({
       headerProps={headerProps}
     >
       <article className="h-entry">
-        <Suspense fallback={false}>
-          <Grid columns="small" gapX={4}>
-            <Hero>
-              <Box
-                css={{
-                  marginBottom: '24px',
-                  fontSize: '$2'
-                }}
-              >
-                <Link href="/" arrow="left" discreet>
-                  Home
-                </Link>
-              </Box>
+        <Grid columns="small" gapX={4}>
+          <Hero>
+            <Box
+              css={{
+                marginBottom: '24px',
+                fontSize: '$2'
+              }}
+            >
+              <Link href="/" arrow="left" discreet>
+                Home
+              </Link>
+            </Box>
 
-              <Hero.Title className="p-name">{title}</Hero.Title>
-              <Hero.Info>
-                <Flex css={{ mb: '$3' }} wrap>
-                  {tags.map((text, id) => (
-                    <Link key={id} href={`/tags/${text}`} hastag discreet>
-                      {text}
-                    </Link>
-                  ))}
-                  <Text
-                    as="p"
-                    size="1"
-                    variant="tertiary"
-                    weight="3"
-                    css={{ marginBottom: 0 }}
-                  >
-                    {new Date(date).toLocaleDateString('en', {
-                      month: 'short',
-                      day: '2-digit',
-                      year: 'numeric'
-                    })}{' '}
-                    / {readingTime} /{' '}
-                  </Text>
-                  <Count slug={slug} />
-                </Flex>
-                <Flex css={{ marginLeft: '-$2' }}>
-                  <Pill variant="info">
-                    Last Updated{' '}
-                    {new Date(updated).toLocaleDateString('en', {
-                      month: 'short',
-                      day: '2-digit',
-                      year: 'numeric'
-                    })}
-                  </Pill>
-                </Flex>
-              </Hero.Info>
+            <Hero.Title className="p-name">{title}</Hero.Title>
+            <Hero.Info>
+              <Flex css={{ mb: '$3' }} wrap>
+                {tags.map((text, id) => (
+                  <Link key={id} href={`/tags/${text}`} hastag discreet>
+                    {text}
+                  </Link>
+                ))}
+                <Text
+                  as="p"
+                  size="1"
+                  variant="tertiary"
+                  weight="3"
+                  css={{ marginBottom: 0 }}
+                >
+                  {new Date(date).toLocaleDateString('en', {
+                    month: 'short',
+                    day: '2-digit',
+                    year: 'numeric'
+                  })}{' '}
+                  / {readingTime} /{' '}
+                </Text>
+                <Count slug={slug} />
+              </Flex>
+              <Flex css={{ marginLeft: '-$2' }}>
+                <Pill variant="info">
+                  Last Updated{' '}
+                  {new Date(updated).toLocaleDateString('en', {
+                    month: 'short',
+                    day: '2-digit',
+                    year: 'numeric'
+                  })}
+                </Pill>
+              </Flex>
+            </Hero.Info>
 
-              {image && (
-                <Hero.Img className="u-photo" src={urlForImage(image)} />
-              )}
-            </Hero>
-            <TableOfContent ids={ids} />
+            {image && (
+              <Hero.Img className="u-photo" src={urlForImage(image)} />
+            )}
+          </Hero>
+          <TableOfContent ids={ids} />
+          <Suspense fallback={false}>
             <Box
               css={{
                 padding: '20px 0px',
@@ -134,8 +134,8 @@ const BlogLayout = ({
             >
               {children}
             </Box>
-          </Grid>
-        </Suspense>
+          </Suspense>
+        </Grid>
         <Signature url={postUrl} />
       </article>
     </Layout>
