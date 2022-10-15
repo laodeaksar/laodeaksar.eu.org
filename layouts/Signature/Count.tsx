@@ -5,8 +5,7 @@ import useSWR from 'swr';
 import fetcher from '~/lib/fetcher';
 
 const Count = ({ slug }: { slug: string }) => {
-  const { data } = useSWR<number>(`/api/views/${slug}`, fetcher);
-  const views = new Number(data);
+  const { data: views } = useSWR<number>(`/api/views/${slug}`, fetcher);
 
   React.useEffect(() => {
     const registerView = () =>
@@ -29,7 +28,7 @@ const Count = ({ slug }: { slug: string }) => {
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
         >
-          {`${views.toLocaleString() ?? <Spinner />} views`}
+          {`${views?.toLocaleString() ?? <Spinner />} views`}
         </Text>
         <span>&bull;</span>
         {/*{likesIsError || likesIsLoading ? (
