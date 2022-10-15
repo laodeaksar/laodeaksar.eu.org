@@ -65,7 +65,6 @@ const Design: NextPage<Record<string, TransformedTweet>> = ({ tweets }) => {
   const [showSearch, setShowSearch] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [rangeValue, setRangeValue] = React.useState(250);
-  const [rangeValue2, setRangeValue2] = React.useState<number[]>([250]);
 
   const colorScaleNumbers = React.useMemo(
     () =>
