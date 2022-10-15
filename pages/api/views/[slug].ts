@@ -26,17 +26,17 @@ export default async function handler(
     }
 
     if (req.method === 'GET') {
-      const views = await prisma.views.findUnique({
+      const postMeta = await prisma.post.findUnique({
         where: {
           slug
         }
       });
 
-      if (!views) {
+      if (!postMeta) {
         return res.status(404).json({ message: 'Post not found' });
       }
 
-      return res.status(200).json({ total: views.count.toString() });
+      return res.status(200).json({ views: postMeta.views ?? 0 });
     }
 
     const post = await getClient(req.preview ?? false).fetch(postBySlugQuery, {
@@ -47,21 +47,21 @@ export default async function handler(
       return BadRequest(res, 'Post not found');
     }
 
-    const newOrUpdatedViews = await prisma.views.upsert({
+    const postMeta = await prisma.post.upsert({
       where: { slug },
       create: {
-        slug
+        slug,
+        likes: 0,
+        views: 1
       },
       update: {
-        count: {
+        views: {
           increment: 1
         }
       }
     });
 
-    return res.status(200).json({
-      total: newOrUpdatedViews.count.toString()
-    });
+    return res.status(200).json({ views: postMeta?.views ?? 0 });
   } catch (e) {
     return ServerError(res, e);
   }
