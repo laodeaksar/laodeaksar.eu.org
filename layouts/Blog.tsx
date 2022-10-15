@@ -4,39 +4,13 @@ import { Box, Flex, Grid, Pill, Text } from '@bahutara/design-system';
 import Hero from '@/components/Hero';
 import Link from '@/components/Link';
 import TableOfContent from '@/components/TableOfContent';
-import { WebmentionCount } from '@/components/Webmentions';
 import Layout from '@/layout';
 
 import Signature from './Signature';
 
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
-
-interface WebmentionBlogDataProps {
-  date: string;
-  postUrl: string;
-  description?: string;
-}
-
-const WebmentionBlogData = (props: WebmentionBlogDataProps) => {
-  const { date, postUrl, description } = props;
-
-  return (
-    <>
-      <time
-        className="hidden dt-published"
-        itemProp="datepublished"
-        dateTime={date}
-      >
-        {new Date(date).toISOString()}
-      </time>
-      <a className="hidden u-url" href={postUrl} />
-      {description && (
-        <p className="hidden p-summary e-content">{description}</p>
-      )}
-    </>
-  );
-};
+import Count from './Signature/Count';
 
 const BlogLayout = ({
   children,
@@ -124,7 +98,7 @@ const BlogLayout = ({
                     })}{' '}
                     / {readingTime} /{' '}
                   </Text>
-                  <WebmentionCount target={postUrl} slug={slug} />
+                  <Count slug={slug} />
                 </Flex>
                 <Flex css={{ marginLeft: '-$2' }}>
                   <Pill variant="info">
@@ -161,12 +135,7 @@ const BlogLayout = ({
               {children}
             </Box>
           </Grid>
-          <Signature title={title} url={postUrl} />
-          <WebmentionBlogData
-            date={date}
-            postUrl={postUrl}
-            description={description}
-          />
+          <Signature url={postUrl} />
         </Suspense>
       </article>
     </Layout>

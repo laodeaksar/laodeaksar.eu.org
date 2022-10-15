@@ -14,14 +14,6 @@ export default class Document extends NextDocument {
             as="font"
             crossOrigin="anonymous"
           />
-          <link
-            rel="webmention"
-            href="https://webmention.io/www.laodeaksar.eu.org/webmention"
-          />
-          <link
-            rel="pingback"
-            href="https://webmention.io/www.laodeaksar.eu.org/xmlrpc"
-          />
           <meta
             content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
             name="robots"
