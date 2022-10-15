@@ -13,7 +13,7 @@
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
-    "@bahutara/design-system": "^0.0.5",
+    "@bahutara/design-system": "^0.0.6",
     "@codesandbox/sandpack-react": "^1.8.1",
     "@prisma/client": "^4.3.1",
     "@sanity/image-url": "^1.0.1",
@@ -30,7 +30,6 @@
     "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-use": "^17.4.0",
     "remark-gfm": "^3.0.1",
     "sanity": "3.0.0-dev-preview.17",
     "sanity-plugin-markdown": "^3.0.0-v3-studio.1",

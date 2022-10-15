@@ -17,7 +17,6 @@ import {
   Pill,
   Radio,
   Range,
-  Rangev2,
   Switch,
   TextInput,
   TextArea,
@@ -969,29 +968,6 @@ they can change the world, are the ones who do.`}
             />
           </Grid>
           <br />
-          <Grid
-            gap={3}
-            css={{ gridTemplateColumns: 'repeat(2, minmax(2rem, 1fr))' }}
-          >
-            <Rangev2
-              aria-label="Range"
-              label="Range"
-              name="Range"
-              value={rangeValue2}
-              max={500}
-              onValueChange={value => setRangeValue2(value)}
-            />
-            <Rangev2
-              id="range-2"
-              aria-label="Range"
-              label="Range"
-              name="Range"
-              defaultValue={[250]}
-              max={500}
-              onValueChange={() => {}}
-              disabled
-            />
-          </Grid>
         </Box>
         <Box as="section" id="callout">
           <H2>Callout</H2>
