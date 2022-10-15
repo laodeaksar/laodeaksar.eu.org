@@ -4,9 +4,9 @@ import { usePostViews } from '@/hooks/usePostViews';
 
 const Count = ({ slug }: { slug: string }) => {
   const {
-    views,
-    isLoading: viewsIsLoading,
-    isError: viewsIsError
+    views: data,
+    /*isLoading: viewsIsLoading,
+    isError: viewsIsError*/
   } = usePostViews(slug);
 
   /*const {
@@ -14,9 +14,9 @@ const Count = ({ slug }: { slug: string }) => {
     isLoading: likesIsLoading,
     isError: likesIsError,
   } = usePostLikes(slug)*/
+  const views = data?.total?.toLocaleString()
 
-  //const { views, increment: incrementViews } = usePostViews(slug);
-
+  const
   return (
     <Flex>
       <Grid gapX={2} flow="column" align="center">
@@ -27,12 +27,12 @@ const Count = ({ slug }: { slug: string }) => {
           variant="info"
           css={{ marginBottom: 0, display: 'flex', gap: '$1' }}
         >
-          {viewsIsError || viewsIsLoading ? (
+          {/*viewsIsError || viewsIsLoading ? (
             <Spinner variant="primary" />
           ) : (
             <>{views?.total?.toLocaleString()}</>
-          )}{' '}
-          views
+          )}{' '*/}
+          {views ?? <Spinner />} views
         </Text>
         <span>&bull;</span>
         {/*{likesIsError || likesIsLoading ? (

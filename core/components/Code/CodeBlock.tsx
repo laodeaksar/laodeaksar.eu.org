@@ -124,23 +124,23 @@ const Pre = styled('pre', {
   lineHeight: '26px',
 
   '.token.parameter,.token.imports,.token.plain,.token.comment,.token.prolog,.token.doctype,.token.cdata':
-    {
-      color: 'var(--token-comment)'
-    },
+  {
+    color: 'var(--token-comment)'
+  },
 
   '.token.punctuation': {
     color: 'var(--token-punctuation)'
   },
 
   '.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted':
-    {
-      color: 'var(--token-symbol)'
-    },
+  {
+    color: 'var(--token-symbol)'
+  },
 
   '.token.selector,.token.attr-name,.token.char,.token.builtin,.token.number,.token.string,.token.inserted':
-    {
-      color: 'var(--token-selector)'
-    },
+  {
+    color: 'var(--token-selector)'
+  },
 
   '.token.operator,.token.entity,.token.url,.language-css .style': {
     color: 'var(--token-operator)'
