@@ -11,6 +11,7 @@ import Signature from './Signature';
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
 import Count from './Signature/Count';
+//import { timeAgo } from '~/lib/utils';
 
 const BlogLayout = ({
   children,
@@ -39,9 +40,9 @@ const BlogLayout = ({
           id: title.id,
           title: title.innerText
         })) as Array<{
-          id: string;
-          title: string;
-        }>;
+        id: string;
+        title: string;
+      }>;
       setIds(idArrays);
     }, 500);
   }, [slug]);
@@ -90,6 +91,7 @@ const BlogLayout = ({
                   weight="3"
                   css={{ marginBottom: 0 }}
                 >
+                  {/*timeAgo(new Date(date).toISOString())*/}
                   {new Date(date).toLocaleDateString('en', {
                     month: 'short',
                     day: '2-digit',
@@ -111,9 +113,7 @@ const BlogLayout = ({
               </Flex>
             </Hero.Info>
 
-            {image && (
-              <Hero.Img className="u-photo" src={urlForImage(image)} />
-            )}
+            {image && <Hero.Img className="u-photo" src={urlForImage(image)} />}
           </Hero>
           <TableOfContent ids={ids} />
           <Suspense fallback={false}>
