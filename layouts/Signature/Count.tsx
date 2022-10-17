@@ -2,14 +2,13 @@ import React from 'react';
 import { Flex, Grid, Spinner, Text } from '@bahutara/design-system';
 
 import { useRequest } from '@/hooks/useRequest';
-import CountingNumbers from '@/components/CountingNumber';
 
 const Count = ({ slug }: { slug: string }) => {
   const {
     data: views,
     isLoading,
     isError
-  } = useRequest<number>(`/api/views/${slug}`)
+  } = useRequest<number>(`/api/views/${slug}`);
 
   React.useEffect(() => {
     const registerView = () =>
@@ -50,11 +49,7 @@ const InlineMetric = ({
   <Flex alignItems="center" css={{ gap: '$1' }}>
     {loading && <Spinner />}
     <Text as="p" size="1" weight="3" variant="info" css={{ marginBottom: 0 }}>
-      <CountingNumbers value={stat?.toLocaleString()} />{' '}
-      {/*stat?.toLocaleString()}
-      </Text>
-    <Text as="p" size="1" weight="3" variant="info" css={{ marginBottom: 0 }}>*/}
-      {text}
+      {stat?.toLocaleString()} {text}
     </Text>
   </Flex>
 );
