@@ -26,7 +26,7 @@ export const Image = (props: Props) => {
 };
 
 export function BlurImage(props: Props2) {
-  const [isLoading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(true);
   const [src, setSrc] = React.useState(props.src);
   React.useEffect(() => setSrc(props.src), [props.src]); // update the `src` value when the `prop.src` value changes
 
@@ -35,7 +35,8 @@ export function BlurImage(props: Props2) {
       {...props}
       src={src}
       alt={props.alt}
-      imgBlur={isLoading}
+      placeholder="blur"
+      imgBlur={loading}
       onLoadingComplete={async () => {
         setLoading(false);
       }}

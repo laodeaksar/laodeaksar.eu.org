@@ -9,7 +9,7 @@ export default function CountingNumbers({
   interval = 10,
   duration = 800
 }: {
-  value: number;
+  value: any;
   reverse?: boolean;
   start?: number;
   interval?: number;
