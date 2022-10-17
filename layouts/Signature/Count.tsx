@@ -9,11 +9,7 @@ const Count = ({ slug }: { slug: string }) => {
     data: views,
     isLoading,
     isError
-  } = useRequest<number>(`/api/views/${slug}`, {
-    dedupingInterval: 60000,
-    revalidateOnFocus: false,
-    revalidateOnMount: false
-  });
+  } = useRequest<number>(`/api/views/${slug}`)
 
   React.useEffect(() => {
     const registerView = () =>
