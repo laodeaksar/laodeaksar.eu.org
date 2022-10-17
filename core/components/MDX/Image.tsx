@@ -64,9 +64,14 @@ const Img = styled(NextImage, {
 });
 
 const Img2 = styled(NextImage2, {
+  transitionDuration: '0.5s',
+  transitionTimingFunction: 'ease-in-out',
+
   variants: {
     imgBlur: {
       true: {
+        willChange: 'transform filter',
+        transform: 'scale(1.05)'
         filter: 'grayscale(100%) blur(12px)',
       }
     }
