@@ -71,8 +71,8 @@ const Img2 = styled(NextImage2, {
     imgBlur: {
       true: {
         willChange: 'transform filter',
-        transform: 'scale(1.05)'
-        filter: 'grayscale(100%) blur(12px)',
+        transform: 'scale(1.05)',
+        filter: 'grayscale(100%) blur(12px)'
       }
     }
   }
