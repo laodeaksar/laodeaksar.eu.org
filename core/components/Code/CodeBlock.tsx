@@ -117,7 +117,7 @@ const Pre = styled('pre', {
   textAlign: 'left',
   padding: '8px 0px',
   overflow: 'auto',
-  bbr: '$2',
+  borderBottomRadius: '$2',
   backgroundColor: 'var(--code-snippet-background)',
   fontFamily: '$mono',
   fontSize: '$1',

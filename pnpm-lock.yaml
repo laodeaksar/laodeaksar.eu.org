@@ -1,13 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@bahutara/design-system': ^0.0.6
+  '@bahutara/design-system': ^0.0.7
   '@codesandbox/sandpack-react': ^1.8.1
   '@prisma/client': ^4.3.1
   '@sanity/image-url': ^1.0.1
   '@sanity/webhook': ^2.0.0
   '@types/lodash': ^4.14.185
   '@types/lunr': ^2.3.4
+  '@types/ms': ^0.7.31
   '@types/node': ^18.7.23
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
@@ -19,6 +20,7 @@ specifiers:
   framer-motion: ^7.3.6
   gray-matter: ^4.0.3
   lunr: ^2.3.9
+  ms: ^2.1.3
   next: 12.3.1
   next-auth: ^4.12.0
   next-mdx-remote: ^4.1.0
@@ -44,7 +46,7 @@ specifiers:
   unist-util-visit-parents: ^5.1.1
 
 dependencies:
-  '@bahutara/design-system': 0.0.6_hugdnstecmve7rp2v4t3intnzi
+  '@bahutara/design-system': 0.0.7_hugdnstecmve7rp2v4t3intnzi
   '@codesandbox/sandpack-react': 1.8.1_biqbaboplfbrettd7655fr4n2y
   '@prisma/client': 4.3.1_prisma@4.3.1
   '@sanity/image-url': 1.0.1
@@ -53,6 +55,7 @@ dependencies:
   focus-trap-react: 9.0.2_biqbaboplfbrettd7655fr4n2y
   framer-motion: 7.3.6_biqbaboplfbrettd7655fr4n2y
   lunr: 2.3.9
+  ms: 2.1.3
   next: 12.3.1_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.12.0_azq6kxkn3od7qdylwkyksrwopy
   next-mdx-remote: 4.1.0_biqbaboplfbrettd7655fr4n2y
@@ -70,6 +73,7 @@ dependencies:
 devDependencies:
   '@types/lodash': 4.14.185
   '@types/lunr': 2.3.4
+  '@types/ms': 0.7.31
   '@types/node': 18.7.23
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
@@ -396,8 +400,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@bahutara/design-system/0.0.6_hugdnstecmve7rp2v4t3intnzi:
-    resolution: {integrity: sha512-E4FT1nRoA8VU7NC+Ekz81j7bbf1S0gdvtS7EUTxAgdY3mxhk0K+6j94LaWSj4EOmvnVrgdNbAEqp3y45TGFqkg==}
+  /@bahutara/design-system/0.0.7_hugdnstecmve7rp2v4t3intnzi:
+    resolution: {integrity: sha512-Rfx303A504JVEhc6FNjSJbtSuj3XzpYvKM8p+2nCdSRARW+eAEJpGxEzUSSqmNOSIyKT+q8keMzTdTah2+SAYA==}
     peerDependencies:
       framer-motion: ^7.0.0
       react: ^18.2.0
@@ -410,7 +414,7 @@ packages:
       '@radix-ui/react-tabs': 1.0.0_biqbaboplfbrettd7655fr4n2y
       '@radix-ui/react-toast': 1.0.0_biqbaboplfbrettd7655fr4n2y
       '@radix-ui/react-tooltip': 1.0.0_rj7ozvcq3uehdlnj3cbwzbi5ce
-      '@stitches/react': 1.2.8_react@18.2.0
+      '@stitches/react': 1.3.1-0_react@18.2.0
       framer-motion: 7.3.6_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -2121,8 +2125,8 @@ packages:
     resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
     dev: false
 
-  /@stitches/react/1.2.8_react@18.2.0:
-    resolution: {integrity: sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==}
+  /@stitches/react/1.3.1-0_react@18.2.0:
+    resolution: {integrity: sha512-DMP1MEvxn+anIJcpkkYXfIN28zngmGwNjCQLTv3hLnYopNcaNmKPg4qpEFky7gYp7fbyC3JDCu/kJsC+Nr0Mtg==}
     peerDependencies:
       react: '>= 16.3.0'
     dependencies:
@@ -2222,7 +2226,6 @@ packages:
 
   /@types/ms/0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
-    dev: false
 
   /@types/node/18.7.23:
     resolution: {integrity: sha512-DWNcCHolDq0ZKGizjx2DZjR/PqsYwAcYUJmfMWqtVU2MBMG5Mo+xFZrhGId5r/O5HOuMPyQEcM6KUBp5lBZZBg==}
