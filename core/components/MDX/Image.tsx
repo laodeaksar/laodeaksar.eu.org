@@ -35,7 +35,7 @@ export function BlurImage(props: Props2) {
       {...props}
       src={src}
       alt={props.alt}
-      placeholder="blur"
+      //placeholder="blur"
       imgBlur={loading}
       onLoadingComplete={async () => {
         setLoading(false);
@@ -64,14 +64,10 @@ const Img = styled(NextImage, {
 });
 
 const Img2 = styled(NextImage2, {
-  transitionDuration: '0.5s',
-  transitionTimingFunction: 'ease-in-out',
-
   variants: {
     imgBlur: {
       true: {
-        willChange: 'transform',
-        transform: 'scale(1.05)'
+        filter: 'grayscale(100%) blur(12px)',
       }
     }
   }
