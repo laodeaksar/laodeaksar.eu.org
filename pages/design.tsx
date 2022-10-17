@@ -31,7 +31,8 @@ import {
   Icon,
   // Shadows,
   styled,
-  useTheme
+  useTheme,
+  Dialog
 } from '@bahutara/design-system';
 
 import CodeBlock from '@/components/Code/CodeBlock';
@@ -852,6 +853,20 @@ they can change the world, are the ones who do.`}
               checked
               disabled
             />
+            <Dialog>
+              <Dialog.Trigger asChild>
+                <Button variant="secondary">Dialog</Button>
+              </Dialog.Trigger>
+              <Dialog.Content title="Dialog" description="Just Dialog Testing">
+                <TextInput
+                  label="Name"
+                  aria-label="Name"
+                  id="name-input"
+                  placeholder="Name"
+                  onChange={() => {}}
+                />
+              </Dialog.Content>
+            </Dialog>
           </Grid>
           <br />
           <Grid
