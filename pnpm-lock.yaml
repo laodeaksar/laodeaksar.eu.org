@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@bahutara/design-system': ^0.0.7
+  '@bahutara/design-system': ^0.0.8
   '@codesandbox/sandpack-react': ^1.8.1
   '@prisma/client': ^4.3.1
   '@sanity/image-url': ^1.0.1
@@ -46,7 +46,7 @@ specifiers:
   unist-util-visit-parents: ^5.1.1
 
 dependencies:
-  '@bahutara/design-system': 0.0.7_hugdnstecmve7rp2v4t3intnzi
+  '@bahutara/design-system': 0.0.8_hugdnstecmve7rp2v4t3intnzi
   '@codesandbox/sandpack-react': 1.8.1_biqbaboplfbrettd7655fr4n2y
   '@prisma/client': 4.3.1_prisma@4.3.1
   '@sanity/image-url': 1.0.1
@@ -400,8 +400,8 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-  /@bahutara/design-system/0.0.7_hugdnstecmve7rp2v4t3intnzi:
-    resolution: {integrity: sha512-Rfx303A504JVEhc6FNjSJbtSuj3XzpYvKM8p+2nCdSRARW+eAEJpGxEzUSSqmNOSIyKT+q8keMzTdTah2+SAYA==}
+  /@bahutara/design-system/0.0.8_hugdnstecmve7rp2v4t3intnzi:
+    resolution: {integrity: sha512-RHkvtYRNlyFR2FJHBxlC6AswC8lYkmrERg+hU6hbKpQPW2nXOHMdJmoj8ZynJHBt+JOUWRB9lloCYEb/CcriEA==}
     peerDependencies:
       framer-motion: ^7.0.0
       react: ^18.2.0
