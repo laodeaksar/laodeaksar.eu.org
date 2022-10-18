@@ -1,6 +1,7 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 import { getCssText } from '@bahutara/design-system';
+import { GTM_ID } from '~/lib/gtm';
 
 export default class Document extends NextDocument {
   render() {
@@ -24,6 +25,14 @@ export default class Document extends NextDocument {
           />
         </Head>
         <body className="light">
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
           <script
             key="theme"
             dangerouslySetInnerHTML={{
@@ -45,8 +54,3 @@ export default class Document extends NextDocument {
     );
   }
 }
-
-/**
- * if (!mode && supportDarkMode) document.body.classList.add('laodeaksar-dark')
- * document.body.classList.add('laodeaksar-' + mode)
- **/
