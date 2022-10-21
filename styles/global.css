@@ -81,11 +81,3 @@ video {
 a {
   text-decoration: none;
 }
-
-.lock-scroll {
-  overflow: hidden !important;
-}
-
-.isCurrent > a {
-  color: var(--laodeaksar-colors-brand) !important;
-}
