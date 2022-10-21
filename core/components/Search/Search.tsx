@@ -217,10 +217,11 @@ const Search = (props: Props) => {
                     selected={selectedResult === result}
                     onPointerEnter={() => handlePointer(index)}
                   >
-                    <Link href={`/blog/${result.slug}`}>
-                      <a onClick={() => setTimeout(onClose, 600)}>
-                        {result.title}
-                      </a>
+                    <Link
+                      href={`/blog/${result.slug}`}
+                      onClick={() => setTimeout(onClose, 600)}
+                    >
+                      {result.title}
                     </Link>
                     <Flex
                       alignItems="center"

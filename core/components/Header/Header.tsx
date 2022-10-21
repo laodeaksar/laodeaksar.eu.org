@@ -80,10 +80,8 @@ const Header = (props: HeaderProps) => {
               }}
             >
               <Tooltip id="hometooltip" content="Home">
-                <Link href="/">
-                  <a aria-label="Home" aria-describedby="hometooltip">
-                    <Logo alt="Logo" size={44} />
-                  </a>
+                <Link href="/" aria-label="Home" aria-describedby="hometooltip">
+                  <Logo alt="Logo" size={44} />
                 </Link>
               </Tooltip>
               {title && <HeaderTitle text={title} />}
