@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import { Box, Flex, Grid, Pill, Text } from '@bahutara/design-system';
 
 import Hero from '@/components/Hero';
