@@ -83,7 +83,7 @@ export function GeneralItems({ items }: { items: Gear[] }) {
                         }
                       }}
                     >
-                      <Img src={image?.url} alt={image?.title} layout="fill" />
+                      <Img src={image?.url} alt={image?.title} fill />
                       <Flex
                         justifyContent="center"
                         css={{

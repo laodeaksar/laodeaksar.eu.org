@@ -13,11 +13,11 @@ import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
 
 const Signature = dynamic(() => import('./Signature'), {
-  suspense: true,
+  suspense: true
 });
 
 const Count = dynamic(() => import('./Signature/Count'), {
-  suspense: true,
+  suspense: true
 });
 //import { timeAgo } from '~/lib/utils';
 
@@ -48,9 +48,9 @@ const BlogLayout = ({
           id: title.id,
           title: title.innerText
         })) as Array<{
-          id: string;
-          title: string;
-        }>;
+        id: string;
+        title: string;
+      }>;
       setIds(idArrays);
     }, 500);
   }, [slug]);

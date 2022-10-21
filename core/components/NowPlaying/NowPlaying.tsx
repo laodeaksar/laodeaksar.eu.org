@@ -33,7 +33,7 @@ const NowPlaying = () => {
                 unoptimized
                 src={data.image?.url || ''}
                 alt={[data.title] + ' Cover Album'}
-                layout="fill"
+                fill
               />
             ) : (
               <SpotifyLogo />
