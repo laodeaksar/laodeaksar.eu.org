@@ -13,7 +13,7 @@
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
-    "@bahutara/design-system": "^0.0.8",
+    "@bahutara/design-system": "^0.0.9",
     "@codesandbox/sandpack-react": "^1.8.1",
     "@next/font": "12.3.2-canary.30",
     "@prisma/client": "^4.3.1",
