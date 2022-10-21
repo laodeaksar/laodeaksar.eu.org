@@ -1,6 +1,6 @@
 import { Flex, Text } from '@bahutara/design-system';
 
-import { BlurImage } from '@/components/MDX/Image';
+import Image from '@/components/MDX/Image';
 import Link from '@/components/Link';
 
 import type { TransformedTweet } from '~/lib/types';
@@ -57,7 +57,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
     <TweetWrapper>
       <Flex alignItems="center" justifyContent="space-between">
         <Avatar href={authorURL} target="_blank" rel="noopener noreferrer">
-          <BlurImage
+          <Image
             alt={author.username}
             height={46}
             width={46}
@@ -126,7 +126,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
                 overflow: 'hidden'
               }}
             >
-              <BlurImage
+              <Image
                 alt={text}
                 //layout="intrinsic"
                 height={m.height}
@@ -140,7 +140,7 @@ const Tweet = ({ tweet }: { tweet: TransformedTweet }) => {
       {media && media?.length === 1 ? (
         <SingleImageWrapper>
           {media.map(m => (
-            <BlurImage
+            <Image
               key={m.media_key}
               alt={text}
               height={m.height}

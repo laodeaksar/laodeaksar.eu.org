@@ -9,11 +9,14 @@ module.exports = {
       'assets.vercel.com',
       'images.ctfassets.net',
       'cdn.sanity.io'
-    ],
+    ]
   },
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
+    fontLoaders: [
+      { loader: '@next/font/google', options: { subsets: ['latin'] } }
+    ]
   },
   async rewrites() {
     return [

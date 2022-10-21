@@ -57,7 +57,7 @@ export function SoftwareItems({ items }: { items: Gear[] }) {
                     }
                   }}
                 >
-                  <Img src={image?.url} alt={image?.title} layout="fill" />
+                  <Img src={image?.url} alt={image?.title} fill />
                 </Flex>
               </Link>
               <Box css={{ marginTop: 0, marginBottom: '1rem' }}>

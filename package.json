@@ -13,8 +13,9 @@
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
-    "@bahutara/design-system": "^0.0.8",
+    "@bahutara/design-system": "^0.0.9",
     "@codesandbox/sandpack-react": "^1.8.1",
+    "@next/font": "12.3.2-canary.30",
     "@prisma/client": "^4.3.1",
     "@sanity/image-url": "^1.0.1",
     "@sanity/webhook": "^2.0.0",
@@ -23,7 +24,7 @@
     "framer-motion": "^7.3.6",
     "lunr": "^2.3.9",
     "ms": "^2.1.3",
-    "next": "12.3.1",
+    "next": "12.3.2-canary.30",
     "next-auth": "^4.12.0",
     "next-mdx-remote": "^4.1.0",
     "next-sanity": "^0.8.2",

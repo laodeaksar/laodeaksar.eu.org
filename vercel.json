@@ -3,42 +3,6 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/fonts/fira-code.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/iosevka-regular.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/ibm-plex-sans-var.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/ibm-plex-sans-var-italic.woff2",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
       "source": "/_next/static/:static*",
       "headers": [
         {
