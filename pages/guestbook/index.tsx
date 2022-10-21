@@ -1,13 +1,19 @@
+import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import type { GetStaticProps, NextPage } from 'next';
 import type { guestbook } from '@prisma/client';
 import { Grid, H2, Text } from '@bahutara/design-system';
 
-import GuestbookComponent from '@/components/screens/guestbook';
+//import GuestbookComponent from '@/components/screens/guestbook';
 import Layout from '@/layout';
 
 import prisma from '~/lib/prisma';
 
-const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
+const Guestbook = dynamic(() => import('@/components/screens/guestbook'), {
+  suspense: true,
+});
+
+const GuestbookPage: NextPage<{ fallbackData: guestbook[] }> = ({
   fallbackData
 }) => {
   return (
@@ -24,14 +30,16 @@ const Guestbook: NextPage<{ fallbackData: guestbook[] }> = ({
             Leave a comment below. It could be anything - appreciation,
             information, wisdom, or even humor. Surprise me!
           </Text>
-          <GuestbookComponent fallbackData={fallbackData} />{' '}
+          <Suspense>
+            <Guestbook fallbackData={fallbackData} />{' '}
+          </Suspense>
         </div>
       </Grid>
     </Layout>
   );
 };
 
-export default Guestbook;
+export default GuestbookPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const entries = await prisma.guestbook.findMany({

@@ -6,11 +6,18 @@ import Link from '@/components/Link';
 import TableOfContent from '@/components/TableOfContent';
 import Layout from '@/layout';
 
-import Signature from './Signature';
+//import Signature from './Signature';
 
 import { urlForImage } from '~/lib/sanity/sanity';
 import { Post } from '~/lib/types';
-import Count from './Signature/Count';
+
+const Signature = dynamic(() => import('./Signature'), {
+  suspense: true,
+});
+
+const Count = dynamic(() => import('./Signature/Count'), {
+  suspense: true,
+});
 //import { timeAgo } from '~/lib/utils';
 
 const BlogLayout = ({
@@ -40,9 +47,9 @@ const BlogLayout = ({
           id: title.id,
           title: title.innerText
         })) as Array<{
-        id: string;
-        title: string;
-      }>;
+          id: string;
+          title: string;
+        }>;
       setIds(idArrays);
     }, 500);
   }, [slug]);
@@ -99,7 +106,9 @@ const BlogLayout = ({
                   })}{' '}
                   / {readingTime} /{' '}
                 </Text>
-                <Count slug={slug} />
+                <Suspense>
+                  <Count slug={slug} />
+                </Suspense>
               </Flex>
               <Flex css={{ marginLeft: '-$2' }}>
                 <Pill variant="info">
@@ -116,7 +125,7 @@ const BlogLayout = ({
             {image && <Hero.Img className="u-photo" src={urlForImage(image)} />}
           </Hero>
           <TableOfContent ids={ids} />
-          <Suspense fallback={false}>
+          <Suspense>
             <Box
               css={{
                 padding: '20px 0px',
@@ -136,7 +145,9 @@ const BlogLayout = ({
             </Box>
           </Suspense>
         </Grid>
-        <Signature url={postUrl} />
+        <Suspense>
+          <Signature url={postUrl} />
+        </Suspense>
       </article>
     </Layout>
   );
