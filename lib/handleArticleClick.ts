@@ -1,4 +1,4 @@
-import router from 'next/router';
+//import router from 'next/router';
 
 export function handleArticleClicked(slug: string) {
   const localData = JSON.parse(localStorage.getItem(slug) as string);
@@ -10,5 +10,5 @@ export function handleArticleClicked(slug: string) {
     );
   }
 
-  router.push('/blog/' + slug);
+  //router.push('/blog/' + slug);
 }
