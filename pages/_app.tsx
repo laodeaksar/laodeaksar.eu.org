@@ -1,5 +1,4 @@
 import '~/styles/global.css';
-import '~/styles/font.css';
 
 import React from 'react';
 import type { AppType } from 'next/app';

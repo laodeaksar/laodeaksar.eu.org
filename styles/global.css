@@ -44,6 +44,7 @@ html {
 }
 
 body {
+  font-family: var(--fonts-display);
   background: var(--laodeaksar-colors-body);
   color: var(--laodeaksar-colors-typeface-primary);
   word-wrap: break-word;
@@ -79,30 +80,4 @@ video {
 
 a {
   text-decoration: none;
-}
-
-button {
-  background-color: transparent;
-  background-image: none;
-}
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-button,
-[role='button'] {
-  cursor: pointer;
-}
-
-.lock-scroll {
-  overflow: hidden !important;
-}
-
-.isCurrent > a {
-  color: var(--laodeaksar-colors-brand) !important;
 }
