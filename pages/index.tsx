@@ -105,6 +105,16 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
                       initial="initial"
                       whileHover="hover"
                     >
+                      <Link
+                        href={`/blog/${post.slug}/`}
+                        onClick={() => handleArticleClicked(post.slug)}
+                        style={{
+                          textDecoration: 'none',
+                          color: 'var(--laodeaksar-colors-typeface-secondary)'
+                        }}
+                      >
+                        {post.title}
+                      </Link>
                       <ButtonCard
                         onClick={() => handleArticleClicked(post.slug)}
                       >
