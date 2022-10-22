@@ -5,7 +5,7 @@ import useIsArticleRead from '@/hooks/useIsArticleRead';
 import { handleArticleClicked } from '~/lib/handleArticleClick';
 import { Post } from '~/lib/types';
 
-import { Block, Button } from './Styles';
+import { Block } from './Styles';
 import Link from 'next/link';
 
 export function BlogList({ post }: { post: Post }) {
@@ -16,12 +16,11 @@ export function BlogList({ post }: { post: Post }) {
   return (
     <>
       <Link
-        href={`/posts/${post.slug}/`}
+        href={`/blog/${post.slug}/`}
         style={{ textDecoration: 'none', fontWeight: 500 }}
+        onClick={() => handleArticleClicked(slug)}
       >
-        {title}
-      </Link>
-      <Button onClick={() => handleArticleClicked(slug)}>
+        {/*<Button onClick={() => handleArticleClicked(slug)}>*/}
         <Block>
           <Text
             as="p"
@@ -62,7 +61,7 @@ export function BlogList({ post }: { post: Post }) {
             </Flex>
           )}
         </Block>
-      </Button>
+      </Link>
     </>
   );
 }

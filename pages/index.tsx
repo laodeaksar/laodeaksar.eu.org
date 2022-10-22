@@ -113,11 +113,9 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
                           color: 'var(--laodeaksar-colors-typeface-secondary)'
                         }}
                       >
-                        {post.title}
-                      </Link>
-                      <ButtonCard
+                        {/*<ButtonCard
                         onClick={() => handleArticleClicked(post.slug)}
-                      >
+                      >*/}
                         <Glow
                           css={{
                             background: post.colorFeatured
@@ -174,7 +172,7 @@ const IndexPage: NextPage<{ posts: Post[] }> = ({ posts }) => {
                             </Text>
                           </Card.Body>
                         </Card>
-                      </ButtonCard>
+                      </Link>
                     </Box>
                   );
                 })}
@@ -227,9 +225,9 @@ const Overlay = styled(Box, {
   }
 });
 
-const ButtonCard = styled('button', {
+/*const ButtonCard = styled('button', {
   width: '$full',
   outline: 'none',
   border: '0',
   textAlign: 'left'
-});
+});*/
