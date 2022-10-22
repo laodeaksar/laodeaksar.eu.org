@@ -42,7 +42,7 @@ const Link = ({ href, children, tracking, ...rest }: Props) => {
   }
 
   return (
-    <NextLink href={href}>
+    <NextLink href={href} passHref legacyBehavior>
       <Anchor onClick={handleTracking} {...rest}>
         {children}
       </Anchor>

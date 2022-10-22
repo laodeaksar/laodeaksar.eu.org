@@ -9,7 +9,7 @@ import { IBM_Plex_Sans /*, Fira_Code*/ } from '@next/font/google';
 import { globalStyles, ThemeProvider, Tooltip } from '@bahutara/design-system';
 
 const normal = IBM_Plex_Sans({
-  variant: '400'
+  variant: '500'
 });
 
 /*const code = Fira_Code({
