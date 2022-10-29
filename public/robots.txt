@@ -1,6 +1,2 @@
+User-Agent: *
 Sitemap: https://laodeaksar.eu.org/sitemap.xml
-
-User-agent: *
-Allow: /*
-
-Disallow: /api/*
