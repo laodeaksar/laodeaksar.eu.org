@@ -97,7 +97,10 @@ const Meta = ({
       <meta name="twitter:creator" content="@ode_aksar" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image:src" content={imageUrl} />
+      <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={title} />
+      <meta property="twitter:image:width" content="1280" />
+      <meta property="twitter:image:height" content="720" />
       <meta name="google-site-verification" content="" />
     </Head>
   );
