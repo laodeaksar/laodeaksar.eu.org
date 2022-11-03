@@ -9,7 +9,7 @@
     "format": "prettier --write **/*.ts*",
     "format:check": "prettier --check **/*.ts*",
     "type-check": "tsc --noEmit",
-    "sanity:start": "sanity start",
+    "sanity:start": "sanity build && sanity start",
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
@@ -33,8 +33,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-gfm": "^3.0.1",
-    "sanity": "v3.0.0-dev-preview.22",
-    "sanity-plugin-markdown": "^3.0.0-v3-studio.3",
+    "sanity": "3.0.0-rc.0",
+    "sanity-plugin-markdown": "3.0.0-v3-studio.4",
     "styled-components": "^5.3.6",
     "swr": "^1.3.0"
   },
