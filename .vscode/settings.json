@@ -1,5 +1,11 @@
 {
+    "files.exclude": {
+        ".next": true,
+        ".sanity": true,
+        ".turbo": true
+    },
     "workbench.colorTheme": "Hack The Box",
+    "editor.formatOnSave": true,
     "typescript.tsdk": "node_modules/typescript/lib",
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
