@@ -1,8 +1,9 @@
 import lunr from 'lunr';
 import { getClient } from '~/lib/sanity/sanity-server';
+import { groq } from 'next-sanity';
 
 const searchEndpoint = async (req, res) => {
-  const query = `
+  const query = groq`
   *[_type == "post"] | order(date desc, _updatedAt desc) {
     title, description, "slug": slug.current
   }`;
