@@ -23,7 +23,7 @@
     "@sanity/ui": "1.0.0-beta.32",
     "@sanity/webhook": "^2.0.0",
     "@vercel/og": "^0.0.20",
-    "focus-trap-react": "^9.0.2",
+    "focus-trap-react": "^10.1.0",
     "framer-motion": "^7.3.6",
     "lunr": "^2.3.9",
     "ms": "^2.1.3",
